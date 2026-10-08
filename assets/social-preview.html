@@ -32,8 +32,8 @@
         --sheet: #ffffff;
         --ink: #1a1a1a;
         --ink-soft: #4a453d;
-        --blue-modern: #004c98;
-        --hairline: color-mix(in oklab, var(--blue-modern) 16%, var(--sheet));
+        --accent: #004c98;
+        --hairline: color-mix(in oklab, var(--accent) 16%, var(--sheet));
       }
       * {
         box-sizing: border-box;
@@ -58,7 +58,7 @@
       }
       h1 {
         font: italic 400 80px/1.1 "Literata", Georgia, serif;
-        color: var(--blue-modern);
+        color: var(--accent);
         letter-spacing: -0.01em;
       }
       p {

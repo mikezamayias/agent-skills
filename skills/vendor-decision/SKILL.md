@@ -24,12 +24,12 @@ The user should never have to ask "what about X?" about an option that was missi
 
 - **Direct providers:** the obvious ones, plus options native to the project's stack (for a Flutter or Dart app, Dart-native backends such as Serverpod), EU or self-hosted options when data location matters, and "build it ourselves".
 - **Competitors of the provider a feature depends on.** If the feature needs data from one platform, also map the other platforms users actually keep that data on, including the operating system's own data store.
-  Say which user segments each covers, for example users who only use a companion device and never open the phone app.
+  Say which user segments each covers, for example users who reach that data only through a third-party app.
 - **Gatekeepers:** whoever controls access even when the provider is willing.
   - platform rules: App Store and Google Play review guidelines, and platform data-access rules
   - API terms and developer agreements, including display, storage, AI-training, and competition clauses
   - partner-program approvals and rate-limit tiers
-  - regulators, for example data-protection rules for sensitive data, or registry rules for a chosen domain
+  - regulators, for example data-protection rules for sensitive data, or sector regulators
     Record which clause gates what, with a link.
 - **Competing products:** apps already doing the same job.
   Note how they solved it, because it shows which integrations are realistic.
@@ -52,7 +52,7 @@ Never ask the user to look something up that a fetch could answer.
 
 ## Step 3: Cost by kind and scale
 
-Break the cost down, per option, at three or more user counts (for example 1k, 10k, and 100k monthly users):
+Break the cost down, per option, at three or more user counts (for example a small, a medium, and a large monthly user count):
 
 - fixed monthly cost
 - usage cost, with the unit and the assumption behind it
@@ -77,7 +77,7 @@ End with one recommendation, covering:
 - the concrete flow the user or the team gets
 - the monthly cost range
 - the harm it avoids
-- what would make you switch, as a staged plan with triggers (for example, "move routing to X past 50k monthly users")
+- what would make you switch, as a staged plan with triggers (for example, "move `<component>` to X past `<N>` monthly users")
 
 If a gatekeeper blocks the preferred option, say so first and give the best route around it.
 Put the choice on an answer sheet (see `answer-sheet`) when it is one of several open decisions.

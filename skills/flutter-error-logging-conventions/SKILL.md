@@ -43,7 +43,7 @@ debugPrint('USER_SERVICE: Failed to load profile: $e');
 debugPrint('CART_SERVICE: Failed to persist cart: $e');
 debugPrint('SETTINGS_SECTION: Settings load failed: $e');
 debugPrint('UPLOAD_SERVICE: Photo permission denied: $e');
-debugPrint('ONBOARDING_CUBIT: Failed to save preferences: $e');
+debugPrint('SEARCH_CUBIT: Failed to save recent searches: $e');
 ```
 
 ## Common Prefixes
@@ -51,7 +51,7 @@ debugPrint('ONBOARDING_CUBIT: Failed to save preferences: $e');
 | Layer        | Prefix Pattern           | Example                             |
 | ------------ | ------------------------ | ----------------------------------- |
 | Services     | `{SERVICE_NAME}_SERVICE` | `USER_SERVICE`, `CART_SERVICE`      |
-| Cubits       | `{FEATURE}_CUBIT`        | `ONBOARDING_CUBIT`, `PROFILE_CUBIT` |
+| Cubits       | `{FEATURE}_CUBIT`        | `SEARCH_CUBIT`, `PROFILE_CUBIT`     |
 | Widgets      | `{WIDGET_NAME}`          | `SETTINGS_SECTION`, `ORDER_SUMMARY` |
 | Repositories | `{FEATURE}_REPO`         | `ITEM_REPO`, `PROFILE_REPO`         |
 

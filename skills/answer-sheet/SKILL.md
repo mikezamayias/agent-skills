@@ -27,7 +27,7 @@ For one or two quick questions, ask in chat, with each code followed by its mean
 - `scripts/example.json` is a template question file.
 - `scripts/test_answer_sheet.py` is the check. Run it after changing the script.
 
-Pick two directories in the project, for example `notes/questions/` and `notes/answers/`, and record them in the project's `AGENTS.md` so every agent uses the same place.
+Pick two directories in the project, for example `questions/` and `answers/`, and record them in the project's `AGENTS.md` so every agent uses the same place.
 The answers directory is the decision-maker's.
 Agents read it and never edit it.
 

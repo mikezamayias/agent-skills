@@ -27,7 +27,7 @@ core/observability/
 ├── spans.dart                      # SpanOp + TransactionName enums — Sentry tracing
 ├── metrics.dart                    # MetricName enum — Sentry custom metrics
 ├── breadcrumbs.dart                # BreadcrumbCategory enum — Sentry breadcrumbs
-├── attributes.dart                 # SpanAttr static constants — span data keys
+├── attributes.dart                 # TelemetryKeys static constants — span data keys
 ├── i_observability_service.dart    # Abstract interface (DI-friendly)
 └── observability_service.dart      # Concrete Sentry implementation
 ```
@@ -37,9 +37,9 @@ core/observability/
 | Principle                | Application                                                                                                              |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
 | **No Magic Strings**     | Every event name, span op, metric name, breadcrumb category, and attribute key is an enum or constant                    |
-| **Dependency Inversion** | Cubits/services depend on `IObservabilityService` (abstract), not Sentry directly                                        |
+| **Dependency Inversion** | Cubits/services depend on `TelemetryService` (abstract), not Sentry directly                                             |
 | **Consent-Aware**        | All methods check `isEnabled` before calling Sentry APIs; no-op when disabled                                            |
-| **NoOp Pattern**         | `_NoOpSpan` implements `ISentrySpan` so callers don't need null-checks when disabled                                     |
+| **NoOp Pattern**         | `_DisabledSpan` implements `ISentrySpan` so callers don't need null-checks when disabled                                 |
 | **Separation**           | `AnalyticsService` handles event tracking (PostHog); `ObservabilityService` handles tracing/metrics/breadcrumbs (Sentry) |
 
 ## Step-by-Step Implementation
@@ -49,13 +49,13 @@ core/observability/
 ```yaml
 # pubspec.yaml
 dependencies:
-  sentry_flutter: ^9.11.0
+  sentry_flutter: ^9.0.0
   posthog_flutter: ^5.0.0 # or latest
 ```
 
 ```dart
 // main.dart — SentryFlutter.init options
-options.tracesSampleRate = isProduction ? 0.2 : 1.0;
+options.tracesSampleRate = isProduction ? 0.1 : 1.0;
 options.enableAutoPerformanceTracing = true;  // auto app start, slow/frozen frames
 ```
 
@@ -170,7 +170,7 @@ enum BreadcrumbCategory {
 
 ```dart
 /// Static keys for span data and metric attributes.
-abstract final class SpanAttr {
+abstract final class TelemetryKeys {
   static const endpointCount = 'upload.endpoint_count';
   static const endpoint = 'upload.endpoint';
   static const fileSize = 'upload.file_size';
@@ -192,7 +192,7 @@ import 'spans.dart';
 
 /// Abstract observability contract.
 /// Depends only on our own enums + Sentry's span interfaces.
-abstract class IObservabilityService {
+abstract class TelemetryService {
   bool get isEnabled;
 
   // Tracing
@@ -221,8 +221,8 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'i_observability_service.dart';
 // ... other imports
 
-@LazySingleton(as: IObservabilityService)
-class ObservabilityService implements IObservabilityService {
+@LazySingleton(as: TelemetryService)
+class ObservabilityService implements TelemetryService {
   ObservabilityService(this._analyticsService);
   final AnalyticsService _analyticsService;
 
@@ -231,7 +231,7 @@ class ObservabilityService implements IObservabilityService {
 
   @override
   ISentrySpan startTransaction(TransactionName name, SpanOp op, {bool bindToScope = true}) {
-    if (!isEnabled) return _NoOpSpan();
+    if (!isEnabled) return _DisabledSpan();
     return Sentry.startTransaction(name.value, op.value, bindToScope: bindToScope);
   }
 
@@ -292,7 +292,7 @@ class ObservabilityService implements IObservabilityService {
 }
 ```
 
-#### NoOp Span (`_NoOpSpan`)
+#### NoOp Span (`_DisabledSpan`)
 
 Implement the full `ISentrySpan` interface with no-ops. This lets callers use `transaction.setData(...)` and `transaction.finish()` without null-checks when observability is disabled.
 
@@ -391,13 +391,13 @@ When one operation tries several providers in order, wrap the whole attempt in o
 final transaction = _observability.startTransaction(
   TransactionName.upload, SpanOp.uploadFile,
 );
-transaction.setData(SpanAttr.endpointCount, endpoints.length);
+transaction.setData(TelemetryKeys.endpointCount, endpoints.length);
 
 for (final endpoint in endpoints) {
   final span = _observability.startChildSpan(
     transaction, SpanOp.uploadAttempt, description: endpoint.name,
   );
-  span?.setData(SpanAttr.endpoint, endpoint.id);
+  span?.setData(TelemetryKeys.endpoint, endpoint.id);
 
   try {
     await endpoint.upload(file);
@@ -472,7 +472,7 @@ grep -rn "Sentry.startTransaction" lib/         # Direct transaction calls (only
 2. Add span ops to `SpanOp` enum if the feature has async/network operations
 3. Add metrics to `MetricName` enum if tracking durations or counts
 4. Add breadcrumb category to `BreadcrumbCategory` if needed
-5. Inject `IObservabilityService` into the cubit/service constructor
+5. Inject `TelemetryService` into the cubit/service constructor
 6. Add `trackEvent()` calls for user-facing operations
 7. Wrap async operations in transactions/spans
 8. Record performance metrics with `distribution()`

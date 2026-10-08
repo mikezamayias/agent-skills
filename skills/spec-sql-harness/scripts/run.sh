@@ -5,7 +5,7 @@
 # Settings come from harness.env next to this script:
 #   SPEC_FILES  Markdown files holding ```sql blocks, relative to REPO_ROOT, in load order
 #   REPO_ROOT   repository root, relative to this script (default ../..)
-#   PG_IMAGE    the exact image production runs, for example supabase/postgres:17.6.1.177 (pin the version production runs)
+#   PG_IMAGE    the exact image production runs, for example supabase/postgres:<version>
 #   PG_ADMIN    superuser inside the image (supabase_admin for Supabase, postgres otherwise)
 #   CONTAINER   container name
 # Exits non-zero if the schema fails to load, a suite errors, or any check fails.

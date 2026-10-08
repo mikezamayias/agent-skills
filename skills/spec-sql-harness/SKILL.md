@@ -40,7 +40,7 @@ A harness kept in `/tmp` loses its checks between runs.
    ```bash
    SPEC_FILES="SCHEMA.md"            # Markdown files with the SQL, in load order, relative to REPO_ROOT
    REPO_ROOT=../..
-   PG_IMAGE=supabase/postgres:17.6.1.177   # example version, pin the exact image and version production runs
+   PG_IMAGE=supabase/postgres:<version>   # pin the exact image and version production runs
    PG_ADMIN=supabase_admin           # postgres for a plain Postgres image
    CONTAINER=myapp-schema-test
    ```

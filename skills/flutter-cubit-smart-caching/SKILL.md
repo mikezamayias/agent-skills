@@ -13,7 +13,7 @@ Prevent unnecessary data reloads when users navigate between tabs/pages by addin
 
 ## The Problem
 
-Flutter apps using `BlocProvider` at root level keep cubits alive across navigation. But pages often call `loadData()` in their `initState` or `_InitialView`, triggering a full reload every time the user switches tabs. This causes:
+Flutter apps using `BlocProvider` at root level keep cubits alive across navigation. But pages often call `loadData()` in their `initState` or `_EmptyView`, triggering a full reload every time the user switches tabs. This causes:
 
 - Unnecessary API/database calls
 - Loading spinners on every tab switch
@@ -26,8 +26,8 @@ Add three things to every data cubit:
 ### 1. Freshness Tracking
 
 ```dart
-DateTime? _lastLoadedAt;
-static const _minRefreshInterval = Duration(minutes: 5);
+DateTime? _fetchedAt;
+static const _staleAfter = Duration(minutes: 5);
 ```
 
 ### 2. Skip Logic in Load Method
@@ -35,8 +35,8 @@ static const _minRefreshInterval = Duration(minutes: 5);
 ```dart
 Future<void> loadData({bool force = false}) async {
   // Skip if data is fresh (unless forced)
-  if (!force && state is DataLoaded && _lastLoadedAt != null) {
-    if (DateTime.now().difference(_lastLoadedAt!) < _minRefreshInterval) {
+  if (!force && state is DataLoaded && _fetchedAt != null) {
+    if (DateTime.now().difference(_fetchedAt!) < _staleAfter) {
       return;
     }
   }
@@ -48,7 +48,7 @@ Future<void> loadData({bool force = false}) async {
 
   // ... fetch data ...
 
-  _lastLoadedAt = DateTime.now();
+  _fetchedAt = DateTime.now();
   emit(DataLoaded(data: result));
 }
 ```
@@ -75,12 +75,12 @@ Future<void> addItem(Item item) async {
 
 When adding smart caching to a cubit:
 
-- [ ] Add `DateTime? _lastLoadedAt` field
-- [ ] Add `static const _minRefreshInterval` with appropriate duration
+- [ ] Add `DateTime? _fetchedAt` field
+- [ ] Add `static const _staleAfter` with appropriate duration
 - [ ] Add `bool force = false` parameter to load method
 - [ ] Add freshness check at top of load method
 - [ ] Only emit Loading state on first load (`state is! DataLoaded`)
-- [ ] Set `_lastLoadedAt = DateTime.now()` before emitting loaded state
+- [ ] Set `_fetchedAt = DateTime.now()` before emitting loaded state
 - [ ] Add `force: true` to all mutation methods that need immediate refresh
 - [ ] Ensure cubit is in root `MultiBlocProvider` (not created per-page)
 

@@ -8,19 +8,18 @@
   ],
   "questions": [
     {
-      "id": "photo-backup",
-      "title": "Should profile photos be backed up?",
+      "id": "theme-default",
+      "title": "Should the app follow the system theme by default?",
       "context": [
-        "Profile photos live in one storage bucket with no copy. If the bucket is lost, every user sees a blank avatar and has to upload again.",
-        "- A nightly copy to a second region costs about €1 a month at today's size.",
-        "- Photos are compressed to 400 px before upload, so the copy stays small.",
+        "The app opens in light mode and has a manual dark mode switch in settings.",
+        "- Following the system theme means no switch to find on first launch.",
+        "- A manual override stays available in settings either way.",
         "**What each option leads to** is under the option."
       ],
       "images": [],
       "options": [
-        {"label": "Back them up nightly", "detail": "A lost bucket is restored from last night's copy. The privacy policy gains one line about the backup location.", "recommended": true},
-        {"label": "No backup", "detail": "Nothing changes. A lost bucket means every user uploads again."}
+        {"label": "Follow the system theme", "detail": "New users see the theme they already chose for their phone. Settings keeps a manual override.", "recommended": true},
+        {"label": "Keep light mode as the default", "detail": "Nothing changes. Users who prefer dark mode switch it once in settings."}
       ]
-    }
-  ]
+    }  ]
 }

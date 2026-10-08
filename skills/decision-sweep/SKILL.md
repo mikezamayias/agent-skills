@@ -27,7 +27,7 @@ Set these up once, in a new project or when adopting the skill in an existing on
    It holds one section per round, headed with the date and the topic, and one heading per ruling in plain words.
    Each ruling says what was decided, why, and who decided when.
    A later ruling that reverses an earlier one says so and links back.
-3. **Owner table.** Each subject (schema, screens, notifications, privacy, costs) has exactly one owner file that defines its facts.
+3. **Owner table.** Each subject (data model, UI, API, policies, budget) has exactly one owner file that defines its facts.
    Every other file links to the owner instead of restating it.
 4. **Answer files.** The decision-maker's raw answers, one file per day (see the `answer-sheet` skill).
    Agents never edit them.

@@ -13,7 +13,7 @@ Answers also autosave in the browser, so a reload loses nothing.
 Question file format (JSON):
   {"date": "2026-01-15", "title": "...", "intro": "...",
    "questions": [{"id": "slug", "title": "...", "context": ["paragraph", ...],
-                  "images": [{"src": "path relative to notes/questions/", "caption": "..."}],
+                  "images": [{"src": "path relative to the questions directory", "caption": "..."}],
                   "options": [{"label": "...", "detail": "...", "recommended": true}]}]}
 Paragraphs take **bold** and lines starting with "- " as bullets. Every question
 gets a free-text note field, and an "Other" answer is always possible through it.
