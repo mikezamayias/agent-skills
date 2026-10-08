@@ -1,0 +1,97 @@
+<!doctype html>
+<!--
+  Source for assets/social-preview.png, the repository's social preview card.
+  Paper, a white sheet, a Literata italic salutation and a JetBrains Mono footer.
+  The fonts are under the SIL Open Font License, see fonts/.
+  Render at 1280x640 with headless Chrome:
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+    --window-size=1280,640 --hide-scrollbars --force-device-scale-factor=1 \
+    --virtual-time-budget=5000 --screenshot=assets/social-preview.png \
+    "file://$PWD/assets/social-preview.html"
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: "Literata";
+        font-style: normal;
+        src: url("fonts/literata-latin.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Literata";
+        font-style: italic;
+        src: url("fonts/literata-latin-italic.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "JetBrains Mono";
+        src: url("fonts/jetbrains-mono-latin.woff2") format("woff2");
+      }
+      :root {
+        --paper: #f4eee0;
+        --sheet: #ffffff;
+        --ink: #1a1a1a;
+        --ink-soft: #4a453d;
+        --blue-modern: #004c98;
+        --hairline: color-mix(in oklab, var(--blue-modern) 16%, var(--sheet));
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html,
+      body {
+        width: 1280px;
+        height: 640px;
+        overflow: hidden;
+        background: var(--paper);
+      }
+      .sheet {
+        position: absolute;
+        inset: 56px 68px;
+        background: var(--sheet);
+        border: 1px solid var(--hairline);
+        border-radius: 32px;
+        padding: 72px 80px 56px;
+        display: flex;
+        flex-direction: column;
+      }
+      h1 {
+        font: italic 400 80px/1.1 "Literata", Georgia, serif;
+        color: var(--blue-modern);
+        letter-spacing: -0.01em;
+      }
+      p {
+        margin-top: 28px;
+        max-width: 800px;
+        font: 400 34px/1.45 "Literata", Georgia, serif;
+        color: var(--ink);
+      }
+      footer {
+        margin-top: auto;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+      footer span {
+        font: 400 23px/1 "JetBrains Mono", ui-monospace, monospace;
+        color: var(--ink-soft);
+      }
+      footer img {
+        width: 96px;
+        height: 96px;
+        border-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="sheet">
+      <h1>Notes for my coding agents,</h1>
+      <p>the skills Claude Code, Codex and Cursor load when I work on Flutter apps.</p>
+      <footer>
+        <span>github.com/mikezamayias/agent-skills</span>
+        <img src="mark.png" alt="Mike Zamayias mark" />
+      </footer>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+# Keep the language bar about the repository, not the helper scripts inside skills.
+skills/** linguist-documentation
+assets/** linguist-documentation
+toolbox/** linguist-vendored

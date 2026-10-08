@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ship First-Dollar App"
+  short_description: "Validate, launch, and learn toward first revenue"
+  default_prompt: "Use $ship-first-dollar-app to turn my app idea into a focused first-revenue plan."

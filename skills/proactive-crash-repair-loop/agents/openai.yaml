@@ -1,0 +1,4 @@
+interface:
+  display_name: "Proactive Crash Repair Loop"
+  short_description: "Turn crash telemetry into reviewed fix PRs"
+  default_prompt: "Use $proactive-crash-repair-loop to design a guarded crash-to-PR workflow for this project."

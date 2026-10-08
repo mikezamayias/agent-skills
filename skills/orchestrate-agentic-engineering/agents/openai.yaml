@@ -1,0 +1,4 @@
+interface:
+  display_name: "Orchestrate Agentic Engineering"
+  short_description: "Captain multi-agent projects from brief to proof"
+  default_prompt: "Use $orchestrate-agentic-engineering to coordinate this project from research through verified delivery."

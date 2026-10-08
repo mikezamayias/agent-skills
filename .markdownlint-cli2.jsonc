@@ -1,0 +1,8 @@
+{
+  // Read by the markdownlint VS Code extension and by markdownlint-cli2.
+  "config": {
+    "default": true,
+    // Markdown here puts each sentence on its own line, so lines run long by design.
+    "MD013": false
+  }
+}

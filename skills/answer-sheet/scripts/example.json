@@ -1,0 +1,26 @@
+{
+  "date": "2026-01-15",
+  "title": "Open questions, 15 Jan 2026",
+  "intro": [
+    "Each question explains its own background, so you don't need to remember earlier messages.",
+    "Pick an option, or write your own answer in the box under it. Answers save in this browser as you go.",
+    "When you're done, press «Save answers»."
+  ],
+  "questions": [
+    {
+      "id": "photo-backup",
+      "title": "Should profile photos be backed up?",
+      "context": [
+        "Profile photos live in one storage bucket with no copy. If the bucket is lost, every user sees a blank avatar and has to upload again.",
+        "- A nightly copy to a second region costs about €1 a month at today's size.",
+        "- Photos are compressed to 400 px before upload, so the copy stays small.",
+        "**What each option leads to** is under the option."
+      ],
+      "images": [],
+      "options": [
+        {"label": "Back them up nightly", "detail": "A lost bucket is restored from last night's copy. The privacy policy gains one line about the backup location.", "recommended": true},
+        {"label": "No backup", "detail": "Nothing changes. A lost bucket means every user uploads again."}
+      ]
+    }
+  ]
+}
