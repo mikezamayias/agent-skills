@@ -23,8 +23,9 @@ metadata:
 
 ## Layout (feature packages)
 
-Each feature is split into `<feature>_domain`, `<feature>_data` and `<feature>_presentation` packages in one pub workspace, and the app only composes them.
-Follow `feature-first-clean-architecture` for the tree, the dependency rules and the migration from a single package.
+Use Very Good Ventures' Feature-First Clean Architecture (FFCA): each feature is split into `<feature>_domain`, `<feature>_data` and `<feature>_presentation` packages in one pub workspace, and the app only composes them.
+Follow the `ffca-*` skills from VGV's vgv-ffca-plugin for the conventions: `ffca-architecture` for where code lives, `ffca-feature`, `ffca-routing` and `ffca-cross-feature` for building, and `ffca-audit` for checking.
+To move a single-package app, follow [references/migrate-to-ffca.md](references/migrate-to-ffca.md).
 
 ```text
 apps/<name>_app/          # routing, dependency wiring, flavors

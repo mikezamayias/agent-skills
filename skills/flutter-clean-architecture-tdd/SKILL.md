@@ -9,7 +9,7 @@ metadata:
 # Flutter Clean Architecture TDD
 
 Write each behavior's failing test before its code, starting in the domain package and moving outward.
-The package layout and dependency rules come from `feature-first-clean-architecture`.
+The package layout, naming and dependency rules come from the `ffca-*` skills in VGV's vgv-ffca-plugin, starting with `ffca-architecture` and `ffca-feature`.
 The state-management and stack conventions come from `flutter-bloc-clean-architecture`.
 
 Load `references/tdd-feature-checklist.md` before implementation, code review or final verification.
@@ -36,7 +36,7 @@ Do not silently pick a default for greenfield work.
 ## Rules
 
 - Mock only across a package boundary.
-  Use case tests mock repository interfaces, repository tests mock data sources, cubit tests mock domain repositories or use cases.
+  Command and Query tests mock repository interfaces, repository tests mock data sources, cubit tests mock domain repositories, Commands or Queries.
 - Domain tests use `package:test` and import no Flutter, database or network package.
 - Keep fixtures in the `test/fixtures/` folder of the package that reads them.
 - Map infrastructure errors to domain failures in the data package, so no exception crosses a package boundary.

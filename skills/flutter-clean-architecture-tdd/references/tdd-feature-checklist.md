@@ -2,7 +2,7 @@
 
 Use this order when adding a feature.
 Keep each step small enough that one failing test points at one missing behavior.
-Paths assume the layout in `feature-first-clean-architecture`, with the feature at `features/<feature>/`.
+Paths follow the FFCA layout in the `ffca-architecture` skill, with the feature at `features/<feature>/`.
 
 ## Intake
 
@@ -19,10 +19,10 @@ Before creating files, identify:
 
 ## Phase 1: Domain package
 
-1. Write `<feature>_domain/test/src/models/<model>_test.dart`.
-2. Implement `<feature>_domain/lib/src/models/<model>.dart`.
-3. Define `<feature>_domain/lib/src/repositories/<feature>_repository.dart` as an `abstract interface class`.
-4. When a rule combines several repositories, write `<feature>_domain/test/src/use_cases/<action>_test.dart`, then implement the use case.
+1. Write `<feature>_domain/test/models/<model>_test.dart`.
+2. Implement `<feature>_domain/lib/models/<model>.dart`.
+3. Define `<feature>_domain/lib/repositories/i_<aggregate>_repository.dart` as an `abstract interface class`.
+4. When a rule combines several repositories, write `<feature>_domain/test/use_cases/<name>_test.dart`, then implement the Command or Query in `use_cases/`.
 5. Export the public API from `<feature>_domain/lib/<feature>_domain.dart`.
 
 Domain tests import no Flutter, database, network or generated DTO code.
@@ -30,10 +30,10 @@ Domain tests import no Flutter, database, network or generated DTO code.
 ## Phase 2: Data package
 
 1. Add fixtures under `<feature>_data/test/fixtures/`.
-2. Write data source tests under `<feature>_data/test/src/data_sources/`.
+2. Write data source tests under `<feature>_data/test/data_sources/`.
 3. Implement the remote and local data sources.
-4. Write mapper tests under `<feature>_data/test/src/mappers/`, then the mappers.
-5. Write repository tests under `<feature>_data/test/src/repositories/`, with the data sources mocked.
+4. Write mapper tests under `<feature>_data/test/mappers/`, then the mappers.
+5. Write repository tests under `<feature>_data/test/repositories/`, with the data sources mocked.
 6. Implement the repository: source selection, caching, failure mapping and DTO-to-model conversion.
 
 Repository tests should prove:
@@ -45,9 +45,9 @@ Repository tests should prove:
 
 ## Phase 3: Presentation package
 
-1. Write cubit or bloc tests under `<feature>_presentation/test/src/<screen>/bloc/`, with the domain repository mocked.
+1. Write cubit or bloc tests under `<feature>_presentation/test/<screen>/bloc/`, with the domain repository mocked.
 2. Implement the cubit or bloc and its states.
-3. Write view tests under `<feature>_presentation/test/src/<screen>/views/`, with the cubit mocked.
+3. Write view tests under `<feature>_presentation/test/<screen>/views/`, with the cubit mocked.
 4. Implement the views and the screen module.
 
 Cubit tests should cover:
