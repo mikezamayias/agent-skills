@@ -76,8 +76,9 @@ Skills that adapt someone else's work credit it in the skill.
 | [flutter-app-size-audit](skills/flutter-app-size-audit/SKILL.md)                               | Cuts Flutter install size through build flags, asset formats, and shrinking.                              |
 | [flutter-async-at-the-edge](skills/flutter-async-at-the-edge/SKILL.md)                         | Keeps async work in services and repositories so views render synchronous sealed state.                   |
 | [flutter-async-cubit-safety](skills/flutter-async-cubit-safety/SKILL.md)                       | Guards every `emit` after an `await` to prevent emit-after-close crashes.                                 |
-| [flutter-bloc-clean-architecture](skills/flutter-bloc-clean-architecture/SKILL.md)             | Applies BLoC/Cubit with Clean Architecture, Very Good Ventures conventions, and a feature-first layout.   |
-| [flutter-clean-architecture-tdd](skills/flutter-clean-architecture-tdd/SKILL.md)               | Scaffolds and reviews Flutter features with Clean Architecture and test-first development.                |
+| [feature-first-clean-architecture](skills/feature-first-clean-architecture/SKILL.md)           | Splits a Flutter app into domain, data, and presentation packages per feature in one pub workspace.       |
+| [flutter-bloc-clean-architecture](skills/flutter-bloc-clean-architecture/SKILL.md)             | Applies BLoC/Cubit with Clean Architecture, Very Good Ventures conventions, and feature packages.         |
+| [flutter-clean-architecture-tdd](skills/flutter-clean-architecture-tdd/SKILL.md)               | Builds a Flutter feature test-first across its domain, data, and presentation packages.                   |
 | [flutter-cubit-smart-caching](skills/flutter-cubit-smart-caching/SKILL.md)                     | Adds time-based freshness checks so cubits skip redundant reloads on navigation.                          |
 | [flutter-error-logging-conventions](skills/flutter-error-logging-conventions/SKILL.md)         | Replaces silent `catch (_)` blocks with consistently prefixed logging.                                    |
 | [flutter-observability-instrumentation](skills/flutter-observability-instrumentation/SKILL.md) | Adds type-safe analytics, tracing, metrics, and breadcrumbs with Sentry and PostHog.                      |

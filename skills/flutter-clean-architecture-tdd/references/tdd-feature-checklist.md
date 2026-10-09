@@ -1,101 +1,99 @@
-# TDD Feature Checklist
+# TDD feature checklist
 
-Use this order when adding a new feature. Keep each step small enough that a failing test identifies one missing behavior.
+Use this order when adding a feature.
+Keep each step small enough that one failing test points at one missing behavior.
+Paths assume the layout in `feature-first-clean-architecture`, with the feature at `features/<feature>/`.
 
 ## Intake
 
 Before creating files, identify:
 
-- Feature name and route or entry point.
-- User-visible behavior.
-- API endpoint or local data source.
-- Entity fields and validation rules.
-- Cache behavior and invalidation.
-- Loading, empty, success, and failure UI states.
-- Localization strings.
+- the feature name and its route or entry point
+- the user-visible behavior
+- the API endpoint or local data source
+- model fields and validation rules
+- cache behavior and invalidation
+- loading, empty, success and failure UI states
+- localization strings
+- which packages the feature needs: domain only, domain and data, presentation only, or all three
 
-## Phase 1: Domain Layer
+## Phase 1: Domain package
 
-1. Write `test/features/<feature>/domain/entities/<feature>_entity_test.dart`.
-2. Implement `lib/features/<feature>/domain/entities/<feature>_entity.dart`.
-3. Write `test/features/<feature>/domain/repositories/<feature>_repository_test.dart` only when repository contract behavior needs documentation.
-4. Define `lib/features/<feature>/domain/repositories/<feature>_repository.dart`.
-5. Write `test/features/<feature>/domain/usecases/<action>_<feature>_usecase_test.dart`.
-6. Implement `lib/features/<feature>/domain/usecases/<action>_<feature>_usecase.dart`.
+1. Write `<feature>_domain/test/src/models/<model>_test.dart`.
+2. Implement `<feature>_domain/lib/src/models/<model>.dart`.
+3. Define `<feature>_domain/lib/src/repositories/<feature>_repository.dart` as an `abstract interface class`.
+4. When a rule combines several repositories, write `<feature>_domain/test/src/use_cases/<action>_test.dart`, then implement the use case.
+5. Export the public API from `<feature>_domain/lib/<feature>_domain.dart`.
 
-Domain tests should not import Flutter, Dio, drift, FlatBuffers, or generated DTOs.
+Domain tests import no Flutter, database, network or generated DTO code.
 
-## Phase 2: Data Layer
+## Phase 2: Data package
 
-1. Define or update FlatBuffer schema in `lib/core/fbs/` or the feature's data model folder.
-2. Generate FlatBuffer Dart accessors.
-3. Add or update binary fixtures in `test/fixtures/`.
-4. Write data-source tests under `test/features/<feature>/data/sources/`.
-5. Implement remote and local data sources.
-6. Write repository implementation tests under `test/features/<feature>/data/implements/`.
-7. Implement repository orchestration, failure mapping, caching, and DTO-to-entity conversion.
+1. Add fixtures under `<feature>_data/test/fixtures/`.
+2. Write data source tests under `<feature>_data/test/src/data_sources/`.
+3. Implement the remote and local data sources.
+4. Write mapper tests under `<feature>_data/test/src/mappers/`, then the mappers.
+5. Write repository tests under `<feature>_data/test/src/repositories/`, with the data sources mocked.
+6. Implement the repository: source selection, caching, failure mapping and DTO-to-model conversion.
 
 Repository tests should prove:
 
-- Cache hit returns the expected entity without network access.
-- Cache miss fetches remote data and caches bytes when appropriate.
-- Server, cache, and parse failures map to the correct `Failure`.
-- Generated DTOs do not leak from the repository interface.
+- A cache hit returns the expected model without network access.
+- A cache miss fetches remote data and caches it when appropriate.
+- Server, cache and parse failures map to the right domain failure.
+- No DTO or generated type leaks from the repository interface.
 
-## Phase 3: Presentation Layer
+## Phase 3: Presentation package
 
-1. Write Cubit tests under `test/features/<feature>/presentation/cubit/`.
-2. Implement Cubit and states.
-3. Write page or widget tests under `test/features/<feature>/presentation/pages/` or `widgets/`.
-4. Implement screens and feature widgets.
+1. Write cubit or bloc tests under `<feature>_presentation/test/src/<screen>/bloc/`, with the domain repository mocked.
+2. Implement the cubit or bloc and its states.
+3. Write view tests under `<feature>_presentation/test/src/<screen>/views/`, with the cubit mocked.
+4. Implement the views and the screen module.
 
 Cubit tests should cover:
 
-- Initial state.
-- Loading -> success.
-- Loading -> empty when applicable.
-- Loading -> failure.
-- Refresh or retry behavior.
-- Cancellation or closed-Cubit guards after awaits if the existing codebase requires them.
+- the initial state
+- loading to success
+- loading to empty, when applicable
+- loading to failure
+- refresh or retry
+- no emit after close, when an `await` precedes an `emit`
 
-Widget tests should cover:
+View tests should cover:
 
-- Initial render.
-- Loading indicator.
-- Empty state.
-- Error state and retry.
-- Successful data render.
-- Key user interaction and navigation.
+- initial render
+- loading indicator
+- empty state
+- error state and retry
+- successful data render
+- the key user interaction and the navigation callback it fires
 
-## Phase 4: Integration and Wiring
+## Phase 4: App wiring
 
-1. Register data sources, repositories, use cases, and Cubits in DI.
-2. Add routes and route tests when routing logic is non-trivial.
-3. Add localization keys and regenerate l10n when needed.
-4. Add integration tests for the critical feature flow.
-5. Update fixtures, helpers, fakes, and test setup.
+1. Construct the data implementation in the app's composition root and expose it as the domain interface.
+2. Add the route that creates the screen module, and a route test that builds the page through the real router.
+3. Add localization keys and regenerate localizations.
+4. Add an integration test for the critical flow.
 
-## Verification Commands
+## Verification commands
 
-Run the applicable subset:
+Run from the workspace root:
 
 ```bash
-flatc --dart -o lib/core/fbs/generated/ lib/core/fbs/*.fbs
-dart run build_runner build
-dart format lib/ test/
+dart format .
 flutter analyze
-flutter test
+very_good test --recursive
 ```
 
-When only one feature changed, run the focused tests first, then broaden to the full suite if shared wiring changed.
+Run `dart run build_runner build` inside each package whose generated code changed.
+When only one package changed, run its tests first, then the full workspace if wiring or shared packages changed.
 
-## Review Checklist
+## Review checklist
 
 - Domain APIs contain no infrastructure types.
-- Tests match the behavior the user requested, not only implementation details.
+- Tests check the behavior the user asked for, not only implementation details.
 - Generated files are current.
-- `Either<Failure, T>` is folded in presentation and not ignored.
 - Mocks are reset between tests.
 - Fixture data is deterministic.
-- UI states are reachable and covered by tests.
-- No unrelated refactors or package changes are bundled into the feature.
+- Every UI state is reachable and tested.
+- No unrelated refactor or dependency change is bundled into the feature.
