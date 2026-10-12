@@ -125,6 +125,10 @@ Constraints:
 - Light mode default; dark mode via `prefers-color-scheme: dark` if the philosophy fits.
 - Screenshots: <relative paths from LANDING_BRIEF, or "none, design around it">
 - Accessibility: semantic landmarks, alt text, color contrast WCAG AA.
+- Concept: one sentence naming what this page is about that only this app could own, anchored in a real fact from the brief. If the sentence still works with another app's name swapped in, it is a style, not a concept. Carry it through every section, not just the hero.
+- Type: body 16-18px with 1.45-1.6 line height, 45-70 characters per line, tabular figures for numbers, a non-breaking space between a number and its unit.
+- Motion: animate only transform, opacity and clip-path. Under `prefers-reduced-motion`, all content must be visible with no scroll-driven animation.
+- No em or en dashes in copy. Exactly one <h1>.
 
 Return only the complete HTML file. No commentary.
 ```
@@ -133,17 +137,26 @@ When another model returns the page, save only the HTML and strip any commentary
 
 ## Verification per version
 
-For each generated HTML:
+For each generated HTML, measure in a real browser (`agent-browser`, the T3 preview, or Chrome DevTools MCP as in `web-perf`) rather than eyeballing:
 
-- [ ] Loads in a browser without console errors.
-- [ ] Mobile viewport (375×667) renders without horizontal scroll.
-- [ ] No "Lorem ipsum" or placeholder text leaked through.
+- [ ] Zero console errors and zero failed requests.
+- [ ] No horizontal overflow at 375×667. Name the offending element if there is one.
+- [ ] Zero serious or critical axe-core violations at WCAG 2.1 AA, which also measures contrast ratios.
+- [ ] Every tap target at least 24×24px.
+- [ ] Keyboard: every focus stop visible, tab order follows the page, the CTA reachable.
+- [ ] Reduced motion: emulate `prefers-reduced-motion: reduce` and confirm no text stays hidden.
+- [ ] Throttled mobile (4× CPU, slow 4G): Largest Contentful Paint under 2.5s and Cumulative Layout Shift under 0.05.
+- [ ] Text audit: no "Lorem ipsum", `TODO` outside the CTA, or bracketed placeholders; no repeated sentences; exactly one `<h1>`; every image has `alt` and every link a name.
 - [ ] Primary CTA is wired to a real URL, or to `# TODO: …` clearly marked if not yet known.
 - [ ] No external script tags from untrusted CDNs (audit `<script src=`).
-- [ ] Color contrast passes WCAG AA on body text, checked with a contrast tool.
 
-Use a browser automation tool if one is available.
-Otherwise open the file in a local browser and ask the human to check what you cannot see.
+Record any check you could not run as not verified in `INDEX.md`, rather than passing it.
+If no browser tool is available, open the file in a local browser and ask the human to check what you cannot measure.
+
+Then run a fresh critic: a new subagent that sees only the version's mobile and desktop screenshots and the check results, not the prompt or this conversation.
+It writes one sentence on what the page is about, scores Design, Usability, Creativity and Content from 1 to 10, and lists the top 3 fixes.
+Put its scores and the sentence in the `INDEX.md` Critic column. The human still picks the winner.
+Thresholds and the critic method are adapted from juliobsz/skills `/awwwards` (MIT, read 2026-10-12).
 
 If a version fails, revise it with a targeted fix, using the same model or tool that produced it.
 If it still cannot be made to work, mark it `Stuck` in `INDEX.md` and move on.
@@ -155,13 +168,13 @@ After all 5 are generated, write `landing-pages/INDEX.md`:
 ```markdown
 # Landing page versions for <App name> (built <YYYY-MM-DD>)
 
-| Version | Philosophy       | Model or tool | Words | Verdict (human fill) | Path                                   |
-| ------- | ---------------- | ------------- | ----- | -------------------- | -------------------------------------- |
-| v1      | Hero-led         | <model>       | XXX   |                      | landing-pages/v1-hero-led.html         |
-| v2      | Story-led        | <model>       | XXX   |                      | landing-pages/v2-story-led.html        |
-| v3      | Product-tour-led | <model>       | XXX   |                      | landing-pages/v3-product-tour-led.html |
-| v4      | Social-proof-led | <model>       | XXX   |                      | landing-pages/v4-social-proof-led.html |
-| v5      | Manifesto-led    | <model>       | XXX   |                      | landing-pages/v5-manifesto-led.html    |
+| Version | Philosophy       | Model or tool | Words | Critic (scores + sentence) | Verdict (human fill) | Path                                   |
+| ------- | ---------------- | ------------- | ----- | -------------------------- | -------------------- | -------------------------------------- |
+| v1      | Hero-led         | <model>       | XXX   |                            |                      | landing-pages/v1-hero-led.html         |
+| v2      | Story-led        | <model>       | XXX   |                            |                      | landing-pages/v2-story-led.html        |
+| v3      | Product-tour-led | <model>       | XXX   |                            |                      | landing-pages/v3-product-tour-led.html |
+| v4      | Social-proof-led | <model>       | XXX   |                            |                      | landing-pages/v4-social-proof-led.html |
+| v5      | Manifesto-led    | <model>       | XXX   |                            |                      | landing-pages/v5-manifesto-led.html    |
 
 ## Stuck / skipped
 
@@ -180,3 +193,4 @@ YYYY-MM-DD HH:MM - <project> - 5 versions (<model> x N, ...)
 
 - `app-graphics` generates the icon and OG card this landing page references.
 - `app-screenshots` generates the framed screenshots this landing page embeds.
+- For an "AI is building this" reveal on a feature card, read [references/ai-generation-effect.md](references/ai-generation-effect.md) first. Never on the hero.

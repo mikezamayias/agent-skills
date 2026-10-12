@@ -37,6 +37,15 @@ Stay in research mode: "Show 6 iOS onboarding flows that ask for notification pe
 
 **No Mobbin:** screenshot 3–5 apps on a device. Save under `design-refs/<feature>/`. Paywalls: <https://toomanypaywalls.com> for **pattern labels**, not chrome.
 
+### 1b. Concept, then three directions
+
+References show structure. They do not give the app a face.
+Before any screen, name one real-world object or place the app _is_, such as a running app as an athletics track, a sleep app as a village going to sleep, or a plant app as paper cut-outs.
+Let that concept set type, palette, illustration style and motion.
+"Clean", "minimal", "modern" and "premium" are not directions.
+Sketch the main screen three ways from the concept, pick one with the human, then build every other screen from the chosen one.
+The method is Tobia Donadon's free "Stop Making your Apps Look Like AI Slop" article (October 2026). His paid skill packages it.
+
 ## 2. Critique
 
 | Lens          | What to write                                                             |
@@ -46,7 +55,7 @@ Stay in research mode: "Show 6 iOS onboarding flows that ask for notification pe
 | Layout        | Safe area, bottom CTA pinned or inline, sheet vs full screen              |
 | Radius        | Superellipse vs circular vs sharp                                         |
 | Motion        | None / implicit Flutter / Rive state machine                              |
-| Copy          | CTA verb, price presentation, trial framing                               |
+| Copy          | CTA verb, price presentation, trial framing, word count per screen        |
 | Escape        | Skip, X, "not now", or none (hard wall)                                   |
 | Dark pattern? | Countdown, decoy weekly, default-off reminder, no close — **do not copy** |
 
@@ -122,6 +131,19 @@ If later you want production Figma components linked to Flutter, that is a diffe
 - Dynamic Type: titles wrap, CTAs don't clip
 - Pressed state does not shift layout bounds
 
+Render the built screens on the simulator at device resolution, then run a separate critic pass that fails any of these AI tells:
+
+- Purple or blue gradient hero card
+- Emoji standing in for illustration or icons
+- Repeated identical cards with uniform padding
+- Plain avatar circle and a generic title such as "My Savings Goals"
+- Gradients with no job
+- Body-text sentences where a concrete number or object would do ("€49 to go", "€49 is three takeaways")
+- A screen that is tidy but could belong to any app
+
+Give every screen a word budget before writing copy.
+No em dashes or AI stock phrases ("Unlock your potential", "Seamless. Effortless. Powerful.") in UI strings.
+
 Paste the spec + 2–3 reference links **before** asking a model to write widgets.
 
 ## Sources
@@ -137,3 +159,4 @@ Paste the spec + 2–3 reference links **before** asking a model to write widget
 - <https://developer.apple.com/design/human-interface-guidelines/typography>
 - <https://developer.apple.com/design/human-interface-guidelines/accessibility>
 - <https://api.flutter.dev/flutter/widgets/MediaQuery/disableAnimationsOf.html>
+- <https://x.com/i/article/2106430529113301163> (Tobia Donadon, concept-first method)

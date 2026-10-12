@@ -28,6 +28,9 @@ Most indies lose conversion by following the wrong order.
 - "Subscribe to continue" gate before any value is delivered.
 - Tutorial screens explaining features (vs showing outcomes).
 - Yearly-only pricing with no escape hatch for low-trust buyers.
+- Paragraphs on the paywall. Keep each plan to a price, a period and one concrete line.
+- Abstract value claims. Anchor the price to something real instead ("€49 is three takeaways").
+- Fake countdowns or a price that only appears after tapping.
 
 ## Audit checklist (use before each release)
 
