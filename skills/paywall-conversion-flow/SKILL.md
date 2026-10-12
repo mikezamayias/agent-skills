@@ -42,13 +42,16 @@ Most indies lose conversion by following the wrong order.
 
 A high-performing onboarding structure to pair with the order above:
 
-1. Splash → immediate account creation with one-tap social buttons plus a visible Skip.
-2. Minimal account creation (pre-filled or one-tap).
-3. Value screens with progress indicators and Skip.
-4. Interest / goal selection (multi-select chips) so the experience feels tailored early.
-5. Personalized recommendations or community previews based on the selections.
-6. Soft premium upgrade with clear benefits and trial (this is the "after value" slot from the order above).
-7. Celebration / "creating your space" animation → main app.
+1. Value screens or an instant first win, with progress indicators and Skip.
+2. Goal and motivation questions ("why are you here?", multi-select chips) so the experience feels tailored early.
+3. Personalized result, recommendations or community previews based on the answers.
+4. Optional account creation, one-tap social or pre-filled, with a visible Skip.
+5. Soft premium upgrade with clear benefits and trial (this is the "after value" slot from the order above).
+6. Celebration / "creating your space" animation → main app.
+
+Treat signup as deferrable.
+Duolingo moved signup from screen 2 to screen 15 between 2018 and 2026 and added motivation questions, as observed by Zach Witzel (Helium) in August 2026.
+This is an observed pattern from screenshots, not published test data, and it says nothing about paywall timing.
 
 Execution details that matter: always a visible Skip or back, pre-select popular options to cut decision fatigue, show real social-proof numbers, keep the whole flow under 30-45 seconds. Track onboarding completion rate, time to first meaningful action, day-1 retention, and first-session conversion.
 
@@ -66,3 +69,4 @@ Moving the paywall late costs conversions, so A/B test placement instead of assu
 - <https://www.revenuecat.com/state-of-subscription-apps>
 - <https://www.revenuecat.com/blog/growth/subscription-app-trends-benchmarks-2026>
 - <https://firstpagesage.com/seo-blog/saas-free-trial-conversion-rate-benchmarks/>
+- <https://x.com/zzwitz/status/2109310052343644367> (quotes <https://x.com/zzwitz/status/2091879951897166069>)

@@ -64,6 +64,7 @@ store_assets/
 ```
 
 If neither exists, the skill prompts the human to draft a 6-screen sequence + caption matrix before going further. Do not invent the sequence — reviewers reject screenshots that don't match the app's actual UX.
+Draft and review captions with [references/copy-and-design.md](references/copy-and-design.md) before capture, so each capture is chosen to prove its headline.
 
 Locales: read them from `store_assets/templates/screenshot_text.json`.
 If the project does not declare its locales, ask the human.
@@ -85,6 +86,12 @@ store_assets/screenshots/
 iOS target: 1320×2868 portrait, the native iPhone 16 Pro Max size, for the App Store 6.9" display slot.
 That slot also accepts 1290×2796 and 1260×2736, and apps that run on iPad also need 13" iPad screenshots (2064×2752 or 2048×2732).
 App Store Connect accepts 1 to 10 screenshots per device size and locale, as PNG or JPEG without alpha.
+
+iPhone Duo: outer display 1398×2034 or 2034×1398, inner display 2007×2853 or 2853×2007.
+Apple's screenshot specifications require Duo screenshots starting April 2027 for apps built with the iOS 27.1 SDK or later, and the October 5, 2026 developer news says any app submitted from April 2027.
+Capture each display on the iPhone Duo simulator at its exact size, never by stretching another iPhone capture.
+Koubou 0.20.0, the version `asc` pins, has no Duo frame (`asc screenshots list-frame-devices` lists none), so Duo framing is an open step: log it as `Stuck` and ask the human rather than improvising a frame.
+Duo deck design rules are in [references/copy-and-design.md](references/copy-and-design.md).
 Android target: 1080×1920 portrait (9:16, Play Store phone).
 Play rejects screenshots whose long side is more than twice the short side, so raw 20:9 captures such as 1080×2400 must be framed to 9:16.
 Play accepts up to 8 phone screenshots as JPEG or 24-bit PNG without alpha, and promotion eligibility needs at least 4 at 1080 px or more.
@@ -126,6 +133,7 @@ Apple/Google reject screenshots that show debug overlays or staging data. Verify
 ## Sources
 
 - <https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications>
+- <https://developer.apple.com/news/?id=kkphp5qo>
 - <https://support.google.com/googleplay/android-developer/answer/9866151>
 - <https://github.com/rudrankriyam/App-Store-Connect-CLI>
 - <https://github.com/bitomule/koubou>
