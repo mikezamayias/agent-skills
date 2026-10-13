@@ -81,6 +81,17 @@ Bias spend toward verification, reproduction, PR triage, and unexplained diffs f
 Use exploratory or "silly" prompts only when quota would otherwise expire unused and the work cannot harm production.
 Keep secrets, customer data, and production credentials out of prompts unless the user explicitly authorizes that path.
 
+## Cloud sandbox limits
+
+Before handing a task to a cloud-hosted agent, list every host the task must reach and check the sandbox allows each one.
+Claude Code on the web (docs read 2026-10-13): `api.github.com` is allowed and REST through `gh api` works for attached repos, but GraphQL (`gh pr`, `gh issue`) and other repos return 403, and the proxy rejects pushes of anything but a branch, such as a tag.
+Repo `.mcp.json` servers and connectors load there, while user-scope `claude mcp add` servers do not.
+Codex cloud blocks internet access in the agent phase by default, and its supported VPN is Tailscale configured on the environment.
+Cursor cloud agents do not run Tailscale in their default networking mode.
+A Tailscale auth-key join needs egress to `*.tailscale.com`, and ephemeral keys are single use.
+A phone can show Online in `tailscale status` and answer pings while refusing every TCP connection. Fix it by reconnecting the phone to Wi-Fi, toggle Tailscale and keep the target app in the foreground.
+Keep signing secrets on the CI runner, never in a cloud agent sandbox.
+
 ## Guardrails
 
 - Do not stack or share accounts to evade provider terms, and do not turn coding subs into a public API.

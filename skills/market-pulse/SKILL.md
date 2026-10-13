@@ -136,6 +136,8 @@ Include a **Conversion Strategy** section in every report evaluating how the app
 - Use conservative estimates — better to exceed projections than miss them
 - **Currency conversion ≠ price localization.** Auto-converted prices often miss psychological thresholds and local purchasing power. Always recommend custom price tiers for top 5-10 markets. A $4.99/mo sub auto-converts to ~₺179.99 in Turkey, but ₺149.99 may convert 2-3x better.
 - Use Apple's App Store pricing reference tables and Google's sub-country pricing to identify optimal tiers
+- Niche signals, as unsourced heuristics from MobAI's niche skill: top results averaging under 3.5 stars, fewer than 5 apps targeting a keyword, high ratings with few reviews, stale update dates, and generic apps winning a specific search
+- Score each niche 1 to 5 for competition, demand and quality gap, rank by (demand × quality gap) / competition, and search keyword variations, not one keyword
 
 ## Multi-App Mode
 

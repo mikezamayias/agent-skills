@@ -129,6 +129,15 @@ Execute real core journey. Example:
 
 Collect exact commit, commands, checks, endpoint/config identity, concise logs or screenshots, and remaining risks. Workflow success without user-journey proof is insufficient.
 
+Drive the real user path, never internal setters, test-only endpoints or handlers invoked through eval.
+Use eval only to read state after the user path ran.
+Run a health check first, because a recording against a stale build or the wrong instance is not evidence.
+Capture the trigger and the stable end state in the same recording or log, and check side effects in the store that holds them.
+Exercise every reachable entry point the change touches, plus its success, cancel, error, empty and persistence paths.
+Report an unreachable path with its concrete blocker and cover the closest real path that remains, never claiming it verified through a different path.
+For a bug fix, run the same proof against the base commit and the branch, and require it to fail on the base. A proof that passes on both is not evidence.
+For a repeatable recipe per project, use `create-verification-skill` and keep it honest with `maintain-verification-skill`.
+
 ### 9. Review architecture and release
 
 - Review API surface, authorization, data model, core boundaries, cost, and operational burden.
@@ -168,6 +177,8 @@ Collect exact commit, commands, checks, endpoint/config identity, concise logs o
 - Persistence and restart behavior checked when relevant.
 - Architecture reviewed for security and overengineering.
 - Exact source and evidence captured.
+- A model-reported bug is a claim until a repro test fails on the assertion that encodes it. A repro failing for another reason means the test is wrong. A passing repro rejects the finding.
+- Evidence survives cleanup and is checked at its named location after teardown.
 
 ## Context and Handoff Discipline
 
@@ -236,6 +247,31 @@ Authority still needed:
 - Stop patching and re-plan when a third fix round on one change still finds a blocking gap.
   Present the simpler design to the user.
 
+### Process hygiene for agent shells
+
+Record every background process an agent starts with `echo $! > name.pid` at spawn time.
+Check liveness with `kill -0 "$(cat name.pid)"`, and stop a process with `kill "$(cat name.pid)"` before deleting the file.
+Never use `pkill -f` or `pgrep`, because a command-line pattern can match the agent's own shell and some sandboxes lack `pgrep`.
+An agent's shell shows output only when a command ends, so start any command that blocks on a human approval in the background, poll its log for the approval URL for a bounded time, print the URL and exit.
+Give every CLI that can fall back to interactive login an explicit timeout, such as Tailscale's `--timeout=90s`.
+In a readiness poll, stop waiting as soon as the started process is no longer alive.
+Set `umask 077` before writing state or logs that hold login URLs or node identities.
+Exit 1 only when a named human step is needed or the service failed, and exit 0 once the core service serves, saying what optional part is missing.
+When a one-time login URL is consumed, kill by PID file, delete the stored identity and start fresh, instead of re-printing the dead URL.
+Put the next action in the failure output, including what not to do.
+
+### Bug bash fan-out
+
+A bug bash is many exploration runs, one charter each, then a pass that proves every claimed bug.
+A charter is one area, one posture and one sentence naming the start route and the account.
+Plan 5 to 10 charters with postures such as first-time user, numbers and copy, edge input, state and error paths.
+An edge-input charter names its exact input matrix, or it spends its budget before judging a result.
+Run charters four at a time, each with its own output directory and its own seeded disposable account, because explorers sharing an account report each other's edits as bugs.
+Against a deployed site that others use, charters are read-only: no signups, submissions, injection-shaped URLs or request loops.
+Sort every finding into explorer artifact, environment, design, fixture or candidate by reading the source, and write repro tests only for candidates.
+Report confirmed bugs with their failing repro first, then unverified risks, then rejected findings grouped by reason, then areas no charter reached.
+Adapted from tester-army/e2e `bug-bash.md` (Apache-2.0, read 2026-10-13).
+
 ## Failure Modes
 
 - Orchestrator performs specialist work and becomes unavailable.
@@ -250,6 +286,10 @@ Authority still needed:
 - Reviewer receives expected answer and merely confirms it.
 - A stalled helper runs for hours because the orchestrator only watches for its exit.
 - An orchestrator's wrong fact in a brief is implemented faithfully and costs a review round.
+- Cleanup kills processes by name instead of the process it started, and takes down the user's own session.
+- Cleanup deletes the proof artifacts along with the scratch state.
+- A verification recipe is handed over without being executed once end to end.
+- A verification map is edited to match a regression, which hides a product bug as documentation drift.
 
 ## Output Contract
 

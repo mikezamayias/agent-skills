@@ -8,7 +8,7 @@ metadata:
 
 # Slim iOS simulator fleet
 
-`simslim` disables ~170 unused daemons **inside that simulator only**. Host Mac is untouched.
+`simslim` disables ~170 of the ~180 daemons a fresh simulator starts **inside that simulator only**. Host Mac is untouched.
 
 Requires Mac + Xcode + iOS **18.5+** runtime for persistent slimming.
 `simslim on` rejects older runtimes before touching the simulator.
@@ -24,6 +24,10 @@ simslim on <udid>
 
 `on` writes the disable overrides and boots the simulator slim, shutting it down first if it is booted.
 Later boots come up slim (~4 GB → ~0.9 GB).
+`simslim off <udid>` restores a simulator to stock by re-enabling every daemon and rebooting it, and a full reconfigure takes a minute or two.
+Check a slimmed simulator with `simslim status <udid>` and its memory with `simslim measure <udid>`, both on a booted simulator.
+`simslim profiles` lists the daemon categories a slim boot disables and the tradeoff of each.
+Do not disable daemons by hand with `xcrun simctl`, because simslim's allowlist skips the daemons that wedge a simulator, such as `nanoregistryd` and `sleepd`, even with `--keep` or `--except`.
 
 ## Commit a profile
 
@@ -43,6 +47,8 @@ simslim on <udid> --profile ci.json
 Cannot mix `--profile` with `--except` / `--keep`.
 
 Keep features you actually test: `--except search` or `--keep com.apple.apsd` (push), `storekitd` (StoreKit), `swcd` (universal links). StoreKit / push / Spotlight tests fail if you slim those categories.
+The category names are `search` (Spotlight), `store` (push via `apsd` and StoreKit via `storekitd`) and `web` (universal links via `swcd`).
+Contacts, Photos and Calendar pickers may misbehave when their categories are slimmed.
 
 ## CI preflight
 
@@ -56,6 +62,15 @@ GitHub-hosted macOS runners: `export SIMSLIM_BOOT_TIMEOUT=15m` and `SIMSLIM_SPAW
 `simslim clone` before destructive experiments. `disk-clean` is permanent and **requires** `--confirm`. It will not delete app documents or shrink the signed iOS runtime.
 
 After `erase` / new runtime / "Erase All Content and Settings", the sim is stock again — re-run `on`.
+
+## Disk and lifecycle
+
+Run `simslim size <udid>` for a simulator's disk footprint and `simslim disk-categories` for what can be removed and what is protected.
+Run `simslim disk-plan <udid>` before any clean, because it shows the reclaimable breakdown and deletes nothing.
+Clean with `simslim disk-clean <udid> --categories caches,logs,temporary --confirm`.
+Lifecycle commands are `simslim boot`, `shutdown`, `clone <udid> <name>`, `rename`, `erase` and `delete`, and `boot` waits for services before it returns.
+Pass `--json` when a script parses simslim output.
+These commands come from MobAI's simslim skill (October 2026), so run `simslim --help` to confirm them on the installed version.
 
 ## Sources
 

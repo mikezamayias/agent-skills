@@ -28,6 +28,7 @@ Guidelines that apply to **every** app regardless of category. Check these befor
 - [ ] **5.1.1(i)** — Privacy policy linked in App Store Connect AND accessible in-app
 - [ ] **5.1.1(ii)** — User consent secured for all data collection
 - [ ] **5.1.1(iii)** — Only request data relevant to core functionality
+- [ ] **5.1.1(iv)** - Respect the user's permission settings and never manipulate or force consent to unnecessary data access
 - [ ] **5.1.1(v)** — If account creation exists, account deletion must be offered
 - [ ] **5.1.2** — ATT framework required for cross-app tracking
 - [ ] **Privacy Manifest** — `PrivacyInfo.xcprivacy` includes all Required Reason APIs

@@ -35,6 +35,17 @@ Mix:
 
 Stay in research mode: "Show 6 iOS onboarding flows that ask for notification permission after value, not before. Describe structure, do not generate UI."
 
+**Other reference sources** (checked 2026-10-13, prices from live pages):
+
+| Source        | Covers                                                                          | Agent access                                                                                                                                                            | Cost                                            | Use for                                                                           |
+| ------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- | --------------------------------------------------------------------------------- |
+| Refero        | Web and iOS screens, flows, curated styles                                      | MCP at `https://api.refero.design/mcp`, tools `refero_search_screens`, `refero_search_flows`, `refero_search_app`, `refero_search_styles`, 8,000 calls a month per seat | Pro, Team or Lifetime plan, prices not readable | Second opinion to Mobbin, and `refero_search_styles` for a landing page direction |
+| Gummble       | iOS, Android and web, vendor claims 300,000+ screens                            | Read-only MCP on Browse and up, API on Team                                                                                                                             | Browse $9.99/mo, Pro $14.99/mo                  | Cheapest MCP source that covers Android                                           |
+| ScreensDesign | 2,805+ top-chart iOS apps with videos, paywalls, onboarding and revenue signals | MCP and API, licensed for interactive research only                                                                                                                     | Not readable                                    | Paywall and onboarding research tied to revenue                                   |
+| Page Flows    | Recorded flows for iOS, Android, web and email                                  | None                                                                                                                                                                    | $8.25/mo billed yearly, $2.95 3-day trial       | Whole multi-step flows, watched by the human                                      |
+
+All four terms forbid bulk download or building a dataset, so keep each pull to the 5 to 8 references this step needs.
+
 **No Mobbin:** screenshot 3–5 apps on a device. Save under `design-refs/<feature>/`. Paywalls: <https://toomanypaywalls.com> for **pattern labels**, not chrome.
 
 ### 1b. Concept, then three directions
@@ -110,6 +121,12 @@ Clip children with `ClipSmoothRect`.
 | ------------------------------------------------ | ---------------------------------------------------------- |
 | Character, illustrated scene, state-machine icon | Opacity, route transition, chevron rotate, keyboard insets |
 | Designer owns `.riv`                             | `AnimationController` would be <30 lines                   |
+
+Rive files play through the official `rive` package (0.14.11 on pub.dev, checked 2026-10-13).
+Lottie files play through `lottie` (3.6.1), a third-party package by xvrh, not an official Airbnb release.
+Use Lottie for a one-shot or looping illustration with no inputs, and Rive when the animation reacts to app state through a state machine.
+Rive's free plan exports with a splash screen, so a shipped `.riv` needs a paid seat.
+Lottielab exports Lottie JSON only on a paid plan, and Jitter's free tier exports at 720p 30fps with a watermark.
 
 Never Rive a page route. `liquid_glass_renderer` is 0.2.0-dev, Impeller-only, 16-shape cap — not a layout system. Never on Web/Skia.
 

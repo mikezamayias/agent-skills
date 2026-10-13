@@ -97,6 +97,12 @@ Record the decisions, not the styling:
 - What stays visible and what is hidden.
 - What brings the user back tomorrow.
 
+For each paywall, record every tier's name, price and billing period, the trial length, any discount claim, the exact CTA text, and whether it is hard or soft.
+Convert every yearly and lifetime price to a monthly equivalent before comparing apps.
+Capture the top, middle and bottom of a scrolling paywall, and read renewal terms and fine print from the full accessibility tree, including off-screen nodes.
+When the paywall is not obvious, look under settings, subscription, profile and upgrade entries, or trigger a gated feature.
+Note pre-selected expensive tiers, hard-to-find close buttons and a hidden Restore Purchases link as dark patterns.
+
 Default patterns for younger consumer audiences:
 
 - One obvious action per screen.
@@ -145,6 +151,9 @@ Onboarding:
 - Explain every permission before asking.
 - Defer anything that can wait.
 - Do not copy a long onboarding because other apps have one.
+- When auditing a flow, score each screen's friction from 1 (clear value, one tap) to 5 (confusing or hostile). A signup wall scores 4 even when well designed.
+- Per screen, record what is asked, which permission is requested, the taps to advance and whether skip exists. Score every system permission dialog as its own screen.
+- Report the average friction score and the top 3 to 5 fixes ranked by impact.
 
 Monetization:
 

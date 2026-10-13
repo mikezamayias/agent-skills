@@ -67,6 +67,7 @@ If neither exists, the skill prompts the human to draft a 6-screen sequence + ca
 Draft and review captions with [references/copy-and-design.md](references/copy-and-design.md) before capture, so each capture is chosen to prove its headline.
 
 Locales: read them from `store_assets/templates/screenshot_text.json`.
+When the app has an in-app language switch, use it for locale fan-out instead of changing the device language, because it is faster.
 If the project does not declare its locales, ask the human.
 
 ## Output paths
