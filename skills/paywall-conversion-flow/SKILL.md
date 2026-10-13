@@ -20,6 +20,8 @@ Most indies lose conversion by following the wrong order.
    In First Page Sage's SaaS benchmark (86 companies, 2022-2025), card-required trials converted 48.8% to paid vs 18.2% for cardless, but visitor-to-trial fell from 8.5% to 2.5%, so judge the whole funnel, not trial-to-paid alone.
    Make the cancel path easy to keep ratings intact.
    Google Play already verifies a valid payment method before a store free trial starts, so a cardless trial only exists outside store billing.
+   Judge a trial by paid conversion, not trial-start rate.
+   One indie fasting app in October 2026 reported a 20% trial-start week with zero trials converting, while its no-trial weeks reached 12-19% paid, on samples in the tens.
 5. **Offer weekly + yearly, not just monthly.** Weekly lowers commitment fear and converts the "let me test it" segment that monthly scares off.
 
 ## Anti-patterns to remove
@@ -31,6 +33,8 @@ Most indies lose conversion by following the wrong order.
 - Paragraphs on the paywall. Keep each plan to a price, a period and one concrete line.
 - Abstract value claims. Anchor the price to something real instead ("€49 is three takeaways").
 - Fake countdowns or a price that only appears after tapping.
+- A one-time offer whose claims are not true. A countdown offer is legitimate only when the shown state persists so the offer never reappears for that user, the timer does not reset on reopen or relaunch, and claims such as "lowest price we've offered" are true for that storefront's price history.
+  In the EU, a false limited-time claim is banned outright by the Unfair Commercial Practices Directive, Annex I point 7, with no harm test.
 
 ## Audit checklist (use before each release)
 
@@ -57,6 +61,15 @@ Duolingo moved signup from screen 2 to screen 15 between 2018 and 2026 and added
 This is an observed pattern from screenshots, not published test data, and it says nothing about paywall timing.
 
 Execution details that matter: always a visible Skip or back, pre-select popular options to cut decision fatigue, show real social-proof numbers, keep the whole flow under 30-45 seconds. Track onboarding completion rate, time to first meaningful action, day-1 retention, and first-session conversion.
+
+## Measure
+
+- Paid conversion is weekly unique buyers divided by unique paywall viewers.
+- Keep trial starts on a separate line and never count them as paid.
+- Bucket weekly when daily paywall views are under about 20, because daily rates are noise.
+- Annotate every price, offer and onboarding change on the chart, and exclude the developer's own country or test devices.
+- Never report a partial-week point as a result.
+- Report a 95% interval with each rate. For example, 23 buyers out of 104 viewers is 22% with a range of about 15-31%.
 
 ## When in doubt
 

@@ -67,6 +67,10 @@ For headless images of a layout, `ImageRenderer` can render a view at a fixed wi
 - Locale: `.environment(\.locale, Locale(identifier: "de"))` and `el`.
 - Dark mode: `.preferredColorScheme(.dark)`.
 
+In a `#Preview`, `.constant` is right for a value the parent computes and wrong for state the screen writes, because taps then change nothing with no diagnostic.
+Pass the values the app's own parent passes on a fresh launch.
+Do not add `.id()` to force a refresh, because it replaces the view's identity and re-runs `onAppear` on every change.
+
 Hand SwiftUI code review to `swiftui-pro` and test structure to `swift-testing-pro`.
 
 ### SwiftUI failure signatures

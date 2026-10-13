@@ -92,6 +92,9 @@ The live guidelines fetched above win when the two disagree.
 - **Critical if**: App charges for digital content via external payment (Stripe SDK for subscriptions)
 - **High if**: App has subscription but no restore purchases button
 - **Method**: Check pubspec for payment SDKs, check UI for restore button
+- Every paywall, discount or one-time offer variant must ship in a reviewed binary and be described in Notes for Review before it can be enabled remotely, because Guideline 2.3.1(a) requires changes described "with specificity in the Notes for Review section" and rejects generic descriptions.
+- **High if**: Remote config or a paywall SDK can switch to an offer screen that no submitted Notes for Review text describes.
+- **Method**: Grep paywall and remote config code for offer, discount and countdown screens, then check the review notes for each one.
 
 ##### 3a. Restore Purchases
 
