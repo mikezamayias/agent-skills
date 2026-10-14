@@ -149,6 +149,7 @@ For each generated HTML, measure in a real browser (`agent-browser`, the T3 prev
 - [ ] Text audit: no "Lorem ipsum", `TODO` outside the CTA, or bracketed placeholders; no repeated sentences; exactly one `<h1>`; every image has `alt` and every link a name.
 - [ ] Primary CTA is wired to a real URL, or to `# TODO: …` clearly marked if not yet known.
 - [ ] No external script tags from untrusted CDNs (audit `<script src=`).
+- [ ] Search and AI-answer ship checks from [references/seo-and-ai-answers.md](references/seo-and-ai-answers.md) pass for the chosen version, which also holds the recurring SEO loop.
 
 Record any check you could not run as not verified in `INDEX.md`, rather than passing it.
 If no browser tool is available, open the file in a local browser and ask the human to check what you cannot measure.
