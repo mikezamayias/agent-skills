@@ -192,6 +192,11 @@ Keep orchestrator context limited to:
 
 Close completed specialist sessions. After compaction or handoff, reload repository artifacts before acting. Prefer reviewable artifacts over long report walls.
 
+Bound code search output, because raw search hits are a large share of an agent's input tokens.
+List matching files first (`grep -l` or `rg -l`), cap matches per file (`-m`), keep context to a few lines, and narrow by path or type before reading whole files.
+In Context.dev's sgrep benchmark (October 2026, 100 SWE-bench Verified attempts per arm), plain ripgrep returned about 4,100 search tokens per attempt and was truncated 88 times, against about 1,500 tokens and 4 truncations for reranked top-20 output.
+That cut API spend 21.3%, but total cost moved -0.4% with an interval spanning zero and the 70 vs 68 solved difference is noise, so adopt output bounds, not a new search tool.
+
 Use this handoff shape:
 
 ```text
@@ -307,5 +312,7 @@ Return:
 ## Sources
 
 Distilled from Kun Chen's video _L8 Principal Building a Full Stack App with Agentic Engineering_: <https://www.youtube.com/watch?v=kPN564Kol14>.
+
+Search output numbers: <https://github.com/context-dot-dev/sgrep> (7452784, `benchmarks/README.md` and `benchmarks/swe-bench/results/analysis.json`).
 
 Read [references/video-notes.md](references/video-notes.md) when provenance, observed examples, or tool-agnostic adaptation choices matter. Keep normal execution on this file's workflow.

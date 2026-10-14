@@ -75,6 +75,8 @@ Attach channel and creative attribution. Verify event delivery before buying tra
 - Start with small, trusted audiences and bounded spend.
 - Log outreach volume, replies, placements, spend, traffic, trials, payments, refunds, and revenue.
 - Feed winning hooks and objections into next creative variants.
+- For an iOS app, run the first intent-based test on Apple Ads with [references/apple-ads.md](references/apple-ads.md).
+- On Reddit, help in the community first and follow each subreddit's own self-promotion rule, because many cap promotion at about 10% of a member's activity.
 
 Do not scale a creator, ad, or channel without attribution and acceptable unit economics.
 
