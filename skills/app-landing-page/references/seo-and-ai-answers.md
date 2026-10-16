@@ -15,8 +15,9 @@ The loop is adapted from Illyism/seo-skills `seo-autopilot` (MIT per its README,
 - Unique meta description, canonical, sitemap entry, OG tags and `SoftwareApplication` JSON-LD with the real store URL and price.
 - The main content is in the server HTML, not injected by JavaScript.
 - `robots.txt` and the CDN allow `Googlebot`, `Bingbot`, `OAI-SearchBot` and `PerplexityBot`.
-  Blocking `OAI-SearchBot` removes the site from ChatGPT search answers.
+  Blocking `OAI-SearchBot` removes the site from ChatGPT search answers, though it can still appear as a navigational link, and OpenAI applies `robots.txt` changes in about 24 hours.
   Blocking `GPTBot` only opts out of training and does not affect citations.
+  `Perplexity-User`, which fetches a page when a user asks, generally ignores `robots.txt`, so blocking `PerplexityBot` is not a full opt-out from Perplexity answers.
 - Google says AI Overviews and AI Mode need no special markup or optimization beyond normal indexing, so do not add "AEO schema".
 - Answer the page's question in the first two sentences, then give detail.
   This is a writing rule for both readers and quoting engines, not a documented ranking factor.
@@ -40,6 +41,7 @@ Each run:
 3. Page 2 to page 1: for queries at positions 8-20 with real impressions, read the top 3 results, add what they have and the page lacks, and link to the page from strong related pages.
    Good position with a low click rate means rewrite the title and description instead.
 4. AI answers: ask each assistant every question in `ai-prompts.md` at least 3 times, because answers vary run to run.
+   The repeat count is our sampling rule, not vendor guidance.
    Count a source or a mention only when it recurs, and report the mention rate, not one answer.
    A wrong fact about the app means the owning page states it unclearly.
    Cited sources that omit the app are the outreach and directory list.
