@@ -35,7 +35,23 @@ Apple caps (`RequestReviewAction`):
 - Android `requestReview` needs a Play-installed build to test, from an internal test track or internal app sharing.
   Internal app sharing disables the submit button, and quotas apply only to production installs.
 
+Apple's docs do not say whether a new app version resets the 3-per-365-days cap for users who have not rated, so treat that as undocumented.
+`requestReview` returns nothing on either platform, so the app never learns whether the sheet appeared, whether the user rated, or what they gave.
+Keep your own log of calls if you need spacing or analytics.
+Wire several value moments rather than one, since Apple's developer page says to ask when people have "completed an action, level, or task".
+Space the calls, because the HIG says "Avoid pestering people".
+
 Trigger only after a completed valuable action. Never on cold start, never mid-task, never from a "Rate us" button.
+Not during onboarding either.
+The HIG, which is advisory design guidance, says "Avoid asking for a rating on first launch or during onboarding".
+Good first triggers are the end of a first completed session, workout or lesson.
+
+No "Do you like the app?" gate in front of the prompt, and no routing of unhappy users away from it.
+Google's in-app review developer guide says the app shouldn't ask any question before or while showing the review card, including "Do you like the app?".
+App Review Guideline 5.6.1 says "we will disallow custom review prompts".
+The Section 3 preamble names "paid, incentivized, filtered, or fake feedback" as manipulation that can lead to expulsion from the Apple Developer Program.
+Apple never defines gating, so reading a gate as "filtered" feedback is an inference, but it is the risk the gate takes.
+Offer feedback through a separate, always-available "Send feedback" entry instead.
 
 ## Paywall app-open schedule
 
@@ -68,6 +84,11 @@ Showing a paywall on every launch trains swipe-away. The decaying schedule exist
 
 - <https://gist.github.com/lukepighetti/344095c57c962cfa86af97f9115b8a4b>
 - <https://developer.apple.com/documentation/storekit/requestreviewaction.md>
+- <https://developer.apple.com/documentation/storekit/requesting-app-store-reviews>
+- <https://developer.apple.com/app-store/ratings-and-reviews/>
+- <https://developer.apple.com/design/human-interface-guidelines/ratings-and-reviews>
+- <https://developer.apple.com/app-store/review/guidelines/#app-store-reviews>
+- <https://developer.android.com/guide/playcore/in-app-review>
 - <https://pub.dev/packages/in_app_review>
 - <https://pub.dev/packages/in_app_purchase>
 - <https://developer.android.com/guide/playcore/in-app-review/test>

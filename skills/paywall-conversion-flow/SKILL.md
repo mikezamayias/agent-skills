@@ -57,8 +57,14 @@ A high-performing onboarding structure to pair with the order above:
 6. Celebration / "creating your space" animation → main app.
 
 Treat signup as deferrable.
-Duolingo moved signup from screen 2 to screen 15 between 2018 and 2026 and added motivation questions, as observed by Zach Witzel (Helium) in August 2026.
-This is an observed pattern from screenshots, not published test data, and it says nothing about paywall timing.
+Duolingo's iOS onboarding grew from 6 screens in 2018 to 24 in 2023-2024 and 20 in 2026, observed by Zach Witzel (Helium) in dated screenshots from August 2026.
+Third-party teardowns describe its order as language, goal and motivation questions, then a first lesson, then signup.
+So Duolingo asks its questions before it delivers value, and it is no example of "value first".
+Duolingo's own word on this is a 2017 First Round Review interview, where Gina Gotthilf says moving the signup screen back "a few steps" raised daily active users by about 20%, without saying where it moved to.
+The 2025 and 2026 screenshots also show an add-widget step after the notification permission.
+Duolingo's own blog says only that it tested a widget promotion after learners finished a lesson.
+A reply on the post reports a 3-step full-screen paywall with a close button after the outcome-promise step, which is not in the screenshots and is unverified.
+None of this is published test data, and the flow may differ by cohort and date.
 
 Execution details that matter: always a visible Skip or back, pre-select popular options to cut decision fatigue, show real social-proof numbers, keep the whole flow under 30-45 seconds. Track onboarding completion rate, time to first meaningful action, day-1 retention, and first-session conversion.
 
@@ -86,3 +92,8 @@ Moving the paywall late costs conversions, so A/B test placement instead of assu
 - <https://www.revenuecat.com/blog/growth/subscription-app-trends-benchmarks-2026>
 - <https://firstpagesage.com/seo-blog/saas-free-trial-conversion-rate-benchmarks/>
 - <https://x.com/zzwitz/status/2109310052343644367> (quotes <https://x.com/zzwitz/status/2091879951897166069>)
+- <https://firstround.com/review/the-tenets-of-a-b-testing-from-duolingos-master-growth-hacker/>
+- <https://relaunch.ai/blog/duolingo-onboarding-teardown-7-b-tests-behind-their-9-conver.html>
+- <https://www.appcues.com/blog/gradual-engagement-mobile-app-first-screen>
+- <https://blog.duolingo.com/widget-feature>
+- <https://revyl.com/atlas/duolingo/>
