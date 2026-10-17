@@ -40,6 +40,11 @@ Prices and policies change, so re-check the linked page before relying on one.
   That founder's definitions of those two rates were not checked against TikTok or Meta.
 - Hire creators after a format has won.
   The same founder reports early paid creator videos at about $100 for about one download.
+- A different founder claims 1.5 million downloads in about three days for under $5,000 (October 2026).
+  The claim is unverified, with no store data, spend breakdown or cost per install shown, and it comes from a video that promotes the founder's own paid creator-research tool.
+  The account that amplified it also sells a research tool, so read it as one founder's account and never as a benchmark.
+  He says he started with three to five creators, texted each daily with replies inside an hour, and would not start with 30 to 50 until a format works.
+  His reason is that a small group keeps quality control and experiment results readable.
 - No study checked compares founder-on-camera video with paid creator video.
 - Mass faceless slideshow accounts are reported as cheap but low converting.
   One founder calls them "insanely cheap" with low converting views, and a reply reports decent views with almost no installs.
@@ -54,6 +59,11 @@ Prices and policies change, so re-check the linked page before relying on one.
 
 ## Creator marketplaces
 
+- The same founder says to find the first creators among untapped niche creators and college students under 2,000 followers, then walk their following networks.
+  He gave no rate when asked, and he gave the tip after saying he uses his own tool for this search.
+- LightReel (read October 2026), a creator-research tool, lists one Pro plan at $199 a month.
+  Its pricing page offers a 3-day free trial with $0 due today and a 7-day money-back guarantee with no stated conditions.
+  The page does not say what happens when the trial ends or when the 7 days start.
 - SideShift (read 2026-10-17):
   - The Starter plan is $299 a month month to month or $210 a month billed annually.
     Growth is $349 billed annually or $499 monthly.
@@ -113,6 +123,8 @@ Prices and policies change, so re-check the linked page before relying on one.
 - <https://sideshift.app/terms-of-service>
 - <https://sideshift.app/refund-and-cancellation-policy>
 - <https://platform.getnoise.com/faq>
+- <https://lightreel.ai/pricing>
+- <https://x.com/Jibran_05/status/2111125040225735055>
 - <https://support.reddithelp.com/hc/en-us/articles/360043504051-Spam>
 - <https://support.reddithelp.com/hc/en-us/articles/204535759-Is-it-ok-to-create-multiple-accounts>
 - <https://redditinc.com/policies/reddit-rules>

@@ -58,6 +58,14 @@ Most consumer apps fit one of three structures.
 | Coach          | Help someone become a slightly different version of themselves (plans, daily missions, feedback). | It removes decisions by saying "do this next".              |
 | Simple utility | Make one annoying thing pleasant (timer, list, journal, scanner, widget).                         | One feature used daily, with an experience that feels good. |
 
+### Shareable creative format
+
+Before launch, consider one proven reaction or reveal format from another product, with one element swapped for a polarizing or timely statistic your app can produce.
+Creators then clone the format one for one.
+One founder reports this for a camera-roll "wrapped" app with a "most toxic person" statistic, and says single videos reached 10 to 15 million views and that outside influencers copied the format.
+This is a single unverified account from a video that promotes the founder's own tool, so test it as a hypothesis and not as a benchmark.
+See `ship-first-dollar-app` for how many creators to start with.
+
 ## 3. Define the loop before code
 
 State what the user repeatedly does, as one sentence of steps.
@@ -223,5 +231,7 @@ Do not invent demand, retention, or revenue numbers.
 ## Sources
 
 Adapted from David Ch's article _Jev studied 438,122 apps doing $10k/mo+ for me. The bar is stupidly low_: <https://x.com/chhddavid/status/2103052210904989770>.
+
+The shareable creative format note comes from a founder's video: <https://x.com/Jibran_05/status/2111125040225735055>.
 
 Read [references/article-notes.md](references/article-notes.md) when provenance or adaptation choices matter.

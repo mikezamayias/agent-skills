@@ -3,6 +3,9 @@
 Adapted from ParthJadhav/app-store-screenshots (MIT, <https://github.com/ParthJadhav/app-store-screenshots>, commit 5386f22).
 The contrast and headline-fit rules come from its `style-prompts/_QUALITY_BAR.md`, and the added copy formulas come from its `copy-ideas.md`.
 
+The value-prop research step, the deck-level outcome, and the human element default are adapted from a screenshot studio's article (<https://x.com/scrnshtstudio/status/2090816024585089129>).
+The article gives no conversion data, so treat them as defaults to A/B test with Product Page Optimization and not as measured rules.
+
 Read this before capturing and framing screenshots.
 Copy is decided first, then captures are chosen to prove each headline, then framing is applied.
 
@@ -25,6 +28,10 @@ Screenshots are advertisements, not documentation.
 Every screenshot sells one idea.
 Sell a feeling, an outcome, or the death of a pain point.
 Do not tour the UI.
+
+Before drafting any headline, write the value prop in one sentence from three inputs: who the user is, the pain they have today, and what competing listings promise.
+Take the pain and the competitor claims from reviews, the store listings of the top 3 alternatives, or the owner's own research.
+If none exists, ask the human and do not invent them.
 
 ## 2. Copy rules
 
@@ -54,6 +61,10 @@ Rewrite on sight: "seamless", "powerful", "revolutionary", "all-in-one", "next-g
 Rewrite exclamation marks, questions in headlines, and any headline that still works with a competitor's name swapped in.
 Never put "Download now" or a price on a screenshot because the store already shows the button.
 Use awards, ratings, press mentions, and user counts only when they are true and permitted.
+Apple's asset best-practices page (<https://developer.apple.com/app-store/asset-best-practices/>) says: "Please don't include any Apple-designated recognitions - such as Editor's Choice, App of the Day, Game of the Day, or Apple Design Award winner."
+It gives the reason that many of these already appear next to the app in search results and on the product page.
+The same page says to avoid claims that can't be verified, such as awards or recognition the app hasn't received.
+A "#1" or "best" claim falls under the 2.3 rules on unverifiable claims, and no Apple rule names "#1" explicitly.
 
 ### Eyebrow labels
 
@@ -161,6 +172,9 @@ Each line stays under 30 characters so it survives the thumbnail test.
 
 ### Narrative arc
 
+Every slide serves one deck-level outcome, answered first: what is the user hoping to achieve with this app?
+Write it once at the top of `store_assets/README.md` and check each headline against it.
+
 Skip slots that do not fit.
 
 | Slot           | Purpose                                                                            |
@@ -244,8 +258,13 @@ Derived from decks such as Superlist, Headspace, CRED, Arc Search, Linktree, and
 4. **Add a decorative accent to most slides.** Use squiggles, arrows, sparkles, label badges on the visual, or floating chips with real stats such as "$3,630 earned". Award lockups belong on the hero only. A bare device on a bare background with a bare headline is the default output, so add one accent.
 5. **Vary device framing across the deck.** Options are bezelless and minimal (maximum UI legibility), tilted floating with a soft shadow (advertorial), and full visible bezel dead-center (editorial, premium). Mix at least two.
 6. **Proof anchors the hero and nothing else.** Concentrate awards, press quotes, star counts, and install counts on slide 1. Spreading them dilutes the proof and the other slides.
+   One studio's showcase decks spread proof over two or three slides, but that is one studio's opinion with no conversion data, so the rule stands.
+   Spreading proof across slides is an A/B variant to test and not the default.
 7. **Dense inside the device, sparse outside.** The capture should be a real, dense product screen. Outside the device allow one headline, one visual, one optional sub-line, and one optional badge. No bullet lists, paragraphs, or competing logos.
 8. **Break the device parade every 2-3 slides.** Swap in a 3D object, a photographic still, a lifestyle photo, a mascot illustration, a typographic feature wall, or a device mosaic.
+   For personal categories such as health, learning, audio, and family, try a person, a face, a hand holding the object, or a real-life situation for the hero or the first break.
+   It is a default to A/B test and not a proven rule.
+   A slide without a capture still counts against the Guideline 2.3.3 majority above.
 9. **End with a feature wall or a device mosaic.** A feature wall is a vertical list of one-word features set as big type. A mosaic is a grid of bezelless mini-screenshots. Pick one. Do not end on another single-feature hero.
 10. **Run the thumbnail test before export.** See the checklist below.
 11. **Measure contrast, do not eyeball it.**
@@ -288,3 +307,4 @@ Shrink each slide to about 160px wide (App Store search-result size) and squint 
 - [ ] Each capture is a real, dense screen that proves its headline.
 - [ ] Any cross-screen element crosses adjacent screens only and never splits text or critical UI.
 - [ ] Every locale's copy fits its layout without clipping or mid-phrase wraps.
+- [ ] Hide every headline and sub-line, and the visuals alone still show roughly what the app does.

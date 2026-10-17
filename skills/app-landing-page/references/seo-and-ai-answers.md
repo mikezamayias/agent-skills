@@ -10,6 +10,10 @@ The AI answer counting rules are ours, adapted from the `ai-visibility-audit` sk
 
 - One primary query per page, written into the `<title>`, the `<h1>` and the first paragraph.
   Two pages chasing one query is a bug: merge them and 301 the weaker one.
+- A title that lists queries with different intent splits the page.
+  Keep the queries one page can satisfy together (the head term, "buy X", "X online") in one title and give each different-intent modifier, such as "X for sleep", its own page.
+  This is our own heuristic, not a Google rule, because Google's title guidance asks only for descriptive and concise titles.
+  Check the live top results for each query before splitting.
 - Google publishes no length limit for titles or meta descriptions and truncates to the device width.
   Do not enforce 50-60 or 150-160 character rules.
   Third-party auditors still flag title and description lengths, and the common 60-character rule comes from SEO tools, not from Google.
@@ -40,6 +44,10 @@ The AI answer counting rules are ours, adapted from the `ai-visibility-audit` sk
 - `Google-Extended` has no user agent of its own and works only as a `robots.txt` control token.
   Blocking it opts the content out of training future Gemini models and out of grounding in Gemini Apps and Grounding with Google Search on Vertex AI.
   Google says it does not affect inclusion or ranking in Google Search.
+- Check Search Console > Settings > Search generative AI shows Include for the property, which is the default.
+  The other options are Exclude and Inherit.
+  Google says Exclude means the site receives no traffic or impressions from these features, and takes effect within 1-2 days.
+  This control is separate from `Google-Extended`, which does not affect Search inclusion.
 - Submit the sitemap in Google Search Console and Bing Webmaster Tools.
   DuckDuckGo says it largely sources its traditional links from Bing.
 - IndexNow (a protocol that tells participating engines a URL was added, updated or deleted) takes up to 10,000 URLs per POST request.
@@ -52,11 +60,15 @@ The AI answer counting rules are ours, adapted from the `ai-visibility-audit` sk
   The list holds at most 50 domains per data stream and needs the Editor role.
   Add any sign-in domain that shows up as a referral in the same list.
 - Google says AI Overviews and AI Mode need no special markup or optimization beyond normal indexing, so do not add "AEO schema".
+- Google says a page must be indexed and eligible to be shown in Search with a snippet to appear in AI features, so check the page carries no `noindex` or `nosnippet`.
+  Google does not guarantee indexing or serving.
 - Answer the page's question in the first two sentences, then give detail.
   This is a writing rule for both readers and quoting engines, not a documented ranking factor.
 - Keep each answer section short enough to stand alone under its heading.
   Some retrieval pipelines split pages into chunks, and Google's Vertex AI Search sets a configurable `chunkSize` that defaults to 500 tokens, with supported values of 100-500, and an `includeAncestorHeadings` option that defaults to false.
-  Google does not say Search or AI Overviews use that setting, so this is our writing rule, not a ranking factor.
+  Google does not say Search or AI Overviews use that setting.
+  Google's generative AI guide says "There's no requirement to break your content into tiny pieces for AI to better understand it", so never split a page for AI.
+  Keep this as our reader-first writing rule, not a ranking factor.
 
 ## Recurring loop
 
@@ -88,10 +100,16 @@ Each run:
    This first-named split is our own reporting rule, not vendor guidance on ranking.
    Keep questions that name the app out of the mention rate, and report how many were left out.
    Count rates over answered runs only, and report failed or empty answers separately, because they are not absence.
+   Record for every run whether the assistant searched the web, because an answer that did not search cites nothing and is not a lost citation.
+   Report each assistant on its own line, not as one blended rate.
    With fewer than about 10 neutral questions, call the result a direction to check, not a finding.
    These counting rules are ours too.
    Next to the sampled rate, record GA4 sessions in the AI Assistant channel (medium `ai-assistant`).
    Google says that channel covers sources like ChatGPT, Gemini, Deepseek, Copilot and Grok, and excludes Google's AI Overviews and AI Mode.
+   For those two surfaces, open Search Console > Performance > Search results > Generative AI.
+   The report launched on 2026-06-03 and Google says it reached all websites worldwide by 2026-08-31.
+   Impressions are the only metric it defines, so it has no clicks, position or query data.
+   A missing report can mean too few AI impressions or a site excluded from Search generative AI features.
    Before crediting installs or revenue to AI answers, separate first-time visitors from returning or branded ones, because an assistant can route an existing customer back to the site.
    Never credit revenue from a post-purchase survey alone.
    This attribution rule is ours.
@@ -108,6 +126,11 @@ Rank evidence rules, ours, adapted from OpenSEO's public skills (MIT per its REA
   One snapshot is not a baseline.
 - Search volume is not visits.
   A page that already ranks already gets part of the volume, so size a gain on the extra clicks, not on the total.
+- Treat a "#1 in N months" claim from a source as unproven until it names the site, the starting position and whether the domain was already strong.
+  A tool's "x to 1" with "New" only means the page was not ranking in the compared period.
+  Ahrefs traffic is an estimate, so do not size a plan on it.
+- DR (Domain Rating) is an Ahrefs metric that shows the relative strength of a website's backlink profile.
+  Google states that third-party authority scores do not come from Google, so do not make a DR threshold a requirement.
 
 Comparison pages ("X alternatives", "app vs X") must say where the competitor is better and source every competitor claim with an "as of" date.
 
@@ -115,6 +138,14 @@ Comparison pages ("X alternatives", "app vs X") must say where the competitor is
 
 - Buy links, paid guest posts or product-for-review placements with followed links.
   Google's spam policies treat paid links that pass ranking credit as link spam unless marked `rel="sponsored"` or `rel="nofollow"`.
+- Build links with keyword-rich anchor text in guest posts, articles or press releases placed on other sites, or with automated link tools.
+  Google's link spam policy lists "links with optimized anchor text in articles, guest posts, or press releases distributed on other sites" and "using automated programs or services to create links to your site".
+- Build `llms.txt` files, AI-only copies of pages, or campaigns for inauthentic mentions as a Google AI tactic.
+  Google says new machine-readable files, AI text files, markup or Markdown neither help nor harm visibility in Google Search, because Google Search ignores them, and keeping `llms.txt` for other services is fine.
+  Its guide also lists rewriting content just for AI systems and seeking inauthentic mentions as myths.
+- Publish pages per fan-out query variant mainly to manipulate rankings or AI responses.
+  Google's scaled content abuse policy covers many pages made mainly to manipulate rankings, whatever the production method.
+  Applying it to fan-out pages is our inference, because the spam policy page does not use the term.
 - Re-request indexing for the same URL every day.
   Google says repeated requests do not crawl it faster, and the tool has a quota.
 - Use the Google Indexing API, or tools built on it, for app or marketing pages.
@@ -131,6 +162,11 @@ Comparison pages ("X alternatives", "app vs X") must say where the competitor is
 - <https://developers.google.com/search/docs/appearance/title-link>
 - <https://developers.google.com/search/docs/appearance/snippet>
 - <https://developers.google.com/search/docs/appearance/ai-features>
+- <https://developers.google.com/search/docs/fundamentals/ai-optimization-guide>
+- <https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports>
+- <https://support.google.com/webmasters/answer/16984139>
+- <https://support.google.com/webmasters/answer/16908024>
+- <https://ahrefs.com/blog/domain-rating/>
 - <https://developers.google.com/search/docs/essentials/spam-policies>
 - <https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl>
 - <https://developers.google.com/search/docs/crawling-indexing/block-indexing>

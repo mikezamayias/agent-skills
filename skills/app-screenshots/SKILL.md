@@ -65,6 +65,8 @@ store_assets/
 
 If neither exists, the skill prompts the human to draft a 6-screen sequence + caption matrix before going further. Do not invent the sequence — reviewers reject screenshots that don't match the app's actual UX.
 Draft and review captions with [references/copy-and-design.md](references/copy-and-design.md) before capture, so each capture is chosen to prove its headline.
+Before drafting captions, write the one-sentence value prop and the one deck-level outcome described in that reference.
+Keep Apple-designated recognitions such as Editor's Choice or App of the Day, and unverifiable awards, out of the screenshots.
 
 Locales: read them from `store_assets/templates/screenshot_text.json`.
 When the app has an in-app language switch, use it for locale fan-out instead of changing the device language, because it is faster.
