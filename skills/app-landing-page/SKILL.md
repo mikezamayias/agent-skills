@@ -129,9 +129,13 @@ Constraints:
 - Type: body 16-18px with 1.45-1.6 line height, 45-70 characters per line, tabular figures for numbers, a non-breaking space between a number and its unit.
 - Motion: animate only transform, opacity and clip-path. Under `prefers-reduced-motion`, all content must be visible with no scroll-driven animation.
 - No em or en dashes in copy. Exactly one <h1>.
+- The top third says what the app is, who it is for and what to do next. The last CTA on the page uses the same label as the first. A logo row holds at most 6 logos. Every metric carries a visible source line.
 
 Return only the complete HTML file. No commentary.
 ```
+
+The last constraint line is adapted from the `taste-landing-page` skill in madebymustafa/design-taste (MIT, read at commit `c4a6bff`, 2026-10-16).
+Those are that skill's own rules, not findings from conversion research, so treat them as defaults and drop one when a version's philosophy needs to.
 
 When another model returns the page, save only the HTML and strip any commentary around it.
 
