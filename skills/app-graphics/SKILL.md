@@ -1,7 +1,7 @@
 ---
 name: app-graphics
 description: >-
-  Generate a complete store and marketing graphics package for a Flutter or web app from its local files. Covers store icons (adaptive Android, iOS 18 light, dark, tinted), feature graphic, social banners and press kit hero. Use when preparing store or launch artwork, building app icons, rebranding an icon or making an OG card.
+  Generate a complete store and marketing graphics package for a Flutter or web app from its local files. Covers store icons (adaptive Android, iOS 18 light, dark, tinted), feature graphic, social banners and press kit hero. Also covers App Store product page header and search result creative assets, image or video. Use when preparing store or launch artwork, building app icons, rebranding an icon or making an OG card.
 allowed-tools:
   - Read
   - Write
@@ -18,7 +18,7 @@ metadata:
 
 # app-graphics
 
-This skill covers every app graphic that is not a screenshot: app icons, feature graphics, banners, social art, and the press kit hero.
+This skill covers every app graphic that is not a screenshot: app icons, feature graphics, App Store creative assets (product page header and search results), banners, social art, and the press kit hero.
 Screenshots have a separate skill (`app-screenshots`).
 
 ## When to invoke
@@ -66,6 +66,12 @@ store_assets/
     │   └── ios18_tinted_1024x1024.png     # iOS 18+ tinted variant
     ├── feature_graphic/
     │   └── play_store_1024x500.png
+    ├── app_store_creative/                # optional, iOS 27 and iPadOS 27 and later
+    │   ├── header_3840x1646.png           # 21:9, no alpha, header only
+    │   ├── universal_5244x2950.png        # 16:9 PNG, accepted for header and search results
+    │   ├── search_3840x2560.png           # 3:2, 1920x1280 to 3840x2560
+    │   ├── header_3840x1646.mp4           # optional video, 30 or 60 fps, 5-30 s, loops cleanly
+    │   └── header_poster.png              # chosen poster frame
     ├── social/
     │   ├── og_card_1200x630.png
     │   ├── square_1080x1080.png
@@ -125,6 +131,9 @@ Required checks:
 - Dimensions match the spec table exactly.
 - The App Store 1024 icon has no alpha channel.
 - The Play feature graphic has no alpha channel, because Play requires JPEG or 24-bit PNG.
+- App Store creative asset images match their placement size exactly and have no alpha channel.
+- A creative asset video shows 3840x1646 (header), 30 or 60 fps, and a duration from 5 to 30 s in `ffprobe -v error -show_entries stream=codec_type,width,height,r_frame_rate:format=duration`.
+- The first and last frame of a creative asset video match, so the loop has no visible jump.
 - No text appears where the prompt said "no text".
 - The palette is coherent across the set, by visual comparison.
 
@@ -156,6 +165,44 @@ If the text keeps coming out wrong, generate the art without text and add the te
 - Since iOS 26, Apple recommends layered icons built in Icon Composer, which adds Liquid Glass effects and default, dark, clear, and tinted appearances.
   Flattened 1024x1024 images are still accepted, and the system generates any appearance variant you do not provide.
 
+## App Store creative assets
+
+On iOS 27 and iPadOS 27 and later, a product page can show a header image or video, and search results can show a creative asset.
+Creative assets for the product page header and for search results support both images and videos.
+Specs come from Apple's "Creative assets specifications" page:
+
+| Placement      | Image                                                                          | Video                                                                     |
+| -------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| Product header | 21:9 at 3840x1646 (jpeg, jpg or png), or 16:9 at 5244x2950 (png)               | 21:9 at 3840x1646, 30 or 60 fps, 5 to 30 s, mov, m4v or mp4               |
+| Search results | 3:2 from 1920x1280 to 3840x2560 (jpeg, jpg or png), or 16:9 at 5244x2950 (png) | 3:2 from 1920x1280 to 3840x2560, 30 or 60 fps, 5 to 30 s, mov, m4v or mp4 |
+
+- Images cannot include alpha channels or transparency.
+- The spec page lists no 16:9 video size and no GIF format, so an animated header is a video file.
+- Videos are muted by default in both placements and loop continuously.
+  People can unmute them on the product page but not in search results.
+  Apple says the creative "must work silently first".
+- If an app has no search result creative asset, the App Store shows its in-app events, app previews, and screenshots in search results.
+- A universal creative asset can serve both placements.
+  Otherwise select a dedicated asset for each.
+- Design with a safe area in mind and keep the focal point in the center of the composition, so different devices and orientations do not clip it.
+  Apple publishes Figma, Sketch, Photoshop, and Pixelmator templates that define the safe area, linked from the asset best practices page.
+- Focus on a single, clear idea.
+  Avoid quick cuts and fast-moving visuals.
+  Lead with the value proposition or the most compelling feature.
+- If the asset has text, use a short phrase that enhances the visual rather than describes it, and localize it for every supported language.
+- Content bans from guideline 2.3.14 and Apple's best practices:
+  - No inappropriate content, no references to other apps with an intent to mislead, and no unverifiable product claims.
+  - No specific or discounted pricing, no website URLs, and no copyright symbols.
+  - No logos of, or references to, other platforms or marketplaces.
+  - The asset must meet a 4+ age rating, even if the app's rating is higher.
+- Creative assets are distinct from the in-use requirement for screenshots and app previews.
+  They may show brand, seasonal offerings, or new content.
+- Choose the poster frame deliberately.
+  It applies everywhere the asset is used and cannot be edited after the asset is approved.
+- Review is separate from screenshots.
+  Standalone assets are reviewed against the app's latest version, and approved assets can replace the ones on a live version without submitting a new version.
+- Upload and submit with the `asc asset-library` commands in `asc-cli-usage`, then check each device and orientation in App Store Connect's preview before submitting.
+
 ## Related skills
 
 - `app-screenshots` for screenshot capture and framing, which this skill does not duplicate.
@@ -164,6 +211,10 @@ If the text keeps coming out wrong, generate the art without text and add the te
 ## Sources
 
 - <https://developer.apple.com/design/human-interface-guidelines/app-icons>
+- <https://developer.apple.com/help/app-store-connect/reference/app-information/creative-assets-specifications/>
+- <https://developer.apple.com/help/app-store-connect/manage-app-information/manage-your-app-store-assets/>
+- <https://developer.apple.com/app-store/asset-best-practices/>
+- <https://developer.apple.com/app-store/review/guidelines/>
 - <https://support.google.com/googleplay/android-developer/answer/9866151>
 - <https://developer.android.com/distribute/google-play/resources/icon-design-specifications>
 - <https://developer.android.com/develop/ui/views/launch/icon_design_adaptive>

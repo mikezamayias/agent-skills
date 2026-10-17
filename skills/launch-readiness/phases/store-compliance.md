@@ -223,9 +223,10 @@ Store screenshots must exist in the project repo. Expected location: `store_asse
 
 ##### 13b. Screenshot Completeness (iOS)
 
-- Required device sizes: iPhone 6.9" (or 6.5" when 6.9" is not provided), and iPad 13" if the app runs on iPad.
-- App Store Connect scales these down for smaller displays.
-- Minimum: 3 screenshots per device size (App Store accepts 1 to 10, but 3+ is rejection-safe)
+- Required device sizes: Apple's "Required device sizes" section names "iPhone with Dynamic Island (medium display)" (1179 x 2556 or 1206 x 2622 portrait) for iPhone, and "iPad 13-inch display" if the app runs on iPad.
+- Apple does not tie either iPhone size to a device.
+- If the interface is consistent across sizes, App Store Connect scales the highest required resolution down for smaller displays.
+- Minimum: 3 screenshots per device size by catalog policy (App Store Connect requires at least 1 and accepts up to 10)
 - **High if**: Fewer than 3 screenshots per required device size
 - **Method**: Count image files per device size subdirectory
 
@@ -242,6 +243,14 @@ Store screenshots must exist in the project repo. Expected location: `store_asse
 - Android: JPEG or 24-bit PNG (no alpha), min 320px, max 3840px per side, and the longer side cannot exceed twice the shorter side
 - **High if**: Screenshots in wrong format or resolution
 - **Method**: Read image dimensions (if possible) or check file extensions
+
+##### 13e. Screenshots Show the App in Use (iOS)
+
+- Guideline 2.3.3: App Review takes the set of screenshots for each supported device into account and approves only submissions where more than half of the screenshots show the app in use.
+- Apple's example: with 3 screenshots per device, 2 must show the app in use on that device, and with 4 screenshots, 3 must.
+- Screenshots should show the app in use, and not merely the title art, a login page, or a splash screen.
+- **High if**: Half or fewer of the screenshots for any device show the app in use
+- **Method**: Read the screenshot plan or captions in `store_assets/` and view the images if possible
 
 #### 14. Privacy Policy & Terms of Service
 
@@ -324,6 +333,15 @@ Store screenshots must exist in the project repo. Expected location: `store_asse
 - Check for any promotional banners, promotional text, or promo video URLs
 - **Low if**: No promotional assets (not required, but recommended)
 - **Method**: Glob for promo asset directories
+- iOS creative assets (product page header and search results), when present: check the size against Apple's creative assets specifications and the content against guideline 2.3.14 and Apple's asset best practices.
+- Creative assets must not include inappropriate content, references to other apps with an intent to mislead, unverifiable product claims, or specific or discounted pricing information.
+- Apple's best practices also ask for no website URLs or copyright symbols, no logos or references to other platforms or marketplaces, and a 4+ age rating even if the app's rating is higher.
+- **High if**: A creative asset breaks one of these content rules
+- **Low if**: An iOS 27 app has no header or search result creative asset
+- App previews, when present: 15 to 30 seconds, at most 30 fps, `.mov`, `.m4v` or `.mp4` for H.264 or `.mov` for ProRes 422 HQ, and at most 500 MB.
+- Preview resolution is 886 x 1920 portrait or 1920 x 886 landscape for iPhone Duo and the Dynamic Island and Face ID classes, 1080 x 1920 for Home Button large, and 750 x 1334 for Home Button medium.
+  Apple says to use the accepted resolution, not the device resolution.
+- **Medium if**: A preview file is outside these limits
 
 #### 17. Adaptive Icon (Android)
 
@@ -381,6 +399,8 @@ Store screenshots must exist in the project repo. Expected location: `store_asse
 | Missing data safety                      |          | X    |        |     |
 | Native libraries not 16 KB aligned       |          | X    |        |     |
 | < 3 screenshots per device               |          | X    |        |     |
+| Half or fewer screenshots show the app   |          | X    |        |     |
+| Creative asset breaks a content rule     |          | X    |        |     |
 | No feature graphic (Android)             |          | X    |        |     |
 | Missing icon sizes                       |          | X    |        |     |
 | No release notes for version             |          | X    |        |     |
@@ -391,6 +411,7 @@ Store screenshots must exist in the project repo. Expected location: `store_asse
 | Age rating review needed                 |          |      | X      |     |
 | Deprecated APIs                          |          |      | X      |     |
 | No adaptive icon (Android)               |          |      | X      |     |
+| App preview outside spec limits          |          |      | X      |     |
 | No keywords file                         |          |      | X      |     |
 | New guideline section (manual)           |          |      | X      |     |
 | No promotional assets                    |          |      |        | X   |

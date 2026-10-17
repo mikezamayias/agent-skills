@@ -24,7 +24,7 @@ Ask or infer, then confirm:
 - Monetization: free, paid, IAP, subscriptions, ads, external physical goods/services.
 - Sensitive features: kids/family, UGC, social, health, location, camera/photos, finance, government, gambling, crypto, VPN, news, AI-generated content.
 - Data practices: accounts, analytics, crash reporting, tracking, third-party SDKs, data deletion, privacy policy, ToS.
-- Asset state: icons, feature graphic, screenshots, app preview/video, localized listing text.
+- Asset state: icons, feature graphic, screenshots, app preview/video, App Store creative assets (product page header, search results), localized listing text.
 - Deadline and risk tolerance.
 
 ## Orchestration Flow

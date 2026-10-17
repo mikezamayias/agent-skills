@@ -1,6 +1,7 @@
 # Screenshot copy and design
 
-Adapted from ParthJadhav/app-store-screenshots (MIT, <https://github.com/ParthJadhav/app-store-screenshots>, commit 8b75d86).
+Adapted from ParthJadhav/app-store-screenshots (MIT, <https://github.com/ParthJadhav/app-store-screenshots>, commit 5386f22).
+The contrast and headline-fit rules come from its `style-prompts/_QUALITY_BAR.md`, and the added copy formulas come from its `copy-ideas.md`.
 
 Read this before capturing and framing screenshots.
 Copy is decided first, then captures are chosen to prove each headline, then framing is applied.
@@ -78,6 +79,8 @@ Never ship a formula with placeholder words left in.
 | `Your [noun], [benefit].`               | Your money, finally clear.           |
 | `[verb] [noun]. [verb] [noun].`         | Track habits. Keep streaks.          |
 | `Meet your new [role].`                 | Meet your new sleep coach.           |
+| `Every [noun], [outcome].`              | Every workout, counted.              |
+| `[noun] that [verb]s you.`              | A journal that listens back.         |
 
 ### Differentiator (why this app and not the others)
 
@@ -87,6 +90,7 @@ Never ship a formula with placeholder words left in.
 | `[Category] [does X]. [App] [does Y].`  | Timers count down. Bloom coaches each pour. |
 | `No [pain]. No [pain]. Just [outcome].` | No ads. No streak guilt. Just progress.     |
 | `Built for [specific person].`          | Built for people who read slowly.           |
+| `[verb] it once. [outcome] forever.`    | Scan it once. Tracked forever.              |
 
 ### Feature (one per slide)
 
@@ -97,15 +101,18 @@ Never ship a formula with placeholder words left in.
 | `From [before] to [after].`          | From receipt to budget in one tap. |
 | `[verb] it. [app] does the rest.`    | Snap the bag. Bloom does the rest. |
 | `Right on your [surface].`           | Right on your lock screen.         |
+| `See [thing] at a glance.`           | See your whole month at a glance.  |
+| `[noun], sorted.`                    | Your shelf, sorted by freshness.   |
 
 ### Proof (numbers, trust, social)
 
-| Formula                           | Example                                       |
-| --------------------------------- | --------------------------------------------- |
-| `[number] [people] [verb] [app].` | 40,000 runners train with Stride.             |
-| `Loved by [specific group].`      | Loved by home baristas.                       |
-| `[rating] from [number] reviews.` | 4.9 stars from 12,000 reviews.                |
-| `Private by design.`              | Private by design. Your data stays on device. |
+| Formula                           | Example                                                |
+| --------------------------------- | ------------------------------------------------------ |
+| `[number] [people] [verb] [app].` | 40,000 runners train with Stride.                      |
+| `Loved by [specific group].`      | Loved by home baristas.                                |
+| `[rating] from [number] reviews.` | 4.9 stars from 12,000 reviews.                         |
+| `Private by design.`              | Private by design. Your data stays on device.          |
+| `As seen in [publication].`       | Use only when the press mention is real and permitted. |
 
 ### Closer (last slide)
 
@@ -115,6 +122,7 @@ Never ship a formula with placeholder words left in.
 | Big quiet statement               | And it's all yours.                          |
 | "And so much more" pills          | Dark mode, iCloud sync, Siri, Shortcuts      |
 | Identity                          | Made for people who care about the details.  |
+| Invitation                        | Your first week starts today.                |
 
 ## 4. Weak to better
 
@@ -184,6 +192,7 @@ Use these layout ideas generically and map them to Koubou's frame and text optio
 Never repeat the same layout twice in a row.
 Use one or two inverted (dark) slides for rhythm when the deck is long enough.
 Landscape tablet slides use split landscape and never two devices side by side.
+Apple's Guideline 2.3.3 needs more than half of the screenshots for each device to show the app in use, so count no-device slides and feature walls against the rest of the deck.
 
 ### iPhone Duo decks
 
@@ -239,13 +248,24 @@ Derived from decks such as Superlist, Headspace, CRED, Arc Search, Linktree, and
 8. **Break the device parade every 2-3 slides.** Swap in a 3D object, a photographic still, a lifestyle photo, a mascot illustration, a typographic feature wall, or a device mosaic.
 9. **End with a feature wall or a device mosaic.** A feature wall is a vertical list of one-word features set as big type. A mosaic is a grid of bezelless mini-screenshots. Pick one. Do not end on another single-feature hero.
 10. **Run the thumbnail test before export.** See the checklist below.
+11. **Measure contrast, do not eyeball it.**
+    WCAG 2.2 level AA asks 4.5:1 for normal text and 3:1 for large text, which is at least 18pt, or 14pt bold (<https://www.w3.org/TR/WCAG22/>).
+    The upstream deck rule holds every headline word, including the emphasis word, to 4.5:1 against the worst pixel under its letters.
+    Pale tints of the brand color fail most often.
+    Fix a failure with a darker hue, a scrim, or a 2-4px shadow at 30-45% alpha, or move the headline.
+12. **Fit the headline.**
+    Use three lines at most, and two is better.
+    Keep each line under about `canvasWidth / fontSize × 0.45` characters.
+    Set display leading at 1.05 or less and tracking slightly negative.
+    If one word is wider than 88% of the canvas, break it, shrink it, or hyphenate it.
 
 ## 9. Localization copy notes
 
 - Translate the idea, not the words. Rewrite for the target market.
 - Rebuild line breaks per locale. German and French run 20-35% longer, so shorten the claim before shrinking the font.
 - Keep numbers, units, and currency native to the locale, for example `1.234,5 g`, `€`, and 24-hour time where expected.
-- Arabic and Hebrew: write the headline RTL-native, mirror left-aligned layouts, and re-check which word carries the emphasis because it usually moves.
+- Arabic and Hebrew: write the headline RTL-native and re-check which word carries the emphasis because it usually moves.
+- Decide per deck whether to mirror the layout for Arabic and Hebrew, because upstream is inconsistent on it, then check every slide to confirm the result looks intentional.
 - Japanese and Chinese: use fewer characters per line, avoid mid-phrase breaks, and use a slightly smaller emphasis scale so kana and kanji stay balanced.
 - Never machine-translate the hero headline without a native read.
 - Check that landscape one-line headlines still fit on one line in every locale.
@@ -257,6 +277,8 @@ Shrink each slide to about 160px wide (App Store search-result size) and squint 
 - [ ] Each slide sells exactly one idea.
 - [ ] The hero slide communicates the main benefit within one second.
 - [ ] Every headline is readable at 160px wide, with strong contrast against the background.
+- [ ] Every headline and emphasis word measures at least 4.5:1 against its background.
+- [ ] More than half of the slides show the app in use (Guideline 2.3.3).
 - [ ] You can tell what the app does from the thumbnail alone.
 - [ ] Headlines are 3-5 words per line, with intentional line breaks and no red-flag words.
 - [ ] No two adjacent slides share the same layout.
