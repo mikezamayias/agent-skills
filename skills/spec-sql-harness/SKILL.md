@@ -57,6 +57,10 @@ A harness kept in `/tmp` loses its checks between runs.
 - Act as each role the app uses.
   With Supabase that means `set role authenticated` with `request.jwt.claims` set, `set role anon`, and the service role for server paths.
 - For every table and function, test that the right role can, the wrong role cannot, and that server-only functions are closed to the app, with `has_function_privilege`.
+  On Supabase any role, including `anon`, can execute a function by default, so check `anon` as well as `authenticated`.
+- For every column that grants access or money, such as an entitlement flag, a credit balance or a usage limit, test that `authenticated` cannot update it on its own row: `'12 a user cannot set their own is_premium'`.
+  RLS restricts rows, not columns, so an owner UPDATE policy alone leaves every column of the owner's row writable.
+  This check only proves something in the default-grants run, because under `nodefaults` it passes trivially.
 - Test the privacy promises directly: what another user can see, what deletion removes, and what the retention jobs purge (see `promise-audit`).
 - Wrap checks on queued side effects, such as pg_net or job queues, in one transaction, so a background worker cannot drain the queue before the check reads it.
 - Add a check for every bug you fix and every rule the decision-maker calls critical, so the regression cannot come back silently.

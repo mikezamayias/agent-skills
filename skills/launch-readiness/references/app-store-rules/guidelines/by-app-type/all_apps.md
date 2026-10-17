@@ -36,6 +36,12 @@ Guidelines that apply to **every** app regardless of category. Check these befor
 ## Design & UX
 
 - [ ] **4.1** — Not a copycat of another app
+- [ ] **4.3(a)** - No multiple Bundle IDs of the same app, such as one app per city, language or audience built on one template.
+      Apple advises considering a single app with the variations sold through in-app purchase.
+      See `../../rules/design/spam_and_templates.md`.
+- [ ] **4.3(b)** - Not indistinguishable from apps already widely available, and not an opportunistic variant of an existing category or popular app
+- [ ] **4.2.6** - Not built from a commercialized template or app generation service unless the provider of the app's content submits it.
+      A template provider can instead ship one "picker" binary that hosts all client content.
 - [ ] **4.2** — Meaningful functionality beyond a repackaged website
 - [ ] **4.8** — If social logins offered, must also offer Sign in with Apple (or equivalent)
 - [ ] **4.0** — Sign in with Apple: don't re-ask name/email already provided by SIWA

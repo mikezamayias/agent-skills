@@ -101,7 +101,8 @@ For each paywall, record every tier's name, price and billing period, the trial 
 Convert every yearly and lifetime price to a monthly equivalent before comparing apps.
 Capture the top, middle and bottom of a scrolling paywall, and read renewal terms and fine print from the full accessibility tree, including off-screen nodes.
 When the paywall is not obvious, look under settings, subscription, profile and upgrade entries, or trigger a gated feature.
-Note pre-selected expensive tiers, hard-to-find close buttons and a hidden Restore Purchases link as dark patterns.
+Note pre-selected expensive tiers, hard-to-find close buttons, a hidden Restore Purchases link and a price that changes between paywall and checkout as dark patterns.
+Apple's license agreement bans bait-and-switch pricing, so do not copy that last pattern into your own app.
 
 Default patterns for younger consumer audiences:
 

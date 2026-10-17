@@ -107,48 +107,48 @@ This is a structured index of every guideline section, organized for quick looku
 
 ## Section 4: Design
 
-| Guideline | Title                 | Summary                                                          |
-| --------- | --------------------- | ---------------------------------------------------------------- |
-| 4.1       | Copycats              | No cloning other apps; no using others' icons/brands             |
-| 4.2       | Minimum Functionality | Must be more than a repackaged website                           |
-| 4.2.1     | ARKit                 | Must provide rich integrated AR experiences                      |
-| 4.2.2     | Marketing Apps        | Not primarily marketing materials or link collections            |
-| 4.2.3     | Self-Contained        | Must work without installing another app                         |
-| 4.2.6     | Template Apps         | Commercialized template apps rejected unless by content provider |
-| 4.2.7     | Remote Desktop        | Must connect to user-owned device on local network               |
-| 4.3       | Spam                  | No duplicates, no spamming the store                             |
-| 4.4       | Extensions            | Keyboard and Safari extension rules                              |
-| 4.5       | Apple Sites/Services  | No scraping Apple sites; Apple Music rules                       |
-| 4.5.4     | Push Notifications    | Not required to function; no spam; opt-in for marketing          |
-| 4.5.6     | Apple Emoji           | Unicode emoji OK; no embedding on other platforms                |
-| 4.7       | Third-Party Software  | HTML5-based apps require explicit consent for data sharing       |
-| 4.8       | Login Services        | If social login offered, must also offer SIWA-equivalent option  |
-| 4.9       | Apple Pay             | Disclose recurring payment terms                                 |
-| 4.10      | Monetizing Built-In   | Can't charge for OS capabilities (Push, camera, iCloud, etc.)    |
+| Guideline | Title                 | Summary                                                                                                                                                                                                                              |
+| --------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 4.1       | Copycats              | No cloning other apps; no using others' icons/brands                                                                                                                                                                                 |
+| 4.2       | Minimum Functionality | Must be more than a repackaged website                                                                                                                                                                                               |
+| 4.2.1     | ARKit                 | Must provide rich integrated AR experiences                                                                                                                                                                                          |
+| 4.2.2     | Marketing Apps        | Not primarily marketing materials or link collections                                                                                                                                                                                |
+| 4.2.3     | Self-Contained        | Must work without installing another app                                                                                                                                                                                             |
+| 4.2.6     | Template Apps         | Commercialized template apps rejected unless by content provider                                                                                                                                                                     |
+| 4.2.7     | Remote Desktop        | Must connect to user-owned device on local network                                                                                                                                                                                   |
+| 4.3       | Spam                  | No multiple Bundle IDs of the same app (Apple advises one app with in-app purchase variations), no opportunistic variants of existing categories, and repeated low-effort submissions may lead to removal from the Developer Program |
+| 4.4       | Extensions            | Keyboard and Safari extension rules                                                                                                                                                                                                  |
+| 4.5       | Apple Sites/Services  | No scraping Apple sites; Apple Music rules                                                                                                                                                                                           |
+| 4.5.4     | Push Notifications    | Not required to function; no spam; opt-in for marketing                                                                                                                                                                              |
+| 4.5.6     | Apple Emoji           | Unicode emoji OK; no embedding on other platforms                                                                                                                                                                                    |
+| 4.7       | Third-Party Software  | HTML5-based apps require explicit consent for data sharing                                                                                                                                                                           |
+| 4.8       | Login Services        | If social login offered, must also offer SIWA-equivalent option                                                                                                                                                                      |
+| 4.9       | Apple Pay             | Disclose recurring payment terms                                                                                                                                                                                                     |
+| 4.10      | Monetizing Built-In   | Can't charge for OS capabilities (Push, camera, iCloud, etc.)                                                                                                                                                                        |
 
 ---
 
 ## Section 5: Legal
 
-| Guideline | Title                     | Summary                                                             |
-| --------- | ------------------------- | ------------------------------------------------------------------- |
-| 5.1       | Privacy                   | Full privacy compliance required                                    |
-| 5.1.1     | Data Collection           | Privacy policy required; consent required; data minimization        |
-| 5.1.1(v)  | Account/Sign-In           | Account deletion required if creation offered; no unnecessary login |
-| 5.1.1(ix) | Regulated Fields          | Banking, healthcare, gambling apps must be from legal entities      |
-| 5.1.2     | Data Use & Sharing        | No selling user data; ATT required for tracking                     |
-| 5.1.3     | Health & Fitness          | HealthKit data can't be used for ads; no false data writing         |
-| 5.1.4     | Kids                      | COPPA/GDPR compliance; no third-party analytics in Kids apps        |
-| 5.1.5     | Location Services         | Only when directly relevant; consent required                       |
-| 5.2       | Intellectual Property     | —                                                                   |
-| 5.2.1     | Generally                 | Don't use others' protected material                                |
-| 5.2.2     | Third-Party Sites         | Don't use third-party content without permission                    |
-| 5.2.3     | Audio/Video               | No unauthorized AV downloading                                      |
-| 5.2.5     | Apple Trademarks          | No Apple product images in icons; no confusing Apple terms          |
-| 5.3       | Gaming & Gambling         | Licensed gambling only; lottery apps from lottery entities only     |
-| 5.4       | VPN Apps                  | Must use NEVPNManager; no data collection; from org accounts only   |
-| 5.5       | Mobile Device Management  | MDM from enterprises/education only; strict data use limits         |
-| 5.6       | Developer Code of Conduct | Respectful responses; no review manipulation; verifiable identity   |
-| 5.6.1     | App Store Reviews         | Respect users; use API for review prompts                           |
-| 5.6.3     | Discovery Fraud           | No chart/search/review manipulation                                 |
-| 5.6.4     | App Quality               | Must maintain quality; excessive complaints may cause removal       |
+| Guideline | Title                     | Summary                                                                                                                                                                                                                                                        |
+| --------- | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 5.1       | Privacy                   | Full privacy compliance required                                                                                                                                                                                                                               |
+| 5.1.1     | Data Collection           | Privacy policy required; consent required; data minimization                                                                                                                                                                                                   |
+| 5.1.1(v)  | Account/Sign-In           | Account deletion required if creation offered; no unnecessary login                                                                                                                                                                                            |
+| 5.1.1(ix) | Regulated Fields          | Banking, healthcare, gambling apps must be from legal entities                                                                                                                                                                                                 |
+| 5.1.2     | Data Use & Sharing        | No selling user data; ATT required for tracking                                                                                                                                                                                                                |
+| 5.1.3     | Health & Fitness          | HealthKit data can't be used for ads; no false data writing                                                                                                                                                                                                    |
+| 5.1.4     | Kids                      | COPPA/GDPR compliance; no third-party analytics in Kids apps                                                                                                                                                                                                   |
+| 5.1.5     | Location Services         | Only when directly relevant; consent required                                                                                                                                                                                                                  |
+| 5.2       | Intellectual Property     | —                                                                                                                                                                                                                                                              |
+| 5.2.1     | Generally                 | Don't use others' protected material                                                                                                                                                                                                                           |
+| 5.2.2     | Third-Party Sites         | Don't use third-party content without permission                                                                                                                                                                                                               |
+| 5.2.3     | Audio/Video               | No unauthorized AV downloading                                                                                                                                                                                                                                 |
+| 5.2.5     | Apple Trademarks          | No Apple product images in icons; no confusing Apple terms                                                                                                                                                                                                     |
+| 5.3       | Gaming & Gambling         | Licensed gambling only; lottery apps from lottery entities only                                                                                                                                                                                                |
+| 5.4       | VPN Apps                  | Must use NEVPNManager; no data collection; from org accounts only                                                                                                                                                                                              |
+| 5.5       | Mobile Device Management  | MDM from enterprises/education only; strict data use limits                                                                                                                                                                                                    |
+| 5.6       | Developer Code of Conduct | Respectful responses, no review manipulation, verifiable identity, no tricking users into unwanted purchases or raising prices in a tricky manner, and violations terminate the account, which may be restored after Apple approves a written improvement plan |
+| 5.6.1     | App Store Reviews         | Respect users; use API for review prompts                                                                                                                                                                                                                      |
+| 5.6.3     | Discovery Fraud           | No chart/search/review manipulation                                                                                                                                                                                                                            |
+| 5.6.4     | App Quality               | Must maintain quality; excessive complaints may cause removal                                                                                                                                                                                                  |
