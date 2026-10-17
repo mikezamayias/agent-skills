@@ -55,6 +55,13 @@ Two ways to fail at this job, the first worse:
    Shape fixtures exactly like the existing demo data or model type, and put them beside the existing test fixtures.
    Spread different failures across the first visible rows instead of stacking them all in row 1.
    Build five datasets: demo, worst, empty, one (every count at exactly 1), and huge (the realistic upper bound, 1,000+ rows if unpaginated).
+   Build the state inventory for any widget with user-set display options or a transient mode such as search open, selection or expanded.
+   List every independent option and every transient mode, then enumerate each combination that changes the layout.
+   Include all options off, and all options off with a transient mode still active, because no data fixture reaches them.
+   Give each state a number, a name and one line that says what the user sees.
+   Pump each state in the worst-case test in light and dark, and record any state with no defined behaviour as a finding.
+   This inventory is our own method rule, not an upstream one.
+   A shipped app's filter bar spec sheet is one example of the format, a numbered table of 14 states each drawn in light and dark (Sebastian Röhl, LinkedIn, 2026-10-16).
 3. Write the worst-case test.
    Load [references/flutter.md](references/flutter.md) and write a widget test that pumps the real widget with each dataset.
    Vary size (320x568, a normal phone, landscape, tablet when supported), `TextScaler.linear` at 1.0, 1.3, 2.0 and 3.1, `Directionality` in both directions, and the dark theme when the app has one.
