@@ -3,8 +3,9 @@
 
   python3 answer_sheet.py build <questions-dir>/<date>.json
 writes <date>.html next to the JSON.
-  python3 answer_sheet.py serve <questions-dir> <answers-dir> [port]
-serves the questions directory on 127.0.0.1 (default port 8765). The page's
+  python3 answer_sheet.py serve <questions-dir> <answers-dir> [port] [bind]
+serves the questions directory on 127.0.0.1 (default port 8765), or on the
+bind address given, for example the Mac's Tailscale address for a phone. The page's
 "Save" button posts the answers, and the server writes them into
 <answers-dir>/<date>.md: appended on the first save, replaced in place on a
 later save of the same sheet, so other content in that file is kept.
@@ -109,10 +110,10 @@ class Handler(SimpleHTTPRequestHandler):
         self.wfile.write(target.encode())
 
 
-def serve(questions, answers, port):
+def serve(questions, answers, port, bind="127.0.0.1"):
     Handler.questions, Handler.answers = os.path.abspath(questions), os.path.abspath(answers)
-    print(f"http://127.0.0.1:{port}/")
-    ThreadingHTTPServer(("127.0.0.1", port), Handler).serve_forever()
+    print(f"http://{bind}:{port}/")
+    ThreadingHTTPServer((bind, port), Handler).serve_forever()
 
 
 TEMPLATE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
@@ -163,6 +164,6 @@ if __name__ == "__main__":
     if len(sys.argv) >= 3 and sys.argv[1] == "build":
         build(sys.argv[2])
     elif len(sys.argv) >= 4 and sys.argv[1] == "serve":
-        serve(sys.argv[2], sys.argv[3], int(sys.argv[4]) if len(sys.argv) > 4 else 8765)
+        serve(sys.argv[2], sys.argv[3], int(sys.argv[4]) if len(sys.argv) > 4 else 8765, sys.argv[5] if len(sys.argv) > 5 else "127.0.0.1")
     else:
         sys.exit(__doc__)

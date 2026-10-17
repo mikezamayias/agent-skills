@@ -36,9 +36,14 @@ Agents read it and never edit it.
 1. Write `<questions-dir>/<YYYY-MM-DD>.json` in the format of `scripts/example.json`.
    Add a suffix (`-b`, `-c`) for a second sheet on the same day.
 2. Build the page with `python3 <skill>/scripts/answer_sheet.py build <questions-dir>/<date>.json`.
-3. Start the server once per session in the background with `python3 <skill>/scripts/answer_sheet.py serve <questions-dir> <answers-dir> [port]`.
-   It binds to 127.0.0.1 only, on port 8765 by default.
-4. Open `http://127.0.0.1:8765/<date>.html` in the in-app preview or the browser.
+3. Start the server once per session in the background with `python3 <skill>/scripts/answer_sheet.py serve <questions-dir> <answers-dir> [port] [bind]`.
+   It binds to 127.0.0.1 on port 8765 by default.
+   If the Mac runs Tailscale Serve, check `tailscale serve status` first.
+   When it already proxies an HTTPS port to `127.0.0.1:8765`, keep the default bind, because Tailscale holds that port on the Tailscale address and a second bind there fails.
+   Otherwise pass the Mac's Tailscale address as the bind argument, so Save still works from a phone.
+4. Always give the user the Tailscale URL, such as `https://<machine>.<tailnet>.ts.net:8765/<date>.html`, and check it returns 200 before sending it.
+   Use `tailscale status --self` for the machine name, because an old `-1` name can still appear in the serve list.
+   Also open `http://127.0.0.1:8765/<date>.html` in the in-app preview.
    In chat, say in one or two sentences what the sheet covers.
    Do not repeat the questions in chat.
 5. When the user says they saved, read `<answers-dir>/<date>.md`, record each ruling where the project keeps decisions (see the `decision-sweep` skill), act on it, and commit the answer file with the changes.
