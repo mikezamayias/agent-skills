@@ -97,6 +97,18 @@ Each run:
    This attribution rule is ours.
 5. Competitors: diff each competitor's sitemap against the last snapshot and add a backlog item only where the app can make a better page.
 
+Rank evidence rules, ours, adapted from OpenSEO's public skills (MIT per its README, d7ea785):
+
+- Count organic listings only, not ads, maps or other result blocks, and write the spot as "#11 (page 2)".
+- Check 20 deep and write "not in the first 20 results" for a page not found.
+  A failed lookup is unknown, not absent.
+- Record the query, country, language and date with every position.
+  A tool's retrieval date is not the date the ranking was observed.
+- When two checks on one day disagree, keep both, because that is same-day variation and not a trend.
+  One snapshot is not a baseline.
+- Search volume is not visits.
+  A page that already ranks already gets part of the volume, so size a gain on the extra clicks, not on the total.
+
 Comparison pages ("X alternatives", "app vs X") must say where the competitor is better and source every competitor claim with an "as of" date.
 
 ## Never
