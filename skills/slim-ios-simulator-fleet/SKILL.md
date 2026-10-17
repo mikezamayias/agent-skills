@@ -1,18 +1,28 @@
 ---
 name: slim-ios-simulator-fleet
 description: >-
-  Use simslim to disable unused daemons inside iOS 18+ simulators so more of them fit on one Mac. Use when booting more than a couple of iOS simulators or when GitHub Actions macOS jobs run out of memory. Also use when an agent needs one simulator per task.
+  Use simslim to disable unused daemons inside iOS, tvOS, watchOS and visionOS simulators so more of them fit on one Mac. Use when booting more than a couple of simulators or when GitHub Actions macOS jobs run out of memory. Also use when an agent needs one simulator per task.
 metadata:
-  docs-verified: "2026-09-28"
+  docs-verified: "2026-10-17"
 ---
 
 # Slim iOS simulator fleet
 
 `simslim` disables ~170 of the ~180 daemons a fresh simulator starts **inside that simulator only**. Host Mac is untouched.
 
-Requires Mac + Xcode + iOS **18.5+** runtime for persistent slimming.
+Requires Mac + Xcode + a simulator runtime at or above the persistence gate: iOS or tvOS **18.5**, watchOS 11.5, visionOS 2.5.
 `simslim on` rejects older runtimes before touching the simulator.
 On iOS 17.x and 18.3, `simslim on <udid> --no-reboot` slims only the current boot session, so re-run it after every boot.
+The README says the tvOS, watchOS and visionOS cutoffs follow the iOS release generation and are not independent measurements.
+
+## Other platforms
+
+The same commands and profiles cover tvOS, watchOS and visionOS simulators.
+The memory figures in this skill were measured on iOS, so savings elsewhere depend on runtime and workload.
+For Watch connectivity tests, keep `connectivity,messaging` with `--except`, and add `health` for HealthKit or fitness tests.
+A visionOS simulator stays expensive even when slim.
+Update simslim before debugging a launch delay or a log flood.
+Commits from 2026-10-08 and 2026-10-09 stopped disabling `gamed`, `assistantd` and `navd`, per their titles: an XCUITest launch delay, a Spotlight memory leak, and a Maps widget log flood handled with `--except widgets`.
 
 ## Install and slim
 
@@ -74,4 +84,4 @@ These commands come from MobAI's simslim skill (October 2026), so run `simslim -
 
 ## Sources
 
-- <https://github.com/MobAI-App/simslim>
+- <https://github.com/MobAI-App/simslim> (README and commit titles read 2026-10-17)

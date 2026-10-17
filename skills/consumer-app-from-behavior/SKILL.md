@@ -154,6 +154,7 @@ Onboarding:
 - Do not copy a long onboarding because other apps have one.
 - When auditing a flow, score each screen's friction from 1 (clear value, one tap) to 5 (confusing or hostile). A signup wall scores 4 even when well designed.
 - Per screen, record what is asked, which permission is requested, the taps to advance and whether skip exists. Score every system permission dialog as its own screen.
+- Per screen also judge whether the user sees what they get, whether a permission is requested at the moment of use or too early, whether progress is visible and whether the user can leave.
 - Report the average friction score and the top 3 to 5 fixes ranked by impact.
 
 Monetization:

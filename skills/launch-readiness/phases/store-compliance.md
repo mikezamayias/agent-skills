@@ -139,6 +139,7 @@ It scans for SDK signatures and rejects on mismatches with declared metadata, ev
 - Auth SDKs in the binary (notably Firebase Anonymous Auth via `firebase_auth`) are flagged as "app has a login" and a demo account is demanded, even with no real login flow.
 - Field-verified fix: state the facts in App Review Information notes ("This app has no ads and no login functionality") or provide a demo account. Devs report approval minutes after adding the note.
 - **High if**: Stack profile has a purchase/attribution SDK but no ads, or `firebase_auth` without a full login flow, and no review-notes text covering it is found in repo metadata (`fastlane/metadata/review_information/`, asc metadata, `store_assets/`)
+- Create and test the demo account on the day of submission, and confirm the backend and feature flags it needs are live.
 - **Method**: Cross-reference stack profile SDKs against age-rating intent and grep repo metadata for review notes / demo account entries
 
 #### 7b. Account Deletion (Section 5.1.1(v))

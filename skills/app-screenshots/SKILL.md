@@ -114,6 +114,28 @@ Apple/Google reject screenshots that show debug overlays or staging data. Verify
 - [ ] Light mode by default; add a dark mode pass when the listing calls for it
 - [ ] More than half of the screenshots for each supported device show the app in use (Guideline 2.3.3). With 3 screenshots per device, 2 must show the app in use on that device, and with 4, 3 must. Title art, a login page, and a splash screen do not count.
 
+## App previews (optional)
+
+Make two cuts from one recording.
+
+- Store cut: a screen capture of the app itself.
+  Guideline 2.3.4 says "previews may only use video screen captures of the app itself" and allows narration and video or textual overlays.
+  Apple does not name device frames in 2.3.4 or on its app previews page, so keeping frames out of the store cut is our own rule.
+  A developer forum thread quotes a 2.3.4 rejection that cites device frames.
+- Social cut: framed device on a backdrop, for social posts and the landing page.
+  Framing here is our own rule, and this cut is never uploaded to a store.
+- Apple spec: 15 to 30 seconds, up to 30 fps, `.mov`, `.m4v` or `.mp4` for H.264 or `.mov` for ProRes 422 HQ, 500 MB maximum, up to three previews per device size and language.
+  Accepted resolution is 886×1920 portrait or 1920×886 landscape for iPhone Duo and the Dynamic Island and Face ID classes, 1080×1920 for Home Button (large) and 750×1334 for Home Button (medium).
+  Apple says to use the accepted resolution, not the device resolution.
+- Apple's app previews page says "Don't include specific prices, as pricing and currencies vary across regions."
+  It also says that if you display features only available through in-app purchase, or your app uses a subscription model or requires login, "you must disclose this", in the footage or the end frame.
+  Previews play muted by default, so carry the meaning in on-screen text.
+- Record with `xcrun simctl io booted recordVideo --codec=h264`, because `recordVideo` defaults to HEVC and accepts `--codec=h264`.
+  Then scale the file to the accepted resolution at 30 fps or less.
+  Neither Apple page says whether a preview with no audio track uploads, so test the upload.
+- Google Play: one YouTube video, ads disabled, no maximum length, and only the first 30 seconds autoplay.
+  The video must be public or unlisted, embeddable and not age-restricted.
+
 ## Tooling notes
 
 - Do not write a custom Python framing pipeline. Frame with Koubou 0.20.0, the version the `asc` CLI pins.
@@ -141,6 +163,10 @@ Apple/Google reject screenshots that show debug overlays or staging data. Verify
 
 - <https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications>
 - <https://developer.apple.com/news/?id=kkphp5qo>
+- <https://developer.apple.com/app-store/review/guidelines/>
+- <https://developer.apple.com/help/app-store-connect/reference/app-preview-specifications/>
+- <https://developer.apple.com/app-store/app-previews/>
+- <https://developer.apple.com/forums/thread/656342>
 - <https://developer.apple.com/help/app-review/guideline-reference/2-3-3-screenshots>
 - <https://support.google.com/googleplay/android-developer/answer/9866151>
 - <https://github.com/rudrankriyam/App-Store-Connect-CLI>

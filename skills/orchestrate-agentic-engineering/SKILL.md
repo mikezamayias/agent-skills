@@ -194,8 +194,10 @@ Close completed specialist sessions. After compaction or handoff, reload reposit
 
 Bound code search output, because raw search hits are a large share of an agent's input tokens.
 List matching files first (`grep -l` or `rg -l`), cap matches per file (`-m`), keep context to a few lines, and narrow by path or type before reading whole files.
-In Context.dev's sgrep benchmark (October 2026, 100 SWE-bench Verified attempts per arm), plain ripgrep returned about 4,100 search tokens per attempt and was truncated 88 times, against about 1,500 tokens and 4 truncations for reranked top-20 output.
-That cut API spend 21.3%, but total cost moved -0.4% with an interval spanning zero and the 70 vs 68 solved difference is noise, so adopt output bounds, not a new search tool.
+The flags above (`rg -l`, `-m`) were not tested by the benchmark below, which tested ranked top-20 output after `-C 3` context, so treat them as untested.
+In Context.dev's vendor-run sgrep benchmark (October 2026, 100 SWE-bench Verified attempts per arm, tool output capped at 8,000 o200k tokens), plain ripgrep returned about 4,100 search tokens per attempt and hit the cap in 88 searches, against about 1,500 tokens and 4 capped searches for `rg --json -C 3` piped into sgrep.
+Mean API cost was 21.3% lower, but total cost moved -0.4% with an interval spanning zero, median agent time was slower at 56.1 s against 52.5 s, and the solve rate of 0.70 against 0.68 has a paired interval of -3 to +8 points, which does not establish a gain.
+Adopt output bounds, not a new search tool.
 
 Use this handoff shape:
 
@@ -264,6 +266,9 @@ Set `umask 077` before writing state or logs that hold login URLs or node identi
 Exit 1 only when a named human step is needed or the service failed, and exit 0 once the core service serves, saying what optional part is missing.
 When a one-time login URL is consumed, kill by PID file, delete the stored identity and start fresh, instead of re-printing the dead URL.
 Put the next action in the failure output, including what not to do.
+A setup script writes its target directory first and, on failure, prints the one variable that moves it, before it downloads anything.
+Pin the release version in the script and fetch the asset URL directly.
+One installer script claims a latest-release redirect is refused in some sandboxes, which was not tested here.
 
 ### Bug bash fan-out
 
@@ -313,6 +318,7 @@ Return:
 
 Distilled from Kun Chen's video _L8 Principal Building a Full Stack App with Agentic Engineering_: <https://www.youtube.com/watch?v=kPN564Kol14>.
 
-Search output numbers: <https://github.com/context-dot-dev/sgrep> (7452784, `benchmarks/README.md` and `benchmarks/swe-bench/results/analysis.json`).
+Search output numbers: <https://github.com/context-dot-dev/sgrep> (7452784, `benchmarks/README.md` and `benchmarks/swe-bench/results/analysis.json`, plus `benchmarks/swe-bench/harness/PROTOCOL.md` for the 8,000-token cap).
+The benchmark files were unchanged at commit dec6122 (2026-10-15).
 
 Read [references/video-notes.md](references/video-notes.md) when provenance, observed examples, or tool-agnostic adaptation choices matter. Keep normal execution on this file's workflow.

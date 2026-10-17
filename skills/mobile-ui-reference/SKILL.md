@@ -37,15 +37,17 @@ Stay in research mode: "Show 6 iOS onboarding flows that ask for notification pe
 
 **Other reference sources** (checked 2026-10-13, prices from live pages):
 
-| Source                           | Covers                                                                                                                                                      | Agent access                                                                                                                                                            | Cost                                                                 | Use for                                                                           |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| Refero                           | Web and iOS screens, flows, curated styles                                                                                                                  | MCP at `https://api.refero.design/mcp`, tools `refero_search_screens`, `refero_search_flows`, `refero_search_app`, `refero_search_styles`, 8,000 calls a month per seat | Pro, Team or Lifetime plan, prices not readable                      | Second opinion to Mobbin, and `refero_search_styles` for a landing page direction |
-| Gummble                          | iOS, Android and web, vendor claims 300,000+ screens                                                                                                        | Read-only MCP on Browse and up, API on Team                                                                                                                             | Browse $9.99/mo, Pro $14.99/mo                                       | Cheapest MCP source that covers Android                                           |
-| ScreensDesign                    | 2,805+ top-chart iOS apps with videos, paywalls, onboarding and revenue signals                                                                             | MCP and API, licensed for interactive research only                                                                                                                     | Not readable                                                         | Paywall and onboarding research tied to revenue                                   |
-| Page Flows                       | Recorded flows for iOS, Android, web and email                                                                                                              | None                                                                                                                                                                    | $8.25/mo billed yearly, $2.95 3-day trial                            | Whole multi-step flows, watched by the human                                      |
-| Revyl Atlas (checked 2026-10-17) | 11 public iOS app maps (Duolingo, Calm, Finch, Runna, Tinder and others) with ordered screens, paths and UI elements, no capture date or app version stated | Public web pages at `https://revyl.com/atlas/`, no MCP for the gallery                                                                                                  | Free to read, paid plans from $200/mo billed yearly map your own app | Ordered onboarding sequences of the mapped apps                                   |
+| Source                           | Covers                                                                                                                                                      | Agent access                                                                                                                                                                               | Cost                                                                                                                                    | Use for                                                                           |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Refero                           | Web and iOS screens, flows, curated styles                                                                                                                  | MCP at `https://api.refero.design/mcp`, tools `refero_search_screens`, `refero_search_flows`, `refero_search_app`, `refero_search_styles`, 8,000 calls a month per seat                    | Pro EUR 17/mo or EUR 120/yr (plans API, 2026-10-17), Team or Lifetime also available                                                    | Second opinion to Mobbin, and `refero_search_styles` for a landing page direction |
+| Gummble                          | iOS, Android and web, vendor claims 300,000+ screens                                                                                                        | Read-only MCP on Browse and up, API on Team                                                                                                                                                | Browse $9.99/mo or $99.90/yr, Pro $14.99/mo or $149.90/yr (adds Figma export), Team $15/seat/mo from 3 seats (pricing page, 2026-10-17) | Cheapest MCP source that covers Android                                           |
+| ScreensDesign                    | 2,805+ top-chart iOS apps with videos, paywalls, onboarding and revenue signals                                                                             | MCP included in Pro with no separate plan, account or scoped API key, licensed for interactive research and internal analysis (per the vendor's terms page, read 2026-10-17, not verbatim) | Pro only, the plans API lists several prices ($29/mo with 400 credits is one), the price a visitor sees is unverified                   | Paywall and onboarding research tied to revenue                                   |
+| Page Flows                       | Recorded flows for iOS, Android, web and email                                                                                                              | None                                                                                                                                                                                       | $99/yr ($8.25/mo), $39/quarter, Team $199/yr for 3 users, 3-day trial (pricing page, 2026-10-17)                                        | Whole multi-step flows, watched by the human                                      |
+| Revyl Atlas (checked 2026-10-17) | 11 public iOS app maps (Duolingo, Calm, Finch, Runna, Tinder and others) with ordered screens, paths and UI elements, no capture date or app version stated | Public web pages at `https://revyl.com/atlas/`, no MCP for the gallery                                                                                                                     | Free to read, paid plans from $200/mo billed yearly map your own app                                                                    | Ordered onboarding sequences of the mapped apps                                   |
 
-The Refero, Gummble, ScreensDesign and Page Flows terms forbid bulk download or building a dataset, so keep each pull to the 5 to 8 references this step needs.
+The Refero, Gummble and ScreensDesign terms ban scraping, systematic retrieval or building a competing dataset, and only Gummble names bulk download, per the vendor's terms page, read 2026-10-17, not verbatim.
+Page Flows lists "Batch download screens" as a plan feature, and its terms contain no bulk download or dataset clause, per the vendor's terms page, read 2026-10-17, not verbatim.
+Keep each pull to the 5 to 8 references this step needs.
 Revyl's terms restrict redistribution and sublicensing of its services, so read Atlas maps in the browser and never copy its screenshots into a repository.
 
 **No Mobbin:** screenshot 3–5 apps on a device. Save under `design-refs/<feature>/`. Paywalls: <https://toomanypaywalls.com> for **pattern labels**, not chrome.
@@ -57,7 +59,7 @@ Before any screen, name one real-world object or place the app _is_, such as a r
 Let that concept set type, palette, illustration style and motion.
 "Clean", "minimal", "modern" and "premium" are not directions.
 Sketch the main screen three ways from the concept, pick one with the human, then build every other screen from the chosen one.
-The method is Tobia Donadon's free "Stop Making your Apps Look Like AI Slop" article (October 2026). His paid skill packages it.
+The method is Tobia Donadon's free "How to Stop Making your Apps Look Like AI Slop" article (October 2026). His paid skill, App Designer Pro, packages it.
 
 ## 2. Critique
 
@@ -160,8 +162,17 @@ Render the built screens on the simulator at device resolution, then run a separ
 - Body-text sentences where a concrete number or object would do ("€49 to go", "€49 is three takeaways")
 - A screen that is tidy but could belong to any app
 
+Before the critic scores a direction, run `break-ui` on its main screen with real-length labels, the largest text size, an empty state and long or malformed numbers.
+A direction that only looks distinct with demo data fails.
+Format every amount through the locale formatter, never by hand ("€1,2500" is the tell).
+
 Give every screen a word budget before writing copy.
-No em dashes or AI stock phrases ("Unlock your potential", "Seamless. Effortless. Powerful.") in UI strings.
+No em dashes or AI stock phrases in UI strings.
+That covers slogans ("Unlock your potential", "Seamless. Effortless. Powerful.") and in-app encouragement filler ("Good progress! Keep it up.", "Take a moment to be proud.", "A calmer, brighter you", "Small steps. A brighter tomorrow.", "That's 12 more than last week!").
+Replace them with the fact the line is about, or delete them.
+Name the user's object, not the category.
+One demo rewrote "My Savings Goals" to "Saving for", "Add Money" to "Put in", "+€1.85 saved!" to "+€1.85 to the bike" and "Target date: Oct 26" to "yours by 26 Oct", and set section titles in sentence case ("Next closest").
+Read every string that holds a number at 0, 1 and many, and check the verb and noun agree with what is counted ("61% of your limits are in use", "1 thing to do", "3 steps to take").
 
 Paste the spec + 2–3 reference links **before** asking a model to write widgets.
 
@@ -178,4 +189,4 @@ Paste the spec + 2–3 reference links **before** asking a model to write widget
 - <https://developer.apple.com/design/human-interface-guidelines/typography>
 - <https://developer.apple.com/design/human-interface-guidelines/accessibility>
 - <https://api.flutter.dev/flutter/widgets/MediaQuery/disableAnimationsOf.html>
-- <https://x.com/i/article/2106430529113301163> (Tobia Donadon, concept-first method)
+- <https://x.com/tobiadonadon_/status/2106430529113301163> (Tobia Donadon, "How to Stop Making your Apps Look Like AI Slop", article 2106428717639626752, concept-first method)

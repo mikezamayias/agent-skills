@@ -14,6 +14,9 @@ App preview videos must only contain capture footage of the app running. They mu
 
 > **Note**: This applies to **app preview videos**, not static screenshots. Static screenshots _may_ use device frames.
 
+Guideline 2.3.4 says previews may only use video screen captures of the app itself, and it does not name device frames.
+The frame ban is reviewer practice under that wording, checked on 2026-10-17, so treat a framed preview as a likely rejection rather than a quoted rule.
+
 ## How to Detect
 
 ### Manual Inspection

@@ -86,7 +86,7 @@ Keep secrets, customer data, and production credentials out of prompts unless th
 Before handing a task to a cloud-hosted agent, list every host the task must reach and check the sandbox allows each one.
 Claude Code on the web (docs read 2026-10-13): `api.github.com` is allowed and REST through `gh api` works for attached repos, but GraphQL (`gh pr`, `gh issue`) and other repos return 403, and the proxy rejects pushes of anything but a branch, such as a tag.
 Repo `.mcp.json` servers and connectors load there, while user-scope `claude mcp add` servers do not.
-Codex cloud blocks internet access in the agent phase by default, and its supported VPN is Tailscale configured on the environment.
+Codex cloud blocks internet access in the agent phase by default and can be set to limited or unrestricted access per environment, while setup scripts always run with internet access (the page is labeled Codex Cloud Legacy and now lives under <https://learn.chatgpt.com/docs/environments/cloud-environment>).
 Cursor cloud agents do not run Tailscale in their default networking mode.
 A Tailscale auth-key join needs egress to `*.tailscale.com`, and ephemeral keys are single use.
 A phone can show Online in `tailscale status` and answer pings while refusing every TCP connection. Fix it by reconnecting the phone to Wi-Fi, toggle Tailscale and keep the target app in the foreground.

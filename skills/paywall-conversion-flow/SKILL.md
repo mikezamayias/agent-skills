@@ -22,7 +22,16 @@ Most indies lose conversion by following the wrong order.
    Google Play already verifies a valid payment method before a store free trial starts, so a cardless trial only exists outside store billing.
    Judge a trial by paid conversion, not trial-start rate.
    One indie fasting app in October 2026 reported a 20% trial-start week with zero trials converting, while its no-trial weeks reached 12-19% paid, on samples in the tens.
+   The founder's own explanation, which he did not test, is that paid ads optimized on trial starts find users who start trials and never pay.
 5. **Offer weekly + yearly, not just monthly.** Weekly lowers commitment fear and converts the "let me test it" segment that monthly scares off.
+6. **Add one exit offer after the buyer cancels the store purchase sheet.**
+   Superwall's `transaction_abandon` placement fires when a user dismisses the store purchase sheet before the transaction completes, and a matching paywall replaces the current one.
+   RevenueCat's closest feature is Exit offers, which show a second paywall when the user dismisses the paywall without buying.
+   Its docs do not say it fires on a cancelled purchase sheet, and it works only with `presentPaywall` or `presentPaywallIfNeeded`, so it is not shown to be equivalent.
+   One indie fasting app shows a single discounted yearly plan with a close button, a 5 minute timer and the real billed price, and its author reported that the exit paywall produced 23% of its results over two weeks (author's figure, unit not stated, not verified).
+   A second founder adds the offer in a follow-up release, after the base paywall is live.
+   Ship it in a reviewed update, describe it in Notes for Review, and measure it on its own line so the base paywall rate stays clean.
+   Never mention it in What's New, because that text is public and shows the offer to every user.
 
 ## Anti-patterns to remove
 
@@ -68,6 +77,9 @@ None of this is published test data, and the flow may differ by cohort and date.
 
 Execution details that matter: always a visible Skip or back, pre-select popular options to cut decision fatigue, show real social-proof numbers, keep the whole flow under 30-45 seconds. Track onboarding completion rate, time to first meaningful action, day-1 retention, and first-session conversion.
 
+One founder's numbers, from a single account (October 2026, a screenshot of $12,698 in 28-day revenue, unverified): 12-13 onboarding screens, a 90% completion target, and under 80% treated as a sign something is wrong.
+He does not say how completion is defined, and this is not a benchmark.
+
 ## Measure
 
 - Paid conversion is weekly unique buyers divided by unique paywall viewers.
@@ -75,6 +87,8 @@ Execution details that matter: always a visible Skip or back, pre-select popular
 - Bucket weekly when daily paywall views are under about 20, because daily rates are noise.
 - Annotate every price, offer and onboarding change on the chart, and exclude the developer's own country or test devices.
 - Never report a partial-week point as a result.
+  One indie's chart headlined a dashed, incomplete week at 22.2%.
+  An earlier capture of the same chart read 14.1% for its then-partial point against 12.2% once the week completed, an inference from two captures with unconfirmed week boundaries.
 - Report a 95% interval with each rate. For example, 23 buyers out of 104 viewers is 22% with a range of about 15-31%.
 
 ## When in doubt
@@ -87,6 +101,10 @@ Moving the paywall late costs conversions, so A/B test placement instead of assu
 ## Sources
 
 - <https://developer.apple.com/app-store/review/guidelines/#in-app-purchase>
+- <https://superwall.com/docs/campaigns-standard-placements>
+- <https://www.revenuecat.com/docs/tools/paywalls/displaying-paywalls>
+- <https://x.com/samuel_yostt/status/2109698766530048174>
+- <https://x.com/frederickjames/status/2111137088871555182>
 - <https://developer.android.com/google/play/billing/subscriptions>
 - <https://www.revenuecat.com/state-of-subscription-apps>
 - <https://www.revenuecat.com/blog/growth/subscription-app-trends-benchmarks-2026>

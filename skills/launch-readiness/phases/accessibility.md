@@ -28,6 +28,8 @@ T2 — Quality Gate
 - Check: `SizedBox`, `Container` with width/height, `ConstrainedBox` wrapping interactive elements
 - **High if**: Tap target explicitly constrained below 44pt in either dimension
 - Platform minimums: 44x44 pt on iOS (`iOSTapTargetGuideline`) and 48x48 dp on Android (`androidTapTargetGuideline`).
+  These come from Apple's Human Interface Guidelines and Google's accessibility guidance, which phrases 48 dp as a recommendation, and not from WCAG.
+  WCAG 2.2 criterion 2.5.8 Target Size (Minimum), level AA, asks for 24 by 24 CSS pixels with five exceptions (<https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html>).
 - **High if**: Tap target explicitly constrained below 48dp on Android builds
 - **Method**: Read widget files, check size constraints on interactive elements, and run `meetsGuideline(androidTapTargetGuideline)` / `meetsGuideline(iOSTapTargetGuideline)` in widget tests
 

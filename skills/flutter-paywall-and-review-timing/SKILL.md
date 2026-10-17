@@ -74,6 +74,8 @@ Do **not** paraphrase this as "every 4 days through day 7" — that is wrong. Th
 
 Copy: trial attached to annual; Day 0 / Day 5 / Day 7 timeline; free-vs-premium table; optional pay-once lifetime; real annual price visible.
 
+An exit offer after a cancelled purchase sheet is covered in [Paywall conversion flow](../paywall-conversion-flow/SKILL.md), item 6 of "The Order That Works".
+
 Do **not** copy: fake countdown timers, weekly decoys at €200+/yr as the default, close-button-less hard walls, trial-length upsells that silently multiply annual price.
 
 Use [iOS distribution feature flags](../ios-distribution-feature-flags/SKILL.md) to disable the paywall for TestFlight testers. Do not expect `requestReview` there.

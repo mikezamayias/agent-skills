@@ -75,10 +75,17 @@ Attach channel and creative attribution. Verify event delivery before buying tra
 - Start with small, trusted audiences and bounded spend.
 - Log outreach volume, replies, placements, spend, traffic, trials, payments, refunds, and revenue.
 - Feed winning hooks and objections into next creative variants.
+- Before paying creators, post the angles yourself on short video platforms, and hire creators only after a format has won.
 - For an iOS app, run the first intent-based test on Apple Ads with [references/apple-ads.md](references/apple-ads.md).
-- On Reddit, help in the community first and follow each subreddit's own self-promotion rule, because many cap promotion at about 10% of a member's activity.
+- For Meta and TikTok campaigns, creator marketplaces, Reddit, Discord, YouTube Shorts and influencer deals, read [references/distribution-channels.md](references/distribution-channels.md).
+- On Reddit, help in the community first and follow each subreddit's own self-promotion rule, because moderators set local limits and Reddit's spam rules ban mass-posting repetitive content for exposure or financial gain.
+- Disclose any creator who is paid by revenue share, commission or cash, inside the video itself.
 
 Do not scale a creator, ad, or channel without attribution and acceptable unit economics.
+
+Keep an ad running while its cost per acquisition (CPA, the cost of one paying user) stays below lifetime value (LTV, net proceeds per paying user) within a payback window and spend cap set in advance, such as 6 or 12 months.
+An ad just above that line may run through its learning period under the cap, then stops if it does not cross the line.
+Write the inequality as CPA below LTV and never let a loss run without a window and a cap.
 
 ### 7. Reallocate work weekly
 
@@ -130,6 +137,14 @@ Make assumptions, missing evidence, owner, deadline, budget cap, and success thr
 - Do not scale from one anecdote or one creative.
 - Do not restart creative ideation from zero; reuse measured learning.
 - Do not copy case-study benchmarks as universal targets.
+
+## Apple account risk
+
+Running several apps from one template in one Apple developer account puts the account at risk, not only each app.
+Guideline 4.3(a) bans multiple Bundle IDs of the same app and advises considering one app with the variations sold through in-app purchase.
+Guideline 4.3(b) says repeated submissions of low-effort, indistinguishable apps may lead to removal from the Apple Developer Program.
+One developer kept his account only after cutting his portfolio to one app per category, and now also ships to Android, the web and macOS so that one account decision cannot remove all revenue.
+That is one account, not Apple policy, so treat it as a reason to consolidate early rather than as a safe app count.
 
 ## Sources
 
