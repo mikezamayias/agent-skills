@@ -39,11 +39,14 @@ The user should never have to ask "what about X?" about an option that was missi
 For each option, fetch the live page and quote the clause or number with its URL and the date you read it.
 
 - Terms: what the data may be used for, whether it may be shown to other users, storage limits, AI use, attribution, and termination.
-- Price: the listed price, what triggers usage charges, the free tier, the renewal price, and the minimum commitment.
+- Price: the listed price, what triggers usage charges, the free tier, the renewal price, the minimum commitment, any minimum prepaid top-up, and whether prepaid or included credit expires, resets each cycle or can be refunded.
+  For a hosted wrapper over another API, find its markup over the underlying price, and check the README and the founder's posts when the pricing page omits it.
 - Limits: rate limits, quotas, and features only in paid tiers.
 - Runtime limits: deploy or bundle size, memory, CPU time, and request duration, from the provider's main limits page and its changelog.
   Size these against the planned growth, not today's code, because a limit hit later splits the system along the limit instead of along the design.
 - Data: the region where data is stored and processed, retention (the minimum and whether it can be shortened), whether a data processing agreement (DPA, the GDPR contract with a processor) exists, whether data is used for training, and sub-processors.
+- Self-hosted "free" claims: list each feature with the paid plan or third-party key it needs, and whether the platform wants a payment method on file even on its free tier.
+  Record whether the software sends telemetry by default and how to turn it off.
 - Inputs and outputs: what the API accepts, such as text only or images, and in what formats.
 
 When a source cannot be found, say "unverified" and name what would verify it.
