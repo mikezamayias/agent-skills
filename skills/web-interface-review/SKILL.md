@@ -59,6 +59,11 @@ Hand off instead of duplicating:
    Check every rule category in the fetched document, translated per [references/framework-translation.md](references/framework-translation.md).
    When step 3 applies, also check every item in [references/mobile-web.md](references/mobile-web.md).
    Where the live rules and mobile-web disagree, follow the resolution table in that file.
+   Also check every inline `<svg>` that carries meaning, such as a chart or diagram.
+   It needs an accessible name from `aria-labelledby` pointing at its `<title>` child, because SVG-AAM ranks `aria-labelledby` and `aria-label` above a child `title` in name computation.
+   Its `<desc>` supplies the description, so write the desc for the content, not the shapes.
+   Add `role="img"` so assistive technology reads the figure as one image (local convention, not required by SVG-AAM).
+   Those IDs must be unique on the page, so two inlined figures never share bare `title` or `desc` IDs.
 6. Verify each candidate before reporting it.
    Confirm the line number, confirm no global style, layout, component wrapper, or config already satisfies the rule, and confirm the element is really interactive or really content.
    Drop anything you cannot point to on a line.

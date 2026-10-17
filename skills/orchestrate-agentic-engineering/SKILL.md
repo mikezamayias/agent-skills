@@ -63,6 +63,7 @@ Do not implement before research can still invalidate product, scope, or archite
 ### 3. Run judgment loop
 
 - Present findings as diagrams, prototypes, comparisons, or short decision records.
+  Local rule: draw a diagram only when the reader learns more from it than from a paragraph or a 3-column table.
 - Let captain accept, reject, or edit assumptions.
 - Verify cost, platform, and vendor claims against primary evidence.
 - Remove hidden scope: premature environments, audit systems, exports, enterprise controls, and imagined scale.
@@ -178,7 +179,9 @@ For a repeatable recipe per project, use `create-verification-skill` and keep it
 - Architecture reviewed for security and overengineering.
 - Exact source and evidence captured.
 - A model-reported bug is a claim until a repro test fails on the assertion that encodes it. A repro failing for another reason means the test is wrong. A passing repro rejects the finding.
-- Evidence survives cleanup and is checked at its named location after teardown.
+  Local rule: confirm the run report lists the repro as executed, because an excluded or unselected test proves nothing either way.
+- Evidence survives cleanup and every later run, and is checked at its named location after teardown.
+  Local rule: a harness that reuses one results directory overwrites the proof on the next run, so name a per-proof output directory or copy the artifacts out first.
 
 ## Context and Handoff Discipline
 
@@ -218,6 +221,8 @@ Authority still needed:
 
 - Give each helper disjoint files, directories, or design pages.
   Two helpers editing one file at once break the checks.
+  Disjoint files are not enough for Xcode work, because two helpers building one checkout into the same DerivedData collide.
+  Give each its own `-derivedDataPath` or its own worktree.
 - Helpers never commit.
   The orchestrator reviews the diff, runs the checks against the final state, and commits.
 - Brief each helper with the rulings verbatim, the files it owns, the files it must not touch, and the report shape, including "choices no ruling settled".
@@ -277,6 +282,8 @@ A charter is one area, one posture and one sentence naming the start route and t
 Plan 5 to 10 charters with postures such as first-time user, numbers and copy, edge input, state and error paths.
 An edge-input charter names its exact input matrix, or it spends its budget before judging a result.
 Run charters four at a time, each with its own output directory and its own seeded disposable account, because explorers sharing an account report each other's edits as bugs.
+Local rule: read each run's step log before triage, because an exit code does not prove the charter ran.
+A run that aborted, executed no step, or surveyed the app instead of its charter did not cover that charter, whatever its exit code, and goes under areas no charter reached.
 Against a deployed site that others use, charters are read-only: no signups, submissions, injection-shaped URLs or request loops.
 Sort every finding into explorer artifact, environment, design, fixture or candidate by reading the source, and write repro tests only for candidates.
 Report confirmed bugs with their failing repro first, then unverified risks, then rejected findings grouped by reason, then areas no charter reached.
