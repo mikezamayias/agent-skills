@@ -122,12 +122,16 @@ Constraints:
 - One primary CTA on the page; secondary CTAs allowed but visually subordinate.
 - Real copy only. No "Lorem ipsum", no placeholders.
 - No marketing puffery: no "transformative", "revolutionary", "the best", "simplify your life", "unlock the power of". Write headlines in plain, specific language.
+- No AI-copy tells: no "where X meets Y", no "not just X but Y", no "scroll to explore", and no "hover" in copy a touch visitor reads.
+- Avoid unless the concept demands it, and then say why in INDEX.md: a centered hero over a gradient blob, purple-blue gradients, cream with terracotta serif editorial, acid green on black, glassmorphism, an eyebrow label over every heading, and 01/02/03 numbering on content that is not a sequence.
 - Light mode default; dark mode via `prefers-color-scheme: dark` if the philosophy fits.
 - Screenshots: <relative paths from LANDING_BRIEF, or "none, design around it">
 - Accessibility: semantic landmarks, alt text, color contrast WCAG AA.
 - Concept: one sentence naming what this page is about that only this app could own, anchored in a real fact from the brief. If the sentence still works with another app's name swapped in, it is a style, not a concept. Carry it through every section, not just the hero.
 - Type: body 16-18px with 1.45-1.6 line height, 45-70 characters per line, tabular figures for numbers, a non-breaking space between a number and its unit.
 - Motion: animate only transform, opacity and clip-path. Under `prefers-reduced-motion`, all content must be visible with no scroll-driven animation.
+- Autoplaying loops: motion that starts by itself, lasts more than 5 seconds and runs beside other content needs a control to pause, stop or hide it (WCAG 2.2 criterion 2.2.2, Level A), unless the motion is essential. Gating it behind `prefers-reduced-motion` does not satisfy 2.2.2. Content that updates automatically has no 5 second exception, and a control for the update frequency also satisfies it.
+- Interaction: primary targets (CTA, nav, screenshot links) answer with one movement treatment per role (label roll, underline draw, fill, arrow nudge), never only a color change. Legal and social links may only change color. Put every :hover inside @media (hover: hover), give the same state to :focus-visible, and under prefers-reduced-motion keep a visible color or underline state instead of the movement.
 - No em or en dashes in copy. Exactly one <h1>.
 - The top third says what the app is, who it is for and what to do next. The last CTA on the page uses the same label as the first. A logo row holds at most 6 logos. Every metric carries a visible source line.
 
@@ -136,6 +140,10 @@ Return only the complete HTML file. No commentary.
 
 The last constraint line is adapted from the `taste-landing-page` skill in madebymustafa/design-taste (MIT, read at commit `c4a6bff`, 2026-10-16).
 Those are that skill's own rules, not findings from conversion research, so treat them as defaults and drop one when a version's philosophy needs to.
+
+The copy tells, the avoid list and the movement-per-role rule in the template are adapted from juliobsz/skills `/awwwards` (MIT, read at commit `461fab3`, 2026-10-16), where the audit script flags the copy tells and the skill lists the avoid list.
+The hover gating and reduced-motion lines rest on the CSS Media Queries Level 5 `hover` feature and MDN `prefers-reduced-motion`, not on that skill.
+`hover: hover` means the primary pointing device can easily hover, and the query tests only the primary input.
 
 When another model returns the page, save only the HTML and strip any commentary around it.
 
@@ -150,7 +158,9 @@ For each generated HTML, measure in a real browser (`agent-browser`, the T3 prev
 - [ ] Keyboard: every focus stop visible, tab order follows the page, the CTA reachable.
 - [ ] Reduced motion: emulate `prefers-reduced-motion: reduce` and confirm no text stays hidden.
 - [ ] Throttled mobile (4× CPU, slow 4G): Largest Contentful Paint under 2.5s and Cumulative Layout Shift under 0.05.
-- [ ] Text audit: no "Lorem ipsum", `TODO` outside the CTA, or bracketed placeholders; no repeated sentences; exactly one `<h1>`; every image has `alt` and every link a name.
+- [ ] Text audit: no "Lorem ipsum", `TODO` outside the CTA, or bracketed placeholders; no repeated sentences; none of the copy tells "where X meets Y", "not just X but Y" or "scroll to explore"; exactly one `<h1>`; every image has `alt` and every link a name.
+- [ ] Hover: capture each primary target at rest and under the pointer at the same clip. Fail any primary target with no visible change, and read every color-only change by eye. A full fill or inversion passes, and a text-color swap on a CTA or nav link does not.
+- [ ] Idle: leave the pointer still for five seconds on desktop. If nothing that carries the concept moves, write "still by decision" in INDEX.md, or add a small idle motion on the concept itself, never a decorative floating shape. Any idle loop that runs more than 5 seconds beside other content follows the autoplaying loops rule above.
 - [ ] Primary CTA is wired to a real URL, or to `# TODO: …` clearly marked if not yet known.
 - [ ] No external script tags from untrusted CDNs (audit `<script src=`).
 - [ ] Search and AI-answer ship checks from [references/seo-and-ai-answers.md](references/seo-and-ai-answers.md) pass for the chosen version, which also holds the recurring SEO loop.
@@ -159,9 +169,15 @@ Record any check you could not run as not verified in `INDEX.md`, rather than pa
 If no browser tool is available, open the file in a local browser and ask the human to check what you cannot measure.
 
 Then run a fresh critic: a new subagent that sees only the version's mobile and desktop screenshots and the check results, not the prompt or this conversation.
-It writes one sentence on what the page is about, scores Design, Usability, Creativity and Content from 1 to 10, and lists the top 3 fixes.
+It writes one sentence on what the page is about, then scores Design, Usability, Creativity and Content from 1 to 10, starting each at 6 and citing a screenshot or check result for every point above it, and lists the top 3 fixes.
+Give it the rest and hover screenshot pairs from the Hover check too.
+Put the screenshots before the text in its message, because Anthropic's vision docs say Claude works best when images come before text, and describe image-then-text as a preference since other orders still perform well.
+Launch a new critic after every revision, so it never anchors on an earlier score.
+If its sentence does not match the version's Concept line, fix the page, not the critic.
+Dispute a score only by naming the screenshot it misread.
 Put its scores and the sentence in the `INDEX.md` Critic column. The human still picks the winner.
-Thresholds and the critic method are adapted from juliobsz/skills `/awwwards` (MIT, read 2026-10-12).
+Before recording the verdict, cut the weakest decorative effect on each version. Hover, press and focus feedback are not decoration and stay.
+Thresholds and the critic method are adapted from juliobsz/skills `/awwwards` (MIT, read at commit `461fab3`, 2026-10-16).
 
 If a version fails, revise it with a targeted fix, using the same model or tool that produced it.
 If it still cannot be made to work, mark it `Stuck` in `INDEX.md` and move on.
@@ -198,4 +214,4 @@ YYYY-MM-DD HH:MM - <project> - 5 versions (<model> x N, ...)
 
 - `app-graphics` generates the icon and OG card this landing page references.
 - `app-screenshots` generates the framed screenshots this landing page embeds.
-- For an "AI is building this" reveal on a feature card, read [references/ai-generation-effect.md](references/ai-generation-effect.md) first. Never on the hero.
+- For an "AI is building this" reveal on a feature card, read [references/ai-generation-effect.md](references/ai-generation-effect.md) first. Never on the hero, unless a throttled lab run with the effect on the hero element keeps Largest Contentful Paint at or under 2.5 s.
