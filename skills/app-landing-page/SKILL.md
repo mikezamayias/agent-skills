@@ -214,4 +214,5 @@ YYYY-MM-DD HH:MM - <project> - 5 versions (<model> x N, ...)
 
 - `app-graphics` generates the icon and OG card this landing page references.
 - `app-screenshots` generates the framed screenshots this landing page embeds.
+- For a "how it works" figure, use the `anatomy` skill, at most one per page and only when the page must explain a mechanism, with every fact taken from the brief and never invented.
 - For an "AI is building this" reveal on a feature card, read [references/ai-generation-effect.md](references/ai-generation-effect.md) first. Never on the hero, unless a throttled lab run with the effect on the hero element keeps Largest Contentful Paint at or under 2.5 s.
