@@ -1,7 +1,7 @@
 ---
 name: orchestrate-agentic-engineering
 description: >-
-  Coordinate non-trivial software delivery through one human captain, one orchestrator and bounded specialist agents. Use for greenfield apps, cross-stack features, migrations or complex projects that need parallel agents. It runs from discovery to real end-to-end proof while reducing the human's context switching.
+  Coordinates non-trivial software delivery through one human captain, one orchestrator and bounded specialist agents. Use for greenfield apps, cross-stack features, migrations or complex projects that need parallel agents. It runs from discovery to real end-to-end proof while reducing the human's context switching.
 ---
 
 # Orchestrate Agentic Engineering

@@ -1,7 +1,7 @@
 ---
 name: paywall-transparency
 description: >-
-  Use when designing or auditing in-app paywalls, trial flows, or subscription onboarding. Codifies the transparency-wins pattern, where explicit pre-paywall screens raise trial-to-paid conversion.
+  Codifies the transparency-wins pattern, where explicit pre-paywall screens raise trial-to-paid conversion. Use when designing or auditing in-app paywalls, trial flows, or subscription onboarding.
 allowed-tools:
   - Read
   - Edit

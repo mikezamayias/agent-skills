@@ -1,7 +1,7 @@
 ---
 name: flutter-clean-architecture-tdd
 description: >-
-  Build a Flutter feature test-first across its domain, data and presentation packages, one failing test at a time. Use when implementing, planning or reviewing a Flutter feature with TDD, or checking that each layer has tests. Also use when moving a Flutter app's local storage off Hive with tests first.
+  Builds a Flutter feature test-first across its domain, data and presentation packages, one failing test at a time. Use when implementing, planning or reviewing a Flutter feature with TDD, or checking that each layer has tests. Also use when moving a Flutter app's local storage off Hive with tests first.
 metadata:
   docs-verified: "2026-10-09"
 ---

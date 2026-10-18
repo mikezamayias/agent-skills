@@ -1,7 +1,7 @@
 ---
 name: store-launch-mastermind
 description: >-
-  Orchestrate end-to-end public go-live readiness for App Store and Google Play apps, ending in a go or no-go decision. Use when preparing a Flutter or mobile app for public launch or running App Store or Play Store health checks. Also covers assets, metadata, privacy and legal docs, ratings, Data safety, billing, TestFlight and staged rollouts.
+  Orchestrates end-to-end public go-live readiness for App Store and Google Play apps, ending in a go or no-go decision. Use when preparing a Flutter or mobile app for public launch or running App Store or Play Store health checks. Also covers assets, metadata, privacy and legal docs, ratings, Data safety, billing, TestFlight and staged rollouts.
 metadata:
   docs-verified: "2026-09-28"
 ---

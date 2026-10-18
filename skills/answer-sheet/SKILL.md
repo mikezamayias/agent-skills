@@ -1,7 +1,7 @@
 ---
 name: answer-sheet
 description: >-
-  Put open questions for the user on one self-contained HTML page, with answers saved to a dated Markdown file. Use when more than a handful of questions, decisions or sign-offs are waiting instead of a coded list in chat. Also use when the decision-maker cannot keep up with codes, or a review round needs screenshots per question.
+  Puts open questions for the user on one self-contained HTML page, with answers saved to a dated Markdown file. Use when more than a handful of questions, decisions or sign-offs are waiting instead of a coded list in chat. Also use when the decision-maker cannot keep up with codes, or a review round needs screenshots per question.
 metadata:
   provenance: local
 ---

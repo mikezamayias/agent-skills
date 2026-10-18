@@ -1,7 +1,7 @@
 ---
 name: app-graphics
 description: >-
-  Generate a complete store and marketing graphics package for a Flutter or web app from its local files. Covers store icons, feature graphic, social banners, press kit hero and App Store header and search creative assets. Use when preparing store or launch artwork, building app icons, rebranding an icon or making an OG card.
+  Generates a complete store and marketing graphics package for a Flutter or web app from its local files. Covers store icons, feature graphic, social banners, press kit hero and App Store header and search creative assets. Use when preparing store or launch artwork, building app icons, rebranding an icon or making an OG card.
 allowed-tools:
   - Read
   - Write

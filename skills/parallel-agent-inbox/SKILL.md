@@ -1,7 +1,7 @@
 ---
 name: parallel-agent-inbox
 description: >-
-  Run many coding-agent threads as an inbox: fire problems, isolate work, and only attend when done or blocked. Use when juggling parallel agent tasks, derisking merges, or keeping work going after the laptop closes. Also use when threads pile up, agents collide on the same checkout, or review waits dominate throughput.
+  Runs many coding-agent threads as an inbox: fires problems, isolates work, and only attends when done or blocked. Use when juggling parallel agent tasks, derisking merges, or keeping work going after the laptop closes. Also use when threads pile up, agents collide on the same checkout, or review waits dominate throughput.
 metadata:
   provenance: local
 ---

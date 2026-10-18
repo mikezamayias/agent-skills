@@ -1,7 +1,7 @@
 ---
 name: gplay-console
 description: >-
-  Automate and preflight Google Play Console releases for Android and Flutter apps. Use when publishing to Google Play, uploading AABs, managing tracks and staged rollouts or syncing store listings. Also covers Data safety, Play Billing products, reviews, Android vitals and a Play counterpart to asc workflows.
+  Automates and preflights Google Play Console releases for Android and Flutter apps. Use when publishing to Google Play, uploading AABs, managing tracks and staged rollouts or syncing store listings. Also covers Data safety, Play Billing products, reviews, Android vitals and a Play counterpart to asc workflows.
 ---
 
 # Google Play Console

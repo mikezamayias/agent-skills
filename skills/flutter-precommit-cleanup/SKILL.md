@@ -1,7 +1,7 @@
 ---
 name: flutter-precommit-cleanup
 description: >-
-  Run formatting, analysis and codegen before committing in a Flutter or Dart repository, then squash WIP commits. Use before any commit or PR in a Flutter project, or when asked to tidy a branch before review.
+  Runs formatting, analysis and codegen before committing in a Flutter or Dart repository, then squashes WIP commits. Use before any commit or PR in a Flutter project, or when asked to tidy a branch before review.
 metadata:
   docs-verified: "2026-09-28"
 ---

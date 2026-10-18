@@ -1,7 +1,7 @@
 ---
 name: market-pulse
 description: >-
-  Run a market analysis for an app or product: competitor audit, market sizing, pricing benchmarks and MAU forecasts. Also produces revenue projections, ROI estimates and go-to-market recommendations. Use for market research, competitive or landscape analysis, revenue projections or app launch strategy.
+  Runs a market analysis for an app or product: competitor audit, market sizing, pricing benchmarks and MAU forecasts. Also produces revenue projections, ROI estimates and go-to-market recommendations. Use for market research, competitive or landscape analysis, revenue projections or app launch strategy.
 ---
 
 # Market Pulse — App Market Analysis

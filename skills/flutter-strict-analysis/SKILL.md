@@ -1,7 +1,7 @@
 ---
 name: flutter-strict-analysis
 description: >-
-  Set up a strict Flutter analysis policy with a --fatal-infos CI gate, not just dart analyze. Use when setting up a new Flutter repo, when flutter_lints feels too loose or CI analyze is noisy. Also use when a PR should not compile with missing returns.
+  Sets up a strict Flutter analysis policy with a --fatal-infos CI gate, not just dart analyze. Use when setting up a new Flutter repo, when flutter_lints feels too loose or CI analyze is noisy. Also use when a PR should not compile with missing returns.
 metadata:
   docs-verified: "2026-09-28"
 ---

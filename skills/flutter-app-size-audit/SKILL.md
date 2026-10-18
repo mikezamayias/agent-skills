@@ -1,7 +1,7 @@
 ---
 name: flutter-app-size-audit
 description: >-
-  Cut Flutter app install size by 30-60% by attacking build defaults, asset formats, and shrinking flags. Use when install conversion is dropping, when reviewers cite size, or before any major release.
+  Cuts Flutter app install size by 30-60% by attacking build defaults, asset formats, and shrinking flags. Use when install conversion is dropping, when reviewers cite size, or before any major release.
 metadata:
   docs-verified: "2026-09-28"
 ---

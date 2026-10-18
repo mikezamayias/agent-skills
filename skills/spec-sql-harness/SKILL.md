@@ -1,7 +1,7 @@
 ---
 name: spec-sql-harness
 description: >-
-  Prove SQL from design documents such as SCHEMA.md by loading it into the production Postgres image with smoke tests. Use when a spec repository defines a database in Markdown, or when a schema, migration, RLS policy or grant changes. Also use when asked whether the schema actually works.
+  Proves SQL from design documents such as SCHEMA.md by loading it into the production Postgres image with smoke tests. Use when a spec repository defines a database in Markdown, or when a schema, migration, RLS policy or grant changes. Also use when asked whether the schema actually works.
 metadata:
   provenance: local
 ---

@@ -1,7 +1,7 @@
 ---
 name: app-landing-page
 description: >-
-  Generate five distinct landing page versions for an app, each a complete deployable single-file HTML. Use when creating or refreshing an app's landing page. Each version follows a different design philosophy rather than five drafts of the same page.
+  Generates five distinct landing page versions for an app, each a complete deployable single-file HTML. Use when creating or refreshing an app's landing page. Each version follows a different design philosophy rather than five drafts of the same page.
 allowed-tools:
   - Read
   - Write

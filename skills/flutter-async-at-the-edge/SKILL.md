@@ -1,7 +1,7 @@
 ---
 name: flutter-async-at-the-edge
 description: >-
-  Keep Flutter async work at a Service or Repository edge so views render synchronous sealed state. Use whenever a Flutter screen loads network, Firestore, stream or sensor data. Use for FutureBuilder or StreamBuilder in build(), refetching rebuilds, spinner storms or tests stuck on pumpAndSettle.
+  Keeps Flutter async work at a Service or Repository edge so views render synchronous sealed state. Use whenever a Flutter screen loads network, Firestore, stream or sensor data. Use for FutureBuilder or StreamBuilder in build(), refetching rebuilds, spinner storms or tests stuck on pumpAndSettle.
 metadata:
   docs-verified: "2026-09-28"
 ---

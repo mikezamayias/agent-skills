@@ -1,7 +1,7 @@
 ---
 name: launch-readiness
 description: >-
-  Run Flutter and mobile launch readiness checks before App Store or Google Play go-live, scored as SHIP, HOLD or BLOCK. Covers store compliance, privacy, legal, data safety, assets, metadata, testing, security, accessibility, performance. Use for /launch-readiness or a public release preflight.
+  Runs Flutter and mobile launch readiness checks before App Store or Google Play go-live, scored SHIP, HOLD or BLOCK. Covers store compliance, privacy, legal, data safety, assets, metadata, testing, security, accessibility, performance. Use for /launch-readiness or a public release preflight.
 metadata:
   docs-verified: "2026-09-28"
 ---

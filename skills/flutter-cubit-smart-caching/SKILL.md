@@ -1,7 +1,7 @@
 ---
 name: flutter-cubit-smart-caching
 description: >-
-  Add time-based smart caching to Flutter BlocCubit data cubits to prevent unnecessary reloads on navigation. Use when adding new cubits, fixing redundant API calls, or optimizing navigation performance in Flutter apps.
+  Adds time-based smart caching to Flutter BlocCubit data cubits to prevent unnecessary reloads on navigation. Use when adding new cubits, fixing redundant API calls, or optimizing navigation performance in Flutter apps.
 metadata:
   docs-verified: "2026-09-28"
   version: 1.0.0

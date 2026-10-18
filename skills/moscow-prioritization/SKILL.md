@@ -1,7 +1,7 @@
 ---
 name: moscow-prioritization
 description: >-
-  Cut a noisy backlog with MoSCoW (Must / Should / Could / Won't). Use when the backlog has more than 30 items, when standups feel pointless, or before any sprint kickoff.
+  Cuts a noisy backlog with MoSCoW (Must / Should / Could / Won't). Use when the backlog has more than 30 items, when standups feel pointless, or before any sprint kickoff.
 ---
 
 # MoSCoW Prioritization

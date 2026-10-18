@@ -1,7 +1,7 @@
 ---
 name: dart-tool-scripts
 description: >-
-  Move growing shell logic into `tool/*.dart` scripts run with `dart run` instead of Bash. Use when a GitHub Actions step or repo bootstrap grows branches, loops, JSON, test sharding or macOS versus Linux sed.
+  Moves growing shell logic into `tool/*.dart` scripts run with `dart run` instead of Bash. Use when a GitHub Actions step or repo bootstrap grows branches, loops, JSON, test sharding or macOS versus Linux sed.
 metadata:
   docs-verified: "2026-09-28"
 ---

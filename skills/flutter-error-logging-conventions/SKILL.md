@@ -1,7 +1,7 @@
 ---
 name: flutter-error-logging-conventions
 description: >-
-  Enforce consistent error handling and logging patterns in Flutter apps. Use when reviewing catch blocks, adding error handling, or fixing silent failures. Prevents the catch (_) anti-pattern.
+  Enforces consistent error handling and logging patterns in Flutter apps. Use when reviewing catch blocks, adding error handling, or fixing silent failures. Prevents the catch (_) anti-pattern.
 metadata:
   docs-verified: "2026-09-28"
   version: 1.0.0

@@ -1,7 +1,7 @@
 ---
 name: break-ui
 description: >-
-  Stress-test a Flutter screen or widget with worst-case data, text scale and RTL, then report each break with a fix. Use when asked to break, stress-test or find edge cases in UI, or before shipping a list or form built on demo data. Also use for Nuxt, Vue, Svelte or SwiftUI screens, and on "try the worst case".
+  Stress-tests a Flutter screen or widget with worst-case data, text scale and RTL, then reports each break with a fix. Use when asked to break, stress-test or find edge cases in UI, or before shipping a list or form built on demo data. Also use for Nuxt, Vue, Svelte or SwiftUI screens, and on "try the worst case".
 metadata:
   fork-status: adapted
   upstream: https://github.com/emilkowalski/skills/tree/main/skills/break-ui

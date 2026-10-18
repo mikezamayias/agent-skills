@@ -1,7 +1,7 @@
 ---
 name: flutter-shorebird-ota
 description: >-
-  Ship App Store-safe Dart over-the-air patches with Shorebird after a store binary is out. Use for Dart-only hotfixes that should not wait for App Review, or to add Shorebird to GitHub Actions IPA or AAB builds. It cannot patch native code, assets or plugin native changes.
+  Ships App Store-safe Dart over-the-air patches with Shorebird after a store binary is out. Use for Dart-only hotfixes that should not wait for App Review, or to add Shorebird to GitHub Actions IPA or AAB builds. It cannot patch native code, assets or plugin native changes.
 metadata:
   docs-verified: "2026-09-28"
 ---

@@ -1,7 +1,7 @@
 ---
 name: flutter-stream-architecture
 description: >-
-  Design Flutter/Bloc stream layers that scale. Use when seeing duplicate API calls, redundant rebuilds, or when reviewing repository/cubit boundaries.
+  Designs Flutter/Bloc stream layers that scale. Use when seeing duplicate API calls, redundant rebuilds, or when reviewing repository/cubit boundaries.
 metadata:
   docs-verified: "2026-09-28"
 ---

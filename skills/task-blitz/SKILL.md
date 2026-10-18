@@ -1,7 +1,7 @@
 ---
 name: task-blitz
 description: >-
-  Fetch open tasks from Notion, group them by independence and run them with parallel sub-agents that plan before coding. Use when asked to work through open tasks, tackle the backlog, blitz tasks or execute a project action plan.
+  Fetches open Notion tasks, groups them by independence and runs them with parallel sub-agents that plan before coding. Use when asked to work through open tasks, tackle the backlog, blitz tasks or execute a project action plan.
 ---
 
 # task-blitz

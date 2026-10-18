@@ -1,7 +1,7 @@
 ---
 name: pr-preview-shipping
 description: >-
-  Make every PR produce an installable or clickable preview within minutes, per stack. Use when reviewing CI/CD for mobile, web or API projects, or when someone says to pull the branch and run it. Based on Alberto Moedano (Code with Beto).
+  Makes every PR produce an installable or clickable preview within minutes, per stack. Use when reviewing CI/CD for mobile, web or API projects, or when someone says to pull the branch and run it. Based on Alberto Moedano (Code with Beto).
 allowed-tools:
   - Read
   - Edit

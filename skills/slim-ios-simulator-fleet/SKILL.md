@@ -1,7 +1,7 @@
 ---
 name: slim-ios-simulator-fleet
 description: >-
-  Use simslim to disable unused daemons inside iOS, tvOS, watchOS and visionOS simulators so more of them fit on one Mac. Use when booting more than a couple of simulators or when GitHub Actions macOS jobs run out of memory. Also use when an agent needs one simulator per task.
+  Uses simslim to disable unused daemons inside iOS, tvOS, watchOS and visionOS simulators so more fit on one Mac. Use when booting more than a couple of simulators or when GitHub Actions macOS jobs run out of memory. Also use when an agent needs one simulator per task.
 metadata:
   docs-verified: "2026-10-17"
 ---

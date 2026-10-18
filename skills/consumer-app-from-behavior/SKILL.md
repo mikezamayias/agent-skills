@@ -1,7 +1,7 @@
 ---
 name: consumer-app-from-behavior
 description: >-
-  Turn observed consumer behavior into a focused mobile app, from trend mining and teardowns to core loop and build spec. Use when looking for a consumer (B2C) app idea or deciding whether a trend is worth building on. Also use to define an app's core loop, turn references into an MVP spec, or decide whether a v1 is ready to ship.
+  Turns observed consumer behavior into a mobile app, from trend mining and teardowns to core loop and build spec. Use when looking for a consumer (B2C) app idea or deciding whether a trend is worth building on. Also use to define an app's core loop, turn references into an MVP spec, or decide whether a v1 is ready to ship.
 ---
 
 # Consumer App From Behavior

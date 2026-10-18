@@ -1,7 +1,7 @@
 ---
 name: flutter-observability-instrumentation
 description: >-
-  Implement type-safe analytics, tracing, metrics and breadcrumbs in Flutter apps with Sentry and PostHog. Use when adding observability to a new project, instrumenting features, or auditing telemetry for magic strings.
+  Implements type-safe analytics, tracing, metrics and breadcrumbs in Flutter apps with Sentry and PostHog. Use when adding observability to a new project, instrumenting features, or auditing telemetry for magic strings.
 metadata:
   docs-verified: "2026-09-28"
   version: 1.0.0

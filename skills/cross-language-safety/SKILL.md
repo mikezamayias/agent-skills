@@ -1,7 +1,7 @@
 ---
 name: cross-language-safety
 description: >-
-  Prevent cross-language type mismatches in full-stack apps (Dart/Flutter ↔ JSON ↔ PostgreSQL/PostgREST/Deno). Use when building or auditing APIs, DTOs, sync engines, or any server↔client data flow. Also use when setting up observability (logging, Sentry, analytics) for API communication layers.
+  Prevents cross-language type mismatches in full-stack apps (Dart/Flutter ↔ JSON ↔ PostgreSQL/PostgREST/Deno). Use when building or auditing APIs, DTOs, sync engines, or any server↔client data flow. Also use when setting up observability (logging, Sentry, analytics) for API communication layers.
 metadata:
   docs-verified: "2026-09-28"
 ---

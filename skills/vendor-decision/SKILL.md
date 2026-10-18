@@ -1,7 +1,7 @@
 ---
 name: vendor-decision
 description: >-
-  Choose or re-check a backend, API or service from live evidence, mapping its competitors and gatekeepers first. Use when picking a stack or provider, when a feature depends on third-party platform data, or auditing a provider. Also use when asked for alternatives to a provider or for a cost estimate.
+  Chooses or re-checks a backend, API or service from live evidence, mapping its competitors and gatekeepers first. Use when picking a stack or provider, when a feature depends on third-party platform data, or auditing a provider. Also use when asked for alternatives to a provider or for a cost estimate.
 metadata:
   provenance: local
 ---

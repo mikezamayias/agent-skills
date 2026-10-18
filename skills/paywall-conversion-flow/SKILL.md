@@ -1,7 +1,7 @@
 ---
 name: paywall-conversion-flow
 description: >-
-  Design value-first onboarding and paywalls that convert in freemium iOS or Flutter apps. Use when adding or auditing IAP, RevenueCat paywalls, free trial flows or onboarding screens.
+  Designs value-first onboarding and paywalls that convert in freemium iOS or Flutter apps. Use when adding or auditing IAP, RevenueCat paywalls, free trial flows or onboarding screens.
 metadata:
   docs-verified: "2026-09-28"
 ---

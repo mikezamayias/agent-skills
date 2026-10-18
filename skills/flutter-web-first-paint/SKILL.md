@@ -1,7 +1,7 @@
 ---
 name: flutter-web-first-paint
 description: >-
-  Speed up Flutter web first paint with an HTML splash, deferred imports, first-screen preload and Wasm, not hosting. Use when deploying Flutter web (especially to Firebase Hosting) or when first load shows a blank screen. Also use when the CanvasKit download dominates time to interactive or when enabling Wasm.
+  Speeds up Flutter web first paint with an HTML splash, deferred imports, first-screen preload and Wasm, not hosting. Use when deploying Flutter web (especially to Firebase Hosting) or when first load shows a blank screen. Also use when the CanvasKit download dominates time to interactive or when enabling Wasm.
 metadata:
   docs-verified: "2026-09-28"
 ---

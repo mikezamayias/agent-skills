@@ -1,7 +1,7 @@
 ---
 name: web-interface-review
 description: >-
-  Review web UI code (HTML/CSS, Vue/Nuxt, Svelte) for interface correctness against live Vercel rules and mobile fixes. Use when asked to review a page, component or diff for accessibility, focus, forms, keyboard, dark mode or i18n issues. Also use when a web app or PWA feels wrong on a phone, or before shipping a Nuxt, Svelte or landing-page UI change.
+  Reviews web UI code (HTML/CSS, Vue/Nuxt, Svelte) for interface correctness against live Vercel rules and mobile fixes. Use when asked to review a page, component or diff for accessibility, focus, forms, keyboard, dark mode or i18n issues. Also use when a web app or PWA feels wrong on a phone, or before shipping a Nuxt, Svelte or landing-page UI change.
 license: MIT
 metadata:
   fork-status: adapted

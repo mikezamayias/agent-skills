@@ -1,7 +1,7 @@
 ---
 name: figma-review-loop
 description: >-
-  Run a Figma design review round: read comments via the REST API, record rulings, redesign frames and sweep instances. Use when asked about Figma comments ("are all Figma comments resolved?") or at session start on a project with Figma. Also use after a ruling that changes a screen, or before calling a design pass done.
+  Runs a Figma design review round: reads comments via REST API, records rulings, redesigns frames and sweeps instances. Use when asked about Figma comments ("are all Figma comments resolved?") or at session start on a project with Figma. Also use after a ruling that changes a screen, or before calling a design pass done.
 metadata:
   provenance: local
 ---

@@ -1,7 +1,7 @@
 ---
 name: launch-watch
 description: >-
-  Prove that launch telemetry arrives, then watch analytics, crashes, email and feedback for the first three weeks. Use days before an app launch or right after go-live to set up daily triage and a weekly evidence-backed fix list. Also use when activation drops, crashes spike or feedback piles up during a launch window.
+  Proves that launch telemetry arrives, then watches analytics, crashes, email and feedback for the first three weeks. Use days before an app launch or right after go-live to set up daily triage and a weekly evidence-backed fix list. Also use when activation drops, crashes spike or feedback piles up during a launch window.
 metadata:
   provenance: local
 ---

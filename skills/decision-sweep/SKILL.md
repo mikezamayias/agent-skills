@@ -1,7 +1,7 @@
 ---
 name: decision-sweep
 description: >-
-  Keep project documents true to decisions: log each ruling once, update every dependent file, run checks and commit. Use when the user answers questions, rules on a design or policy, or says "keep the latest notes as truth". Also use at session start to catch new answers, and when documents contradict each other.
+  Keeps documents true to decisions: logs each ruling once, updates every dependent file, runs checks and commits. Use when the user answers questions, rules on a design or policy, or says "keep the latest notes as truth". Also use at session start to catch new answers, and when documents contradict each other.
 metadata:
   provenance: local
 ---

@@ -1,7 +1,7 @@
 ---
 name: techdebt
 description: >-
-  Scan the current project for duplicate code, dead code, TODOs, unused imports and inconsistent patterns. It writes a prioritized report to `tasks/techdebt.md`. Use at session end or when the user says techdebt, tech debt, cleanup, dead code or duplicated code.
+  Scans the current project for duplicate code, dead code, TODOs, unused imports and inconsistent patterns. It writes a prioritized report to `tasks/techdebt.md`. Use at session end or when the user says techdebt, tech debt, cleanup, dead code or duplicated code.
 ---
 
 # Tech Debt Audit

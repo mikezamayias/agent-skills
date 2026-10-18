@@ -1,7 +1,7 @@
 ---
 name: forced-pivot-15-day
 description: >-
-  Sequence a 1 to 3 week pivot forced by an external constraint so it ships before the launch is killed. Use when an App Store guideline change, RevenueCat policy, regulatory deadline or paywall rejection forces a pivot. Based on Emil Nilimaa (Minglify), whose 15-day rewrite followed Apple guideline 1.2.
+  Sequences a 1 to 3 week pivot forced by an external constraint so it ships before the launch is killed. Use when an App Store guideline change, RevenueCat policy, regulatory deadline or paywall rejection forces a pivot. Based on Emil Nilimaa (Minglify), whose 15-day rewrite followed Apple guideline 1.2.
 allowed-tools:
   - Read
   - Write

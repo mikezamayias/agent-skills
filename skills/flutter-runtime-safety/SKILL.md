@@ -1,7 +1,7 @@
 ---
 name: flutter-runtime-safety
 description: >-
-  Catch the errors that escape try-catch and prevent stale-data crashes. Use when wiring crash reporting, hardening release builds, or debugging "impossible" production crashes.
+  Catches the errors that escape try-catch and prevents stale-data crashes. Use when wiring crash reporting, hardening release builds, or debugging "impossible" production crashes.
 metadata:
   docs-verified: "2026-09-28"
 ---

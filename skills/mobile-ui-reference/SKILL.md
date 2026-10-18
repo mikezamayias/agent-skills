@@ -1,7 +1,7 @@
 ---
 name: mobile-ui-reference
 description: >-
-  Design or restyle a Flutter screen from 5 to 8 shipped references, a written spec, Flutter code first and Figma last. Use for onboarding, paywall, settings, empty state or permission screens instead of model-generated UI. Also use when a Flutter screen looks Material on iOS, or when dropping running-app shots into Figma.
+  Designs or restyles a Flutter screen from 5 to 8 shipped references, a written spec, Flutter code first, Figma last. Use for onboarding, paywall, settings, empty state or permission screens instead of model-generated UI. Also use when a Flutter screen looks Material on iOS, or when dropping running-app shots into Figma.
 metadata:
   docs-verified: "2026-09-28"
 ---

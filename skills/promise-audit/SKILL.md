@@ -1,7 +1,7 @@
 ---
 name: promise-audit
 description: >-
-  Trace every promise in a privacy policy, terms, store privacy label or marketing claim to the mechanism behind it. Use when writing, signing off or publishing such a text, or when a decision changes data handling or processors. Also use when asked to document the mechanism behind each promise, or to audit drift in a published policy.
+  Traces every promise in a privacy policy, terms, store privacy label or marketing claim to the mechanism behind it. Use when writing, signing off or publishing such a text, or when a decision changes data handling or processors. Also use when asked to document the mechanism behind each promise, or to audit drift in a published policy.
 metadata:
   provenance: local
 ---

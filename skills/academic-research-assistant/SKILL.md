@@ -1,7 +1,7 @@
 ---
 name: academic-research-assistant
 description: >-
-  Synthesize a set of research papers into one literature review of core claims, themes, debates and consensus. Use when asked to analyze, summarize or map several academic papers, articles, PDFs or research documents together.
+  Synthesizes a set of research papers into one literature review of core claims, themes, debates and consensus. Use when asked to analyze, summarize or map several academic papers, articles, PDFs or research documents together.
 metadata:
   openclaw:
     emoji: 🎓

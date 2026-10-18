@@ -1,7 +1,7 @@
 ---
 name: proactive-crash-repair-loop
 description: >-
-  Turn production crash telemetry into tested, human-reviewed fix PRs through a scheduled Sentry-to-Codex workflow. Use when designing or running proactive crash triage, ranking regressions or choosing incidents safe for agent patches. Also use when opening evidence-backed fix PRs or verifying fixes after deployment.
+  Turns production crash telemetry into tested, human-reviewed fix PRs through a scheduled Sentry-to-Codex workflow. Use when designing or running proactive crash triage, ranking regressions or choosing incidents safe for agent patches. Also use when opening evidence-backed fix PRs or verifying fixes after deployment.
 metadata:
   docs-verified: "2026-09-28"
 ---

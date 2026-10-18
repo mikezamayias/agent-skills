@@ -1,7 +1,7 @@
 ---
 name: flutter-paywall-and-review-timing
 description: >-
-  Time paywalls and App Store review prompts in paid Flutter or SwiftUI apps, and never bind requestReview to a button. Use when wiring RevenueCat or StoreKit, adding a review prompt or designing onboarding and paywall cadence. Also use when copying a paywall from a screenshot gallery.
+  Times paywalls and App Store review prompts in paid Flutter or SwiftUI apps and never binds requestReview to a button. Use when wiring RevenueCat or StoreKit, adding a review prompt or designing onboarding and paywall cadence. Also use when copying a paywall from a screenshot gallery.
 metadata:
   docs-verified: "2026-09-28"
 ---

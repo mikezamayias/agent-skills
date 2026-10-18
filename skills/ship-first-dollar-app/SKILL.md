@@ -1,7 +1,7 @@
 ---
 name: ship-first-dollar-app
 description: >-
-  Validate and monetize solo-built apps: prove paid pain, scope a one-feature MVP, instrument revenue and ship fast. Use when evaluating an app idea, defining a first-revenue MVP, planning a launch sprint or auditing funnel evidence. Also use when deciding what to build, market, stop or scale after launch.
+  Validates and monetizes solo-built apps: proves paid pain, scopes a one-feature MVP, instruments revenue, ships fast. Use when evaluating an app idea, defining a first-revenue MVP, planning a launch sprint or auditing funnel evidence. Also use when deciding what to build, market, stop or scale after launch.
 ---
 
 # Ship First-Dollar App

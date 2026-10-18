@@ -1,7 +1,7 @@
 ---
 name: engineering-diary
 description: >-
-  Keep a short daily engineering diary in Markdown so decisions, lessons and open loops survive between sessions. Use when starting or ending a coding session, reviewing the week, or returning to a project after a break.
+  Keeps a short daily engineering diary in Markdown so decisions, lessons and open loops survive between sessions. Use when starting or ending a coding session, reviewing the week, or returning to a project after a break.
 ---
 
 # Engineering Diary

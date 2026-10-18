@@ -1,7 +1,7 @@
 ---
 name: ios-distribution-feature-flags
 description: >-
-  Make a SwiftUI or mixed iOS app behave differently in Debug, TestFlight and App Store builds at compile time. Use to hide unfinished features, turn the paywall off for testers or support trunk-based development. It covers distribution flags, not remote kill switches.
+  Makes a SwiftUI or mixed iOS app behave differently in Debug, TestFlight and App Store builds at compile time. Use to hide unfinished features, turn the paywall off for testers or support trunk-based development. It covers distribution flags, not remote kill switches.
 metadata:
   docs-verified: "2026-09-28"
 ---

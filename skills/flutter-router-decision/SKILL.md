@@ -1,7 +1,7 @@
 ---
 name: flutter-router-decision
 description: >-
-  Choose Flutter routing, defaulting to go_router, with guidance on auth redirects, deep links and nested tabs. Use when starting routing on a new Flutter app or when someone claims go_router is in maintenance mode. Use before adding zenrouter, navigation_utils or auto_route to an app that already uses go_router.
+  Chooses Flutter routing, defaulting to go_router, with guidance on auth redirects, deep links and nested tabs. Use when starting routing on a new Flutter app or when someone claims go_router is in maintenance mode. Use before adding zenrouter, navigation_utils or auto_route to an app that already uses go_router.
 metadata:
   docs-verified: "2026-09-28"
 ---

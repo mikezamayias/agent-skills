@@ -1,7 +1,7 @@
 ---
 name: flutter-async-cubit-safety
 description: >-
-  Prevent "emit after close" crashes in Flutter BlocCubit by adding isClosed guards after every await. Use when writing async cubit methods, fixing Sentry StateError crashes, or reviewing cubit lifecycle safety.
+  Prevents "emit after close" crashes in Flutter BlocCubit by adding isClosed guards after every await. Use when writing async cubit methods, fixing Sentry StateError crashes, or reviewing cubit lifecycle safety.
 metadata:
   docs-verified: "2026-09-28"
   version: 1.0.0
