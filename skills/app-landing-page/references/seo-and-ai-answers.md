@@ -14,7 +14,8 @@ The AI answer counting rules are ours, adapted from the `ai-visibility-audit` sk
   Keep the queries one page can satisfy together (the head term, "buy X", "X online") in one title and give each different-intent modifier, such as "X for sleep", its own page.
   This is our own heuristic, not a Google rule, because Google's title guidance asks only for descriptive and concise titles.
   Check the live top results for each query before splitting.
-- Google publishes no length limit for titles or meta descriptions and truncates to the device width.
+- Google says there is no limit on meta description length, and truncates titles and snippets in results as needed, typically to fit the device width.
+  Its title guidance asks only to avoid unnecessarily long or verbose text.
   Do not enforce 50-60 or 150-160 character rules.
   Third-party auditors still flag title and description lengths, and the common 60-character rule comes from SEO tools, not from Google.
   Drop those findings instead of rewriting a title to satisfy them.

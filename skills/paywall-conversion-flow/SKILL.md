@@ -43,7 +43,7 @@ Most indies lose conversion by following the wrong order.
 - Abstract value claims. Anchor the price to something real instead ("€49 is three takeaways").
 - Fake countdowns or a price that only appears after tapping.
 - A one-time offer whose claims are not true. A countdown offer is legitimate only when the shown state persists so the offer never reappears for that user, the timer does not reset on reopen or relaunch, and claims such as "lowest price we've offered" are true for that storefront's price history.
-  In the EU, a false limited-time claim is banned outright by the Unfair Commercial Practices Directive, Annex I point 7, with no harm test.
+  In the EU, Annex I point 7 of the Unfair Commercial Practices Directive (2005/29/EC) bans in all circumstances, with no harm test, falsely stating that a product will only be available for a very limited time in order to elicit an immediate decision.
 
 ## Audit checklist (use before each release)
 
