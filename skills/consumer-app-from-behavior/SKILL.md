@@ -112,6 +112,18 @@ When the paywall is not obvious, look under settings, subscription, profile and 
 Note pre-selected expensive tiers, hard-to-find close buttons, a hidden Restore Purchases link and a price that changes between paywall and checkout as dark patterns.
 Apple's license agreement bans bait-and-switch pricing, so do not copy that last pattern into your own app.
 
+For a marketing teardown of a competitor, label each claim with one of four evidence labels.
+
+- Observation: seen at a URL.
+- Derivation: computed from observations.
+- Inference: prefix it with "Likely".
+- Unknown: not checked.
+
+A negative claim needs a source that was checked and found empty.
+A tracking pixel shows intent, not spend.
+Never state a dollar spend that a source does not give, and use spend proxies such as active ads, ad longevity and launch rate instead.
+Say "in the sample" for ad library counts.
+
 Default patterns for younger consumer audiences:
 
 - One obvious action per screen.
@@ -233,5 +245,7 @@ Do not invent demand, retention, or revenue numbers.
 Adapted from David Ch's article _Jev studied 438,122 apps doing $10k/mo+ for me. The bar is stupidly low_: <https://x.com/chhddavid/status/2103052210904989770>.
 
 The shareable creative format note comes from a founder's video: <https://x.com/Jibran_05/status/2111125040225735055>.
+
+The competitor teardown evidence labels come from the evidence contract of a third-party repo created about 2026-10-18 (29 stars on 2026-10-19), unverified: <https://x.com/danielhangan_/status/2111899646306230593>.
 
 Read [references/article-notes.md](references/article-notes.md) when provenance or adaptation choices matter.

@@ -33,6 +33,11 @@ Ask or infer, then confirm:
 2. Run `launch-readiness` for code, policy, store-compliance, security, accessibility, localization, performance, and polish gates.
 3. Route asset gaps to `app-graphics` and `app-screenshots`.
 4. Route App Store operations (release flow, submission health, metadata sync, ASO audit, screenshot upload) to the installed App Store Connect tooling, such as the `asc` CLI or skills built on it.
+   If a guideline interpretation is borderline, the user can book a Meet with Apple appointment before submitting.
+   Where: the Meet with Apple schedule page on developer.apple.com.
+   Steps: request a slot and include the app's Apple ID, if one exists, and the specific questions.
+   Cost: a 30-minute Webex video call on Tuesdays and Thursdays, and slots can fill quickly (one reply on the source post says everything was full, unverified).
+   The appointment is informational only and does not pre-approve or expedite a review.
 5. Route Google Play operations to the installed Google Play Console tooling, such as the Play Developer API or Fastlane `supply`.
 6. Route paywall/subscription concerns to `paywall-conversion-flow`, subscription localization in App Store Connect, RevenueCat/catalog skills when applicable, and Play Billing checks.
 7. For privacy policies, terms, consent copy, appeal letters, or legal letters, involve legal review skills if available and clearly label the output as drafting support, not legal advice.

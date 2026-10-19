@@ -115,6 +115,11 @@ Each run:
    Never credit revenue from a post-purchase survey alone.
    This attribution rule is ours.
 5. Competitors: diff each competitor's sitemap against the last snapshot and add a backlog item only where the app can make a better page.
+6. Links: keep `seo/links.csv` with site, type (directory, founder story, article platform, launch site), URL, status (candidate, drafted, submitted by human, live), live URL and date.
+   Each run, add at most 5 candidates and draft the submission text in `seo/outreach/`.
+   Pick candidates by topical fit to the app, not by DR.
+   The human submits.
+   The source types come from one author's promotional list that was not verified, so check each site before listing it.
 
 Rank evidence rules, ours, adapted from OpenSEO's public skills (MIT per its README, d7ea785):
 
@@ -130,8 +135,14 @@ Rank evidence rules, ours, adapted from OpenSEO's public skills (MIT per its REA
 - Treat a "#1 in N months" claim from a source as unproven until it names the site, the starting position and whether the domain was already strong.
   A tool's "x to 1" with "New" only means the page was not ranking in the compared period.
   Ahrefs traffic is an estimate, so do not size a plan on it.
+- Treat a "N backlinks built" claim the same way.
+  Ask for the site, the report (the example is one page's row in the Search Console Links report, while Ahrefs counts referring domains), whether the links are followed, and whether the count includes links the site would have received anyway.
+  The example behind this rule is one author's screenshot with the URL redacted, so the figure is unverified.
 - DR (Domain Rating) is an Ahrefs metric that shows the relative strength of a website's backlink profile.
   Google states that third-party authority scores do not come from Google, so do not make a DR threshold a requirement.
+- Do not select link sources by DR or by a source's claimed monthly traffic.
+  A source list sorted by DR or claimed traffic is a promotion list, not evidence that a link helps rankings, and one such list mixed DR 14 and DR 88 sites with no stated criterion.
+  Record any DR or traffic number with its tool and date, because an Ahrefs traffic number is an estimate.
 
 Comparison pages ("X alternatives", "app vs X") must say where the competitor is better and source every competitor claim with an "as of" date.
 
@@ -187,3 +198,4 @@ Comparison pages ("X alternatives", "app vs X") must say where the competitor is
 - <https://docs.perplexity.ai/guides/bots>
 - <https://sparktoro.com/blog/new-research-ais-are-highly-inconsistent-when-recommending-brands-or-products-marketers-should-take-care-when-tracking-ai-visibility/>
 - <https://github.com/Illyism/seo-skills>
+- <https://x.com/hridoyreh/status/2112072682854556143> (link source list, promotional and unverified, used only for the DR and backlink-claim cautions and the bounded sourcing step)

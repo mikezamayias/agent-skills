@@ -31,6 +31,17 @@ Prices and policies change, so re-check the linked page before relying on one.
   Singular's Free plan costs $0 per conversion with no card, covers up to 15,000 paid conversions, and includes paid-campaign attribution and SKAN.
   AppsFlyer's free Zero plan measures clicks and impressions only and does not measure attribution, so attribution starts on its paid Growth plan, billed per conversion.
   New AppsFlyer accounts begin on a Welcome plan with 12,000 free measured conversions or one year of access, whichever ends first.
+- Before spending, read the competitor's ads in the Meta Ad Library (read 2026-10-20).
+  Meta's pages returned 403 to fetch, so the scope below comes from search snippets of Meta's help page and library page, so re-check it there.
+  Search covers ads that are currently active.
+  Inactive ads are searchable only for issue, election or politics ads, ads that ran in the EU in the past year, and ads that ran in the UK in the past year after 2025-07-01.
+  The library therefore does not show every ad a competitor has run, and an empty result is unknown, not proof of no ads.
+  An ad that keeps running suggests the advertiser keeps paying for it, which is a weak signal and not proof that it is profitable.
+  Blogs call 45, 60 or 60-90 days a winner, a folk rule with no Meta or study source, so set no day threshold.
+  Many new ads with several variants each suggests the advertiser is testing creative volume.
+  Quote the hooks of the longest-running ads and test those angles in your own creative.
+  Never copy their footage, copy or brand assets.
+  A library read is a sample, so write unknown for any library you did not check.
 
 ## Founder-on-camera and creator video
 
@@ -112,6 +123,9 @@ Prices and policies change, so re-check the linked page before relying on one.
 - <https://www.facebook.com/business/help/651033805513936>
 - <https://www.facebook.com/business/help/584603712214119>
 - <https://developers.facebook.com/docs/app-ads/optimizing-your-app-ad>
+- <https://www.facebook.com/help/259468828226154>
+- <https://www.facebook.com/ads/library/>
+- <https://www.askneedle.com/blog/meta-ads-library>
 - <https://ads.tiktok.com/business/creativecenter/quicktok/online/tiktok_creative_accelerator/pc/en>
 - <https://ads.tiktok.com/help/article/creative-best-practices?lang=en>
 - <https://www.tiktok.com/community-guidelines/en/integrity-authenticity>

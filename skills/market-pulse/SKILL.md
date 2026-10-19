@@ -42,6 +42,9 @@ Spawn 4 research agents simultaneously:
 - Check Product Hunt launches, TechCrunch/press coverage
 - Check Reddit/community sentiment (search subreddits relevant to the category)
 - Note key differentiators and weaknesses
+- For a competitor you keep watching, snapshot ad counts, active ads, ads launched in the last 30 days and follower counts weekly, and diff against the last snapshot
+  - New ads suggest new angles, killed ads suggest losers, and a drop in launch rate may mean harvest mode
+  - Harvest mode is an inference from one example in a third-party repo created about 2026-10-18, so label it "Likely" and not as a finding
 
 **Agent 3 — Market Sizing & Trends:**
 

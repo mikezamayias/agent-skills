@@ -50,6 +50,12 @@ The playbook is adapted from @frederickjames (post and video, October 2026, who 
 
 Apple says it does not investigate trademark claims about keywords, so bidding on a competitor's name is allowed on Apple Ads.
 
+To read what a competitor's Apple ads say, try Apple's Ad Repository at <https://adrepository.apple.com/> (read 2026-10-20).
+Apple publishes it under Article 39 of the Digital Services Act (DSA, the EU law on online platforms) and covers Apple-delivered App Store ads in EU countries and regions only.
+Absence there is unknown, not proof of no ads, and it says nothing about the US or other regions.
+Only a third-party blog lists the fields shown (creatives, keywords, placements, regions, impression dates), and retention is unknown.
+Open one entry and check what it shows before relying on it.
+
 Advanced runs in four placements: the Today tab, the Search tab, search results and product pages.
 Custom product pages can be used in Apple Ads campaigns.
 This first test uses the search results campaign type, and the checked pages do not say how a Search tab placement is bought.
@@ -90,6 +96,9 @@ This first test uses the search results campaign type, and the checked pages do 
 - <https://developer.apple.com/app-store/promote/>
 - <https://ads.apple.com/en/app-store/advanced>
 - <https://developer.apple.com/app-store/search/>
+- <https://www.apple.com/legal/dsa/>
+- <https://adrepository.apple.com/>
+- <https://www.rplg.io/blog/apple-search-ads-ad-repository>
 - <https://www.revenuecat.com/docs/integrations/attribution/apple-search-ads>
 - <https://x.com/frederickjames/status/2110007318221885827>
 - <https://x.com/david_attisaas/status/2109917304217604303>

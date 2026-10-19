@@ -1,7 +1,7 @@
 ---
 name: mobile-ui-reference
 description: >-
-  Designs or restyles a Flutter screen from 5 to 8 shipped references, a written spec, Flutter code first, Figma last. Use for onboarding, paywall, settings, empty state or permission screens instead of model-generated UI. Also use when a Flutter screen looks Material on iOS, or when dropping running-app shots into Figma.
+  Designs or restyles a Flutter screen from 5 to 8 shipped references, a written spec, Flutter code first, Figma last. Use for onboarding, paywall, settings, empty state or permission screens, or to extend screens a person drew in Figma. Also use when a Flutter screen looks Material on iOS, or when dropping running-app shots into Figma.
 metadata:
   docs-verified: "2026-09-28"
 ---
@@ -17,6 +17,12 @@ Do **not** start with ui-ux-pro-max `--design-system` (landing-page palettes). D
 One sentence. Feature + job to be done. Example: "Hard-paywall after onboarding quiz, annual default, skip control visible."
 
 Platform default: iPhone-first Flutter (Cupertino + HIG) unless the product is branded (Forui / own tokens) or Android-first (Material 3).
+
+Name the target stack and the repo's existing conventions in the first message.
+If the agent has to ask for the stack, the brief is incomplete.
+Add the audience, three liked apps and one image of the target feel to the one-sentence job.
+The three liked apps seed the same-category picks in step 1 and the image sets the feel for the critique, and neither replaces the references.
+The source for both rules is one practitioner's thread, not tested here.
 
 ## 1. Gather 5–8 shipped references
 
@@ -143,6 +149,18 @@ Never Rive a page route. `liquid_glass_renderer` is 0.2.0-dev, Impeller-only, 16
 
 If later you want production Figma components linked to Flutter, that is a different installed Figma skill.
 
+### 4b. Optional: a human designs the base in Figma
+
+Use this second flow only when a person owns the visual style and will design in Figma.
+It does not change the stance above, because the style comes from a human and not from model-generated UI.
+
+1. The person designs only a few key screens in Figma, which fixes the type scale, spacing, colour and components.
+2. The agent reads them through the Figma MCP, with the target stack named in the first message, and builds the remaining screens from the step 1 references in that style, with the critique in step 2 still written before any Dart.
+3. The person still designs the paywall and any screen with unusual mechanics.
+
+The Figma MCP can read and edit the canvas but cannot read comments, so use `figma-review-loop` for comment review.
+The source is one practitioner's thread, and no result from that process was verified.
+
 ## 5. Pre-delivery
 
 - No emoji as icons
@@ -190,3 +208,4 @@ Paste the spec + 2–3 reference links **before** asking a model to write widget
 - <https://developer.apple.com/design/human-interface-guidelines/accessibility>
 - <https://api.flutter.dev/flutter/widgets/MediaQuery/disableAnimationsOf.html>
 - <https://x.com/tobiadonadon_/status/2106430529113301163> (Tobia Donadon, "How to Stop Making your Apps Look Like AI Slop", article 2106428717639626752, concept-first method)
+- <https://x.com/breejeanadkat/status/2111411956599149046> (stack named first, brief inputs, human-designed Figma key screens, practitioner thread, unverified)
