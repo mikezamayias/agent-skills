@@ -54,6 +54,10 @@ Two ways to fail at this job, the first worse:
    Load [references/worst-case-catalog.md](references/worst-case-catalog.md) and pick values per field from the matching sections.
    Shape fixtures exactly like the existing demo data or model type, and put them beside the existing test fixtures.
    Spread different failures across the first visible rows instead of stacking them all in row 1.
+   The demo dataset must be coherent.
+   Rows that should differ do differ, a total equals the sum of its rows, a chart's marks match its numbers, and every visible string passes a spell check.
+   A screen built on repeated or non-adding demo values passes layout tests and still looks fake in a screenshot.
+   Evidence: one mockup image with checked arithmetic (4 x 74,342.22 against a shown 155,802.54), one designer reply calls it a common habit (2026-10-21).
    Build five datasets: demo, worst, empty, one (every count at exactly 1), and huge (the realistic upper bound, 1,000+ rows if unpaginated).
    Build the state inventory for any widget with user-set display options or a transient mode such as search open, selection or expanded.
    List every independent option and every transient mode, then enumerate each combination that changes the layout.

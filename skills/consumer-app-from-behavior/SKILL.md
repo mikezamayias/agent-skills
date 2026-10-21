@@ -45,6 +45,10 @@ Build for the problem, not the trend name.
 
 Mine comments for unprompted requests such as "someone needs to make an app for this", "is there an app that does this", and "I wish something tracked this automatically".
 Unprompted statements are stronger evidence than asking "would you use an app that does X".
+Also count comment types on the best posts in the niche.
+Short reactions such as emojis suggest a passive audience.
+Comments that describe a result or a problem solved, such as "you saved my life", suggest a buying audience.
+This is a one-operator heuristic (X, 2026-10-21), so validate it against attributed installs.
 
 Before committing to an idea, answer four questions:
 
@@ -56,6 +60,11 @@ Before committing to an idea, answer four questions:
 Then test whether distribution can shape the idea.
 Can the app be shown in a 7 second clip, do users share its results, and does it suit before-and-after content?
 These questions are the opinion of one promotional article (published 2026-10-19), unverified.
+Two more checks, from one operator's opinion (X, 2026-10-21):
+
+- Can the app appear inside a video the creator already makes, without reading as an ad?
+- Does a sponsored version beat the creator's own post?
+  Compare the two per creator before buying more.
 
 To learn which post format works in a niche, study format and not accounts.
 List 100 or more public accounts in the niche.

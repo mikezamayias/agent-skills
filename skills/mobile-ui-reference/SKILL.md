@@ -197,6 +197,7 @@ Render the built screens on the simulator at device resolution, then run a separ
 - Purple or blue gradient hero card
 - Emoji standing in for illustration or icons
 - Repeated identical cards with uniform padding
+- Demo numbers that repeat across rows or do not add up to the stated total
 - Plain avatar circle and a generic title such as "My Savings Goals"
 - Gradients with no job
 - Body-text sentences where a concrete number or object would do ("€49 to go", "€49 is three takeaways")

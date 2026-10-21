@@ -318,7 +318,8 @@ Shrink each slide to about 160px wide (App Store search-result size) and squint 
 - [ ] Proof appears on slide 1 only, and the last slide is a feature wall or mosaic rather than another hero.
 - [ ] Each capture is a real, dense screen that proves its headline.
 - [ ] Every laurel, badge, rating and user-count lockup names something true about this app, and its text is not left over from another template.
-- [ ] A spell check has run on every headline and sub-line.
+- [ ] A spell check has run on every headline, every sub-line and every string inside a captured screen.
+- [ ] Sample figures inside a capture are distinct per row and add up to any total shown.
 - [ ] Any cross-screen element crosses adjacent screens only and never splits text or critical UI.
 - [ ] Every locale's copy fits its layout without clipping or mid-phrase wraps.
 - [ ] Hide every headline and sub-line, and the visuals alone still show roughly what the app does.

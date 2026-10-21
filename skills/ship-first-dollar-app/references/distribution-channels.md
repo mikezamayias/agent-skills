@@ -145,6 +145,32 @@ Apply the TikTok automation and spam warning above to any plan that automates po
   Treat any "simple marketing" claim for it as a method and not a result unless the author gives installs or revenue, and check whether the author sells a course that teaches the method.
   One source of this loop sells a EUR 349 course (the author's site, read 2026-10-20) and gave only a click count with the site hidden.
 
+## AI assistant directories (ChatGPT plugins)
+
+Evidence is OpenAI developer docs read 2026-10-21 for the requirements and replies on X for the review waits.
+Revenue and uplift claims are unverified.
+
+- ChatGPT apps are now submitted as plugins backed by a public MCP (Model Context Protocol) server.
+- Treat a listing as availability and not distribution, the same as a store listing.
+  OpenAI's review page says developers cannot request enhanced distribution.
+  Replies to one founder's launch ask how users discover the plugin and none is answered.
+- One post (2026-10-20) claims "~900M weekly users for free".
+  That figure matches an aggregator report for February 2026 and is stale or unverified, and no OpenAI page was read for a current number.
+- A founder reports "500K in ARR this week" after a plugin launch, shown on a chart with no axes (October 2026).
+  The same founder says he is selling the platform, so the plugin may not be the product.
+  Read it as unverified until the author shows installs, sources or revenue by channel.
+- The same post claims "+50-200%" income for agency clients, with no base number, client or period.
+  This is unverified.
+- A revenue chart with no axes, dates or source, or an uplift range with no base number, is not evidence.
+  Ask which customers, over what period and from what base before counting it.
+- Review is the schedule risk.
+  OpenAI's review page gives no time and asks developers not to contact support for expedited review.
+  Several replies report waits of 4 days, 2 weeks, 3 weeks and over a month, so plan for weeks and never promise a client a date.
+- Requirements read on OpenAI's submission and review pages are a verified publisher identity for the publish name, a public HTTPS MCP server, website, support, privacy policy and terms URLs, a demo account that needs no MFA, a domain token at `/.well-known/openai-apps-challenge` returned as plain text, exactly 5 positive and 3 negative test cases, and a demo recording URL.
+- Common rejections are connection or login failure, failed test cases, data not disclosed in the privacy policy and annotation mismatch.
+- A plugin must not exist primarily as an advertising vehicle and trial or demo plugins are not accepted, so a lead-gen shell is a rejection risk.
+- Commerce inside a plugin is limited to physical goods, with no subscriptions, plans or direct checkout links, though signing in to an existing paid account is allowed.
+
 ## Communities
 
 - Reddit does not ban self-promotion or multiple accounts.
@@ -190,6 +216,11 @@ Treat it as a hypothesis.
 - Target about 2 dollars per 1,000 views (CPM).
   One reported deal was 4 videos and 4 stories for 2,500 dollars with a creator averaging 400,000 to 1,000,000 views.
   Check any CPM against attributed installs and revenue, never views alone.
+- A Cal AI co-founder says Cal AI bought fitness creator views at 50 cents to 3 dollars per 1,000 (October 2026, X post, no deal count or period).
+  TechCrunch (2026-10-15) confirms the creator-heavy strategy and per-reach payout deals but gives no CPM.
+  Treat the range as one operator's claim, and use it only as a sanity check for your own CPM.
+- TechCrunch (2026-10-15, secondary report quoting the company, no contract seen) describes Cal AI deals as a payout for a stated scale of reach, with the creator posting until the reach threshold is met.
+  Write the reach threshold and the end condition into the deal, and measure attributed installs against it.
 - Founder-run outreach is cheaper to delegate once the script works.
   One reported hire is a virtual assistant at about 800 dollars a month following a written SOP.
 - Do not buy followers, views or likes to make a brand page look established.
@@ -236,6 +267,10 @@ Treat it as a hypothesis.
 - <https://support.reddithelp.com/hc/en-us/articles/204535759-Is-it-ok-to-create-multiple-accounts>
 - <https://redditinc.com/policies/reddit-rules>
 - <https://discord.com/guidelines>
+- <https://developers.openai.com/plugins/deploy/submission>
+- <https://developers.openai.com/plugins/deploy/app-review>
+- <https://developers.openai.com/apps-sdk/app-submission-guidelines>
+- <https://developers.openai.com/plugins/reference>
 - <https://discord.com/safety/platform-manipulation-policy-explainer>
 - <https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255>
 - <https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers>

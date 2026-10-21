@@ -110,6 +110,7 @@ The article says 5 million views can earn less than 100 thousand views from the 
 - For game ad creative and the cross-promotion note, read the Games section of [references/distribution-channels.md](references/distribution-channels.md).
 - For an iOS app, run the first intent-based test on Apple Ads with [references/apple-ads.md](references/apple-ads.md).
 - For Meta and TikTok campaigns, creator marketplaces, Reddit, Discord, YouTube Shorts and influencer deals, read [references/distribution-channels.md](references/distribution-channels.md).
+- For a product that already has a paid web workflow, test an MCP-backed ChatGPT plugin as a channel only after reading the plugin section of [references/distribution-channels.md](references/distribution-channels.md), and log listing approval time, plugin-attributed sign-ups and revenue per sign-up like any other channel.
 - On Reddit, help in the community first and follow each subreddit's own self-promotion rule, because moderators set local limits and Reddit's spam rules ban mass-posting repetitive content for exposure or financial gain.
 - Disclose any creator who is paid by revenue share, commission or cash, inside the video itself.
 
