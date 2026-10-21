@@ -41,6 +41,10 @@ Prices and policies change, so re-check the linked page before relying on one.
   Many new ads with several variants each suggests the advertiser is testing creative volume.
   Quote the hooks of the longest-running ads and test those angles in your own creative.
   Never copy their footage, copy or brand assets.
+  One founder reports briefing a creator to remake a competitor's ad one for one with his own app.
+  Do not do that.
+  Copy the structure and angle, such as the hook order and the proof shown, and re-shoot with your own words, footage and claims.
+  That legal point is an inference and was not checked against a source.
   A library read is a sample, so write unknown for any library you did not check.
 
 ## Founder-on-camera and creator video
@@ -51,6 +55,10 @@ Prices and policies change, so re-check the linked page before relying on one.
   That founder's definitions of those two rates were not checked against TikTok or Meta.
 - Hire creators after a format has won.
   The same founder reports early paid creator videos at about $100 for about one download.
+- One founder (October 2026, an app about a month old, no attribution tool shown) posts three videos a day on one Instagram account and says an old two-week-old video resurfaced and brought about 190 downloads in a day.
+  His tiles show +191 new customers that day, and the cause is unverified.
+  His screenshot lists three Reels at 141K, 921K and 117K views.
+  Check an old post's installs one to two weeks after posting before you retire its angle, and log installs by post date so a late spike can be traced.
 - A different founder claims 1.5 million downloads in about three days for under $5,000 (October 2026).
   The claim is unverified, with no store data, spend breakdown or cost per install shown, and it comes from a video that promotes the founder's own paid creator-research tool.
   The account that amplified it also sells a research tool, so read it as one founder's account and never as a benchmark.
@@ -60,13 +68,54 @@ Prices and policies change, so re-check the linked page before relying on one.
 - Mass faceless slideshow accounts are reported as cheap but low converting.
   One founder calls them "insanely cheap" with low converting views, and a reply reports decent views with almost no installs.
   Another uses them for organic and international reach and says offshore slideshow creators delivered bot views and the wrong countries, so check each creator's audience country and view quality before paying.
+  For how to write a slideshow, see [tiktok-slideshow-format.md](tiktok-slideshow-format.md).
 - TikTok allows multiple accounts but classes automation that runs many accounts, and repetitive content, as spam.
   Penalties include account bans and limited reach.
+- One founder (October 2026, one account, no measured effect) reports a seven-day warm-up before the first post, with two sessions a day at random times.
+  Days 1 and 2 only scroll For You for 15 to 20 minutes.
+  Days 3 and 4 search about 10 niche terms and watch each video 12 seconds to 1.5 minutes.
+  Days 5 and 6 like about 8% of videos after long watches.
+  Day 7 posts the first slideshow, then at most one post a day.
+  This is unverified and the author promotes his own automation offer next to it.
+  Do it by hand only.
+  Automating account activity falls under the spam rule above and risks a ban of the account.
+- The same founder creates one TikTok account per app before the store approves the app, so format testing starts before launch (author reply, one account).
 - YouTube announced on 2026-10-01 that Shorts recommendations will give less reach to channels that mainly re-upload other creators' clips without significant changes.
   No effective date was given.
   Clips stay eligible when the uploader adds original commentary, unique edits or storytelling.
   A voiceover that only describes the screen, minor edits and template-based bulk changes do not count.
 - YouTube's separate reused-content rule for monetization still applies to Shorts compiled from other social sites, even with the original creator's permission.
+
+## Link in bio and in-app browsers
+
+One founder's claim (2026-10-20) with one screenshot, no loss rate.
+Nothing here is tested.
+
+- TikTok and Instagram open bio links in their own in-app browser.
+  A store link opened there can fail with "Action can't be completed", shown in one screenshot on a TikTok in-app browser.
+- Point the bio link at a page you control.
+  Detect the in-app browser and show an overlay with an arrow to the ••• menu and the text "Tap ••• → Open in browser".
+  Once the page runs in Safari or Chrome, redirect by device to the App Store or Google Play, keep a visible Download button as a backup, and show a simple web page on desktop.
+- The source calls this a guaranteed redirect.
+  A link-routing vendor's page (read 2026-10-21) says TikTok cannot be redirected automatically and needs a guide to TikTok's own "Open in browser" option, so the overlay is required there and "guaranteed" is not supported.
+  That vendor sells the same service, so its page is a secondary source.
+- Example brief from the source, output untested and the Android auto-open step unverified:
+  "Build a mobile link-in-bio page that detects TikTok/Instagram's in-app browser and shows a full-screen overlay with an arrow pointing to the ••• menu and the steps 'Tap ••• → Open in browser' (on Android, try auto-opening Chrome first). When opened in Safari or Chrome, redirect straight to my App Store or Play Store link (detect the device), with a big Download button as a backup."
+
+## Games
+
+Every item here is an unverified single account.
+Apply the TikTok automation and spam warning above to any plan that automates posting.
+
+- A game ad is gameplay video of the shipped game, with the single most satisfying 3 seconds first (@RobbyFrank, reply to a post by @alexcooldev, 2026-10-19).
+- A common structure is fail-then-hook: a caption such as "THIS LOOKS EASY...", then a visible mistake, then a store card with the app name and a search prompt (a sample video in a reply by @solotechdev, watched by us).
+- Produce many variants and let installs pick the winner. The "20 versions" figure has no source.
+- An agent can record gameplay and cut clips for organic channels, but the account that says so had not started.
+- A portfolio of games can advertise each other, and some studios historically split ownership with rising games to cross-promote (@dayonefoundry, names Ketchapp). Check Apple's rules on cross-promotion inside apps before adopting it.
+- Never show gameplay, levels or features in an ad that the shipped game does not have.
+  Apple App Review Guideline 2.3.1(a) (read 2026-10-21) says "marketing your app in a misleading way, such as by promoting content or services that it does not actually offer ... whether within or outside of the App Store, is grounds for removal of your app from the App Store".
+  Apple Ads policies section 1.6 says "Ad content may not be misleading" (fetched as a summary only, so re-check the policy page).
+  Meta's Advertising Standards page could not be read, so the Meta side is not verified.
 
 ## Creator marketplaces
 
@@ -89,6 +138,12 @@ Prices and policies change, so re-check the linked page before relying on one.
   - The Standard plan is $0 a month, and the brand pays per view at a price per 1,000 views that it sets.
   - Noise keeps a percentage of that price as a platform fee and does not publish the percentage.
   - The Unlimited plan is $99 a month, credited toward campaign spend, and also acts as a minimum spend.
+
+## Organic search
+
+- Organic search via an app landing page, blog and Search Console is a slow, free-to-start channel with no spend to refresh.
+  Treat any "simple marketing" claim for it as a method and not a result unless the author gives installs or revenue, and check whether the author sells a course that teaches the method.
+  One source of this loop sells a EUR 349 course (the author's site, read 2026-10-20) and gave only a click count with the site hidden.
 
 ## Communities
 
@@ -117,6 +172,32 @@ Prices and policies change, so re-check the linked page before relying on one.
 - One reply says large creators rarely take a profit-share deal without a prior scale result.
   Write the share, its term and the attribution method into the deal before the first post.
 
+### Creator outreach
+
+Reported method from one founder (George Lampropoulos, a podcast interview, self-reported, no data shared).
+Treat it as a hypothesis.
+
+- Ask the creator for their normal ad rate and pay it for a first post, then decide on any equity or share.
+  If it fails, no ownership was given away.
+- A cheaper first rate can be offered with a share only if the post works.
+  Write the share, term and attribution into the deal first.
+- Filter outreach to creators whose average views are at least 25,000 per post.
+- Judge a creator by repeated high-view videos relative to follower count.
+  The example is 8,000 followers with several 500,000-view videos over 300,000 followers with low engagement.
+  Hand them proven hooks, competitor examples and screen recordings instead of asking them to invent a strategy.
+  This is the opinion of one promotional article (2026-10-19), unverified.
+- Move to a call as soon as a creator replies, because rates and objections are easier to settle live.
+- Target about 2 dollars per 1,000 views (CPM).
+  One reported deal was 4 videos and 4 stories for 2,500 dollars with a creator averaging 400,000 to 1,000,000 views.
+  Check any CPM against attributed installs and revenue, never views alone.
+- Founder-run outreach is cheaper to delegate once the script works.
+  One reported hire is a virtual assistant at about 800 dollars a month following a written SOP.
+- Do not buy followers, views or likes to make a brand page look established.
+  One podcast guest advised it and the host noted it may break platform terms.
+  16 CFR 465.8(b) makes it unfair or deceptive to "Purchase or procure fake indicators of social media influence that they knew or should have known to be fake and that materially misrepresent their influence or importance for a commercial purpose" (read 2026-10-21 on the Cornell LII copy, because the eCFR and FTC pages did not load).
+  The FTC can seek civil penalties against knowing violators (FTC press release, August 2024).
+  Build the page with real product demos and real creator collab posts instead.
+
 ## Sources
 
 - <https://www.facebook.com/business/help/331612538028890?id=428636648170202>
@@ -125,6 +206,10 @@ Prices and policies change, so re-check the linked page before relying on one.
 - <https://developers.facebook.com/docs/app-ads/optimizing-your-app-ad>
 - <https://www.facebook.com/help/259468828226154>
 - <https://www.facebook.com/ads/library/>
+- <https://www.law.cornell.edu/cfr/text/16/465.8>
+- <https://www.ftc.gov/news-events/news/press-releases/2024/08/federal-trade-commission-announces-final-rule-banning-fake-reviews-testimonials>
+- <https://developer.apple.com/app-store/review/guidelines/>
+- <https://ads.apple.com/app-store/policies>
 - <https://www.askneedle.com/blog/meta-ads-library>
 - <https://ads.tiktok.com/business/creativecenter/quicktok/online/tiktok_creative_accelerator/pc/en>
 - <https://ads.tiktok.com/help/article/creative-best-practices?lang=en>
@@ -139,6 +224,14 @@ Prices and policies change, so re-check the linked page before relying on one.
 - <https://platform.getnoise.com/faq>
 - <https://lightreel.ai/pricing>
 - <https://x.com/Jibran_05/status/2111125040225735055>
+- <https://x.com/GeorgeLampro20/status/2112452949561463082>
+- <https://x.com/ericcosulea/status/2112214949736898809>
+- <https://x.com/alexcooldev/status/2112218472709329038>
+- <https://x.com/itsbongoo/status/2112401557946069175>
+- <https://x.com/minosdevs/status/2112189288314020303>
+- <https://x.com/MaxHirsch13/status/2112626598524465296>
+- <https://x.com/devmelv/status/2112632240593158297>
+- <https://x.com/chhddavid/status/2112113481495318700>
 - <https://support.reddithelp.com/hc/en-us/articles/360043504051-Spam>
 - <https://support.reddithelp.com/hc/en-us/articles/204535759-Is-it-ok-to-create-multiple-accounts>
 - <https://redditinc.com/policies/reddit-rules>

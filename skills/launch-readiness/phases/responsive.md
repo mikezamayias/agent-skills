@@ -42,20 +42,33 @@ T2 — Quality Gate
 - Stack-aware: check for `ShadBreakpoints` (shadcn_ui), `LayoutBuilder` (Material), `MediaQuery` (generic)
 - **Method**: Read page files, check for responsive pattern usage
 
-### 5. Touch Target Sizing
+### 5. iPhone Duo Compatibility
+
+- Read the App Store Connect and developer account banners for an iPhone Duo notice and record its exact text.
+  The banner claim is the author's own (Tobia Donadon, October 2026) and unverified.
+- Check the build SDK.
+  An Xcode 26 build runs on iPhone Duo in a compatibility area, so flag it as Medium when the product page promises Duo support.
+  The SDK fact comes from `swiftui-pro/references/resizability.md`.
+- For Flutter and React Native, check that layouts branch on available width and not on device idiom or rotation.
+  Flutter `LayoutBuilder` and `MediaQuery.sizeOf` apply.
+  Folding changes the available size without relaunching the app.
+  This line is inference.
+- **Method**: grep for orientation locks and fixed idiom checks, then ask the human to test both displays in the Duo simulator.
+
+### 6. Touch Target Sizing
 
 - Scan interactive elements for explicit size constraints
 - **High if**: Touch target < 44x44 on any viewport size (48x48 dp on Android)
 - Note: overlaps with Accessibility phase but here we check across breakpoints
 - **Method**: Check interactive element sizes
 
-### 6. Scrollability
+### 7. Scrollability
 
 - Check screens with multiple sections for scroll wrapper
 - **High if**: Screen content likely exceeds viewport height on small devices without scroll
 - **Method**: Read page files, check for ScrollView or equivalent wrapper
 
-### 7. Overlay Checks
+### 8. Overlay Checks
 
 - Read the matched overlay's Responsive section
 - Execute each additional check

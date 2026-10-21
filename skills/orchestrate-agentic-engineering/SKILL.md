@@ -94,6 +94,8 @@ For each work item record:
 - Branch/worktree or execution context.
 - Expected artifact and handoff proof.
 - Authority required.
+- Stop condition and the maximum attempts before the item is escalated.
+- Timeout for the handoff, and whether repeating it is safe.
 
 Parallelize only independent nodes. Define integration owner where contracts meet.
 
@@ -104,6 +106,11 @@ Parallelize only independent nodes. Define integration owner where contracts mee
 - Require specialists to commit coherent changes and run relevant checks.
 - Give reviewers raw artifacts and task contract, not desired conclusion.
 - Tighten review and merge policy as prototype becomes production code.
+
+When one verification run takes hours, open one branch per candidate fix and let the builds run in parallel.
+Keep one Markdown file as source of truth for root cause, test cases, branches and build status.
+Have a human test the resulting artifacts.
+Evidence: Grab Engineering blog (single author, self-reported, read on 2026-10-21), where it replaced one-by-one 2-hour CI waits.
 
 ### 7. Integrate real system
 
@@ -146,6 +153,18 @@ For a repeatable recipe per project, use `create-verification-skill` and keep it
 - Build release or test-distribution artifact only after acceptance scenario passes.
 - Require explicit captain approval before production writes, external sends, publication, spending, or destructive actions.
 
+## Unattended agent charter
+
+Before an agent runs without a human watching, record:
+
+- A spend cap.
+- A separate credential and login for each agent.
+- An append-only action log that someone reviews on a schedule.
+- An approval gate for anything sent in a person's name, including negotiation emails.
+- A kill switch.
+
+This is standard least-privilege practice, not a claim from a source.
+
 ## Gates
 
 ### Research Gate
@@ -180,8 +199,17 @@ For a repeatable recipe per project, use `create-verification-skill` and keep it
 - Exact source and evidence captured.
 - A model-reported bug is a claim until a repro test fails on the assertion that encodes it. A repro failing for another reason means the test is wrong. A passing repro rejects the finding.
   Local rule: confirm the run report lists the repro as executed, because an excluded or unselected test proves nothing either way.
+- A claim that cannot be executed needs an independent verdict, and a change the agent both proposed and judged on the same task is a hypothesis.
+  The verifier is a fresh agent that did not produce the claim and defaults to "false positive".
+  It rules a finding true only with a file and line for the source, the sink and the absence of a mitigation it read.
+  Count votes in code, not in prose, and let a vote lower a severity but never raise it.
+  Count a self-judged change as verified only after an independent check such as a held-out task, a human review or a test the agent did not write.
+  Evidence: the verifier rules are restated from Claude Security's plugin files (commit e68e375) and Cloudflare's security-audit skill README (MIT).
+  The self-judged rule is inference from the Harness2 design (Google, Apache-2.0, commit 1cfe254) and reply-level opinion, not a statement in that repository.
 - Evidence survives cleanup and every later run, and is checked at its named location after teardown.
   Local rule: a harness that reuses one results directory overwrites the proof on the next run, so name a per-proof output directory or copy the artifacts out first.
+- When an agent run is scored against a public benchmark, rubric or test, block the answer hosts at network level for the executor and record the restriction with the result.
+  Harness2's `docs/EXPERIMENTS.md` (commit 1cfe254, read 2026-10-20) documents a Codex rollout that downloaded its own rubric without being told to, and states that its own release does not block it.
 
 ## Context and Handoff Discipline
 
@@ -258,6 +286,16 @@ Authority still needed:
   A writer whose callers were removed can still feed data that live code reads.
 - Stop patching and re-plan when a third fix round on one change still finds a blocking gap.
   Present the simpler design to the user.
+- A text-only end of turn from a worker is a report and not proof of completion.
+  Keep the task parts in a checklist the worker updates, in a to-do tool or a file.
+  If a turn ends with items open and no blocker stated, send one short message naming them.
+  State the completion condition up front, and optionally have a smaller model check it at each end of turn.
+  If a background command or subagent is still running, do not treat the task as done.
+  Stop after two or three automatic continuations on the same task and review it.
+  For a fully unattended agent, Anthropic offers a standing system-prompt paragraph that names four early-stop patterns: a long summary announcing the next step, offering to continue unless redirected, listing non-blocking decisions, and reporting at a milestone.
+  Use it only in unattended harnesses, keep confirmation for risky or irreversible actions, and expect more tool calls and output tokens.
+  Source: Anthropic "Prompting Claude Opus 5.5", section "Unattended agentic runs" (official docs, read 2026-10-20).
+  The separate checker model and the running-subagent rule are our additions.
 
 ### Process hygiene for agent shells
 
@@ -285,9 +323,14 @@ Run charters four at a time, each with its own output directory and its own seed
 Local rule: read each run's step log before triage, because an exit code does not prove the charter ran.
 A run that aborted, executed no step, or surveyed the app instead of its charter did not cover that charter, whatever its exit code, and goes under areas no charter reached.
 Against a deployed site that others use, charters are read-only: no signups, submissions, injection-shaped URLs or request loops.
+Before running code from a repository you did not write, or code an agent generated while hunting bugs, run it in an OS-enforced sandbox.
+The sandbox has no external network, an empty environment plus an explicit allowlist, a read-only target, writes limited to a scratch directory, and hard CPU, memory and time limits.
+If the sandbox cannot be enforced, do not run the code and record the lead as needing validation.
+Check that no `.env` or credential file in the tree points at a shared or live service.
 Sort every finding into explorer artifact, environment, design, fixture or candidate by reading the source, and write repro tests only for candidates.
 Report confirmed bugs with their failing repro first, then unverified risks, then rejected findings grouped by reason, then areas no charter reached.
 Adapted from tester-army/e2e `bug-bash.md` (Apache-2.0, read 2026-10-13).
+The sandbox rule is restated from the READMEs of Cloudflare's security-audit skill, Mantis and Claude Security (read 2026-10-20).
 
 ## Failure Modes
 
@@ -327,5 +370,7 @@ Distilled from Kun Chen's video _L8 Principal Building a Full Stack App with Age
 
 Search output numbers: <https://github.com/context-dot-dev/sgrep> (7452784, `benchmarks/README.md` and `benchmarks/swe-bench/results/analysis.json`, plus `benchmarks/swe-bench/harness/PROTOCOL.md` for the 8,000-token cap).
 The benchmark files were unchanged at commit dec6122 (2026-10-15).
+
+Verification and stop rules: Harness2 <https://github.com/google-research/harness2> (commit 1cfe254), Anthropic's "Prompting Claude Opus 5.5" guide, and the security tools named in the bug bash section.
 
 Read [references/video-notes.md](references/video-notes.md) when provenance, observed examples, or tool-agnostic adaptation choices matter. Keep normal execution on this file's workflow.

@@ -22,6 +22,7 @@ Before making changes, identify:
 - Target track: internal, closed, open, production, or staged rollout.
 - Artifact path: signed `.aab`, mapping file, native debug symbols, and release notes.
 - Listing source: `fastlane/metadata/android/`, `metadata/`, `store_assets/`, or Play Console only.
+- Developer account type (personal or organization) and creation date, because they decide whether a 12-tester, 14-day closed test gates production access. Load the Account Gate section of `references/play-go-live-checklist.md`.
 - Credential path and auth mode. Never commit service-account JSON keys.
 - Manual declarations still needed: app content, content rating, target audience, ads, financial products, government apps, health, Data safety, privacy policy, and account deletion.
 

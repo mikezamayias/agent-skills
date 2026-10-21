@@ -70,6 +70,22 @@ The AI answer counting rules are ours, adapted from the `ai-visibility-audit` sk
   Google does not say Search or AI Overviews use that setting.
   Google's generative AI guide says "There's no requirement to break your content into tiny pieces for AI to better understand it", so never split a page for AI.
   Keep this as our reader-first writing rule, not a ranking factor.
+- Put a blog on the app's own domain or a subfolder of it, and not on a platform's domain.
+  This is a vendor claim, not a verified rule, because Outrank's free blog page calls a subfolder "the best option for SEO" (read 2026-10-20) and Google's guidance on subfolder versus subdomain was not checked.
+  Outrank's free blog tier (10,000 visits a month, a "Published with Outrank" badge, and blogs that break its content policy stay hidden from search engines on the free subdomain) is a data point for a vendor comparison only, not a recommendation.
+
+## Translated pages
+
+Add a language only when a human who reads it has reviewed the page, because Google's scaled content abuse policy covers many pages made mainly to manipulate rankings, whatever the production method.
+Give every language its own URL, and have every version list itself and every other version with `hreflang`, in the HTML, the HTTP headers or the sitemap, but not in several at once, because Google says combining methods gives no benefit in Search.
+Annotations must be reciprocal, because Google ignores the tags when two pages do not point to each other.
+Use fully qualified absolute URLs, and add an `x-default` for the language selector page.
+Google does not use `hreflang` or the HTML `lang` attribute to detect a page's language, so the translated main content is what separates versions from duplicates.
+Translating only the navigation and footer leaves the versions duplicates, so translate the main content.
+Pick languages by where Search Console already shows impressions or where the store listing is localized, not by a round number such as 10.
+Check each translated page's hreflang set, canonical and sitemap entry in the same change that publishes it.
+The hreflang rules were read on Google's localized versions page on 2026-10-21.
+The post behind this section (minosdevs, 2026-10-19) says to translate into 10 more languages, which is its own claim and is not adopted, and its author sells a EUR 349 course that teaches the method.
 
 ## Recurring loop
 
@@ -92,6 +108,11 @@ Each run:
    If a page and the product disagree, the product is right.
 3. Page 2 to page 1: for queries at positions 8-20 with real impressions, read the top 3 results, add what they have and the page lacks, and link to the page from strong related pages.
    Good position with a low click rate means rewrite the title and description instead.
+   3b. New pages from impressions: for a query with impressions in Search Console and no page that targets it, add it to `seo/keyword-map.csv` with status `planned`.
+   Write a page only when it can answer the query with something the top 3 results and the app's own listing do not already give.
+   Cap new pages at a few per run, and review each as if it were hand-written.
+   Skip a query when a page already covers its intent, and merge instead of publishing two pages for one query.
+   The idea comes from the minosdevs post (2026-10-19, a method with no result figure) and the guardrails are ours, from the rules in this file.
 4. AI answers: ask each assistant every question in `ai-prompts.md` at least 3 times, because answers vary run to run.
    The repeat count is our sampling rule, not vendor guidance.
    Count a source or a mention only when it recurs, and report the mention rate, not one answer.
@@ -105,6 +126,13 @@ Each run:
    Report each assistant on its own line, not as one blended rate.
    With fewer than about 10 neutral questions, call the result a direction to check, not a finding.
    These counting rules are ours too.
+   Classify every cited source by type: listicle, blog article or guide, comparison or review, Wikipedia or research, product or landing page, docs or help center, forum or social, video, review platform or news.
+   A reference base rate exists, and it is a vendor study (Outrank sells blog content), one benchmark run on 2026-10-20, 48 generic questions, 1,329 cited sources, API answers with web search on, with types assigned by a Claude model.
+   Its blog content share (listicles, blog articles and guides, comparisons) was 73% pooled, 18% for ChatGPT, 84% for Perplexity, 71% for Gemini and 93% for Claude.
+   Compare the app's own sample against it only as a direction, under the fewer-than-10-questions rule above.
+   A pooled share hides large differences between assistants, so never state it as the behavior of one assistant, and report the assistant that actually sends the traffic.
+   The 73% is also not "what AI looks at", because the chart counts sources cited in an answer.
+   The pooled-share reading is ours, derived from the chart (high confidence as a reading of the data, low confidence as a fact about the world).
    Next to the sampled rate, record GA4 sessions in the AI Assistant channel (medium `ai-assistant`).
    Google says that channel covers sources like ChatGPT, Gemini, Deepseek, Copilot and Grok, and excludes Google's AI Overviews and AI Mode.
    For those two surfaces, open Search Console > Performance > Search results > Generative AI.
@@ -120,6 +148,25 @@ Each run:
    Pick candidates by topical fit to the app, not by DR.
    The human submits.
    The source types come from one author's promotional list that was not verified, so check each site before listing it.
+   To find listicle candidates, ask an assistant "best [category] tools" and note the competitors it recommends.
+   Then open each competitor in a backlink tool and list the "Best X" listicles that link to it.
+   This recipe is from a post by @illyism (2026-10-20), who sells link-building tools.
+   It has no response rate or result data, and replies to the quoting post say listicle owners seldom answer and often ask for payment (single accounts, unverified).
+   The recipe needs a paid backlink tool, and a free backlink checker was not tested for the same filter.
+   Selection stays by topical fit under the rule above.
+   The human sends every email, and an agent never pays for a placement.
+   Do not buy or join a network of links to rank, such as a plan advertising "Backlinks from real sites in the Outrank network" (Outrank pricing page, read 2026-10-20).
+   Google's spam policies, read 2026-10-21, define link spam as "creating links to or from a site primarily for the purpose of manipulating search rankings".
+   They list "Buying or selling links for ranking purposes" and "Using automated programs or services to create links to your site".
+   They allow paid links only when qualified with `rel="nofollow"` or `rel="sponsored"`.
+
+Seed plan for a new app site, from a video by Dan Kulkov endorsed by pfernan95dev (2026-10-19, narration only, no results shown, the "working for a month" claim is self-reported and unverified):
+choose 10 to 20 keywords, record a volume figure and its source for each in `seo/keyword-map.csv`, and publish them in a bounded batch over about two weeks.
+Drop any keyword with no measured volume.
+Draft two formats first: `best <niche> apps` and `<big competitor> alternatives`.
+The alternatives page follows the comparison rule below, with competitor strengths and "as of" dates.
+Each page needs its own primary query and real content, under the scaled content rule in Never.
+The two-week batch is larger than the few-pages-per-run cap in step 3b, so keep the cap and treat the batch as a plan, not a pace.
 
 Rank evidence rules, ours, adapted from OpenSEO's public skills (MIT per its README, d7ea785):
 
@@ -132,12 +179,21 @@ Rank evidence rules, ours, adapted from OpenSEO's public skills (MIT per its REA
   One snapshot is not a baseline.
 - Search volume is not visits.
   A page that already ranks already gets part of the volume, so size a gain on the extra clicks, not on the total.
+- Run a keyword difficulty check before building a page.
+  The video above says Google is stricter with new sites, so expect AI-assistant referrals before Google ones (source claim, no data).
+  One reply to the source (@mankaff\_) says the tactic does not work in a red ocean, which is a single unverified comment.
 - Treat a "#1 in N months" claim from a source as unproven until it names the site, the starting position and whether the domain was already strong.
   A tool's "x to 1" with "New" only means the page was not ranking in the compared period.
   Ahrefs traffic is an estimate, so do not size a plan on it.
 - Treat a "N backlinks built" claim the same way.
   Ask for the site, the report (the example is one page's row in the Search Console Links report, while Ahrefs counts referring domains), whether the links are followed, and whether the count includes links the site would have received anyway.
   The example behind this rule is one author's screenshot with the URL redacted, so the figure is unverified.
+- Treat a "N clicks in 28 days" screenshot as unproven until it names the property, the date range, the query mix and whether the pages were already ranking.
+  Search Console's congratulation email does not show which site earned the clicks.
+  Clicks to an app site are not installs, so size a plan on the click-to-store-tap rate and the store conversion of the same app, not on clicks alone.
+  The example behind this rule is one author's screenshot (450 clicks, Sep 30, 2026) with the property hidden, so the figure is unverified.
+- Treat a vendor's citation study as marketing until it names who sells what, the sample size, the question set, whether answers came from an API or the consumer app, who classified each source and whether the run was single.
+  The example is Outrank's benchmark (2026-10-20): 48 questions, one same-day run, a Claude model as the classifier, and a vendor that sells blog content at $99 a month.
 - DR (Domain Rating) is an Ahrefs metric that shows the relative strength of a website's backlink profile.
   Google states that third-party authority scores do not come from Google, so do not make a DR threshold a requirement.
 - Do not select link sources by DR or by a source's claimed monthly traffic.
@@ -164,6 +220,9 @@ Comparison pages ("X alternatives", "app vs X") must say where the competitor is
   Google says it "can only be used to crawl pages with either JobPosting or BroadcastEvent embedded in a VideoObject".
 - Resubmit unchanged URLs through IndexNow.
 - Publish many generated pages with no added value, which Google's scaled content abuse policy targets.
+  A pattern an engagement post promoted (2026-10-21, income figure unverified) is one new page a night in a thin directory niche with affiliate links, run by an agent.
+  Google's spam policies (read 2026-10-21) list "Using generative AI tools or other similar tools to generate many pages without adding value for users" and "Creating multiple sites with the intent of hiding the scaled nature of the content" as scaled content abuse.
+  They add that not every affiliate site is thin, and that good ones add original reviews, testing and comparisons.
 - Invent a statistic, quote, review, price or benchmark.
 - Send email, submit a directory listing, create an account or post socially.
   Draft it in `seo/outreach/` and list it in the report for the human.
@@ -199,3 +258,9 @@ Comparison pages ("X alternatives", "app vs X") must say where the competitor is
 - <https://sparktoro.com/blog/new-research-ais-are-highly-inconsistent-when-recommending-brands-or-products-marketers-should-take-care-when-tracking-ai-visibility/>
 - <https://github.com/Illyism/seo-skills>
 - <https://x.com/hridoyreh/status/2112072682854556143> (link source list, promotional and unverified, used only for the DR and backlink-claim cautions and the bounded sourcing step)
+- <https://developers.google.com/search/docs/specialty/international/localized-versions> (hreflang rules, read 2026-10-21)
+- <https://outrank.so/ai-citations> (vendor citation study, single run on 2026-10-20, read 2026-10-20)
+- <https://outrank.so/free-blog> and <https://outrank.so/pricing> (vendor pages, read 2026-10-20)
+- <https://x.com/tibo_maker/status/2112481939563438091> and <https://x.com/illyism> quoted post 2112377329284730977 (listicle recipe, unverified outcome)
+- <https://x.com/DanKulkov/status/2112178737785819183> (video transcript source for the seed plan, unverified)
+- <https://x.com/minosdevs/status/2112189288314020303> (six-step loop, author sells a course, unverified)

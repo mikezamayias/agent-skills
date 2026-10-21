@@ -62,6 +62,11 @@ High-confidence candidate requires all:
 - Relevant code, symbols, release, and stack evidence agree.
 - Change avoids sensitive domains listed below.
 
+Before ranking an obfuscated or R8-shrunk crash, deobfuscate it with the release mapping file, or treat the stack as unsymbolicated.
+When a cause looks like a recurring pattern, such as reflection on a class family, search the codebase and internal SDKs for sibling instances and ticket their owners, instead of patching one site.
+Give the agent tools to decompile the build, deobfuscate stack traces and fetch class or method context.
+Evidence: Grab Engineering blog (single author, self-reported, read on 2026-10-21).
+
 Escalate instead of patching when evidence conflicts, symbols are missing, reproduction is speculative, ownership is external, or fix requires architectural judgment.
 
 ### 4. Produce triage decision

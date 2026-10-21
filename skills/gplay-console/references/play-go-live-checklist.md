@@ -2,6 +2,16 @@
 
 Fetch current Google Play policy pages before final submission because requirements change.
 
+## Account Gate
+
+- Account type is recorded as personal or organization, and the creation date is recorded.
+- A personal account created after 2023-11-13 must run a closed test with at least 12 testers opted in continuously for 14 days before Production is enabled.
+  A tester who opts out early does not count, and production-access review usually takes 7 days or less.
+- An organization account needs a D-U-N-S number, and Google does not state a tester exemption, so confirm in the Dashboard that Production is not locked.
+- The registration fee is a US$25 one-time payment.
+- Never plan a launch date from the tester rule until the Dashboard shows the account's actual status.
+- Evidence: Google Play Help pages read on 2026-10-20 through a page-summarizing tool, except the last line, which is our rule.
+
 ## Build and Platform
 
 - Signed Android App Bundle exists (`.aab`), not only APK.
@@ -10,6 +20,9 @@ Fetch current Google Play policy pages before final submission because requireme
 - Play App Signing status is known.
 - Target API meets the current Play requirement. As of 2026-05-29, new apps and updates need Android 15/API 35 or higher, except Wear OS, Android Automotive OS, and Android TV targets, which need Android 14/API 34 or higher.
 - Native debug symbols and ProGuard/R8 mapping files are ready when applicable.
+- The build uploads the R8 mapping file to the crash reporter (Crashlytics or Sentry) and bundles it for Play Console, so post-release ANR and crash clusters are readable.
+- Play vitals ANR rate is checked after each release.
+- Evidence: Grab's Android case study, self-reported, read on 2026-10-21.
 
 ## Store Listing
 

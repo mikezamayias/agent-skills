@@ -65,6 +65,12 @@ Apple's asset best-practices page (<https://developer.apple.com/app-store/asset-
 It gives the reason that many of these already appear next to the app in search results and on the product page.
 The same page says to avoid claims that can't be verified, such as awards or recognition the app hasn't received.
 A "#1" or "best" claim falls under the 2.3 rules on unverifiable claims, and no Apple rule names "#1" explicitly.
+Earnings promises and money figures on a screenshot ("Earn $40-$500 per day", "+$4,330") need a stated basis you can show on request.
+A mock figure must look like sample data and not a promise.
+Apple's guidelines as fetched have no earnings-specific rule, so the relevant text is 2.3.1(a), which treats misleading marketing as grounds for removal.
+"100% FREE TO USE" and "NO LIMITS" are price and terms claims.
+Apple 2.3.7 says screenshots "should not include prices, terms, or descriptions that are not specific to the metadata type", so keep price words in the store price field and keep "no limits" only where it is literally true.
+Evidence: Apple text verified through a fetch tool on a partial page, application to the slides in one agency-deck post (October 2026) is inference.
 
 ### Eyebrow labels
 
@@ -217,6 +223,7 @@ Apple's Guideline 2.3.3 needs more than half of the screenshots for each device 
 - Outer portrait: two short lines at most, large type, one idea per screen.
 - Use a folded-plus-open pair once per deck for a moment that carries across states, such as "Close it for today. Open it for the week."
 - Write about what the user gets, not the hardware.
+- Caption each pane by its job for the user, for example "Your balance, front and centre" and "What's due, at a glance", and not by the device (one demo video from one author, weak).
 - Keep Duo devices straight-on. Do not tilt or fake a crease.
 
 ## 7. Cross-screen composition
@@ -255,16 +262,18 @@ Derived from decks such as Superlist, Headspace, CRED, Arc Search, Linktree, and
 1. **The background is a designed surface and never plain white.** Use a saturated color block, a warm cream such as `#F4F1EC`, a dark navy or near-black, or a gradient. It may shift per slide but must look intentional.
 2. **Headlines dominate.** The headline takes roughly the top 30-40% of the canvas. If it cannot be read at thumbnail size without zoom, redesign.
 3. **Mix emphasis inside the headline.** Style one word differently with a contrast color, italic script, heavier weight, or underline. Superlist uses script and coral on "your whole day". Headspace sets "less" in orange in "Stress less". Pick one emphasis word per slide.
-4. **Add a decorative accent to most slides.** Use squiggles, arrows, sparkles, label badges on the visual, or floating chips with real stats such as "$3,630 earned". Award lockups belong on the hero only. A bare device on a bare background with a bare headline is the default output, so add one accent.
+4. **Add a decorative accent to most slides.** Use squiggles, arrows, sparkles, label badges on the visual, or floating chips with stats that match the shown sample data or a figure you can document, such as "$3,630 earned". Award lockups belong on the hero only. A bare device on a bare background with a bare headline is the default output, so add one accent.
 5. **Vary device framing across the deck.** Options are bezelless and minimal (maximum UI legibility), tilted floating with a soft shadow (advertorial), and full visible bezel dead-center (editorial, premium). Mix at least two.
 6. **Proof anchors the hero and nothing else.** Concentrate awards, press quotes, star counts, and install counts on slide 1. Spreading them dilutes the proof and the other slides.
    One studio's showcase decks spread proof over two or three slides, but that is one studio's opinion with no conversion data, so the rule stands.
+   A second studio's showcase (Kree8, October 2026) does the same, also without data.
    Spreading proof across slides is an A/B variant to test and not the default.
 7. **Dense inside the device, sparse outside.** The capture should be a real, dense product screen. Outside the device allow one headline, one visual, one optional sub-line, and one optional badge. No bullet lists, paragraphs, or competing logos.
 8. **Break the device parade every 2-3 slides.** Swap in a 3D object, a photographic still, a lifestyle photo, a mascot illustration, a typographic feature wall, or a device mosaic.
    For personal categories such as health, learning, audio, and family, try a person, a face, a hand holding the object, or a real-life situation for the hero or the first break.
    It is a default to A/B test and not a proven rule.
    A slide without a capture still counts against the Guideline 2.3.3 majority above.
+   Break the parade on at most every second slide so that more than half show a real screen.
 9. **End with a feature wall or a device mosaic.** A feature wall is a vertical list of one-word features set as big type. A mosaic is a grid of bezelless mini-screenshots. Pick one. Do not end on another single-feature hero.
 10. **Run the thumbnail test before export.** See the checklist below.
 11. **Measure contrast, do not eyeball it.**
@@ -277,6 +286,9 @@ Derived from decks such as Superlist, Headspace, CRED, Arc Search, Linktree, and
     Keep each line under about `canvasWidth / fontSize × 0.45` characters.
     Set display leading at 1.05 or less and tracking slightly negative.
     If one word is wider than 88% of the canvas, break it, shrink it, or hyphenate it.
+13. **Mascot-led and 3D-type decks, a pattern to try and not a rule.**
+    Two of four agency decks in one agency-deck post (October 2026) share one saturated background family, one hero character or object per slide, stickers and badges overlapping the phone edge, and a real screen on the remaining slides.
+    Evidence: image reading of four decks with no performance data.
 
 ## 9. Localization copy notes
 
@@ -297,7 +309,7 @@ Shrink each slide to about 160px wide (App Store search-result size) and squint 
 - [ ] The hero slide communicates the main benefit within one second.
 - [ ] Every headline is readable at 160px wide, with strong contrast against the background.
 - [ ] Every headline and emphasis word measures at least 4.5:1 against its background.
-- [ ] More than half of the slides show the app in use (Guideline 2.3.3).
+- [ ] More than half of the slides show the app in use (Guideline 2.3.3), counted with the slide-by-slide table in `SKILL.md`.
 - [ ] You can tell what the app does from the thumbnail alone.
 - [ ] Headlines are 3-5 words per line, with intentional line breaks and no red-flag words.
 - [ ] No two adjacent slides share the same layout.
@@ -305,6 +317,8 @@ Shrink each slide to about 160px wide (App Store search-result size) and squint 
 - [ ] Backgrounds are designed surfaces, with one emphasis word and one accent per slide.
 - [ ] Proof appears on slide 1 only, and the last slide is a feature wall or mosaic rather than another hero.
 - [ ] Each capture is a real, dense screen that proves its headline.
+- [ ] Every laurel, badge, rating and user-count lockup names something true about this app, and its text is not left over from another template.
+- [ ] A spell check has run on every headline and sub-line.
 - [ ] Any cross-screen element crosses adjacent screens only and never splits text or critical UI.
 - [ ] Every locale's copy fits its layout without clipping or mid-phrase wraps.
 - [ ] Hide every headline and sub-line, and the visuals alone still show roughly what the app does.

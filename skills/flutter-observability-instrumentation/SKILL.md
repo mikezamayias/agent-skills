@@ -98,6 +98,9 @@ enum AnalyticsEvent {
 }
 ```
 
+Paywall events carry a typed `placement` property: `base`, `exit_offer`, or a named campaign.
+Emit `paywall_shown`, `paywall_dismissed` and `purchase_completed` with it, so the exit offer's viewers and buyers are counted apart from the base paywall (from a founder's X post and reply, October 2026, unverified).
+
 #### `spans.dart` — Sentry Span Operations & Transaction Names
 
 ```dart
@@ -510,3 +513,4 @@ grep -rn "Sentry.startTransaction" lib/         # Direct transaction calls (only
 - <https://docs.sentry.io/platforms/dart/guides/flutter/metrics/>
 - <https://docs.sentry.io/platforms/dart/guides/flutter/configuration/options/>
 - <https://github.com/getsentry/sentry-conventions/tree/main/model/attributes>
+- <https://x.com/itsbongoo/status/2112401557946069175>

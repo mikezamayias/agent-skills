@@ -14,7 +14,12 @@ Most indies lose conversion by following the wrong order.
 ## The Order That Works
 
 1. **Show value before asking for anything.** Skip the tutorial. Drop the user into a working "test project" or pre-filled state so they feel a win in <30s.
-2. **Rating prompt BEFORE paywall.** Asking for a rating after a "win moment" captures the 5-star sentiment. If you flip the order, users 1-star you out of spite the second they see pricing.
+2. **Ask for a rating after a win in the main app, never during onboarding and not on the way to the paywall.** The rule, Apple's caps and the rejection risk are in [Flutter paywall and review timing](../flutter-paywall-and-review-timing/SKILL.md).
+   One founder (X post, October 2026, unverified) reports a rating screen as the last onboarding step before the paywall, with 50 ratings and 4.3 stars in 4 weeks.
+   His 5 of 62 viewers (8.1%) before and 45 of about 440 (10.2%) after a popup delay change are my recomputation and sit within noise.
+   A first-hand reply reports that App Review rejected a similar screen.
+   He says none of the 5 one-star raters he tracked subscribed, but Apple never reveals who rated, so any claim about raters needs another method.
+   Judge the placement by paid conversion, not by rating count.
 3. **Hard paywall AFTER a success event** — never on launch, never on tab switch. Wait for: streak day 3, first export, first AI generation, first item saved.
 4. **Free trial requires card on file.** It removes freeloaders and raises trial-to-paid conversion.
    In First Page Sage's SaaS benchmark (86 companies, 2022-2025), card-required trials converted 48.8% to paid vs 18.2% for cardless, but visitor-to-trial fell from 8.5% to 2.5%, so judge the whole funnel, not trial-to-paid alone.
@@ -23,7 +28,19 @@ Most indies lose conversion by following the wrong order.
    Judge a trial by paid conversion, not trial-start rate.
    One indie fasting app in October 2026 reported a 20% trial-start week with zero trials converting, while its no-trial weeks reached 12-19% paid, on samples in the tens.
    The founder's own explanation, which he did not test, is that paid ads optimized on trial starts find users who start trials and never pay.
+   Apple allows one introductory offer per person per subscription group.
+   When a ladder mixes a free trial, a paid introductory offer and a no-trial plan, record which products share a group.
+   Check eligibility before showing the offer (StoreKit 2 `isEligibleForIntroOffer`) and show no trial CTA to an ineligible user, since that repeats a misleading claim under Guideline 3.1.2.
+   Apple's page does not state what happens to a user who bought another product in the group at full price, so do not assume either way (Apple help page, read 2026-10-20).
 5. **Offer weekly + yearly, not just monthly.** Weekly lowers commitment fear and converts the "let me test it" segment that monthly scares off.
+   One operator's recipe (X post, October 2026, unverified, no conversion, refund or revenue figure given) pairs one trial with one no-trial plan in two ladders.
+   Ladder A is yearly at $39.99 with a free 3 day trial plus a weekly plan with no trial.
+   Ladder B is weekly at $9.99 with a free 7 day trial plus a yearly plan with no trial.
+   The post does not define "direct", so the no-trial reading is an inference, and it names no weekly price for A or yearly price for B.
+   Apple permits both trial lengths (Apple help page, read 2026-10-20).
+   Treat both as hypotheses to A/B test, not defaults.
+   Judge each on paid conversion per paywall viewer, refund rate and revenue per viewer after the first renewal, not on trial starts.
+   Write the annualized weekly cost in the test notes, since $9.99 per week is $519.48 per year, 13 times the $39.99 yearly plan (arithmetic).
 6. **Add one exit offer after the buyer cancels the store purchase sheet.**
    Superwall's `transaction_abandon` placement fires when a user dismisses the store purchase sheet before the transaction completes, and a matching paywall replaces the current one.
    RevenueCat's closest feature is Exit offers, which show a second paywall when the user dismisses the paywall without buying.
@@ -31,6 +48,7 @@ Most indies lose conversion by following the wrong order.
    One indie fasting app shows a single discounted yearly plan with a close button, a 5 minute timer and the real billed price, and its author reported that the exit paywall produced 23% of its results over two weeks (author's figure, unit not stated, not verified).
    A second founder adds the offer in a follow-up release, after the base paywall is live.
    Ship it in a reviewed update, describe it in Notes for Review, and measure it on its own line so the base paywall rate stays clean.
+   Tag its events with a `placement` property, see [Flutter observability instrumentation](../flutter-observability-instrumentation/SKILL.md).
    Never mention it in What's New, because that text is public and shows the offer to every user.
 
 ## Anti-patterns to remove
@@ -39,6 +57,12 @@ Most indies lose conversion by following the wrong order.
 - "Subscribe to continue" gate before any value is delivered.
 - Tutorial screens explaining features (vs showing outcomes).
 - Yearly-only pricing with no escape hatch for low-trust buyers.
+- A weekly plan whose annualized price is above about 10 times the yearly price as the headline plan (my heuristic, not from Apple or any source). If you test it, show the weekly price, the billing period and the trial end date, and describe what the user gets for the price, as Guideline 3.1.2(c) requires.
+- Replacing the concrete feature list with an outcome headline as the default.
+  Keep the list, as in [Paywall transparency](../paywall-transparency/SKILL.md), and treat an outcome headline as an A/B test idea with no data behind it.
+  One founder (X post, October 2026) says selling the result instead of listing features raised conversion "immediately", with no figure or sample size.
+  A reply gives one example, "on-device AI reads your receipt" becoming "you're in the shop, do you still have milk?", also with no data.
+  Test the headline with the feature list kept below it, and judge it on paid conversion per paywall viewer.
 - Paragraphs on the paywall. Keep each plan to a price, a period and one concrete line.
 - Abstract value claims. Anchor the price to something real instead ("€49 is three takeaways").
 - Fake countdowns or a price that only appears after tapping.
@@ -48,7 +72,7 @@ Most indies lose conversion by following the wrong order.
 ## Audit checklist (use before each release)
 
 - [ ] First successful action happens within 30 seconds.
-- [ ] Rating prompt fires after a clear win, never before.
+- [ ] Rating prompt fires after a clear win in the main app, never during onboarding and not before the paywall (see [Flutter paywall and review timing](../flutter-paywall-and-review-timing/SKILL.md)).
 - [ ] Paywall fires after a success event, not on launch.
 - [ ] Plans visible: Weekly, Yearly, Lifetime (if applicable).
 - [ ] Free trial CTA prominent; cancel path documented in-app.
@@ -65,6 +89,11 @@ A high-performing onboarding structure to pair with the order above:
 5. Soft premium upgrade with clear benefits and trial (this is the "after value" slot from the order above).
 6. Celebration / "creating your space" animation → main app.
 
+A result gated behind the paywall must come from the user's real input.
+Do not show a fabricated score or a fake loading analysis to drive a purchase.
+One founder (X post, October 2026, self-reported) describes a long analysis animation followed by "unlock your rating" and says the sunk cost of about 20 questions raises conversion.
+Treat that as a risk of a misleading claim (my inference) and keep the paywall honest about what unlocks.
+
 Treat signup as deferrable.
 Duolingo's iOS onboarding grew from 6 screens in 2018 to 24 in 2023-2024 and 20 in 2026, observed by Zach Witzel (Helium) in dated screenshots from August 2026.
 Third-party teardowns describe its order as language, goal and motivation questions, then a first lesson, then signup.
@@ -80,15 +109,29 @@ Execution details that matter: always a visible Skip or back, pre-select popular
 One founder's numbers, from a single account (October 2026, a screenshot of $12,698 in 28-day revenue, unverified): 12-13 onboarding screens, a 90% completion target, and under 80% treated as a sign something is wrong.
 He does not say how completion is defined, and this is not a benchmark.
 
+Treat the first onboarding as hypothesis one and chart the funnel by cohort: onboarding start, abandonment screen, paywall reached, trial started, paid.
+A promotional X article (October 2026, by the makers of an app builder) quotes Cal AI as having run 123 A/B experiments, 160 paywall designs, 424 variants and 61 onboarding paywall experiments, with monthly revenue up more than 3x and trial-to-paid up 31%.
+These are unverified secondhand figures, which the article itself marks "reportedly", so use them as a reported example and not as a benchmark.
+
 ## Measure
 
+- Before reading any paywall result, trigger each placement on a test device and confirm its event reaches the analytics log with a nonzero viewer count.
+  A rate divided by zero viewers looks like a flat test.
+  One reply on a founder's post (October 2026, single unverified anecdote) describes three tests run on an app whose paywall event never fired.
 - Paid conversion is weekly unique buyers divided by unique paywall viewers.
 - Keep trial starts on a separate line and never count them as paid.
+- Keep trial starts, trial conversions (the first paid renewal after a trial) and paid introductory offer starts (pay up front or pay as you go) on three separate lines, and never add them together.
+  Report a paid introductory offer start as revenue, not as a trial conversion.
+  In RevenueCat webhooks they are `INITIAL_PURCHASE` with `period_type` `TRIAL`, `RENEWAL` with `is_trial_conversion` true, and `INITIAL_PURCHASE` with `period_type` `INTRO` (event types page, read 2026-10-20).
+  Dashboard labels such as "Trial Convert" and "Intro Offer Start" came from an unnamed tool in a source screenshot and are not RevenueCat event names, so map them to the documented fields before counting.
 - Bucket weekly when daily paywall views are under about 20, because daily rates are noise.
 - Annotate every price, offer and onboarding change on the chart, and exclude the developer's own country or test devices.
 - Never report a partial-week point as a result.
   One indie's chart headlined a dashed, incomplete week at 22.2%.
   An earlier capture of the same chart read 14.1% for its then-partial point against 12.2% once the week completed, an inference from two captures with unconfirmed week boundaries.
+- When a founder reports a one-day jump, attribute it from that day's transaction list.
+  Read each row's product, price and type (new subscription, trial start, trial conversion, cancelled trial), and add the rows to the day total before crediting a feature.
+  A 28-day tile also moves when old days roll out of the window (unverified inference from the tile label, not checked against RevenueCat docs).
 - Report a 95% interval with each rate. For example, 23 buyers out of 104 viewers is 22% with a range of about 15-31%.
 
 ## When in doubt
@@ -115,3 +158,11 @@ Moving the paywall late costs conversions, so A/B test placement instead of assu
 - <https://www.appcues.com/blog/gradual-engagement-mobile-app-first-screen>
 - <https://blog.duolingo.com/widget-feature>
 - <https://revyl.com/atlas/duolingo/>
+- <https://x.com/eglitisX/status/2112412118213640419>
+- <https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-introductory-offers-for-auto-renewable-subscriptions/>
+- <https://www.revenuecat.com/docs/integrations/webhooks/event-types-and-fields>
+- <https://x.com/itsbongoo/status/2112401557946069175>
+- <https://x.com/GeorgeLampro20/status/2112452949561463082>
+- <https://x.com/zakisbuilding/status/2112823780821049807>
+- <https://x.com/devmelv/status/2112632240593158297>
+- <https://x.com/chddaniel/status/2112392363725537783> (quotes <https://x.com/chhddavid/status/2112113481495318700>)

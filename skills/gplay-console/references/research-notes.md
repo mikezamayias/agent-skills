@@ -28,3 +28,8 @@ Web search found:
 - `pabal-mcp`: combined App Store and Google Play ASO/store-management MCP.
 
 None were installed automatically. Review code and credential handling first, then install through your normal MCP configuration.
+
+## Open questions
+
+- Whether an individual business owner without a company can register an organization account, and what Google asks for beyond a D-U-N-S number. Not answered by the Google pages read on 2026-10-20.
+- Tester-for-hire listings (a reply cites a Fiverr listing at about $10) were not checked against Google policy. Do not recommend them until Google's testing page or the Play policy center says whether such testers count.

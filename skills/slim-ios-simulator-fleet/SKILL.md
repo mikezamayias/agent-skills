@@ -15,6 +15,15 @@ Requires Mac + Xcode + a simulator runtime at or above the persistence gate: iOS
 On iOS 17.x and 18.3, `simslim on <udid> --no-reboot` slims only the current boot session, so re-run it after every boot.
 The README says the tvOS, watchOS and visionOS cutoffs follow the iOS release generation and are not independent measurements.
 
+## Remote code gate
+
+**Remote code gate.** This step runs code fetched at run time. Each time, download the exact version into an empty directory without running it, have a separate reviewer agent (the `code-gate` subagent where it exists) read its source, and run it only if the reviewer returns SAFE, from those reviewed files, never from a fresh download. On UNSAFE or UNSURE, do not run it and tell the user why.
+
+Covers:
+
+- `brew install mobai-app/tap/simslim`, a third-party Homebrew tap, in "Install and slim" and in any CI step that installs it.
+- Updating `simslim` before debugging a launch delay or a log flood.
+
 ## Other platforms
 
 The same commands and profiles cover tvOS, watchOS and visionOS simulators.

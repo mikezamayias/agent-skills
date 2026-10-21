@@ -21,6 +21,16 @@ Typical classes of bug this finds:
 The harness lives in the repository.
 A harness kept in `/tmp` loses its checks between runs.
 
+## Remote code gate
+
+**Remote code gate.** This step runs code fetched at run time.
+Each time, download the exact version into an empty directory without running it, have a separate reviewer agent (the `code-gate` subagent where it exists) read its source, and run it only if the reviewer returns SAFE, from those reviewed files, never from a fresh download.
+On UNSAFE or UNSURE, do not run it and tell the user why.
+
+Covers:
+
+- `docker run` of the `PG_IMAGE` container image in `scripts/run.sh`. Record the image digest as well as the tag, and review the image source before the first run and after any change of version.
+
 ## Files
 
 - `scripts/run.sh` extracts the SQL, starts a fresh container, loads stubs, the schema, and every `smoke/*.sql` in name order, prints `passed/total` per suite, and exits non-zero on any failure.

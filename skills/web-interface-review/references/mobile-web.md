@@ -30,6 +30,7 @@ Notes that change the verdict:
 - M10: if the theme toggles by class instead of the OS setting, the meta must be updated on toggle.
 - Android keyboard: `interactive-widget=resizes-content` in the viewport meta makes the keyboard shrink the layout so `dvh` and bottom-pinned inputs react as on iOS.
 - Landscape text inflation: `-webkit-text-size-adjust: 100%` on `html`.
+- Phone landscape layout: in the final pass, rotate to landscape and check that a hero does not take most of the viewport height and push content below the fold. Fix with `svh`-based or capped hero heights. Source is a single reply on X (2026-10-20), so treat it as a hypothesis until a real device confirms it.
 
 ## Baseline for a phone-first app
 

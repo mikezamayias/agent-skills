@@ -67,6 +67,17 @@ Let that concept set type, palette, illustration style and motion.
 Sketch the main screen three ways from the concept, pick one with the human, then build every other screen from the chosen one.
 The method is Tobia Donadon's free "How to Stop Making your Apps Look Like AI Slop" article (October 2026). His paid skill, App Designer Pro, packages it.
 
+### 1c. Duo concept pass
+
+Use this when the app will ship to iPhone Duo.
+Before changing code, draw each key screen twice, once for the outer display and once for the open inner display.
+Decide which content moves to a second pane and which stays in the first.
+Pairs reported by one author: a music app puts artwork on one pane and controls on the other, a productivity app puts the workspace beside a tool panel, a finance app puts the balance and primary actions on one pane and "safe to spend" plus upcoming items on the other.
+Name the one thing the inner screen shows that the outer screen cannot, because the same capture is needed for the Duo screenshot deck.
+Then hand layout work to the framework skill, such as `swiftui-pro` and its `references/resizability.md`.
+Source: Tobia Donadon, October 2026, a skill demo with no public code, so treat the pairs as examples and not as tested patterns.
+Evidence level: demo video and author text only, the skill and its output were not seen.
+
 ## 2. Critique
 
 | Lens          | What to write                                                             |
@@ -140,6 +151,17 @@ Lottielab exports Lottie JSON only on a paid plan, and Jitter's free tier export
 
 Never Rive a page route. `liquid_glass_renderer` is 0.2.0-dev, Impeller-only, 16-shape cap — not a layout system. Never on Web/Skia.
 
+### 3b. Status bar over imagery
+
+Flutter has no equivalent of the package below in the source that raised this.
+If a Flutter screen needs an adaptive status bar, port the spec of `@rbayuokt/expo-adaptive-status-bar` (author's reply and diagram, October 2026).
+Sample the left and right 35% strip, use linear luminance, switch to dark icons above 0.58, white icons below 0.42, and keep the current style in between.
+Require two agreeing readings near a threshold and enforce at least 250 ms between switches.
+Apply the result with `SystemChrome.setSystemUIOverlayStyle`.
+The Flutter port is our inference.
+The thresholds are the author's, and no source shows they are tuned.
+No Flutter source was read.
+
 ## 4. Drop running UI into Figma
 
 1. iPhone simulator. Capture UI-only, plus one with chrome if island/home-indicator context matters.
@@ -208,4 +230,6 @@ Paste the spec + 2–3 reference links **before** asking a model to write widget
 - <https://developer.apple.com/design/human-interface-guidelines/accessibility>
 - <https://api.flutter.dev/flutter/widgets/MediaQuery/disableAnimationsOf.html>
 - <https://x.com/tobiadonadon_/status/2106430529113301163> (Tobia Donadon, "How to Stop Making your Apps Look Like AI Slop", article 2106428717639626752, concept-first method)
+- <https://x.com/tobiadonadon_/status/2112305196001018212> (Tobia Donadon, Duo Designer skill demo and "Get Your App Ready for the iPhone Duo", October 2026, no public code, unverified)
+- <https://x.com/rbayuokt/status/2112217296500654256> (rbayuokt, adaptive status bar spec, October 2026, README and npm read, benchmark self-reported)
 - <https://x.com/breejeanadkat/status/2111411956599149046> (stack named first, brief inputs, human-designed Figma key screens, practitioner thread, unverified)

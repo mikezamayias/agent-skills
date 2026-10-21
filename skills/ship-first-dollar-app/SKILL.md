@@ -61,27 +61,63 @@ Define and verify events for:
 
 Attach channel and creative attribution. Verify event delivery before buying traffic.
 
+#### Where the funnel is stuck
+
+Name the highest tier the content reaches, and the missing metric says what to fix next.
+The tiers are one author's framework with no data behind them, from an article that promotes the authors' own app builder (published 2026-10-19), so use them as a checklist and not as a benchmark.
+
+| Tier | Reached              | Missing metric, fix next                                            |
+| ---- | -------------------- | ------------------------------------------------------------------- |
+| 0    | Low views            | Views. Fix the hook.                                                |
+| 1    | Views                | Engagement. Fix the demo and the first seconds.                     |
+| 2    | Views and engagement | Downloads. Fix the call to action and how fast the product appears. |
+| 3    | Plus downloads       | Conversions. Fix onboarding and the paywall.                        |
+| 4    | Plus conversions     | Low churn. Fix retention in the product.                            |
+| 5    | Plus low churn       | Nothing missing. Scale what survived the whole funnel.              |
+
+Views and engagement are not buying intent.
+The article says 5 million views can earn less than 100 thousand views from the right audience, without data.
+
 ### 5. Ship to real users
 
 - Ship when core action works and sensitive paths pass review.
 - Collect evidence against original assumptions.
 - Do not wait for a broad feature set or speculative scalability.
 - Treat listing or website publication as availability, not distribution.
+- A site is availability. A site with queries, comparison pages and crawler access is an owned acquisition channel, measured by GA4 AI-assistant sessions and Search Console, see `app-landing-page/references/seo-and-ai-answers.md`. Check results after four weeks before counting it as distribution. The outcome is unmeasured.
 
 ### 6. Run bounded distribution experiments
 
 - Test at least three creative angles: pain-first, product demo, and wildcard.
+  - For slideshows, also test two variables on the same angle: the last slide (no CTA against "save this + follow") and the app's slide (not shown, or after slide 6). Evidence is weak, one correlation study plus contrary replies.
 - Separate active outreach from intent-based paid acquisition.
 - Start with small, trusted audiences and bounded spend.
 - Log outreach volume, replies, placements, spend, traffic, trials, payments, refunds, and revenue.
+- Judge a post format by installs per post, not by views.
+  Give each post or creative a way to be attributed, such as a distinct link, custom product page or promo code, or at least log app-page taps and installs against the post's post time.
+  A format that raises views can lower installs.
+  Public format studies measure views only.
+- Before spending on content, tap the bio link from inside the TikTok and Instagram apps on a real iPhone and a real Android phone, and confirm the store page opens.
+  A store link can fail inside those apps' in-app browsers, see the link-in-bio notes in [references/distribution-channels.md](references/distribution-channels.md).
+  Log taps on the bridge page against App Store page views so the leak is measured.
+  This check is an inference from one founder's claim and is untested.
 - Feed winning hooks and objections into next creative variants.
 - Before paying creators, post the angles yourself on short video platforms, and hire creators only after a format has won.
+- Before the first post, write down how many posts and what view or install threshold count as honest testing, and drop the format if it misses.
+  One founder says to kill a format that does not move after honest testing but gives no threshold (October 2026, no data), so the number is yours to set.
+- For TikTok photo slideshows, read [references/tiktok-slideshow-format.md](references/tiktok-slideshow-format.md) before writing posts.
+- For a game, wait for a day-1 return number before pushing organic clips, using the retention signal in `consumer-app-from-behavior` section 7. The day-1 timing is one reply's assertion.
+- For game ad creative and the cross-promotion note, read the Games section of [references/distribution-channels.md](references/distribution-channels.md).
 - For an iOS app, run the first intent-based test on Apple Ads with [references/apple-ads.md](references/apple-ads.md).
 - For Meta and TikTok campaigns, creator marketplaces, Reddit, Discord, YouTube Shorts and influencer deals, read [references/distribution-channels.md](references/distribution-channels.md).
 - On Reddit, help in the community first and follow each subreddit's own self-promotion rule, because moderators set local limits and Reddit's spam rules ban mass-posting repetitive content for exposure or financial gain.
 - Disclose any creator who is paid by revenue share, commission or cash, inside the video itself.
 
 Do not scale a creator, ad, or channel without attribution and acceptable unit economics.
+
+Run paid only on concepts that already won organically, and measure cost per install, install-to-trial and trial-to-paid per campaign.
+This order is the opinion of one article (published 2026-10-19).
+Its sequence of 1,000 dollars buying 500 installs, 50 trials and 20 payers is an illustration and not data.
 
 Keep an ad running while its cost per acquisition (CPA, the cost of one paying user) stays below lifetime value (LTV, net proceeds per paying user) within a payback window and spend cap set in advance, such as 6 or 12 months.
 An ad just above that line may run through its learning period under the cap, then stops if it does not cross the line.
@@ -111,6 +147,9 @@ Track only metrics that change decisions:
 - Spend, CAC, revenue, ROAS, and payback by channel.
 - Bugs and repeated requests by frequency and revenue impact.
 - Product time versus distribution time.
+- Reported early heuristics from one founder, not benchmarks: start reading conversion at about 100 downloads a day, and aim for about 2 dollars of revenue per download in month one.
+  Expect a lower figure from broad UGC reach and a higher one from creator posts that explain the app.
+  If retention is poor, add useful adjacent features and measure churn before and after.
 
 Do not mistake revenue, downloads, replies, or impressions for profitability.
 
@@ -145,9 +184,20 @@ Guideline 4.3(a) bans multiple Bundle IDs of the same app and advises considerin
 Guideline 4.3(b) says repeated submissions of low-effort, indistinguishable apps may lead to removal from the Apple Developer Program.
 One developer kept his account only after cutting his portfolio to one app per category, and now also ships to Android, the web and macOS so that one account decision cannot remove all revenue.
 That is one account, not Apple policy, so treat it as a reason to consolidate early rather than as a safe app count.
+A second reported data point, secondhand and unverified (article published 2026-10-19): an app called Journable passed 100 thousand dollars a month in the crowded calorie tracking category, with most of that revenue reportedly from Android.
+
+An Android release is an extra revenue channel only after the Play account gate in `gplay-console` is cleared, so weigh the cost of a company registration against 14 days of testing.
+An organization account may avoid the test, unconfirmed by Google.
+The source gives no Android revenue figure, and one reply saying Android subscriptions exceed iOS for that developer is anecdotal.
 
 ## Sources
 
 Distilled from Cole Caccamise's video _How I Code Apps SOLO That ACTUALLY MAKE MONEY (Full Guide)_: <https://www.youtube.com/watch?v=WoKmZNN6qLo>.
+
+The bio-link check comes from a founder's post (2026-10-20), unverified: <https://x.com/MaxHirsch13/status/2112626598524465296>.
+
+The kill-rule note comes from a founder's post (2026-10-20), unverified, whose author has a commercial interest in TikTok tooling: <https://x.com/devmelv/status/2112632240593158297>.
+
+The funnel tiers, the paid-after-organic order and the Journable figure come from an X article promoting the authors' own app builder, with figures that are unverified and a study of winners only: <https://x.com/chhddavid/status/2112113481495318700>.
 
 Read [references/video-notes.md](references/video-notes.md) when provenance, case-study numbers, timestamps, or adaptation choices matter. Keep normal execution on this file's workflow.

@@ -27,6 +27,10 @@ Required before public go-live:
 - Required screenshots and icons complete for each target store.
 - Signed build uploaded to the intended review/testing/production track.
 - Google Play personal developer accounts created after November 13, 2023: closed test with at least 12 testers opted in continuously for the preceding 14 days before applying for production access.
+  - Google's page scopes the rule to personal accounts and never mentions organization accounts, so treat the organization exemption as an inference until the Play Console shows no production-access gate for the account.
+    Organization accounts need a D-U-N-S number, a free Dun and Bradstreet identifier.
+    One developer with an organization account reported still facing the requirement, so check the Dashboard before promising a date.
+  - Check the account's type and creation date in Play Console before planning the closed test, because older personal accounts and organization accounts fall outside the stated scope.
 - Review status known.
 - Rollout and rollback plan documented.
 

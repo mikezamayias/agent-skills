@@ -120,6 +120,7 @@ Constraints:
 - Single .html file. Inline all CSS and JS. No external dependencies except Google Fonts (one family max) and an optional inline SVG icon set.
 - Mobile-first responsive (works at 375×667).
 - One primary CTA on the page; secondary CTAs allowed but visually subordinate.
+- If the page receives TikTok or Instagram bio traffic, the primary CTA must still work inside their in-app browser. Add a full-screen overlay with an arrow to the ••• menu and "Tap ••• → Open in browser", and keep a visible Download button. One founder's claim (2026-10-20), untested, see the link-in-bio notes in `ship-first-dollar-app` references/distribution-channels.md.
 - Real copy only. No "Lorem ipsum", no placeholders.
 - No marketing puffery: no "transformative", "revolutionary", "the best", "simplify your life", "unlock the power of". Write headlines in plain, specific language.
 - No AI-copy tells: no "where X meets Y", no "not just X but Y", no "scroll to explore", and no "hover" in copy a touch visitor reads.
@@ -209,6 +210,12 @@ Append one line to `landing-pages/runs-log.md`:
 ```text
 YYYY-MM-DD HH:MM - <project> - 5 versions (<model> x N, ...)
 ```
+
+## Several apps
+
+For several apps use one Astro codebase with one content collection per app, so shared changes (crawler rules, JSON-LD, localization) land once.
+Write the site recipe as a skill after the first app ships, naming where assets, copy and keyword data come from.
+This is a preference stated in a video by Dan Kulkov (2026-10-19), not a comparison against other frameworks, and it applies to a site that outgrows the single-file pages above.
 
 ## Related skills
 

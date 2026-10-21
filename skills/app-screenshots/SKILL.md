@@ -100,6 +100,9 @@ Submitting Duo screenshots adds an "optimized for iPhone Duo" badge to the produ
 Capture each display on the iPhone Duo simulator at its exact size, never by stretching another iPhone capture.
 Koubou 0.20.0, the version `asc` pins, has no Duo frame (`asc screenshots list-frame-devices` lists none), so Duo framing is an open step: log it as `Stuck` and ask the human rather than improvising a frame.
 Duo deck design rules are in [references/copy-and-design.md](references/copy-and-design.md).
+Optional for the human, not for the store deck: one author composites app captures into an image-model render of a hand holding a Duo for social and press visuals (Tobia Donadon, product page read 2026-10-20, one sentence, unverified, untested here).
+Apple's store screenshots still use the exact simulator captures from the step above.
+Never use a generated device render as a store screenshot.
 Android target: 1080×1920 portrait (9:16, Play Store phone).
 Play rejects screenshots whose long side is more than twice the short side, so raw 20:9 captures such as 1080×2400 must be framed to 9:16.
 Play accepts up to 8 phone screenshots as JPEG or 24-bit PNG without alpha, and promotion eligibility needs at least 4 at 1080 px or more.
@@ -115,6 +118,11 @@ Apple/Google reject screenshots that show debug overlays or staging data. Verify
 - [ ] No PII (real names, real emails, real bank balances)
 - [ ] Light mode by default; add a dark mode pass when the listing calls for it
 - [ ] More than half of the screenshots for each supported device show the app in use (Guideline 2.3.3). With 3 screenshots per device, 2 must show the app in use on that device, and with 4, 3 must. Title art, a login page, and a splash screen do not count.
+      Count a slide as showing the app in use only if it contains a real or realistic screen of the running app.
+      A mascot, photo, orbiting-avatar graphic, floating money chips, a lone notification or a placeholder grey-row mock does not count.
+      Apple's 2.3.3 text as fetched allows overlays and text, so the test is the presence of a real screen and not the absence of decoration.
+      Before `asc screenshots upload`, write a slide-by-slide table (slide, headline, real screen yes or no), and do the same for decks designed by a third party.
+      Example from one agency-deck post (October 2026, image reading, inference, no review outcome known): of four agency decks of six slides, one had no real screen by that reading and the others had 4 or 5.
 
 ## App previews (optional)
 

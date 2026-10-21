@@ -39,3 +39,8 @@ These numbers show volume, attribution, and profitability concerns. Never reuse 
 - Expand money path through refunds and retention because revenue alone is incomplete.
 - Add explicit spend caps, attribution checks, and unit-economics gates.
 - Separate reversible experiments from auth, payment, privacy, secret, and destructive paths.
+
+## Vendor Mentions
+
+- ActivationPal (iOS and Android funnel analytics, 14 day trial) is named by its owner in a promotional ending, no URL, not researched.
+  Do not add it to any recommendation list.

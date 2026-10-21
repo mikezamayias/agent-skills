@@ -46,7 +46,45 @@ Build for the problem, not the trend name.
 Mine comments for unprompted requests such as "someone needs to make an app for this", "is there an app that does this", and "I wish something tracked this automatically".
 Unprompted statements are stronger evidence than asking "would you use an app that does X".
 
+Before committing to an idea, answer four questions:
+
+- Are several competitors making serious money?
+- How large are the biggest?
+- What do their users dislike?
+- Where do those companies find customers?
+
+Then test whether distribution can shape the idea.
+Can the app be shown in a 7 second clip, do users share its results, and does it suit before-and-after content?
+These questions are the opinion of one promotional article (published 2026-10-19), unverified.
+
+To learn which post format works in a niche, study format and not accounts.
+List 100 or more public accounts in the niche.
+Save each post's link, views, likes, saves, caption and slides.
+Label each post for the traits you care about, such as hook type, number of slides, ending and app placement.
+Compare only inside each account: posts with a trait against that same account's posts without it, and count in how many accounts the trait wins.
+Require at least 2 posts with and 2 without per account.
+Report the change in views and the accounts won, and drop rows with fewer than about 20 accounts.
+One founder ran this over 13,196 posts for about 172 dollars, mostly LLM labeling, in 1.5 to 2 days elapsed time (self-reported, 2026-10-17, dataset unpublished).
+The result shows correlation with views, so verify any finding with your own post before building on it.
+Read only public pages and check the platform's terms and rate limits first.
+For the per-post label list, see `ship-first-dollar-app` [references/tiktok-slideshow-format.md](../ship-first-dollar-app/references/tiktok-slideshow-format.md).
+
+To size a category, read a studio portfolio page the same way, as a worked example.
+One screenshot (2026-10-19, a third-party tool's 30-day estimate and not a reported figure) showed a studio with 27 sudoku, crossword and word search apps at about $1.1M and 1.7M downloads.
+Check release dates first.
+The top 4 apps carry about half the revenue, and 3 of those 4 date from 2017, so the earnings come from old titles.
+Check how many new apps earn anything.
+Of the 6 apps released in 2026, two earned $52.2K and $17.3K, and the other four earned $5.8K, $4.3K, $373.94 and $0.
+Check revenue per download, which ranged from about $0.08 to $3.67 and averaged about $0.65 across the page.
+The post's nationality and older-audience claims were not supported by the screenshot.
+Replies say word, crossword and sudoku apps have been saturated for over a decade (single accounts, unverified).
+
 Output: a list of candidate problems, each with the verbatim evidence and its source.
+
+Views are not demand.
+One founder reports 1.8 million creator views that produced 5 weekly subscriptions on an app he did not care about, and 1 million views that produced about 17,000 dollars on an app for his own sport.
+His two retellings differ (1.5 million views and 15 dollars on a vendor page), so this is self-reported and inconsistent.
+Use it only as a reason to check conversion per creative before buying more reach.
 
 ## 2. Pick a format
 
@@ -88,6 +126,13 @@ Answer the five gate questions:
 Question 4 is the one most often skipped.
 Retention is the product, and downloads are not.
 
+Name the one feature a viewer understands from a 3 to 5 second clip with no voiceover, for example "photo of food, get calories".
+Lead every creative with that feature.
+Push a second feature only after a creator's returns fall, and note the date and the return before and after.
+Then hand the phone to someone who does not use apps for fun and ask what it does without helping.
+If they cannot say, simplify the screen before spending on distribution.
+Source: George Lampropoulos on the Startup Ideas Podcast, self-reported with no store data.
+
 ## 4. Borrow the patterns, not the pixels
 
 Use 5-10 shipped apps around the same behavior.
@@ -104,6 +149,10 @@ Record the decisions, not the styling:
 - Time to first win.
 - What stays visible and what is hidden.
 - What brings the user back tomorrow.
+
+Use screenshots and reviews for the reasons behind a decision.
+Use numbers only for what the data source contains, because a competitor's private conversion and retention are not visible.
+A study of winning apps alone shows shared traits, not causes, so compare with failed apps or label the finding a hypothesis (the survivorship caveat, raised by a reply to the source below).
 
 For each paywall, record every tier's name, price and billing period, the trial length, any discount claim, the exact CTA text, and whether it is hard or soft.
 Convert every yearly and lifetime price to a monthly equivalent before comparing apps.
@@ -246,6 +295,14 @@ Adapted from David Ch's article _Jev studied 438,122 apps doing $10k/mo+ for me.
 
 The shareable creative format note comes from a founder's video: <https://x.com/Jibran_05/status/2111125040225735055>.
 
+The gotcha-feature test and the reach-versus-revenue caution come from a podcast interview shared in a post, self-reported: <https://x.com/GeorgeLampro20/status/2112452949561463082>.
+
+The within-account format comparison method comes from a founder's analysis, self-reported and unpublished: <https://x.com/ericcosulea/status/2112214949736898809>.
+
+The studio portfolio example comes from one screenshot of a third-party estimate tool: <https://x.com/alexcooldev/status/2112218472709329038>.
+
 The competitor teardown evidence labels come from the evidence contract of a third-party repo created about 2026-10-18 (29 stars on 2026-10-19), unverified: <https://x.com/danielhangan_/status/2111899646306230593>.
+
+The pre-idea questions and the competitor-data limits come from a later X article by the same authors (published 2026-10-19), which promotes their own app builder, with figures that are unverified and no failed apps in its sample: <https://x.com/chhddavid/status/2112113481495318700>.
 
 Read [references/article-notes.md](references/article-notes.md) when provenance or adaptation choices matter.
