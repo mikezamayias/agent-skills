@@ -176,6 +176,10 @@ Specs come from Apple's "Creative assets specifications" page:
 | Product header | 21:9 at 3840x1646 (jpeg, jpg or png), or 16:9 at 5244x2950 (png)               | 21:9 at 3840x1646, 30 or 60 fps, 5 to 30 s, mov, m4v or mp4               |
 | Search results | 3:2 from 1920x1280 to 3840x2560 (jpeg, jpg or png), or 16:9 at 5244x2950 (png) | 3:2 from 1920x1280 to 3840x2560, 30 or 60 fps, 5 to 30 s, mov, m4v or mp4 |
 
+- The hint under the upload box in App Store Connect reads "Supported sizes include 5244 × 2950px and 3840 × 1646px" and does not say the larger size is image-only.
+  A video header must be 21:9 at 3840x1646.
+  Advice on X to use a 5244x2950 landscape for a header applies to PNG images only.
+
 - Images cannot include alpha channels or transparency.
 - The spec page lists no 16:9 video size and no GIF format, so an animated header is a video file.
 - Videos are muted by default in both placements and loop continuously.
@@ -186,6 +190,11 @@ Specs come from Apple's "Creative assets specifications" page:
   Otherwise select a dedicated asset for each.
 - Design with a safe area in mind and keep the focal point in the center of the composition, so different devices and orientations do not clip it.
   Apple publishes Figma, Sketch, Photoshop, and Pixelmator templates that define the safe area, linked from the asset best practices page.
+- One developer measured the iPhone view of a 3840x1646 header as the middle 48% of the width and 72% of the height, x 998 to 2842 and y 230 to 1416, with the status bar and Dynamic Island at the top and the back, mute and share controls over the corners.
+  That is about 1.55:1 on screen, measured on an iPhone 16 Pro in October 2026 (single report, check it against Apple's template).
+  Use it as a starting guide only and keep the subject, logo and any motion that matters inside it.
+- Apple lists one video size for the header, so one video serves iPhone, iPad and iPhone Duo.
+  Apple's pages do not say how it is cropped on each.
 - Focus on a single, clear idea.
   Avoid quick cuts and fast-moving visuals.
   Lead with the value proposition or the most compelling feature.
@@ -201,7 +210,29 @@ Specs come from Apple's "Creative assets specifications" page:
   It applies everywhere the asset is used and cannot be edited after the asset is approved.
 - Review is separate from screenshots.
   Standalone assets are reviewed against the app's latest version, and approved assets can replace the ones on a live version without submitting a new version.
+- One developer reports a header can be removed in App Store Connect at once without a new build, that a replacement was approved within 24 hours, and that a failed video upload worked after deleting and re-uploading it (single report, not confirmed by Apple).
+- Two replies on one X thread say app updates would not roll out while a video header was live, and that switching back to an image fixed it.
+  This is unverified, so if an update stalls with a video header live, replace the header with an image as one diagnostic step.
 - Upload and submit with the `asc asset-library` commands in `asc-cli-usage`, then check each device and orientation in App Store Connect's preview before submitting.
+- One developer reports the App Store Connect preview did not match the live crop and needed three attempts, and that the header is much more cropped on iPhone than the 21:9 source (single report).
+  After approval, confirm the result on a device running iOS 27 or later.
+
+### Test a header asset
+
+- A header or search-result creative asset can be a treatment in a Product Page Optimization (PPO, Apple's A/B test of the default product page) test.
+  Open App Store Connect, then Product Page Optimization, create a test, and on each treatment use the "Header and Search Results" tab.
+  A test has up to three treatments against the original, each treatment has one header asset slot, and Browse Assets reuses approved Asset Library items.
+  The `asc product-pages experiments` commands are in `asc-cli-usage`.
+- Apple's Configure test treatments page documents the Header tab.
+  Its Overview page still lists only icons, screenshots and previews, so check both pages before promising a client this test.
+- A test runs up to 90 days or until you stop it, cannot be edited after it starts, and new treatment metadata needs App Review.
+  Plan the duration from Apple's estimate, and cover at least one full week of traffic because weekday and weekend traffic differ (a reply's suggestion, not Apple's rule).
+- Treatments are served on iOS 15 and later, but creative assets only render on iOS 27 and later.
+  Apple does not say whether the audience is filtered to iOS 27, so a header-only test may include people who never see the header.
+  Treat that as a dilution risk and record the share of iOS 27 traffic in App Analytics before reading a lift.
+- A header test says nothing about app preview videos.
+  A lift figure for preview videos, such as "up to 30%" in one X post, is no evidence for a header video, and Apple's own Simply Piano story shows a preview-video treatment losing to the original.
+- PPO is not available for custom product pages, so test headers on the default page only.
 
 ## Related skills
 
@@ -214,6 +245,8 @@ Specs come from Apple's "Creative assets specifications" page:
 - <https://developer.apple.com/help/app-store-connect/reference/app-information/creative-assets-specifications/>
 - <https://developer.apple.com/help/app-store-connect/manage-app-information/manage-your-app-store-assets/>
 - <https://developer.apple.com/app-store/asset-best-practices/>
+- <https://developer.apple.com/help/app-store-connect/create-product-page-optimization-tests/configure-test-treatments>
+- <https://developer.apple.com/app-store/product-page-optimization/>
 - <https://developer.apple.com/app-store/review/guidelines/>
 - <https://support.google.com/googleplay/android-developer/answer/9866151>
 - <https://developer.android.com/distribute/google-play/resources/icon-design-specifications>

@@ -50,6 +50,24 @@ Most indies lose conversion by following the wrong order.
    Ship it in a reviewed update, describe it in Notes for Review, and measure it on its own line so the base paywall rate stays clean.
    Tag its events with a `placement` property, see [Flutter observability instrumentation](../flutter-observability-instrumentation/SKILL.md).
    Never mention it in What's New, because that text is public and shows the offer to every user.
+7. **After the first purchase and after a lapse, sequence offers by user state, and test each as its own line.**
+   One LinkedIn post (October 2026, unsourced, no data) lists five add-ons to onboarding and a paywall for larger apps: an upsell to new subscribers, a downsell to users who declined, email follow-up for non-purchasers, a retention offer when a subscriber leaves, and a win-back offer after a lapse.
+   Treat the list as a checklist of what to measure, not as evidence that each pays.
+   The same post says "up to 10% resubscribe within a year", with no source, so do not plan on it.
+   Apple's offer types, eligibility and limits are in [subscription offers](references/subscription-offers.md).
+   - Win-back on iOS: use Apple's win-back offer, not a custom price.
+     It is per product, needs a subscription approved by App Review, and is for churned subscribers only (`expirationDate` in the past and `willAutoRenew` false).
+     Set Minimum Paid Duration, Time Since Last Subscribed (1 to 24 months) and Wait Between Offers (2 to 24 months) deliberately, and write the chosen window in the test notes, because the post's "3-6 months" is a guess.
+   - Retention offer for a subscriber who turned auto-renew off on iOS: use a promotional offer.
+     Apple deems anyone with an existing or expired subscription in the app eligible, and you add your own criteria.
+     Listen for the `DID_CHANGE_RENEWAL_STATUS` server notification, let the server decide eligibility and tell the app to show the offer.
+     Redeeming needs a server-generated signature, and it works on iOS 12.2 and later.
+   - Downsell for a user who never subscribed: a promotional or win-back offer is not available to that user, so use a separate cheaper product or an offer code, and give it its own `placement` value.
+   - Pause: Google Play lists pause as a subscriber action.
+     The Apple pages read describe no pause, so do not promise one on iOS.
+   - Email follow-up needs an address, so decide where it is collected, and see `launch-watch` for EU consent and an unsubscribe link before the first send.
+   - Keep every offer out of What's New, see `asc-whats-new-writer`.
+   - Judge each stage by incremental revenue per eligible user, refund rate and churn, not by redemptions.
 
 ## Anti-patterns to remove
 

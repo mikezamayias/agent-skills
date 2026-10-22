@@ -36,6 +36,7 @@ who trust you convert at much higher rates.
 - [ ] Trial-start screen lists features in plain language.
 - [ ] Charge timeline visible BEFORE the App Store / web checkout modal.
 - [ ] Reminder push/email scheduled 48h before charge.
+- [ ] A win-back or retention offer states the price after the offer ends, the billing period and the renewal date, the same as any trial.
 - [ ] On a one-screen paywall, the trial line under the plan states the length, the charge with its period and the reminder ("7 days, then €29.99 a year. We remind you 2 days before."), and the reminder is actually scheduled.
 - [ ] Settings → "Manage subscription" deep-link is one tap.
 - [ ] Localized prices per storefront.
