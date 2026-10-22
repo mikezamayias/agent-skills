@@ -1,7 +1,7 @@
 ---
 name: flutter-app-size-audit
 description: >-
-  Cuts Flutter app install size by 30-60% by attacking build defaults, asset formats, and shrinking flags. Use when install conversion is dropping, when reviewers cite size, or before any major release.
+  Cuts Flutter app install size by attacking build defaults, asset formats, and shrinking flags, and measures the result. Use when install conversion is dropping, when reviewers cite size, or before any major release.
 metadata:
   docs-verified: "2026-09-28"
 ---
@@ -10,6 +10,24 @@ metadata:
 
 Many app size problems come from build defaults you never questioned, not from your assets.
 Check all five layers and measure each change with `--analyze-size`.
+
+## Why iOS download size matters
+
+- iOS can ask the user to confirm a download over a mobile network.
+  Apple's size guide says the App Store "limits the size of the apps they can install over a mobile connection" and tells you to keep the app "well below the size limit", and it gives no number.
+  Apple's iPhone guide shows the choices "Always Allow, Ask If Over 200 MB, or Always Ask" for Books, and two news articles from 2019 and 2020 say the App Store uses the same choices with "Ask If Over 200 MB" as the default (inference, third-party, iOS 13 era).
+  Treat 200 MB as the default prompt threshold on current iOS and check it on a device before quoting it.
+- The prompt can be overridden, so it is friction and not a block.
+  The same articles say the prompt always appears while roaming, so a small app can still trigger one (a reply screenshot shows a 52 MB app prompting on a roaming connection).
+- The number that counts is the thinned compressed download size per device variant, not the `.app`, the `.xcarchive` or the IPA.
+  Apple says none of those is suitable for measuring.
+- One X post claims "5-15% more installs" from getting under the threshold and that apps over 500 MB are often deferred and forgotten (single report, no study, no app named, and the 500 MB claim has no Apple source, where 500 MB is Apple's executable-size limit).
+  Do not quote these numbers to a client.
+  Measure your own cellular install rate before and after.
+- The "30-60%" size cut this skill used to promise in its description had no source and is dropped (unverified).
+
+Evidence: Apple pages read 2026-10-23, the Apple size guide through its page JSON.
+The 200 MB default is unconfirmed on current iOS.
 
 ## The 5-step cut
 
@@ -55,6 +73,14 @@ flutter build ios --analyze-size  # generates a report
 `--analyze-size` needs a single Android `--target-platform`, cannot be combined with `--split-debug-info`, and on iOS measures a `.app`, not the IPA.
 For shipping builds, add `--split-debug-info=<dir>` (optionally with `--obfuscate`), which Flutter's app-size guide recommends to reduce code size.
 
+- For the iOS number users download, archive the build, export it as Ad Hoc, Development or Enterprise with "All compatible device variants" for app thinning, and read `App Thinning Size Report.txt`.
+  Its compressed size per variant is the download size.
+  In a script, run `xcodebuild -exportArchive` with an export options plist whose `thinning` key is `<thin-for-all-variants>`.
+  The export command was read from Apple's page and not run on a Flutter archive, so it is unverified.
+- For a build that is on the App Store or TestFlight, App Store Connect shows each variant's size and warns when it is over the limit for a mobile download.
+  Apple says that is the most accurate source, and that a TestFlight build is larger than the App Store build.
+- Compare the largest variant, which is the one a user on an older or larger device gets, and not only the smallest (inference, Apple has no sentence about the largest).
+
 Open the size report and look for the top 5 contributors. If a single asset > 1MB, attack it first.
 
 For Android host code and libraries, Grab's open-source App Sizer (MIT) attributes download size to teams, modules and libraries from APK, AAR and JAR input, through a Gradle plugin or a CLI.
@@ -65,10 +91,15 @@ Evidence: README read on 2026-10-21, tool not run.
 ## When NOT to optimize
 
 If your install conversion is fine and reviewers don't complain, ship features instead. Size optimization is a one-day pass before a marketing push, not a continuous activity.
+Check the thinned download size first.
+If the largest variant is well under 200 MB and the app is not near a prompt on cellular, skip the pass.
 
 ## Sources
 
 - <https://docs.flutter.dev/perf/app-size>
+- <https://developer.apple.com/documentation/xcode/reducing-your-app-s-size> (read through the page's JSON)
+- <https://developer.apple.com/help/app-store-connect/reference/app-uploads/maximum-build-file-sizes/>
+- <https://support.apple.com/guide/iphone/buy-books-and-audiobooks-iphab21972d/ios> (the only Apple text read with the 200 MB choices, for Books)
 - <https://docs.flutter.dev/deployment/android>
 - <https://docs.flutter.dev/deployment/obfuscate>
 - <https://developer.android.com/topic/performance/app-optimization/enable-app-optimization>

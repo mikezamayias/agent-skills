@@ -69,6 +69,9 @@ Prices and policies change, so re-check the linked page before relying on one.
   One founder calls them "insanely cheap" with low converting views, and a reply reports decent views with almost no installs.
   Another uses them for organic and international reach and says offshore slideshow creators delivered bot views and the wrong countries, so check each creator's audience country and view quality before paying.
   For how to write a slideshow, see [tiktok-slideshow-format.md](tiktok-slideshow-format.md).
+- Posting your own AI or cartoon slides through a scheduler tool is a separate cost from paying creators, and the tools sell themselves with account-level view claims.
+  One scheduler's page quotes "2.2M views from 90 posts in 60 days" from a single user, with no install data (vendor claim, unverified, vendor page read 2026-10-23).
+  Its pitch of hundreds of automated slideshows runs into the spam rule on the next line, so read that rule before scheduling volume.
 - TikTok allows multiple accounts but classes automation that runs many accounts, and repetitive content, as spam.
   Penalties include account bans and limited reach.
 - One founder (October 2026, one account, no measured effect) reports a seven-day warm-up before the first post, with two sessions a day at random times.

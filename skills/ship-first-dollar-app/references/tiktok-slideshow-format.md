@@ -41,6 +41,22 @@ The author's own summary is that most gains are 10 to 20 percent and not 10x.
   Later is better, with the caveat that long posts also win.
 - Put the app inside an app list when it fits (+39%).
 
+## Image source
+
+- Make the slide art yourself or with a tool you hold the rights to, not other people's images from Pinterest or elsewhere.
+  TikTok's Community Guidelines say "You should only post content you created or have the right to share", and an app that reuses others' art carries that risk.
+  A reply makes the same point about takedown email risk (single report).
+- One growth-account owner claims cartoon art is "super hard to identify as ai", so viewers do not object and it is more trustworthy and easier to remember (single claim, no data).
+  The example they showed is a mascot account, `quabble_app`, with 9,287 followers, 208.7K likes and a recurring duck on every slide.
+  The view counters are all the evidence, so no install, retention or comment data was shown.
+  Test one recurring character against your usual slides on your own account before building a library around it.
+- TikTok requires a label on AI-generated or significantly edited content that shows realistic-looking scenes or people.
+  Flat cartoon art is not obviously in that group (inference), but the guidelines do not define the edge, so label anything that looks photographic.
+  TikTok also reads C2PA Content Credentials metadata and adds invisible watermarks to content uploaded with credentials.
+- One owner advises stripping metadata so TikTok cannot detect AI (single claim, not confirmed by any TikTok page read).
+  Do not do it, because TikTok reads that metadata.
+  Stripping it would likely hide realistic AI content that the label rule covers (inference).
+
 ## Ending and caption
 
 - Do not end on "download", "link in bio" or `try <app>` (-21%).
@@ -72,6 +88,8 @@ Whether the fields predict anything is not shown.
 - Hook: format, who it speaks to, number promised, words, the promise, a bracketed second line.
 - Slides: count, numbered or not, words per slide, max lines, text style and position, point of view, emoji, concrete numbers, text on slide 1 only.
 - Photos: slide 1 type (celebrity, screenshot, group, face visible, object), vibe, aspect ratio.
+- Image source: own illustration, AI-generated, licensed stock, or other people's images, and whether a recurring character appears.
+  This field is not in the dashboard frame the list came from, so it is a proposed field and not an observed one.
 - App: promoted or not, slide number, how it is shown (none, a feature, the store page), how it is pitched.
 - Ending and caption: CTA type, caption words, hashtag count, question in the caption, sound, weekday.
 - Result: views divided by the account's usual views.

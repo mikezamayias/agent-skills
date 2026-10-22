@@ -21,8 +21,13 @@ Fetch current Google Play policy pages before final submission because requireme
 - Target API meets the current Play requirement. As of 2026-05-29, new apps and updates need Android 15/API 35 or higher, except Wear OS, Android Automotive OS, and Android TV targets, which need Android 14/API 34 or higher.
 - Native debug symbols and ProGuard/R8 mapping files are ready when applicable.
 - The build uploads the R8 mapping file to the crash reporter (Crashlytics or Sentry) and bundles it for Play Console, so post-release ANR and crash clusters are readable.
-- Play vitals ANR rate is checked after each release.
+- Play vitals ANR rate and crash rate are checked after each release against Google's bad-behavior thresholds.
+  Overall, the user-perceived crash rate threshold is 1.09% and the user-perceived ANR rate threshold is 0.47%.
+  Per phone model, both are 8%, and per watch model the crash threshold is 4% and the ANR threshold is 5%.
+  Above a threshold, Play "may reduce the visibility of your title" and "may also show users a warning on your store listing".
+  Play uses the last 28 days of data, and flags an emerging crash or ANR once it has affected devices for more than 7 days.
 - Evidence: Grab's Android case study, self-reported, read on 2026-10-21.
+- Evidence for the thresholds: <https://developer.android.com/topic/performance/vitals>, fetched with curl and read 2026-10-23.
 
 ## Store Listing
 

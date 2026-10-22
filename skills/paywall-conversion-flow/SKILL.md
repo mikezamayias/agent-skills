@@ -155,6 +155,12 @@ These are unverified secondhand figures, which the article itself marks "reporte
   Read each row's product, price and type (new subscription, trial start, trial conversion, cancelled trial), and add the rows to the day total before crediting a feature.
   A 28-day tile also moves when old days roll out of the window (unverified inference from the tile label, not checked against RevenueCat docs).
 - Report a 95% interval with each rate. For example, 23 buyers out of 104 viewers is 22% with a range of about 15-31%.
+- Fix the number of paywall viewers per arm before a test starts, and do not stop on a good-looking day, because stopping early produces false wins.
+  At a two-sided 5% significance level and 80% power, a 5% baseline needs about 31,000 viewers per arm to detect a 10% relative lift, about 8,200 for 20% and about 1,500 for 50%.
+  A 10% baseline needs about 14,800, 3,800 and 700.
+  A small app cannot reach these numbers for small changes, so test large changes (price, offer, paywall position) and treat anything below the planned count as a direction, not a result.
+  (Computed 2026-10-23 with the standard pooled two-proportion sample-size formula, not a tool's output.)
+  Check it with a calculator before quoting it.
 
 ## When in doubt
 
