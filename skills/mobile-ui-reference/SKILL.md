@@ -203,7 +203,7 @@ Render the built screens on the simulator at device resolution, then run a separ
 - Body-text sentences where a concrete number or object would do ("€49 to go", "€49 is three takeaways")
 - A screen that is tidy but could belong to any app
 
-Before the critic scores a direction, run `break-ui` on its main screen with real-length labels, the largest text size, an empty state and long or malformed numbers.
+Before the critic scores a direction, run `break-ui` on its main screen with real-length labels, the largest text size, an empty state, a failed payment or limit-reached state and long or malformed numbers.
 A direction that only looks distinct with demo data fails.
 Format every amount through the locale formatter, never by hand ("€1,2500" is the tell).
 

@@ -66,6 +66,9 @@ Two ways to fail at this job, the first worse:
    Pump each state in the worst-case test in light and dark, and record any state with no defined behaviour as a finding.
    This inventory is our own method rule, not an upstream one.
    A shipped app's filter bar spec sheet is one example of the format, a numbered table of 14 states each drawn in light and dark (Sebastian Röhl, LinkedIn, 2026-10-16).
+   Build a second inventory for the conditions.
+   For each user-visible condition that can appear on more than one screen (limit reached, offline, payment failed, signed out), list every screen that shows it and check that they use one pattern, one wording and one set of facts (the count and the date).
+   This is also our own method rule, built on one designer's video case of two "out of sessions" screens with different wording (Tim Gabe, 2026-10-15).
 3. Write the worst-case test.
    Load [references/flutter.md](references/flutter.md) and write a widget test that pumps the real widget with each dataset.
    Vary size (320x568, a normal phone, landscape, tablet when supported), `TextScaler.linear` at 1.0, 1.3, 2.0 and 3.1, `Directionality` in both directions, and the dark theme when the app has one.

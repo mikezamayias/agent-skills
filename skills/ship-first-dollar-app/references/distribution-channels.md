@@ -171,6 +171,18 @@ Revenue and uplift claims are unverified.
 - A plugin must not exist primarily as an advertising vehicle and trial or demo plugins are not accepted, so a lead-gen shell is a rejection risk.
 - Commerce inside a plugin is limited to physical goods, with no subscriptions, plans or direct checkout links, though signing in to an existing paid account is allowed.
 
+## Channel choice by time horizon and business type
+
+One operator's opinion with no data (Chris Raroque, video 2026-10-21).
+He gives no performance numbers and says his own UGC (user-generated content, here paid creator videos) experiments lost far more money than they made.
+Read it as a list to test, never as a ranking.
+
+- Slow compounding at low effort: SEO, ASO (App Store optimization) and Reddit, about an hour a day.
+  This is his own mix.
+- Faster return for a consumer (B2C) app: UGC, SEO and Reddit.
+  He says to post the content yourself first to learn what works before hiring creators, and credits this to unnamed UGC experts.
+- Business (B2B) app: Reddit, SEO, LinkedIn and targeted email for some products.
+
 ## Communities
 
 - Reddit does not ban self-promotion or multiple accounts.
@@ -267,6 +279,7 @@ Treat it as a hypothesis.
 - <https://support.reddithelp.com/hc/en-us/articles/204535759-Is-it-ok-to-create-multiple-accounts>
 - <https://redditinc.com/policies/reddit-rules>
 - <https://discord.com/guidelines>
+- <https://www.youtube.com/watch?v=xt4GRXqVAAc>
 - <https://developers.openai.com/plugins/deploy/submission>
 - <https://developers.openai.com/plugins/deploy/app-review>
 - <https://developers.openai.com/apps-sdk/app-submission-guidelines>

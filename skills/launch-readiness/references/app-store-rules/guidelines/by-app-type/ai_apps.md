@@ -13,7 +13,9 @@ Guidelines specifically applying to apps that use AI services (ChatGPT, Gemini, 
 ## Important (Common Rejections)
 
 - [ ] **2.1** — Review notes MUST proactively state whether AI is on-device or cloud-based. Apple will ask "Does your app use third-party AI?" — answer it upfront
-- [ ] **2.1** — If on-device AI (FoundationModels, Core ML, MLX): state explicitly that no user data is sent to any server
+- [ ] **2.1** - If on-device AI (the on-device FoundationModels `SystemLanguageModel`, Core ML, MLX): state explicitly that no user data is sent to any server
+- [ ] **2.1** - If the app uses `PrivateCloudComputeLanguageModel` (iOS 27 and later, Apple page read 2026-10-22): requests run on Apple's Private Cloud Compute servers, so the on-device "no data leaves the device" statement does not apply to those requests.
+      Our recommendation, not stated on Apple's page: cover this in the App Privacy answers and the privacy policy, and say in the review notes that requests run on Apple's Private Cloud Compute and that no third-party server is used.
 - [ ] **2.1** — If third-party AI (OpenAI, Google, etc.): list which personal data is sent, and confirm explicit user consent exists in the UI
 - [ ] **2.1** — If local model download (MLX, Core ML from remote): clarify that only model weights are downloaded, no user data is transmitted
 - [ ] **5.2.5** — Don't use "GPT", "ChatGPT", "OpenAI", "Gemini" as part of app name unless you are the brand owner

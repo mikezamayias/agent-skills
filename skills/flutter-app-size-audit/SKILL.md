@@ -20,7 +20,8 @@ Check all five layers and measure each change with `--analyze-size`.
    No quality setting is universally visually lossless (`cwebp` and Android Studio default to 75), so compare each lossy result against the original, or use `-lossless` / `-near_lossless` for UI art.
    Use `cwebp` in a pre-commit hook.
 3. **Keep R8 on and add resource shrinking.** Flutter release APK/AAB builds always run R8 code shrinking.
-   In `android/app/build.gradle(.kts)` set `isMinifyEnabled = true` and `isShrinkResources = true` (AGP 9.3+: `optimization { enable = true }`).
+   The Flutter Gradle plugin already enables minify and resource shrinking for release builds (see the defaults below), so do not add them to `android/app/build.gradle(.kts)`.
+   Check instead that nothing turns them off, such as the Gradle property `shrink=false` or an explicit `isMinifyEnabled = false`.
    R8 only touches JVM code, so add keep rules only for native Android dependencies that use reflection and ship no consumer rules.
    Pure Dart packages, such as JSON serializers, are unaffected.
    What Flutter sets by default, verified on 2026-10-21:

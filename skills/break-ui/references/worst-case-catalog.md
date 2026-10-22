@@ -118,14 +118,20 @@ These strings have no spaces, so text layout has nowhere to wrap them.
 
 ## States
 
-| Value                        | What it tends to break                                  |
-| ---------------------------- | ------------------------------------------------------- |
-| Loading longer than 2 s      | Skeleton that does not match the final layout           |
-| API or sync error            | No error state, or a raw exception message on screen    |
-| Offline, then partial sync   | Mixed fresh and stale rows, misaligned optional fields  |
-| Every enum value in one list | Badge widths vary across rows                           |
-| No permission                | Disabled actions change row layout                      |
-| The current user in the list | "You" labels, actions that should not apply to yourself |
+| Value                                                                 | What it tends to break                                                                                 |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| Loading longer than 2 s                                               | Skeleton that does not match the final layout                                                          |
+| API or sync error                                                     | No error state, or a raw exception message on screen                                                   |
+| Offline, then partial sync                                            | Mixed fresh and stale rows, misaligned optional fields                                                 |
+| Every enum value in one list                                          | Badge widths vary across rows                                                                          |
+| No permission                                                         | Disabled actions change row layout                                                                     |
+| The current user in the list                                          | "You" labels, actions that should not apply to yourself                                                |
+| Payment or purchase declined mid-flow                                 | A generic error, or no next step. The user needs what failed, what to check and a way to reach support |
+| Usage limit reached (quota, session or seat count)                    | Message without the count and the reset date, or two screens with different wording for the same limit |
+| Action finishes below a minimum (a test recording too short to count) | A result screen that says nothing and shows nothing                                                    |
+| Connection lost in the middle of a multi-step flow                    | Lost input, spinner with no exit, no way back                                                          |
+
+The last four rows come from one designer's video (Tim Gabe, 2026-10-15), a practitioner method with no data behind it.
 
 ## Environment
 

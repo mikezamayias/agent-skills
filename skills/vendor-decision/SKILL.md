@@ -42,6 +42,8 @@ For each option, fetch the live page and quote the clause or number with its URL
 - Price: the listed price, what triggers usage charges, the free tier, the renewal price, the minimum commitment, any minimum prepaid top-up, and whether prepaid or included credit expires, resets each cycle or can be refunded.
   For a hosted wrapper over another API, find its markup over the underlying price, and check the README and the founder's posts when the pricing page omits it.
 - Limits: rate limits, quotas, and features only in paid tiers.
+  Also check whether a free tier ends at an eligibility threshold, and how long the migration window is after it ends.
+  Example: Apple's Private Cloud Compute has no cloud API cost for developers in the App Store Small Business Program who hold the PCC entitlement and stay below 2 million first-time downloads, has daily usage limits, and gives developers 6 months to migrate after losing eligibility (developer.apple.com/private-cloud-compute/, read 2026-10-22).
 - Runtime limits: deploy or bundle size, memory, CPU time, and request duration, from the provider's main limits page and its changelog.
   Size these against the planned growth, not today's code, because a limit hit later splits the system along the limit instead of along the design.
 - Data: the region where data is stored and processed, retention (the minimum and whether it can be shortened), whether a data processing agreement (DPA, the GDPR contract with a processor) exists, whether data is used for training, and sub-processors.
