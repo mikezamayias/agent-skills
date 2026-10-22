@@ -97,6 +97,9 @@ An exit offer after a cancelled purchase sheet is covered in [Paywall conversion
 
 Introductory offers cannot be edited and each storefront allows one current and one future offer per product.
 See Step D of `asc-revenuecat-catalog-sync` for the limits.
+Overlapping introductory offers overwrite the earlier one: Apple says "the latest action overwrites existing introductory offers" when new offers have overlapping dates.
+Free trial durations for any standard subscription duration are 3 days, 1 or 2 weeks, 1, 2, 3 or 6 months, and 1 year.
+Source: <https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-introductory-offers-for-auto-renewable-subscriptions/>, read 2026-10-23.
 
 Do **not** copy: fake countdown timers, weekly decoys at €200+/yr as the default, close-button-less hard walls, trial-length upsells that silently multiply annual price.
 

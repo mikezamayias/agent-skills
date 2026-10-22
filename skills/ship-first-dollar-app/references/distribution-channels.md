@@ -113,9 +113,11 @@ Apply the TikTok automation and spam warning above to any plan that automates po
 - An agent can record gameplay and cut clips for organic channels, but the account that says so had not started.
 - A portfolio of games can advertise each other, and some studios historically split ownership with rising games to cross-promote (@dayonefoundry, names Ketchapp). Check Apple's rules on cross-promotion inside apps before adopting it.
 - Never show gameplay, levels or features in an ad that the shipped game does not have.
-  Apple App Review Guideline 2.3.1(a) (read 2026-10-21) says "marketing your app in a misleading way, such as by promoting content or services that it does not actually offer ... whether within or outside of the App Store, is grounds for removal of your app from the App Store".
-  Apple Ads policies section 1.6 says "Ad content may not be misleading" (fetched as a summary only, so re-check the policy page).
-  Meta's Advertising Standards page could not be read, so the Meta side is not verified.
+  Apple App Review Guidelines 2.3.1 (`developer.apple.com/app-store/review/guidelines/`, read 2026-10-23) say "marketing your app in a misleading way, such as by promoting content or services that it does not actually offer ... whether within or outside of the App Store, is grounds for removal of your app from the App Store or a block from installing via alternative distribution and termination of your developer account".
+  Guideline 2.3.4 says app previews "may only use video screen captures of the app itself".
+  Apple Advertising Policies (`searchads.apple.com/policies/`, last updated February 26, 2025, read 2026-10-23) say in 1.5 "All claims made in ad content must be adequately substantiated" and in 1.6 "Ad content may not be misleading".
+  The Meta side is unverified.
+  `transparency.meta.com/policies/ad-standards/` loads only a JavaScript shell without the policy text, and the misleading-content subpages we tried returned 404 (read 2026-10-23), so no Meta quote is made here.
 
 ## Creator marketplaces
 

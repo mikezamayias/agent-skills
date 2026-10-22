@@ -31,6 +31,9 @@ Check all five layers and measure each change with `--analyze-size`.
    - `docs.flutter.dev/deployment/android` says R8 is "enabled by default when you build a release APK or AAB" and "Code shrinking is always enabled in release builds".
      It does not mention `proguard-android-optimize.txt`, so the plugin source is the evidence for that file.
    - Check the app's own `build.gradle(.kts)` and `gradle.properties` for an override before assuming these defaults.
+   - Check that nothing swaps the plugin's `proguard-android-optimize.txt` for the legacy `proguard-android.txt`, such as an explicit `proguardFiles(getDefaultProguardFile("proguard-android.txt"), ...)` in a build type.
+     Grab and the Android Developers Blog report that moving from the legacy file to the optimize file is what turns on R8 optimization (self-reported, one organization).
+     Whether an explicit `proguardFiles` call replaces or adds to the plugin's files was not tested here, so inspect the merged result before relying on either.
      For Flutter apps with a lot of their own Kotlin or Java code, Grab's Android case study adds the practices below.
    - Treat the R8 optimizer (compat mode) and R8 full mode as separate rollouts, and verify each one on release builds before shipping.
    - Write narrow keep rules for the specific reflected classes, not broad exceptions, and require a justification and review for each new rule.

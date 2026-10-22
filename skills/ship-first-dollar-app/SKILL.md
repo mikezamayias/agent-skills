@@ -134,6 +134,9 @@ Allow product work when evidence shows:
 
 Otherwise prioritize distribution, conversion, and buyer learning. End each review with one of: fix, market, revise, scale, pause, or stop.
 
+When funnel data shows most installs leave before the paywall, spend the week on onboarding and the paywall before adding traffic.
+One founder's order was onboarding from analytics data, then a second paywall offer, then more content, and their own result was +$30 MRR in a day on a one-month-old app (X post, October 2026, author claim, no control), which is an anecdote and not a test.
+
 ## Decision Metrics
 
 Track only metrics that change decisions:

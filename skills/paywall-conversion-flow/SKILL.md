@@ -32,6 +32,8 @@ Most indies lose conversion by following the wrong order.
    When a ladder mixes a free trial, a paid introductory offer and a no-trial plan, record which products share a group.
    Check eligibility before showing the offer (StoreKit 2 `isEligibleForIntroOffer`) and show no trial CTA to an ineligible user, since that repeats a misleading claim under Guideline 3.1.2.
    Apple's page does not state what happens to a user who bought another product in the group at full price, so do not assume either way (Apple help page, read 2026-10-20).
+   In one founder's transaction lists (single report, October 2026, two screenshots), 4 of 7 visible trial rows carry a cancelled badge within hours of starting.
+   The sample is tiny and the badge meaning is unverified, so use it only as a reason to read the cancel timing column before judging a trial.
 5. **Offer weekly + yearly, not just monthly.** Weekly lowers commitment fear and converts the "let me test it" segment that monthly scares off.
    One operator's recipe (X post, October 2026, unverified, no conversion, refund or revenue figure given) pairs one trial with one no-trial plan in two ladders.
    Ladder A is yearly at $39.99 with a free 3 day trial plus a weekly plan with no trial.
@@ -41,6 +43,8 @@ Most indies lose conversion by following the wrong order.
    Treat both as hypotheses to A/B test, not defaults.
    Judge each on paid conversion per paywall viewer, refund rate and revenue per viewer after the first renewal, not on trial starts.
    Write the annualized weekly cost in the test notes, since $9.99 per week is $519.48 per year, 13 times the $39.99 yearly plan (arithmetic).
+   One indie (single report, October 2026, a month of data, one screenshot) runs $5 per week and $49.99 per year, both with free trials, and a $24.99 yearly exit offer that is inferred from the product list.
+   Treat it as one datapoint, not a price benchmark.
 6. **Add one exit offer after the buyer cancels the store purchase sheet.**
    Superwall's `transaction_abandon` placement fires when a user dismisses the store purchase sheet before the transaction completes, and a matching paywall replaces the current one.
    RevenueCat's closest feature is Exit offers, which show a second paywall when the user dismisses the paywall without buying.
