@@ -36,7 +36,8 @@ Ask or infer, then confirm:
    If a guideline interpretation is borderline, the user can book a Meet with Apple appointment before submitting.
    Where: the Meet with Apple schedule page on developer.apple.com.
    Steps: request a slot and include the app's Apple ID, if one exists, and the specific questions.
-   Cost: a 30-minute Webex video call on Tuesdays and Thursdays, and slots can fill quickly (one reply on the source post says everything was full, unverified).
+   Cost: a 30-minute Webex video call on Tuesdays and Thursdays, and slots can fill quickly (two X posts report full schedules, both unverified).
+   Open the schedule page a few weeks before the planned submission, because Apple's page states no date for new slots.
    The appointment is informational only and does not pre-approve or expedite a review.
 5. Route Google Play operations to the installed Google Play Console tooling, such as the Play Developer API or Fastlane `supply`.
 6. Route paywall/subscription concerns to `paywall-conversion-flow`, subscription localization in App Store Connect, RevenueCat/catalog skills when applicable, and Play Billing checks.

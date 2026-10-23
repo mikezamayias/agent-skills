@@ -53,6 +53,11 @@ T2 — Quality Gate
   Flutter `LayoutBuilder` and `MediaQuery.sizeOf` apply.
   Folding changes the available size without relaunching the app.
   This line is inference.
+- Check the Duo store steps when the product page promises Duo support.
+  Apple lists three separate actions: build with the iOS 27.1 SDK, submit iPhone Duo screenshots (they trigger the product page badge), and submit a featuring nomination in App Store Connect, where "In the Helpful Details section, you can specify that your app is optimized for iPhone Duo, including support for all device poses" (Apple's exact words, confirmed in `prep.html` on 2026-10-23).
+  Apple's October 22, 2026 newsroom post says editorial collections for iPhone Duo apps and games go live on October 23 and does not say how apps are chosen or whether the badge changes search rank.
+  Do not promise store placement.
+  `asc nominations create` exists in `asc` 5.16.0 and its help text has no Duo field, so the Duo statement probably goes in the description or notes (inference, help text read and not run).
 - **Method**: grep for orientation locks and fixed idiom checks, then ask the human to test both displays in the Duo simulator.
 
 ### 6. Touch Target Sizing

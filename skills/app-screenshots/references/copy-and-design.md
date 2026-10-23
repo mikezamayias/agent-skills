@@ -143,16 +143,17 @@ Never ship a formula with placeholder words left in.
 
 ## 4. Weak to better
 
-| Weak                                     | Better                           | Why                                 |
-| ---------------------------------------- | -------------------------------- | ----------------------------------- |
-| Track your habits and stay motivated     | Keep your streak alive           | One idea, verb first                |
-| AI-powered expense categorization        | Receipts sort themselves         | Benefit, not mechanism              |
-| The best meditation app                  | Two minutes to calm              | Concrete, no unprovable superlative |
-| Organize recipes with tags and favorites | Dinner, decided                  | Sells the outcome                   |
-| Seamlessly sync across all devices       | Start on phone. Finish on Mac.   | Paints the moment                   |
-| Powerful analytics dashboard             | See what changed this week       | A human question, answered          |
-| Welcome to MyApp                         | Cut it and say what the app does | The hero slot is too valuable       |
-| Lots of features!                        | Widgets, Journal, Recipes, Sync  | Specific beats vague                |
+| Weak                                     | Better                           | Why                                                                                                |
+| ---------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------- |
+| Track your habits and stay motivated     | Keep your streak alive           | One idea, verb first                                                                               |
+| AI-powered expense categorization        | Receipts sort themselves         | Benefit, not mechanism                                                                             |
+| The best meditation app                  | Two minutes to calm              | Concrete, no unprovable superlative                                                                |
+| Organize recipes with tags and favorites | Dinner, decided                  | Sells the outcome                                                                                  |
+| Add things now, deal with them later     | Brain dump everything            | Verb first, 2 to 4 words (one agency's redesign of a live app, October 2026, no conversion result) |
+| Seamlessly sync across all devices       | Start on phone. Finish on Mac.   | Paints the moment                                                                                  |
+| Powerful analytics dashboard             | See what changed this week       | A human question, answered                                                                         |
+| Welcome to MyApp                         | Cut it and say what the app does | The hero slot is too valuable                                                                      |
+| Lots of features!                        | Widgets, Journal, Recipes, Sync  | Specific beats vague                                                                               |
 
 ## 5. Category lines
 
@@ -269,6 +270,9 @@ Derived from decks such as Superlist, Headspace, CRED, Arc Search, Linktree, and
    A second studio's showcase (Kree8, October 2026) does the same, also without data.
    Spreading proof across slides is an A/B variant to test and not the default.
 7. **Dense inside the device, sparse outside.** The capture should be a real, dense product screen. Outside the device allow one headline, one visual, one optional sub-line, and one optional badge. No bullet lists, paragraphs, or competing logos.
+   One studio (October 2026) crops three or four real UI rows out of the screen and enlarges them so the text reads at thumbnail size, and one reply prefers it to another full phone screen (single reply, no conversion data).
+   Use it when a full screen would shrink the text below readable, and keep the rows exactly as the app draws them.
+   Whether a cropped slide counts as showing the app in use under Guideline 2.3.3 is untested, so do not count it toward the more-than-half rule.
 8. **Break the device parade every 2-3 slides.** Swap in a 3D object, a photographic still, a lifestyle photo, a mascot illustration, a typographic feature wall, or a device mosaic.
    For personal categories such as health, learning, audio, and family, try a person, a face, a hand holding the object, or a real-life situation for the hero or the first break.
    It is a default to A/B test and not a proven rule.

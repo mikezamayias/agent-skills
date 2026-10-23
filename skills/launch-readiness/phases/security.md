@@ -100,9 +100,14 @@ T1 — Ship Blocker
 
 - Every endpoint that calls an AI provider, sends email or SMS, or triggers billed reads, writes or bandwidth has a limit enforced on the server.
 - A limit that exists only in the app is not a limit, because anyone can call the endpoint directly.
+  The same holds for a limit that exists only in a front layer such as a web server route or a gateway, because a mobile app, a script or another service can reach the backend without it.
+  Enforce the limit on the backend too, or make the backend reachable only through the layer.
 - Use a per-user limit and a per-IP limit together, because each alone is defeated by new accounts or rotated IPs.
 - The counter and the limit live where the user cannot write them (see check 8).
 - This is our own rule, not a cited standard.
+- A per-IP limit needs the real client address.
+  h3's documentation says the first `x-forwarded-for` entry is client input that lets any caller choose their own address and defeat rate limiting, and says to configure the server to trust its proxy instead (h3.dev, read 2026-10-23, h3 v2 docs, so the option names may differ in the h3 version a given Nuxt app ships).
+  Check how the framework resolves the client address behind the host's proxy.
 - **Critical if**: an AI or email endpoint has no server-side limit
 - **Method**: Read the backend or serverless function for each such endpoint and find the limit check
 

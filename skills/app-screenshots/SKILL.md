@@ -96,7 +96,11 @@ App Store Connect accepts 1 to 10 screenshots per device size and locale, as PNG
 
 iPhone Duo: outer display 1398×2034 or 2034×1398, inner display 2007×2853 or 2853×2007.
 Apple's screenshot specifications require Duo screenshots starting April 2027 for apps built with the iOS 27.1 SDK or later, and the October 5, 2026 developer news says any app submitted from April 2027.
-Submitting Duo screenshots adds an "optimized for iPhone Duo" badge to the product page.
+Submitting Duo screenshots in App Store Connect adds a badge to the product page.
+Apple's developer pages say it shows the app is "optimized for iPhone Duo", and Apple's October 22, 2026 newsroom post calls it the "Made for iPhone Duo" badge.
+Apple's pages tie the badge to the screenshot submission and describe the iOS 27.1 SDK build as what makes an app optimized, but they do not say what happens to the badge without that build.
+One secondary report (9to5Mac, October 5) says the Xcode 27.1 build triggers it, which conflicts with Apple's current pages.
+Do both steps, and check the live product page on a device after approval.
 Capture each display on the iPhone Duo simulator at its exact size, never by stretching another iPhone capture.
 Koubou 0.20.0, the version `asc` pins, has no Duo frame (`asc screenshots list-frame-devices` lists none), so Duo framing is an open step: log it as `Stuck` and ask the human rather than improvising a frame.
 Duo deck design rules are in [references/copy-and-design.md](references/copy-and-design.md).

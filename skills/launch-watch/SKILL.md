@@ -70,6 +70,9 @@ This skill owns the signal proof, the watch schedule, the triage rules and the r
 
 1. Daily, check each channel against the brief's thresholds and the previous run.
    Flag only what is new or worse since the last run, and stay silent when nothing changed.
+   Record each channel as unchanged, changed or check failed.
+   A channel that could not be read is never reported as unchanged.
+   Name the failed channel and the next step in the daily note, because silence must mean the check ran and found nothing.
    Urgent means any of: a new crash or error affecting several users or blocking a core flow, a funnel step whose completion drops sharply against baseline, failed purchases or restore errors, email bounces or unsubscribes spiking, or feedback about data loss, login, payment or privacy.
    Use the brief's numbers when it sets them.
 2. Investigate every urgent flag down to a cause before reporting it.

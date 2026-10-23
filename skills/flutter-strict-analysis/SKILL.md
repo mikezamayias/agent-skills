@@ -71,6 +71,17 @@ When a rule fights you, disable it **with a comment**. Do not `// ignore:` acros
 `dart format` reads `formatter: page_width` from `analysis_options.yaml` (default 80).
 Keep the width only there so CI and editors agree.
 
+## Repo rules for repeated agent mistakes
+
+- When the same review comment appears twice on agent-written code, turn it into a lint rule instead of a line in `AGENTS.md`.
+  A rule fails the agent's own check run, and a prose rule only asks (a recommendation inferred from the T3 Code and qmd rule sets, untested here).
+- Dart supports project rules through analyzer plugins since Dart 3.10, with the `analysis_server_plugin` package.
+  A plugin registers its rules in `lib/main.dart`, and a lint rule a plugin defines stays off until `analysis_options.yaml` lists it under `plugins: <name>: diagnostics:`.
+  The page does not cover the older `custom_lint` package, so check which one a repo already uses before adding the other.
+  Adding either package is a new dependency and goes through the code-gate rule.
+- Require a reason on every suppression, as T3 Code's `require-suppression-reason` rule does, so the "disable it with a comment" policy above is checked by a tool.
+- Keep the set small and name each rule after the mistake it stops.
+
 ## Sources
 
 - <https://rydmike.com/blog_flutter_linting>

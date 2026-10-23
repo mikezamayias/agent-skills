@@ -38,6 +38,8 @@ who trust you convert at much higher rates.
 - [ ] Reminder push/email scheduled 48h before charge.
 - [ ] A win-back or retention offer states the price after the offer ends, the billing period and the renewal date, the same as any trial.
 - [ ] On a one-screen paywall, the trial line under the plan states the length, the charge with its period and the reminder ("7 days, then €29.99 a year. We remind you 2 days before."), and the reminder is actually scheduled.
+- [ ] If the user picks the reminder lead time, ask on a screen before the paywall, and the paywall timeline shows the chosen day.
+      Seen in one gym app recording (X post, 2026-10-23), with no notification prompt shown and no effect on conversion or cancellations reported.
 - [ ] Settings → "Manage subscription" deep-link is one tap.
 - [ ] Localized prices per storefront.
 

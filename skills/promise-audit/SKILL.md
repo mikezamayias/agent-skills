@@ -41,6 +41,8 @@ Typical gaps:
 - vendor retention longer than the policy says, for example an analytics plan that keeps events for years
 - "we never share X" while an integration sends X
 - metadata the policy says is stripped but a code path keeps
+- a disconnect or revoke that stops new access but leaves data already pulled from the integration stored and still used
+  Test: disconnect the integration in a test account, ask the product for something only that data could answer, and check the store for the copied rows.
 
 ## Step 2: Trace every behaviour back to a sentence
 

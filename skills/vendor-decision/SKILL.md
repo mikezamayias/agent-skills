@@ -41,6 +41,10 @@ For each option, fetch the live page and quote the clause or number with its URL
 - Terms: what the data may be used for, whether it may be shown to other users, storage limits, AI use, attribution, and termination.
 - Price: the listed price, what triggers usage charges, the free tier, the renewal price, the minimum commitment, any minimum prepaid top-up, and whether prepaid or included credit expires, resets each cycle or can be refunded.
   For a hosted wrapper over another API, find its markup over the underlying price, and check the README and the founder's posts when the pricing page omits it.
+- Vendor benchmarks: convert each percentage back to a count before comparing.
+  A lead of one or two items on a sample of 30 is a tie.
+  Record who ran it, the sample size, whether the inputs are public, and whether the cost figure is per valid result or per call.
+  Example: treg's recruiter page (read 2026-10-23) reports 80% against 77% for the best single vendor on 30 candidates, which is 24 against 23 and was run by the vendor itself.
 - Limits: rate limits, quotas, and features only in paid tiers.
   Also check whether a free tier ends at an eligibility threshold, and how long the migration window is after it ends.
   Example: Apple's Private Cloud Compute has no cloud API cost for developers in the App Store Small Business Program who hold the PCC entitlement and stay below 2 million first-time downloads, has daily usage limits, and gives developers 6 months to migrate after losing eligibility (developer.apple.com/private-cloud-compute/, read 2026-10-22).
@@ -49,6 +53,9 @@ For each option, fetch the live page and quote the clause or number with its URL
 - Data: the region where data is stored and processed, retention (the minimum and whether it can be shortened), whether a data processing agreement (DPA, the GDPR contract with a processor) exists, whether data is used for training, and sub-processors.
 - Self-hosted "free" claims: list each feature with the paid plan or third-party key it needs, and whether the platform wants a payment method on file even on its free tier.
   Record whether the software sends telemetry by default and how to turn it off.
+- "Open source" claims: read the LICENSE file itself, because the repository badge can be NOASSERTION or a standard name with added terms.
+  Record any clause that limits hosting, resale or commercial use.
+  Example: `superdesigndev/treg` (read 2026-10-23) is Apache-2.0 plus a ban on offering it as a hosted service to third parties, so it is source-available, not open source.
 - Inputs and outputs: what the API accepts, such as text only or images, and in what formats.
 
 When a source cannot be found, say "unverified" and name what would verify it.

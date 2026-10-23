@@ -82,6 +82,9 @@ Prices and policies change, so re-check the linked page before relying on one.
   This is unverified and the author promotes his own automation offer next to it.
   Do it by hand only.
   Automating account activity falls under the spam rule above and risks a ban of the account.
+- Running the automation on real phones does not change the spam rule above.
+  A popular open-source phone farm drives real iPhones through WebDriverAgent to schedule TikTok sessions and posts, and its README gives no warning about TikTok's rules.
+  Two users in its thread report fresh accounts warmed for days that stayed at zero views (single reports, no method), and no source shows a positive result.
 - The same founder creates one TikTok account per app before the store approves the app, so format testing starts before launch (author reply, one account).
 - YouTube announced on 2026-10-01 that Shorts recommendations will give less reach to channels that mainly re-upload other creators' clips without significant changes.
   No effective date was given.

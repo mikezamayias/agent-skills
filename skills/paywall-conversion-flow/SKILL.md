@@ -32,6 +32,10 @@ Most indies lose conversion by following the wrong order.
    When a ladder mixes a free trial, a paid introductory offer and a no-trial plan, record which products share a group.
    Check eligibility before showing the offer (StoreKit 2 `isEligibleForIntroOffer`) and show no trial CTA to an ineligible user, since that repeats a misleading claim under Guideline 3.1.2.
    Apple's page does not state what happens to a user who bought another product in the group at full price, so do not assume either way (Apple help page, read 2026-10-20).
+   One observed paywall (Liftoff, screen recording, X post 2026-10-23, no results reported) offers a free 7-day trial and a 30-day pay-up-front introductory offer at 2.99 EUR side by side, both renewing at 79.99 EUR a year.
+   A product has one current introductory offer per storefront, so such a pair is most likely two products (inference), and the subscription groups were not visible.
+   Its "SAVE 55%" badge matches the first month against the annual price per month, which the screen does not say.
+   If you test such a pair, say on the badge what the saving is compared with, and read paid conversion per paywall viewer and refund rate for both plans.
    In one founder's transaction lists (single report, October 2026, two screenshots), 4 of 7 visible trial rows carry a cancelled badge within hours of starting.
    The sample is tiny and the badge meaning is unverified, so use it only as a reason to read the cancel timing column before judging a trial.
 5. **Offer weekly + yearly, not just monthly.** Weekly lowers commitment fear and converts the "let me test it" segment that monthly scares off.
@@ -111,10 +115,18 @@ A high-performing onboarding structure to pair with the order above:
 5. Soft premium upgrade with clear benefits and trial (this is the "after value" slot from the order above).
 6. Celebration / "creating your space" animation → main app.
 
+Apple's Human Interface Guidelines on onboarding (read 2026-10-23, last changed June 10, 2024) set the limits for this list.
+They say to design a flow that is "fast, fun, and optional", to "Teach through interactivity", and to "Postpone nonessential setup flows or customization steps" with reasonable defaults.
+They say to put a permission request inside onboarding only when the app needs that access before it can function, and otherwise to ask when the person first uses the feature that needs it.
+They say to let people experience the app before asking for a rating or a purchase.
+A concept mock or a design showcase is design evidence and not conversion evidence, so check a flow against shipped apps and measured results before copying it.
+
 A result gated behind the paywall must come from the user's real input.
 Do not show a fabricated score or a fake loading analysis to drive a purchase.
 One founder (X post, October 2026, self-reported) describes a long analysis animation followed by "unlock your rating" and says the sunk cost of about 20 questions raises conversion.
 Treat that as a risk of a misleading claim (my inference) and keep the paywall honest about what unlocks.
+A positive example: one gym app (Liftoff, screen recording, X post 2026-10-23, no conversion figure) asks for one real input, shows the rank result free, and only then shows the paywall.
+Its timed "Compiling user profile" screen still falls under the fake-analysis rule above, because its real work is unknown.
 
 Treat signup as deferrable.
 Duolingo's iOS onboarding grew from 6 screens in 2018 to 24 in 2023-2024 and 20 in 2026, observed by Zach Witzel (Helium) in dated screenshots from August 2026.
@@ -161,6 +173,10 @@ These are unverified secondhand figures, which the article itself marks "reporte
   A small app cannot reach these numbers for small changes, so test large changes (price, offer, paywall position) and treat anything below the planned count as a direction, not a result.
   (Computed 2026-10-23 with the standard pooled two-proportion sample-size formula, not a tool's output.)
   Check it with a calculator before quoting it.
+- Before changing a price because conversion is low, split paywall conversion by acquisition source (each ad creative, organic post, search, referral).
+  If one source converts far better than another at the same price, price is not the first suspect.
+  Change price and traffic source in different weeks, because changing both at once hides which one moved the number.
+  Source: one founder's X post and two agreeing replies (October 2026, no data), so this is a cheap check and not a finding.
 
 ## When in doubt
 

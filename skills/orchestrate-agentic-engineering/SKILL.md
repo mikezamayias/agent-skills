@@ -8,6 +8,16 @@ description: >-
 
 Run one steering interface while specialist agents execute bounded work. Persist decisions and evidence in repository so delivery survives parallelism and context compaction.
 
+Terms used in this repository's agent notes:
+
+- A harness is the code around a model that defines its tools, parses its tool calls, runs them and returns the results.
+  Claude Code, the Codex CLI and Pi are harnesses, and an agent is a model plus a harness configuration (tools, instructions, MCP servers).
+- An interface is what a person uses to talk to a harness, such as a terminal UI, a desktop app or T3 Code.
+  Anthropic describes the Agent SDK as a library that runs the Claude Code binary, so write "the SDK wraps Claude Code", and never "Claude Code is built on the SDK".
+- An MCP server is a separate program that exposes tools, resources and prompts to a harness, and it runs locally over stdio or remotely over Streamable HTTP.
+  To the model an MCP tool is one more tool in its list.
+- A harness in the sense of a test or evaluation harness is a different thing, and the sentence must say which one is meant.
+
 ## Role Model
 
 ### Captain
@@ -158,12 +168,18 @@ For a repeatable recipe per project, use `create-verification-skill` and keep it
 Before an agent runs without a human watching, record:
 
 - A spend cap.
+  In Claude Code print mode, `--max-budget-usd` stops the run at an estimated spend, counts subagent spend, and makes later spawns fail with `Budget limit reached`.
+  The flag is print mode only, spend can pass the cap, and the estimate can differ from the bill, so leave headroom.
+- A fan-out cap.
+  Set `CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH` and `CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS`, see `claude-code-spend`.
+  That a fan-out cap suits unattended runs is an inference, since no page says so.
 - A separate credential and login for each agent.
 - An append-only action log that someone reviews on a schedule.
 - An approval gate for anything sent in a person's name, including negotiation emails.
 - A kill switch.
 
-This is standard least-privilege practice, not a claim from a source.
+The list is standard least-privilege practice.
+Only the two mechanism notes above come from Anthropic's CLI reference and sub-agents pages, read 2026-10-23.
 
 ## Gates
 
@@ -185,6 +201,9 @@ This is standard least-privilege practice, not a claim from a source.
 ### Implementation Gate
 
 - Each specialist has bounded outcome and contract.
+- Record an autonomy level for each step: propose only (a human approves every edit), edit inside a named scope (a human approves merges), or run end to end only where tests fully cover the step.
+  Raise a step's level only after repeated passing runs, and record how many.
+  The source card uses three passing runs in a row, which is its own design choice with no evidence behind the number.
 - Code changes isolated where needed.
 - Tests and checks pass.
 - Security-sensitive changes receive proportional review.
@@ -197,6 +216,9 @@ This is standard least-privilege practice, not a claim from a source.
 - Persistence and restart behavior checked when relevant.
 - Architecture reviewed for security and overengineering.
 - Exact source and evidence captured.
+- Keep one checks table with a row per requirement and the columns requirement, verdict (pass, fail or unresolved), and evidence (a file path, a link or the command output).
+  Leave an unresolved row visible in the final report, and never delete or reword a row to make it pass.
+  Run each check against the saved version of the output and not against a draft in the session.
 - A model-reported bug is a claim until a repro test fails on the assertion that encodes it. A repro failing for another reason means the test is wrong. A passing repro rejects the finding.
   Local rule: confirm the run report lists the repro as executed, because an excluded or unselected test proves nothing either way.
 - A claim that cannot be executed needs an independent verdict, and a change the agent both proposed and judged on the same task is a hypothesis.
@@ -229,6 +251,16 @@ The flags above (`rg -l`, `-m`) were not tested by the benchmark below, which te
 In Context.dev's vendor-run sgrep benchmark (October 2026, 100 SWE-bench Verified attempts per arm, tool output capped at 8,000 o200k tokens), plain ripgrep returned about 4,100 search tokens per attempt and hit the cap in 88 searches, against about 1,500 tokens and 4 capped searches for `rg --json -C 3` piped into sgrep.
 Mean API cost was 21.3% lower, but total cost moved -0.4% with an interval spanning zero, median agent time was slower at 56.1 s against 52.5 s, and the solve rate of 0.70 against 0.68 has a paired interval of -3 to +8 points, which does not establish a gain.
 Adopt output bounds, not a new search tool.
+A code-graph MCP server (a code index the agent queries) is a different mechanism from bounded search output.
+One vendor benchmark (haplollc/Vesalius, October 2026, 20 questions on 6 codebases, one run per question, one Claude judge, 3 codebases private) reports 44% fewer tokens by plain means (its headline 51% is a geometric mean) at about equal answer quality, and more tokens on 4 of 20 questions.
+It reads Dart only lexically, so it says nothing about a Flutter app.
+Treat it as a lead, and test any such server on one of the user's own apps only after a code-gate SAFE verdict.
+When an agent searches notes, dossiers, skills or documentation, treat a hit as a lead and the file as the source.
+Retrieve the full text of every hit that a claim rests on, and answer from the retrieved text with the path and line numbers.
+Do not answer from a snippet when the answer needs a fact, a decision, a quote or nuance.
+This is the retrieval rule in the skill that ships with the local search tool tobi/qmd (MIT, read 2026-10-23).
+That skill also tells the agent to write its own query terms, one set of exact words and one paraphrase, because the agent knows the goal and the built-in query expander does not (the skill's own claim, untested here).
+Applying the rule to the catalog's own notes and dossiers is an inference.
 
 Use this handoff shape:
 
@@ -296,6 +328,10 @@ Authority still needed:
   Use it only in unattended harnesses, keep confirmation for risky or irreversible actions, and expect more tool calls and output tokens.
   Source: Anthropic "Prompting Claude Opus 5.5", section "Unattended agentic runs" (official docs, read 2026-10-20).
   The separate checker model and the running-subagent rule are our additions.
+- Allow at most two attempts at the same failing operation.
+  Save finished work before a retry, record the exact error, and continue any work that does not depend on the failed step.
+  Where a script or tool runs the retries, set the limit there as well, because an instruction alone does not stop a loop.
+  A retry of an action that creates something first checks whether the first attempt already succeeded.
 
 ### Process hygiene for agent shells
 
@@ -331,6 +367,11 @@ Sort every finding into explorer artifact, environment, design, fixture or candi
 Report confirmed bugs with their failing repro first, then unverified risks, then rejected findings grouped by reason, then areas no charter reached.
 Adapted from tester-army/e2e `bug-bash.md` (Apache-2.0, read 2026-10-13).
 The sandbox rule is restated from the READMEs of Cloudflare's security-audit skill, Mantis and Claude Security (read 2026-10-20).
+Two open-source sandbox runtimes are candidates for this rule, and neither was run here.
+NVIDIA OpenShell (Apache-2.0) says it enforces file, system call and network access per sandbox with kernel controls and policy, injects credentials only for approved endpoints, and supports macOS on Apple Silicon with Docker, Podman or host virtualization (README, read 2026-10-23).
+OpenSandbox (Apache-2.0) offers Docker sandboxes locally, per-sandbox egress policies and a credential vault (README, read 2026-10-23).
+Their documented installs are `curl ... | sh` and `uvx opensandbox-server`, so the sandbox itself goes through the code-gate rule before it is trusted to contain other code.
+Neither README says the default is no network, so test the "no external network" line before relying on either.
 
 ## Failure Modes
 

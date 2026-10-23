@@ -71,8 +71,16 @@ The AI answer counting rules are ours, adapted from the `ai-visibility-audit` sk
   Google's generative AI guide says "There's no requirement to break your content into tiny pieces for AI to better understand it", so never split a page for AI.
   Keep this as our reader-first writing rule, not a ranking factor.
 - Put a blog on the app's own domain or a subfolder of it, and not on a platform's domain.
-  This is a vendor claim, not a verified rule, because Outrank's free blog page calls a subfolder "the best option for SEO" (read 2026-10-20) and Google's guidance on subfolder versus subdomain was not checked.
+  This is a vendor claim, not a verified rule, because Outrank's free blog page calls a subfolder "the best option for SEO" (read 2026-10-20).
+  Google's SEO Starter Guide (read 2026-10-23) is neutral on subfolder versus subdomain, see the next bullet.
   Outrank's free blog tier (10,000 visits a month, a "Published with Outrank" badge, and blogs that break its content policy stay hidden from search engines on the free subdomain) is a data point for a vendor comparison only, not a recommendation.
+- For a portfolio of apps, a subdomain or a subfolder per app on one domain is a valid structure.
+  Google's SEO Starter Guide (read 2026-10-23) says: "From a business point of view, do whatever makes sense for your business."
+  It adds that subdirectories can be easier to manage and that subdomains can make sense for separate topics or industries.
+  It names no ranking difference and does not discuss buying a separate domain per app.
+  One developer who runs per-app SEO sites reports that they started with a separate domain per app, moved to subdomains because separate domains were getting expensive, and saw "no difference whatsoever" (single report on X, October 2026, no data).
+  Choose by maintenance and cost and measure each site in Search Console.
+  Not buying a domain per app follows from that report and from Google's neutrality (inference), and is not a Google rule.
 
 ## Translated pages
 
@@ -113,6 +121,12 @@ Each run:
    Cap new pages at a few per run, and review each as if it were hand-written.
    Skip a query when a page already covers its intent, and merge instead of publishing two pages for one query.
    The idea comes from the minosdevs post (2026-10-19, a method with no result figure) and the guardrails are ours, from the rules in this file.
+   3c. Several app sites: read every property at once instead of opening each one.
+   The Search Console API method `searchanalytics.query` takes `startDate`, `endDate`, `dimensions` (use `date` for a trend line) and `rowLimit` from 1 to 25,000, and returns clicks, impressions, ctr and position, with the read-only scope `https://www.googleapis.com/auth/webmasters.readonly` (Google, read 2026-10-23).
+   Google's quota is 1,200 queries per minute per site and per user, which a dozen daily queries never approach.
+   The Google pages read do not say whether a service-account email can be added as a property user, so confirm that in Search Console before relying on it.
+   The API returns only finalized data when `dataState` is omitted, and `dataState` "all" returns fresh data that can still change, so compare complete days only.
+   Give any status flag a minimum click count, and add a "flat for N weeks" status, because a percentage rule flags a site with 4 clicks as rising and a week-over-week rule misses a site that went to zero long ago (inference).
 4. AI answers: ask each assistant every question in `ai-prompts.md` at least 3 times, because answers vary run to run.
    The repeat count is our sampling rule, not vendor guidance.
    Count a source or a mention only when it recurs, and report the mention rate, not one answer.
