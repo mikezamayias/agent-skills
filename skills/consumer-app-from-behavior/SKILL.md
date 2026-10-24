@@ -196,6 +196,12 @@ The user should always see that the app is working.
 
 ## 5. Write the build spec
 
+Before the spec, fill a one-page Business Model Canvas for the chosen idea, so who pays and how is written down before any code.
+Fill the nine blocks: customer segments, value proposition, channels, customer relationships, revenue streams, key resources, key activities, key partners and cost structure.
+Mark every block without evidence as `(assumption)`, name the block you are least sure of, and write the cheapest test that would settle it.
+If the revenue streams or the channels block is empty, go back to step 1 instead of writing the spec.
+For a solo founder, cost structure includes store fees, payment fees, API and hosting costs, and your own hours.
+
 Collect the idea, core user, promised outcome, loop, and reference captures.
 Ask a model to produce the spec before any code, using this prompt:
 
@@ -282,9 +288,10 @@ Return:
 2. The chosen problem, its format, and the one-line promise.
 3. The core loop sentence and answers to the five gate questions.
 4. A reference teardown table with app, screen, decision, and why it works.
-5. The MVP build spec, with the screen list, onboarding, navigation, the return mechanism, and non-goals.
-6. A ship checklist covering loop complete, onboarding under 30 seconds, paywall after first value, and the polish pass done.
-7. The post-launch metrics to watch.
+5. The Business Model Canvas, with assumptions, the least certain block and its test.
+6. The MVP build spec, with the screen list, onboarding, navigation, the return mechanism, and non-goals.
+7. A ship checklist covering loop complete, onboarding under 30 seconds, paywall after first value, and the polish pass done.
+8. The post-launch metrics to watch.
 
 Mark assumptions and missing evidence explicitly.
 Do not invent demand, retention, or revenue numbers.
@@ -313,5 +320,7 @@ The studio portfolio example comes from one screenshot of a third-party estimate
 The competitor teardown evidence labels come from the evidence contract of a third-party repo created about 2026-10-18 (29 stars on 2026-10-19), unverified: <https://x.com/danielhangan_/status/2111899646306230593>.
 
 The pre-idea questions and the competitor-data limits come from a later X article by the same authors (published 2026-10-19), which promotes their own app builder, with figures that are unverified and no failed apps in its sample: <https://x.com/chhddavid/status/2112113481495318700>.
+
+The Business Model Canvas step before the spec comes from a mentoring workshop slide by Coaching in Action, seen on 2026-10-24, that matches a business idea to the Canvas.
 
 Read [references/article-notes.md](references/article-notes.md) when provenance or adaptation choices matter.
