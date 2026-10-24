@@ -12,6 +12,15 @@ Item 7 in `SKILL.md` says which state gets which offer.
 | Offer code   | New and existing subscribers                                                       | Redeemed by code or link                                                                                                          | Fits a downsell to someone who never subscribed                                                              |
 | Win-back     | Churned subscribers who match your eligibility rules                               | Manage Subscriptions on iOS 14.3 and later, the in-app win-back sheet on iOS 18 and later, and the product page if you promote it | The direct link `https://apps.apple.com/win-back/<win-back offer Apple ID>` can go in your own email or site |
 
+An introductory offer is one of three types: free trial, pay up front or pay as you go (Apple help page, read 2026-10-24).
+
+| Standard duration | Pay as you go | Pay up front                   | Free trial                                           |
+| ----------------- | ------------- | ------------------------------ | ---------------------------------------------------- |
+| 1 week            | 1 to 12 weeks | 1, 2, 3 or 6 months, or 1 year | 3 days, 1 or 2 weeks, 1, 2, 3 or 6 months, or 1 year |
+| 1 year            | 1 year        | 1, 2, 3 or 6 months, or 1 year | Same as above                                        |
+
+A "$0.99 first week" on a weekly product is therefore a pay as you go offer, and a "$0.99 first month" on a yearly product is a pay up front offer.
+
 Apple groups the four as Acquire, Retain and Re-acquire.
 
 ## Win-back offer rules

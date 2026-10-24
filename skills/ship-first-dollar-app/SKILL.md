@@ -28,6 +28,10 @@ State missing evidence. Do not invent conversion, retention, pricing, or market 
 - Identify buyer, painful moment, current spend or costly workaround, and narrow differentiation.
 - Distinguish personal enthusiasm from willingness-to-pay evidence.
 - Produce a build, research, or reject decision.
+- For an iOS idea, check search demand before building by listing the candidate's App Store keywords with a keyword tool (Astro is a paid third-party tool, and any install or MCP use goes through the code-gate rule) and noting popularity, difficulty and the age of the data.
+  A low difficulty score alone is not demand evidence, because it can mean nobody searches for the thing.
+  Read the live top 10 for each keyword, and carry only the keywords that have paid apps in the top 10 into the Apple Ads test in `references/apple-ads.md`.
+  The "low difficulty plus existing demand" method comes from one unproven post (X, October 2026) that reports no results, so treat it as a screening idea and not as a result.
 
 Pass gate only when problem is painful and payment evidence or strong substitute spend exists.
 

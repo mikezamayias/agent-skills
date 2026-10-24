@@ -52,6 +52,12 @@ who trust you convert at much higher rates.
   Apple Developer Program License Agreement (ADPLA) Section 3.2 bans "bait-and-switch pricing", and the Developer Code of Conduct in Guideline 5.6 bans tricking users into unwanted purchases or raising prices "in a tricky manner".
   Neither text names paywalls, so applying them here is a reading of the rules.
   Guideline 5.6 says the developer account will be terminated for conduct that breaks the Code.
+- A low introductory price shown much smaller on screen than the renewal price, on a plan that renews weekly.
+  Apple's Guideline 5.6.4 names "excessive refund requests" among the signs of poor quality and says poor quality "may be a factor" in judging conduct under the Developer Code of Conduct, with no threshold (Apple guidelines, read 2026-10-24).
+  It does not name intro offers, so reading it as a rule against this pattern is an inference.
+  One reply in an X thread (single report) says Apple counts refund spikes against an account, which is stronger than the text.
+  Guidelines 3.1.2, 5.6 and 5.6.4 set no rule on how prominent an intro price may be against the renewal price, so this is a transparency judgment (other Apple pages not checked).
+  Keep the renewal price as legible as the introductory price and track refund rate per plan.
 
 ## Sources
 

@@ -53,6 +53,12 @@ Most indies lose conversion by following the wrong order.
    Write the annualized weekly cost in the test notes, since $9.99 per week is $519.48 per year, 13 times the $39.99 yearly plan (arithmetic).
    One indie (single report, October 2026, a month of data, one screenshot) runs $5 per week and $49.99 per year, both with free trials, and a $24.99 yearly exit offer that is inferred from the product list.
    Treat it as one datapoint, not a price benchmark.
+   A third operator recipe (X post by @ChadAppDev, 2026-10-24, unverified, no conversion, refund or revenue figure given) pairs $39.99 per year with $6.99 per week and a $0.99 first week, on a hard paywall.
+   The author calls the $0.99 week a trial, but it fits Apple's pay as you go introductory offer type (inference from the offer types page).
+   They say users "forget to cancel at roughly the same rate as free trials" and that "in just 6 weeks" they pay more than the yearly price, and they give no data for either.
+   The break-even claim is one week early: 6 weeks cost $0.99 plus 5 times $6.99, which is $35.94, and 7 weeks cost $42.93 (arithmetic), before Apple's commission and any refund.
+   $6.99 per week is $363.48 per year, about 9.1 times the $39.99 yearly plan (arithmetic), just under the 10 times heuristic in the anti-patterns.
+   If you test it, show the $6.99 price at a size and contrast next to the $0.99, read refund rate and revenue per paywall viewer at week 8, and judge it against a free-trial ladder on the same traffic.
 6. **Add one exit offer after the buyer cancels the store purchase sheet.**
    Superwall's `transaction_abandon` placement fires when a user dismisses the store purchase sheet before the transaction completes, and a matching paywall replaces the current one.
    RevenueCat's closest feature is Exit offers, which show a second paywall when the user dismisses the paywall without buying.
@@ -88,6 +94,8 @@ Most indies lose conversion by following the wrong order.
 - Tutorial screens explaining features (vs showing outcomes).
 - Yearly-only pricing with no escape hatch for low-trust buyers.
 - A weekly plan whose annualized price is above about 10 times the yearly price as the headline plan (my heuristic, not from Apple or any source). If you test it, show the weekly price, the billing period and the trial end date, and describe what the user gets for the price, as Guideline 3.1.2(c) requires.
+  The $6.99 weekly and $39.99 yearly pair on one founder's X paywall is 9.1 times, so a 10 times line would not flag it (arithmetic).
+  Read the heuristic as a floor for suspicion, not a pass.
 - Replacing the concrete feature list with an outcome headline as the default.
   Keep the list, as in [Paywall transparency](../paywall-transparency/SKILL.md), and treat an outcome headline as an A/B test idea with no data behind it.
   One founder (X post, October 2026) says selling the result instead of listing features raised conversion "immediately", with no figure or sample size.

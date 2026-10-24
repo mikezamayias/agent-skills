@@ -72,6 +72,8 @@ This first test uses the search results campaign type, and the checked pages do 
   CPT is a direction signal only.
 - Export the keyword report (taps, installs, average CPT, conversion rate, spend) and join it with paid conversions per keyword before scaling any keyword.
 - Third-party keyword popularity tools are directional, because only Apple has the search data.
+- Use a third-party popularity and difficulty score to choose which keywords to test, and the Apple Ads keyword report to decide, because the third-party score is not conversion data.
+  One account (X post, October 2026) proposes choosing low-difficulty keywords this way and then testing them with a small campaign, with no test reported.
 
 ## When it will not work
 
