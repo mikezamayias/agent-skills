@@ -26,8 +26,12 @@ Most indies lose conversion by following the wrong order.
    Make the cancel path easy to keep ratings intact.
    Google Play already verifies a valid payment method before a store free trial starts, so a cardless trial only exists outside store billing.
    Judge a trial by paid conversion, not trial-start rate.
+   RevenueCat's State of Subscription Apps 2026 (metrics for 2025, read 2026-10-24) reports median trial-to-paid conversion of 25.5% for trials of 4 days or less, 37.4% for 5 to 9 days and 42.5% for 17 to 32 days.
+   It also reports that 55% of 3-day trial cancellations happen on Day 0, and that 84% of 3-day and 64% of 7-day trial cancellations happen by Day 1.
+   These medians compare different apps, so they are a reason to test a longer trial and not the lift to expect.
+   Change the trial length alone and write the date in the test notes, because a longer trial delays the first conversions by the length difference (inference), which makes the next days look slow.
    One indie fasting app in October 2026 reported a 20% trial-start week with zero trials converting, while its no-trial weeks reached 12-19% paid, on samples in the tens.
-   The founder's own explanation, which he did not test, is that paid ads optimized on trial starts find users who start trials and never pay.
+   The founder's own explanation, which they did not test, is that paid ads optimized on trial starts find users who start trials and never pay.
    Apple allows one introductory offer per person per subscription group.
    When a ladder mixes a free trial, a paid introductory offer and a no-trial plan, record which products share a group.
    Check eligibility before showing the offer (StoreKit 2 `isEligibleForIntroOffer`) and show no trial CTA to an ineligible user, since that repeats a misleading claim under Guideline 3.1.2.
@@ -158,6 +162,9 @@ These are unverified secondhand figures, which the article itself marks "reporte
   Report a paid introductory offer start as revenue, not as a trial conversion.
   In RevenueCat webhooks they are `INITIAL_PURCHASE` with `period_type` `TRIAL`, `RENEWAL` with `is_trial_conversion` true, and `INITIAL_PURCHASE` with `period_type` `INTRO` (event types page, read 2026-10-20).
   Dashboard labels such as "Trial Convert" and "Intro Offer Start" came from an unnamed tool in a source screenshot and are not RevenueCat event names, so map them to the documented fields before counting.
+- Read active trials and new trial starts next to revenue.
+  Revenue on a given day mostly comes from trials started a trial-length earlier, so a rising revenue day with falling active trials predicts a weaker next week (inference from subscription arithmetic).
+  One founder's Day 12 and Day 13 posts (October 2026, single report, screenshots not verified) show the lag: Day 13's whole $199.96 was four yearly trial conversions while active trials fell to 26.
 - Bucket weekly when daily paywall views are under about 20, because daily rates are noise.
 - Annotate every price, offer and onboarding change on the chart, and exclude the developer's own country or test devices.
 - Never report a partial-week point as a result.
@@ -177,6 +184,8 @@ These are unverified secondhand figures, which the article itself marks "reporte
   If one source converts far better than another at the same price, price is not the first suspect.
   Change price and traffic source in different weeks, because changing both at once hides which one moved the number.
   Source: one founder's X post and two agreeing replies (October 2026, no data), so this is a cheap check and not a finding.
+- Change trial length, the trial reminder and the paywall timeline in different releases too.
+  One build-in-public founder shipped all three in one release, and a reply pointed out they could not tell which one reduced cancellations (single reply, no data).
 
 ## When in doubt
 

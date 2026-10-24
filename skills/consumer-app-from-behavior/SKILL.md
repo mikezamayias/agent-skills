@@ -201,6 +201,9 @@ Fill the nine blocks: customer segments, value proposition, channels, customer r
 Mark every block without evidence as `(assumption)`, name the block you are least sure of, and write the cheapest test that would settle it.
 If the revenue streams or the channels block is empty, go back to step 1 instead of writing the spec.
 For a solo founder, cost structure includes store fees, payment fees, API and hosting costs, and your own hours.
+When a source claims a profit margin, ask what it subtracts, because a margin that leaves out creators, API cost or your own hours is not comparable with yours.
+Apple pays 85% of a subscription price in the Small Business Program (up to 1 million USD of prior-year proceeds), and otherwise 70% in a subscriber's first year and 85% after one year of paid service (Apple pages, read 2026-10-24).
+Google Play charges 15% on auto-renewing subscriptions in markets on the 15% tier, and 10% plus a 5% billing fee in the EEA, the UK and the US from 2026-06-30 (Google Play Help, read 2026-10-24).
 
 Collect the idea, core user, promised outcome, loop, and reference captures.
 Ask a model to produce the spec before any code, using this prompt:

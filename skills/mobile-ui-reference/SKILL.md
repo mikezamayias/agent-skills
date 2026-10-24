@@ -11,6 +11,9 @@ metadata:
 Flutter-first, code-first. Gather shipped screens, write a spec, build the UI, then park screenshots in Figma as a **reference board**. Figma is not the source of truth until a human must approve mocks before code.
 
 Do **not** start with ui-ux-pro-max `--design-system` (landing-page palettes). Do not prompt "generate a paywall." Split turns: research note, then implement.
+At commit d14efff8 (2026-10-23) its SKILL.md marks `--design-system` as required for new pages and projects and builds the result from product, style, color, landing and typography tables, so it suits web and landing pages.
+Its Flutter and SwiftUI entries are stack-guideline tables whose first rows are generic code rules (for example "Use StatelessWidget when possible" and "Use struct for views"), not screen design direction.
+Treat it as a web-first source, and keep references from shipped screens as the starting point for a Flutter screen.
 
 ## 0. Name the job
 

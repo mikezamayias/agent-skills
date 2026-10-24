@@ -59,6 +59,8 @@ Prices and policies change, so re-check the linked page before relying on one.
   His tiles show +191 new customers that day, and the cause is unverified.
   His screenshot lists three Reels at 141K, 921K and 117K views.
   Check an old post's installs one to two weeks after posting before you retire its angle, and log installs by post date so a late spike can be traced.
+- Instagram's published ranking explainer (2023-05-31, read 2026-10-24) lists reshare, watch to the end, like and audio page visits as Reels signals, and says muted or majority-text Reels are shown less.
+  It does not list replays, so check that a Reel is not mostly text and has audio, and treat a claim that rewatches push a video as unverified.
 - A different founder claims 1.5 million downloads in about three days for under $5,000 (October 2026).
   The claim is unverified, with no store data, spend breakdown or cost per install shown, and it comes from a video that promotes the founder's own paid creator-research tool.
   The account that amplified it also sells a research tool, so read it as one founder's account and never as a benchmark.

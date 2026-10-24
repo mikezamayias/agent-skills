@@ -219,6 +219,16 @@ Only the two mechanism notes above come from Anthropic's CLI reference and sub-a
 - Keep one checks table with a row per requirement and the columns requirement, verdict (pass, fail or unresolved), and evidence (a file path, a link or the command output).
   Leave an unresolved row visible in the final report, and never delete or reword a row to make it pass.
   Run each check against the saved version of the output and not against a draft in the session.
+- Write each runnable check before the work, as a command and the exact text it must print (design advice from the unlazy skill at commit 16671491, read 2026-10-24, not measured).
+  Count it as passed only when the command exits zero and the output contains that text, because a failing run can print the expected word in its error.
+  Use a success-only token as the expected text.
+- Before trusting a check that proves something is absent, run it once against a case known to contain it and confirm it fails.
+  A wrong path or a bad pattern otherwise looks like a clean result.
+- Store the command and expected text with the evidence, and treat evidence recorded for an older version of the check as unmet.
+  The parent re-runs every check itself on the final state, even those a worker marked passed.
+- Give a gate that cannot be met a named abandonment with a reason, and report it as a handoff, never as a pass.
+- Read every command in an inherited checks file before running any of them, because each one is code.
+  An expected-text match does not show that the plain-language gate describes what the command measures, so a person reviews that match.
 - A model-reported bug is a claim until a repro test fails on the assertion that encodes it. A repro failing for another reason means the test is wrong. A passing repro rejects the finding.
   Local rule: confirm the run report lists the repro as executed, because an excluded or unselected test proves nothing either way.
 - A claim that cannot be executed needs an independent verdict, and a change the agent both proposed and judged on the same task is a hypothesis.
