@@ -58,6 +58,8 @@ T2 — Quality Gate
   Apple's October 22, 2026 newsroom post says editorial collections for iPhone Duo apps and games go live on October 23 and does not say how apps are chosen or whether the badge changes search rank.
   Do not promise store placement.
   `asc nominations create` exists in `asc` 5.16.0 and its help text has no Duo field, so the Duo statement probably goes in the description or notes (inference, help text read and not run).
+  Apple's nomination help places "Helpful Details" under Additional Information and says the type and related apps cannot change after submission, so save the nomination as a draft first and check the Duo statement in App Store Connect before submitting.
+  Apple recommends at least 3 weeks of lead time for a nomination (help page read 2026-10-24).
 - **Method**: grep for orientation locks and fixed idiom checks, then ask the human to test both displays in the Duo simulator.
 
 ### 6. Touch Target Sizing

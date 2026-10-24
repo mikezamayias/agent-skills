@@ -153,6 +153,25 @@ Apply the TikTok automation and spam warning above to any plan that automates po
   Treat any "simple marketing" claim for it as a method and not a result unless the author gives installs or revenue, and check whether the author sells a course that teaches the method.
   One source of this loop sells a EUR 349 course (the author's site, read 2026-10-20) and gave only a click count with the site hidden.
 
+## App Store editorial featuring
+
+Evidence is Apple's "Getting featured on the App Store" and "Nominate your app for featuring" pages, read 2026-10-24.
+
+- Apple lets any developer nominate an app, an update or new content for editorial consideration, free, in App Store Connect under the app's Featuring, Nominations.
+  The roles that can submit are Account Holder, Admin, App Manager and Marketing.
+  Apple says there is "no checklist of requirements", so a nomination is a request and not a channel to plan revenue on.
+- Types are App Launch (a new app or a pre-order), App Enhancements (new features or major updates) and New Content (new content, offers or events).
+  Use one nomination per real change and do not file one for something that has not shipped (inference, not an Apple rule).
+- Lead time: Apple's nomination help recommends at least 3 weeks, and its Getting featured page says at least 2 weeks and up to 3 months ahead for wider consideration.
+  Use 3 weeks as the floor.
+- Describe the specific change, its purpose and its priority, since Apple asks for specifics.
+  Use Helpful Details for facts about the app or team, such as accessibility, inclusivity and priority.
+  One founder advises writing the story of who built it and why (single report, not Apple's guidance).
+- Attach an In-App Event only when one is approved or published, because Apple's help only allows that.
+- Apple's featuring factors are user experience, UI design, innovation, uniqueness, accessibility, localization and product page quality, so check the product page and localizations before nominating.
+- Log each nomination's outcome (date submitted, type, publish date, featured or not, installs in the week after) so the channel is judged on results.
+  The one public how-to found reports no result.
+
 ## AI assistant directories (ChatGPT plugins)
 
 Evidence is OpenAI developer docs read 2026-10-21 for the requirements and replies on X for the review waits.

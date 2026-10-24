@@ -74,6 +74,15 @@ Hand off instead of duplicating:
    Its `<desc>` supplies the description, so write the desc for the content, not the shapes.
    Add `role="img"` so assistive technology reads the figure as one image (local convention, not required by SVG-AAM).
    Those IDs must be unique on the page, so two inlined figures never share bare `title` or `desc` IDs.
+   Also check where focus goes after a failed form submit.
+   The live rules say "focus first error on submit" (checked 2026-10-24) and nothing about an error summary.
+   When the form shows an error summary, focus moves to the summary instead, which overrides that rule.
+   The summary is headed "There is a problem" or the project's equivalent, each entry links to its field, and its wording matches the message beside the field.
+   GOV.UK states this as a requirement and also prefixes the page title with "Error: " (GOV.UK error summary, read 2026-10-24).
+   When the form has no summary, the live rule stands and focus goes to the first invalid field.
+   Prove it by tabbing through the flow, because a screenshot cannot show focus.
+   For the keyboard behavior of a custom widget (tabs, menus, dialogs, toggles), check against the WAI-ARIA Authoring Practices pattern for that widget at <https://www.w3.org/WAI/ARIA/apg/> (read 2026-10-24).
+   Inclusive Components (Heydon Pickering) covers eleven widgets but has no entry since 2018, so treat it as background and the APG as the reference.
 6. Verify each candidate before reporting it.
    Confirm the line number, confirm no global style, layout, component wrapper, or config already satisfies the rule, and confirm the element is really interactive or really content.
    Drop anything you cannot point to on a line.
@@ -122,6 +131,10 @@ components/ItemCard.vue:14 - icon-only button has no accessible name -> add aria
 components/ItemCard.vue:31 - div with @click acts as a button -> use <button type="button">
 components/ItemCard.vue:58 - :hover not gated, sticks after tap -> wrap in @media (hover: hover) and (pointer: fine)
 ```
+
+When the user asks for a usability review, add the Nielsen heuristic the finding breaks in square brackets after the issue, for example `[Error Prevention]`.
+Use the ten names on the NN/G page (read 2026-10-24) and leave the bracket out when no heuristic fits.
+Heuristics are rules of thumb, so a bracket labels a finding and never replaces the `path:line` evidence.
 
 ## Credits
 
