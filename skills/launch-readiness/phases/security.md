@@ -136,6 +136,17 @@ For every table, endpoint and paid feature, answer each question with a file and
 - Can a user call a paid endpoint without passing the server-side limit (check 10)?
 - Can a stolen client key be used outside the app (check 1)?
 
+## Native Swift and Kotlin projects
+
+For native Apple and Android projects the Flutter methods above map as follows.
+Full detail is in [native-projects.md](../references/native-projects.md).
+
+Scan `*.plist`, `*.xcconfig`, `*.entitlements`, `local.properties` and `gradle.properties` as well as source.
+Tokens in `UserDefaults` or plain `SharedPreferences` are Critical, use Keychain or Keystore-backed storage.
+Flag `NSAllowsArbitraryLoads`, cleartext traffic and unneeded exported Android components.
+SwiftPM and Gradle have no outdated command, so compare `Package.resolved` and `libs.versions.toml` pins against releases.
+Zero third-party dependencies is a pass.
+
 ## Severity Rules Summary
 
 | Check                        | Critical | High | Medium | Low |

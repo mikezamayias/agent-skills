@@ -27,6 +27,10 @@ Prices and policies change, so re-check the linked page before relying on one.
   Add creatives to the existing ad group, because TikTok says opening new accounts does not help when creative, targeting, bid and budget stay the same.
   TikTok states budgets as multiples of target cost per acquisition and says to raise budget by no more than 50% at a time.
   The fatigue figures are vendor data, and the Fatigue Index guide covers web campaigns more than app installs.
+- Before raising a budget, write down what you will do if CPA holds, if it passes your line and if it keeps improving.
+  Keep the next creatives in a test campaign before the current winners fade, and move only proven ones into the scaling campaign.
+  One founder's article (October 2026, single report, no data) says the account lost its winners at about $20K a month with ten creatives in one ad set.
+  On iOS, Meta app campaigns allow one ad set per campaign (see the Meta bullet above, from Meta's help pages, not re-read on 2026-10-25), so a test and scale split means two campaigns (inference).
 - Install a mobile measurement partner (MMP, a third-party attribution provider) before TikTok or Meta spend.
   Singular's Free plan costs $0 per conversion with no card, covers up to 15,000 paid conversions, and includes paid-campaign attribution and SKAN.
   AppsFlyer's free Zero plan measures clicks and impressions only and does not measure attribution, so attribution starts on its paid Growth plan, billed per conversion.
@@ -76,6 +80,19 @@ Prices and policies change, so re-check the linked page before relying on one.
   Its pitch of hundreds of automated slideshows runs into the spam rule on the next line, so read that rule before scheduling volume.
 - TikTok allows multiple accounts but classes automation that runs many accounts, and repetitive content, as spam.
   Penalties include account bans and limited reach.
+- An agent-run set of AI creator personas, one per buyer segment with its own accounts, is promoted in an X article by the maker of the tools it uses (2026-10-23, single report, no follower, view, install or sale result shown).
+  Before building one, check each point against the rules in this file.
+  1. Several accounts that post agent-made videos daily meet the TikTok spam rule above.
+     The article's safeguards (an "AI creator" bio line, scheduling at least 24 hours out, a daily human review of the queue) are the author's choices, and no platform text read accepts them.
+  2. Realistic AI people likely need the AI label (see the TikTok slideshow notes), and the label belongs on every post, not only in the bio.
+  3. A persona that says it uses a product describes an experience that did not happen.
+     16 CFR 465.2(a) bars a business from creating a consumer testimonial that "materially misrepresents, expressly or by implication" that the testimonialist exists or "used or otherwise had experience with the product" (Cornell LII, read 2026-10-25).
+     The rule text does not mention AI, so whether a persona's passing mention counts is an inference, and a bio disclosure does not obviously cure an experience claim.
+     Keep scripts to what the app does and never to what the persona felt or achieved.
+  4. The article itself says to avoid regulated and trust-dependent categories (medical, legal, financial) and bans health, income and before and after claims.
+
+  Our own rule, not the article's: test one persona with a human review of every post before adding a second.
+
 - One founder (October 2026, one account, no measured effect) reports a seven-day warm-up before the first post, with two sessions a day at random times.
   Days 1 and 2 only scroll For You for 15 to 20 minutes.
   Days 3 and 4 search about 10 niche terms and watch each video 12 seconds to 1.5 minutes.
@@ -174,6 +191,21 @@ Evidence is Apple's "Getting featured on the App Store" and "Nominate your app f
 - Log each nomination's outcome (date submitted, type, publish date, featured or not, installs in the week after) so the channel is judged on results.
   The one public how-to found reports no result.
 
+## In-App Events
+
+Source: Apple's In-App Events page, developer.apple.com/app-store/in-app-events/, read 2026-10-25.
+
+- An In-App Event is a card for a time-limited happening in the app.
+  Apple says people find events on the product page, in search results, by searching for the event itself, and in editorial selections.
+- In search, the event card appears next to the app for people who have downloaded the app, and people who have not downloaded it see screenshots.
+  So an event re-engages current and past users in search.
+  It reaches new users only when they search for the event or find it elsewhere on the App Store (inference from Apple's wording).
+- An event can last up to 31 days and be promoted up to 14 days before it starts.
+  Up to 15 approved events can sit in App Store Connect at once and up to 10 can be published.
+  Events can be submitted for review without a new app version.
+- App Analytics in App Store Connect shows downloads per event and acquisition sources.
+  Log event name, dates, source and installs for each event, so the channel is judged on results.
+
 ## AI assistant directories (ChatGPT plugins)
 
 Evidence is OpenAI developer docs read 2026-10-21 for the requirements and replies on X for the review waits.
@@ -253,6 +285,8 @@ Treat it as a hypothesis.
   The example is 8,000 followers with several 500,000-view videos over 300,000 followers with low engagement.
   Hand them proven hooks, competitor examples and screen recordings instead of asking them to invent a strategy.
   This is the opinion of one promotional article (2026-10-19), unverified.
+- One founder's creator training note (a whiteboard photo in an X article, October 2026, single report, no results) asks creators to send the first post for review, keep a consistent style, show the app in 5 to 10 seconds, avoid making the whole post about the app, and film using the app on a second device instead of a screen recording.
+  This conflicts with handing creators screen recordings above, so test both on a few posts and compare installs per post.
 - Move to a call as soon as a creator replies, because rates and objections are easier to settle live.
 - Target about 2 dollars per 1,000 views (CPM).
   One reported deal was 4 videos and 4 stories for 2,500 dollars with a creator averaging 400,000 to 1,000,000 views.

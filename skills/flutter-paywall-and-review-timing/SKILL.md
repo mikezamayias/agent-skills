@@ -1,7 +1,7 @@
 ---
 name: flutter-paywall-and-review-timing
 description: >-
-  Times paywalls and App Store review prompts in paid Flutter or SwiftUI apps and never binds requestReview to a button. Use when wiring RevenueCat or StoreKit, adding a review prompt or designing onboarding and paywall cadence. Also use when copying a paywall from a screenshot gallery.
+  Times paywalls and review prompts in paid Flutter, SwiftUI or Kotlin apps and never binds requestReview to a button. Use when wiring RevenueCat, StoreKit or Play Billing, adding a review prompt or setting paywall cadence. Also use when copying a paywall from a screenshot gallery.
 metadata:
   docs-verified: "2026-09-28"
 ---
@@ -9,6 +9,10 @@ metadata:
 # Flutter paywall and review timing
 
 Two systems. **Paywall cadence** is yours. **Review prompts** are Apple's and heavily capped.
+
+The timing rules are platform-independent.
+The code samples are Flutter, and the section "Native Swift and Kotlin projects" has the SwiftUI and Kotlin equivalents.
+The directory keeps its `flutter-` name so existing links keep working.
 
 ## IAP (Flutter `in_app_purchase` 3.x)
 
@@ -72,6 +76,57 @@ Apple never defines gating, so reading a gate as "filtered" feedback is an infer
 Never trade offer codes or anything of value for reviews, because the same preamble treats incentivized feedback as manipulation.
 Offer feedback through a separate, always-available "Send feedback" entry instead.
 
+## Native Swift and Kotlin projects
+
+Same rules, different calls.
+
+### IAP
+
+- iOS (StoreKit 2): `Product.products(for:)`, `product.purchase()`, a `Task` that iterates `Transaction.updates` from app launch, `Transaction.currentEntitlements` for the unlocked state, `transaction.finish()` after delivery, and `AppStore.sync()` behind the Restore button.
+  Verify with the `VerificationResult` the API returns and ignore `.unverified` transactions.
+- Android (Play Billing): `BillingClient` with `PurchasesUpdatedListener`, `queryProductDetailsAsync`, `launchBillingFlow`, `queryPurchasesAsync` at startup, and `acknowledgePurchase` after delivery.
+  Play refunds an unacknowledged purchase after 3 days.
+- Do not add RevenueCat to a native app that has no third-party dependencies just for this.
+  Full API table: `paywall-conversion-flow`, section "Native Swift and Kotlin implementation".
+
+### Reviews
+
+```swift
+import StoreKit
+import SwiftUI
+
+struct SessionDoneView: View {
+    @Environment(\.requestReview) private var requestReview
+
+    var body: some View {
+        // ...
+        .task { if shouldAskForReview() { requestReview() } }
+    }
+}
+```
+
+- `requestReview` (iOS 16 and later, macOS 13 and later) is the SwiftUI form of `RequestReviewAction`.
+  The caps above apply unchanged.
+  Call it from a state change after a completed action and not from a Button handler.
+  Call it in `.task` or `.onChange` on the success state.
+- UIKit and AppKit apps use `AppStore.requestReview(in:)`.
+  `SKStoreReviewController.requestReview(in:)` is the older form.
+- Permanent Settings entry: open `https://apps.apple.com/app/id<ID>?action=write-review` with `openURL`.
+- A Mac app distributed outside the App Store has no store review sheet.
+  Link to the cask page, the download page or the repository instead.
+- Android: Google's in-app review API (`ReviewManagerFactory.create(context)`, `requestReviewFlow()`, `launchReviewFlow(activity, info)`) lives in `com.google.android.play:review`, a Google Play library and not AndroidX.
+  When the project's dependency rule allows only AndroidX, skip the in-app card and open the Play listing from Settings with `market://details?id=<package>`.
+  The test rules above apply: it needs a Play-installed build.
+- The same no-gating rule applies to Swift and Kotlin prompts.
+- Keep your own call log in `UserDefaults` (Swift) or DataStore or `SharedPreferences` (Kotlin), with the screen name per call.
+
+### Paywall schedule in Swift and Kotlin
+
+Persist `firstOpen` and `lastShown` in `UserDefaults` or DataStore.
+Port the loop from the next section as is.
+Kotlin `when` and Swift `switch` do not fall through either, so a literal port of the Dart `switch` is safe, and a paraphrase is not.
+Skip the paywall when `Transaction.currentEntitlements` or `queryPurchasesAsync` already shows an unlock.
+
 ## Paywall app-open schedule
 
 Pighetti gist math (Dart 3 `switch` does **not** fall through). Skip if already subscribed. Persist `firstOpen` and `lastShown` (ISO-8601).
@@ -119,6 +174,9 @@ Showing a paywall on every launch trains swipe-away. The decaying schedule exist
 - <https://x.com/zakisbuilding/status/2112823780821049807>
 - <https://x.com/endyjtwn/status/2112826319239307625>
 - <https://pub.dev/packages/in_app_review>
+- <https://developer.apple.com/documentation/swiftui/environmentvalues/requestreview>
+- <https://developer.apple.com/documentation/storekit/transaction/updates>
+- <https://developer.android.com/google/play/billing/integrate>
 - <https://pub.dev/packages/in_app_purchase>
 - <https://developer.android.com/guide/playcore/in-app-review/test>
 - <https://toomanypaywalls.com>

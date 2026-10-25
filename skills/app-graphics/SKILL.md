@@ -1,7 +1,7 @@
 ---
 name: app-graphics
 description: >-
-  Generates a complete store and marketing graphics package for a Flutter or web app from its local files. Covers store icons, feature graphic, social banners, press kit hero and App Store header and search creative assets. Use when preparing store or launch artwork, building app icons, rebranding an icon or making an OG card.
+  Generates a store and marketing graphics package for a Flutter, native Swift, native Kotlin or web app. Covers store icons, feature graphic, social banners, press kit hero and App Store header and search creative assets. Use when preparing store or launch artwork, building app icons, rebranding an icon or making an OG card.
 allowed-tools:
   - Read
   - Write
@@ -28,7 +28,7 @@ The human says something like "generate the graphics package", "build the icons"
 ## Activation rules
 
 1. **The working directory must be a project root.**
-   If it has no `pubspec.yaml`, `package.json`, or `README.md`, ask the human to `cd` first.
+   If it has no `pubspec.yaml`, `project.yml`, `*.xcodeproj`, `Package.swift`, `settings.gradle.kts`, `package.json`, or `README.md`, ask the human to `cd` first.
    Do not invent a project.
 2. **An image generation tool must be available.**
    Use whatever the environment provides, such as a built-in image tool, an image generation MCP server, an image model API, or an agent CLI with image generation.
@@ -38,14 +38,14 @@ The human says something like "generate the graphics package", "build the icons"
 
 ## Phases
 
-| Phase | What                                                                                                 | Why                            |
-| ----- | ---------------------------------------------------------------------------------------------------- | ------------------------------ |
-| 0     | Discover the brand from local files (`pubspec.yaml`, `README.md`, existing icon files, theme tokens) | Do not hallucinate the brand   |
-| 1     | Write `store_assets/BRAND_PROFILE.md` and get human confirmation                                     | Sets the visual direction once |
-| 2     | Generate the app icon set                                                                            | 9 icon variants per spec       |
-| 3     | Generate banners and social art                                                                      | 6 standard banner sizes        |
-| 4     | Wire icons into the Flutter build (`flutter_launcher_icons`) if applicable                           | Makes the assets actually ship |
-| 5     | Verify dimensions and alpha, then write `GRAPHICS_INDEX.md`                                          | Leaves a trail for re-runs     |
+| Phase | What                                                                                                                                                                      | Why                            |
+| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| 0     | Discover the brand from local files (`pubspec.yaml`, `project.yml`, `build.gradle.kts`, `README.md`, existing icon files, theme tokens)                                   | Do not hallucinate the brand   |
+| 1     | Write `store_assets/BRAND_PROFILE.md` and get human confirmation                                                                                                          | Sets the visual direction once |
+| 2     | Generate the app icon set                                                                                                                                                 | 9 icon variants per spec       |
+| 3     | Generate banners and social art                                                                                                                                           | 6 standard banner sizes        |
+| 4     | Wire icons into the app build: Flutter (`flutter_launcher_icons`), native Apple (asset catalog) or native Android (`res/` mipmaps), see "Wire icons into native projects" | Makes the assets actually ship |
+| 5     | Verify dimensions and alpha, then write `GRAPHICS_INDEX.md`                                                                                                               | Leaves a trail for re-runs     |
 
 ## Required output paths (per project)
 
@@ -160,10 +160,34 @@ If the text keeps coming out wrong, generate the art without text and add the te
 - The Android adaptive monochrome layer is a single-color version of the foreground glyph on a transparent background, inside the same safe zone.
   Android 13 and later tints it from the user's wallpaper when themed icons are on.
   With `flutter_launcher_icons`, set it through `adaptive_icon_monochrome`.
+  In a native Android project, reference it as `<monochrome>` in `res/mipmap-anydpi-v26/ic_launcher.xml`.
 - The Android notification icon is white on transparent, with no color.
 - The iOS 18 dark variant uses a transparent or dark background, and the tinted variant is a grayscale glyph that the system tints.
 - Since iOS 26, Apple recommends layered icons built in Icon Composer, which adds Liquid Glass effects and default, dark, clear, and tinted appearances.
   Flattened 1024x1024 images are still accepted, and the system generates any appearance variant you do not provide.
+
+## Wire icons into native projects
+
+Phase 4 differs by project type.
+Check what the project already has before generating, because a native project often owns an icon pipeline (a script, an Icon Composer file, a Gradle resource folder).
+
+- Flutter: `flutter_launcher_icons`, as above.
+- Native Apple (SwiftUI, Watch, widgets, Mac):
+  - The icon lives in an asset catalog `AppIcon.appiconset`, or in an `.icon` file made with Icon Composer.
+    Each app target has its own icon: iPhone, Watch, Mac.
+    The widget extension has none unless it sets an accent color.
+  - Put the 1024×1024 PNG with no alpha in the app icon slot, plus the dark and tinted variants when the catalog defines them.
+  - With XcodeGen, the catalog path comes from `project.yml` `sources` and `settings` (`ASSETCATALOG_COMPILER_APPICON_NAME`).
+    Run `xcodegen generate` after adding catalog files, then build to confirm: `xcodebuild build -project <P>.xcodeproj -scheme <App> -destination 'generic/platform=iOS'`.
+  - A Mac app distributed outside the App Store still needs the Mac icon for the app bundle, the DMG or zip, the cask page and the website.
+    Make a `.icns` with `iconutil -c icns <name>.iconset` if the target does not use a catalog.
+- Native Android (Kotlin, Compose):
+  - Adaptive icon files live in `app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml` and `ic_launcher_round.xml`, with the foreground, background and monochrome drawables in `res/drawable` or `res/mipmap-*`.
+  - The notification icon is a white-on-transparent vector in `res/drawable`.
+  - The 512×512 Play Store icon is uploaded in Play Console and is not part of the build.
+  - Confirm with `./gradlew :app:assembleDebug`, then open the app on an emulator and check the launcher and the themed icon setting.
+- Whichever type, leave the project's existing icon script in charge when one exists (for example `scripts/make-app-icons.sh`).
+  Feed it the new source art and run it, instead of duplicating its resizing.
 
 ## App Store creative assets
 
@@ -253,6 +277,7 @@ Specs come from Apple's "Creative assets specifications" page:
 - <https://developer.android.com/develop/ui/views/launch/icon_design_adaptive>
 - <https://developer.android.com/about/versions/lollipop/android-5.0-changes>
 - <https://pub.dev/packages/flutter_launcher_icons>
+- <https://developer.apple.com/documentation/xcode/configuring-your-app-icon>
 - <https://developers.facebook.com/docs/sharing/webmasters/images/>
 - <https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo>
 - <https://www.linkedin.com/help/linkedin/answer/a566232>

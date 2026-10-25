@@ -114,6 +114,7 @@ The article says 5 million views can earn less than 100 thousand views from the 
 - For game ad creative and the cross-promotion note, read the Games section of [references/distribution-channels.md](references/distribution-channels.md).
 - For an iOS app, run the first intent-based test on Apple Ads with [references/apple-ads.md](references/apple-ads.md).
 - For Meta and TikTok campaigns, creator marketplaces, Reddit, Discord, YouTube Shorts and influencer deals, read [references/distribution-channels.md](references/distribution-channels.md).
+- For App Store Connect organic work that costs no media spend, read the In-App Events section of [references/distribution-channels.md](references/distribution-channels.md), and choose new locales from territory data in App Analytics.
 - For a product that already has a paid web workflow, test an MCP-backed ChatGPT plugin as a channel only after reading the plugin section of [references/distribution-channels.md](references/distribution-channels.md), and log listing approval time, plugin-attributed sign-ups and revenue per sign-up like any other channel.
 - On Reddit, help in the community first and follow each subreddit's own self-promotion rule, because moderators set local limits and Reddit's spam rules ban mass-posting repetitive content for exposure or financial gain.
 - Disclose any creator who is paid by revenue share, commission or cash, inside the video itself.
@@ -127,6 +128,12 @@ Its sequence of 1,000 dollars buying 500 installs, 50 trials and 20 payers is an
 Keep an ad running while its cost per acquisition (CPA, the cost of one paying user) stays below lifetime value (LTV, net proceeds per paying user) within a payback window and spend cap set in advance, such as 6 or 12 months.
 An ad just above that line may run through its learning period under the cap, then stops if it does not cross the line.
 Write the inequality as CPA below LTV and never let a loss run without a window and a cap.
+Write the stop rule for each ad before launch: the spend, the number of days and the CPA line.
+Apply it only when the ad reaches that spend or those days, and do not pause an ad for a quiet morning.
+One founder reports pausing ads that were profitable over several days (October 2026, X article, single report, no figures).
+Set the CPA line below expected net value to leave room for error, for example half of the net proceeds expected in the payback window.
+Count trial conversion, retention, refunds and store fees in that net figure.
+One founder's X article (October 2026) gives $40 net and a $20 CPA line as an illustration and not a measured rule.
 
 ### 7. Reallocate work weekly
 
@@ -158,6 +165,9 @@ Track only metrics that change decisions:
 - Reported early heuristics from one founder, not benchmarks: start reading conversion at about 100 downloads a day, and aim for about 2 dollars of revenue per download in month one.
   Expect a lower figure from broad UGC reach and a higher one from creator posts that explain the app.
   If retention is poor, add useful adjacent features and measure churn before and after.
+  A second founder says to put acquisition ahead of funnel and paywall work until about 300 downloads a day, unless something is obviously broken, and says "that isn't a magic testing threshold" (October 2026, X article, no data).
+  The same founder earlier said to leave pricing alone until 500 downloads a day.
+  Treat 100, 300 and 500 as three unsourced guesses, and size the real threshold from the sample sizes in `paywall-conversion-flow`.
 
 Do not mistake revenue, downloads, replies, or impressions for profitability.
 

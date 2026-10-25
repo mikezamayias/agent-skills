@@ -12,9 +12,17 @@ App Store Connect and Google Play Console tooling means whatever is installed, s
 | Privacy and policy | `launch-readiness` store-compliance, legal drafting skills   | `launch-readiness` store-compliance, Play Console Data safety | privacy policy, ToS, data deletion, permissions, SDK review                 |
 | Age/content        | App Store Connect forms                                      | Play Console forms                                            | UGC, kids, health, location, ads, regulated domains                         |
 | Build and signing  | Xcode archive, signing, and build upload tooling             | Signed AAB upload tooling                                     | signed artifacts, versioning, symbols/mapping                               |
+| Mac direct release | Developer ID signing, notarization, stapling, Homebrew cask  | not applicable                                                | notarized artifact, update channel, download page                           |
 | Beta/testing       | TestFlight groups and tester feedback                        | Play internal/closed/open tracks                              | tester access, feedback, crash review                                       |
 | Submission         | App Store Connect submission and review status               | Play Console review submission                                | review notes, app access, manual forms                                      |
 | Rollout            | App Store phased release                                     | Play staged rollout                                           | pause/rollback plan, monitoring                                             |
+
+## Native project commands
+
+Flutter commands in other skills have native equivalents.
+Apple: `xcodegen generate`, `xcodebuild test`, `xcodebuild archive`, `swift test`, `asc`.
+Android: `./gradlew :app:testDebugUnitTest`, `:app:lintDebug`, `:app:bundleRelease`.
+The table with flags is in `SKILL.md` under "Native Swift and Kotlin projects".
 
 ## Minimum Public Launch Packet
 
@@ -26,6 +34,7 @@ Required before public go-live:
 - Store listing metadata complete for primary locale.
 - Required screenshots and icons complete for each target store.
 - Signed build uploaded to the intended review/testing/production track.
+  For a Mac app outside the App Store, a notarized and stapled artifact on the download page or cask.
 - Google Play personal developer accounts created after November 13, 2023: closed test with at least 12 testers opted in continuously for the preceding 14 days before applying for production access.
   - Google's page scopes the rule to personal accounts and never mentions organization accounts, so treat the organization exemption as an inference until the Play Console shows no production-access gate for the account.
     Organization accounts need a D-U-N-S number, a free Dun and Bradstreet identifier.

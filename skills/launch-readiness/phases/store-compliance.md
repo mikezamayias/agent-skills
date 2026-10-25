@@ -371,6 +371,17 @@ Store screenshots must exist in the project repo. Expected location: `store_asse
 - **Medium if**: Relevant guideline section found that isn't covered by above checks — flag for manual review
 - **Method**: Keyword search against indexed guidelines using detected features as queries
 
+## Native Swift and Kotlin projects
+
+For native Apple and Android projects the Flutter methods above map as follows.
+Full detail is in [native-projects.md](../references/native-projects.md).
+
+Replace pubspec checks with `Package.resolved`, `project.yml`, `Info.plist`, `PrivacyInfo.xcprivacy`, `AndroidManifest.xml` and Gradle files.
+Purchases are StoreKit 2 (`Transaction.updates`, `AppStore.sync()` for restore) and Google Play Billing.
+A Mac app distributed outside the App Store skips the Mac App Store checks and needs Developer ID signing, hardened runtime, notarization and a stapled ticket instead.
+Android `targetSdk` is read directly from `app/build.gradle.kts`.
+Crash cross-reference uses a release `xcodebuild build` and `./gradlew :app:lintDebug`.
+
 ## Severity Rules Summary
 
 | Check                                    | Critical | High | Medium | Low |

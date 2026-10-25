@@ -70,6 +70,14 @@ T3 — Polish & Verify
 - Read the matched overlay's Polish section
 - Execute each additional check (e.g., "one shared card component, no ad-hoc bordered containers")
 
+## Native Swift and Kotlin projects
+
+For native Apple and Android projects the Flutter methods above map as follows.
+Full detail is in [native-projects.md](../references/native-projects.md).
+
+Raw colors, spacing and fonts are `Color(red:green:blue:)`, numeric `.padding(`/`.frame(` and `.font(.system(size:` in SwiftUI, and `Color(0xFF...)`, `.padding(16.dp)` and `TextStyle(fontSize =` in Compose, outside the theme file.
+Read the project's token names from `AGENTS.md` or `CLAUDE.md`.
+
 ## Severity Rules Summary
 
 | Check                  | Critical | High | Medium | Low |

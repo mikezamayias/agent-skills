@@ -1,7 +1,7 @@
 ---
 name: app-screenshots
 description: >-
-  End-to-end App Store and Play Store screenshot pipeline for a Flutter app: compliance, capture, framing and locales. Use when preparing submission-ready store screenshots, for example "take store screenshots" or "frame the captures". Defers to the asc-* skills wherever they already cover a step.
+  Runs the App Store and Play Store screenshot pipeline for a Flutter, Swift or Kotlin app. Covers compliance, capture, framing and locales. Use when preparing submission-ready store screenshots or framing captures, deferring to asc-* skills.
 allowed-tools:
   - Read
   - Write
@@ -18,7 +18,6 @@ metadata:
       - darwin
     requires:
       bins:
-        - flutter
         - xcrun
         - asc
     install:
@@ -38,20 +37,21 @@ User says: "take store screenshots", "generate App Store shots for X", "do the s
 
 ## Activation rules
 
-1. CWD must be a Flutter project root (has `pubspec.yaml`).
-2. **Mobile-mcp must be connected** for capture; if it's not, skip to the framing-only path (skill prompts the human to confirm).
+1. CWD must be a project root: Flutter (`pubspec.yaml`), native Apple (`project.yml`, `*.xcodeproj` or `Package.swift`) or native Android (`settings.gradle.kts` with `gradlew`).
+2. **Mobile-mcp must be connected** for capture, or the project must have its own capture path (see "Native Swift and Kotlin projects").
+   If neither exists, skip to the framing-only path (skill prompts the human to confirm).
 
 ## Phases
 
-| Phase | What                                                                | Tooling                                                                         |
-| ----- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| 0     | **Compliance pre-flight** — block capture if red items remain       | `launch-readiness --tier 1`, App Store Connect ASO and submission-health checks |
-| 1     | Production release build, signed                                    | Xcode archive, signing, and build upload tooling (for example the `asc` CLI)    |
-| 2     | **Capture** via mobile-mcp on an iPhone simulator + Pixel 8 Pro AVD | (mobile-mcp tools directly)                                                     |
-| 3     | **Frame** via Koubou (pinned to 0.20.0)                             | Koubou                                                                          |
-| 4     | **Locale fan-out**                                                  | App Store Connect metadata and subscription localization                        |
-| 5     | Pre-submit final gate                                               | App Store Connect submission check                                              |
-| 6     | Upload to App Store Connect / Play Console                          | `asc` CLI screenshot upload, Play Console listing upload                        |
+| Phase | What                                                                                           | Tooling                                                                         |
+| ----- | ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| 0     | **Compliance pre-flight** — block capture if red items remain                                  | `launch-readiness --tier 1`, App Store Connect ASO and submission-health checks |
+| 1     | Production release build, signed                                                               | Xcode archive, signing, and build upload tooling (for example the `asc` CLI)    |
+| 2     | **Capture** via mobile-mcp on an iPhone simulator + Pixel 8 Pro AVD, or the native paths below | mobile-mcp tools, `xcrun simctl`, `adb`, or the project's render tests          |
+| 3     | **Frame** via Koubou (pinned to 0.20.0)                                                        | Koubou                                                                          |
+| 4     | **Locale fan-out**                                                                             | App Store Connect metadata and subscription localization                        |
+| 5     | Pre-submit final gate                                                                          | App Store Connect submission check                                              |
+| 6     | Upload to App Store Connect / Play Console                                                     | `asc` CLI screenshot upload, Play Console listing upload                        |
 
 ## Per-app spec input
 
@@ -115,7 +115,7 @@ Play accepts up to 8 phone screenshots as JPEG or 24-bit PNG without alpha, and 
 
 Apple/Google reject screenshots that show debug overlays or staging data. Verify all of:
 
-- [ ] No debug banner (`MaterialApp.debugShowCheckedModeBanner = false` or release mode forces it off)
+- [ ] No debug banner (Flutter: `MaterialApp.debugShowCheckedModeBanner = false` or release mode forces it off. Native: no debug-only overlay, banner or `#if DEBUG` UI in the captured build)
 - [ ] No performance overlay, no debug paint, no leak tracker
 - [ ] Status bar locked to a clean state via `xcrun simctl status_bar booted override --time "9:41" --batteryLevel 100 --cellularBars 4 --wifiBars 3 --cellularMode active --dataNetwork wifi`
 - [ ] Test account looks realistic (no "test test test", no `lorem ipsum`)
@@ -127,6 +127,54 @@ Apple/Google reject screenshots that show debug overlays or staging data. Verify
       Apple's 2.3.3 text as fetched allows overlays and text, so the test is the presence of a real screen and not the absence of decoration.
       Before `asc screenshots upload`, write a slide-by-slide table (slide, headline, real screen yes or no), and do the same for decks designed by a third party.
       Example from one agency-deck post (October 2026, image reading, inference, no review outcome known): of four agency decks of six slides, one had no real screen by that reading and the others had 4 or 5.
+
+## Native Swift and Kotlin projects
+
+Everything above applies.
+Only the build and capture steps differ.
+Pick the capture path the project already has before inventing one.
+
+1. Project render tests.
+   Some native projects draw store screenshots from their own views inside a test target, which needs no running app and no device.
+   Look for `scripts/render-*.sh`, a `StoreScreenshotTests` file, or an environment switch that turns render tests on.
+   Run the script and read its output folder.
+   These renders are the app's real screens, so they count as "app in use" under Guideline 2.3.3.
+2. Apple simulator capture, when no render path exists:
+
+   ```bash
+   xcodegen generate                      # only when project.yml exists
+   xcrun simctl list devices available    # pick the simulator that produces the required size
+   xcodebuild build -project <P>.xcodeproj -scheme <App> -configuration Release \
+     -destination 'platform=iOS Simulator,name=<simulator>' -derivedDataPath build/shots-dd
+   xcrun simctl boot "<simulator>"
+   xcrun simctl install booted build/shots-dd/Build/Products/Release-iphonesimulator/<App>.app
+   xcrun simctl status_bar booted override --time "9:41" --batteryLevel 100 --cellularBars 4 --wifiBars 3 --cellularMode active --dataNetwork wifi
+   xcrun simctl launch booted <bundle id>
+   xcrun simctl io booted screenshot --type=png store_assets/screenshots/raw/en-US/01_home.png
+   ```
+
+   Drive the app to each screen with launch arguments, deep links (`xcrun simctl openurl booted <url>`) or a UI test.
+   Watch captures use a paired watchOS simulator the same way.
+   A StoreKit configuration file only applies to Xcode runs, so for paywall shots use a UI test or run from Xcode.
+
+3. Android emulator capture:
+
+   ```bash
+   ./gradlew :app:installRelease          # or the release-like build type the project defines
+   adb exec-out screencap -p > store_assets/screenshots/raw/en-US/01_home.png
+   ```
+
+   Lock the status bar with demo mode: `adb shell settings put global sysui_demo_allowed 1`, then `adb shell am broadcast -a com.android.systemui.demo -e command clock -e hhmm 0941`.
+   Use an AVD that yields 1080×1920 or frame the capture to 9:16 as above.
+
+4. Mac app.
+   A Mac app distributed outside the App Store has no App Store screenshot slot.
+   Capture it for the landing page and cask page with a render test, or with `screencap`-style window capture (`screencapture -l <window id> file.png`), and hand the files to `app-landing-page`.
+   Mac App Store sizes apply only if the app ships there.
+5. Devices: `xcrun devicectl list devices` lists connected devices, but `simctl` and the emulator give the exact sizes the stores require.
+
+Strip alpha and check sizes after any path: `sips -g pixelWidth -g pixelHeight -g hasAlpha <file>`.
+The release build for Phase 1 is `xcodebuild archive` (Apple) or `./gradlew :app:bundleRelease` (Android), and the uploaded store build comes from `asc-xcode-build`.
 
 ## App previews (optional)
 
@@ -144,7 +192,7 @@ Make two cuts from one recording.
 - Apple's app previews page says "Don't include specific prices, as pricing and currencies vary across regions."
   It also says that if you display features only available through in-app purchase, or your app uses a subscription model or requires login, "you must disclose this", in the footage or the end frame.
   Previews play muted by default, so carry the meaning in on-screen text.
-- Record with `xcrun simctl io booted recordVideo --codec=h264`, because `recordVideo` defaults to HEVC and accepts `--codec=h264`.
+- Record with `xcrun simctl io booted recordVideo --codec=h264` (Android: `adb shell screenrecord`), because `recordVideo` defaults to HEVC and accepts `--codec=h264`.
   Then scale the file to the accepted resolution at 30 fps or less.
   Neither Apple page says whether a preview with no audio track uploads, so test the upload.
 - Google Play: one YouTube video, ads disabled, no maximum length, and only the first 30 seconds autoplay.

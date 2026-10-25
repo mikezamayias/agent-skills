@@ -71,6 +71,16 @@ T2 — Quality Gate
 - Read the matched overlay's Accessibility section
 - Execute each additional check
 
+## Native Swift and Kotlin projects
+
+For native Apple and Android projects the Flutter methods above map as follows.
+Full detail is in [native-projects.md](../references/native-projects.md).
+
+SwiftUI: `onTapGesture` on a non-`Button` needs button traits and a label, image-only buttons need `.accessibilityLabel`, headings use `.isHeader`.
+Compose: `clickable` needs a role, `IconButton` needs `contentDescription`, `clearAndSetSemantics {}` on interactive nodes is High.
+Tap targets are 44 pt on Apple and 48 dp on Android.
+XCUITest `performAccessibilityAudit()` and Android lint give automated evidence.
+
 ## Severity Rules Summary
 
 | Check                           | Critical | High | Medium | Low |

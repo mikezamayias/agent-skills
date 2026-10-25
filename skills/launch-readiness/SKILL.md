@@ -1,14 +1,14 @@
 ---
 name: launch-readiness
 description: >-
-  Runs Flutter and mobile launch readiness checks before App Store or Google Play go-live, scored SHIP, HOLD or BLOCK. Covers store compliance, privacy, legal, data safety, assets, metadata, testing, security, accessibility, performance. Use for /launch-readiness or a public release preflight.
+  Runs launch readiness checks on Flutter, Swift and Kotlin apps before store or Mac release, scored SHIP, HOLD or BLOCK. Covers store compliance, privacy, legal, data safety, assets, metadata, testing, security, accessibility, performance. Use for /launch-readiness or a public release preflight.
 metadata:
   docs-verified: "2026-09-28"
 ---
 
 # Launch Readiness
 
-A library-agnostic Flutter launch readiness skill. Auto-detects project stack, runs tiered parallel quality checks, produces a scored go/no-go report, offers auto-fixes, and improves itself after each run.
+A library-agnostic launch readiness skill for Flutter, native iOS and Mac (Swift, SwiftUI), and native Android (Kotlin, Jetpack Compose) projects. Auto-detects project type and stack, runs tiered parallel quality checks, produces a scored go/no-go report, offers auto-fixes, and improves itself after each run.
 
 ## Invocation
 
@@ -25,7 +25,7 @@ A library-agnostic Flutter launch readiness skill. Auto-detects project stack, r
 ## Orchestrator Flow
 
 ```text
-1. DISCOVER  → Read pubspec.yaml, CLAUDE.md, overlay → emit stack profile
+1. DISCOVER  → Detect project type, read manifests (pubspec.yaml, project.yml, Package.swift, Gradle files), CLAUDE.md, overlay → emit stack profile
 2. SCOPE     → Determine file scope (--changed or full)
 3. DISPATCH  → Launch tier phases as parallel subagents
 4. GATE      → Collect results, enforce tier gates
@@ -38,7 +38,23 @@ A library-agnostic Flutter launch readiness skill. Auto-detects project stack, r
 
 Read these sources in parallel:
 
-### 1a. `pubspec.yaml`
+### 1-pre. Project type
+
+Detect every project type present before reading manifests.
+One repository can hold several, for example a SwiftUI iPhone, Watch and Mac app next to a Kotlin Android app.
+Run each phase once per detected project and label findings with the project.
+
+| Type                    | Detected by                                                                            |
+| ----------------------- | -------------------------------------------------------------------------------------- |
+| Flutter                 | `pubspec.yaml` with a `flutter:` key                                                   |
+| Native Apple (Swift)    | `project.yml` (XcodeGen), `*.xcodeproj`, `*.xcworkspace` or `Package.swift`            |
+| Native Android (Kotlin) | `settings.gradle.kts` or `settings.gradle` with `gradlew` and an `AndroidManifest.xml` |
+
+For Flutter, continue with 1a.
+For native projects, read [references/native-projects.md](references/native-projects.md) for detection and the command map, then continue with 1a-native.
+Every phase file has a "Native Swift and Kotlin projects" section with the native equivalent of its Flutter checks.
+
+### 1a. `pubspec.yaml` (Flutter)
 
 Detect dependencies to build a stack profile:
 
@@ -56,6 +72,24 @@ Detect dependencies to build a stack profile:
 
 See `references/stack-detectors.md` for detailed detection rules.
 
+### 1a-native. Native Swift and Kotlin manifests
+
+Detect the stack from these files instead of `pubspec.yaml`:
+
+| Concern          | Swift (iOS, Watch, Mac)                                                         | Kotlin (Android)                                                             |
+| ---------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Targets, schemes | `project.yml` `targets` and `schemes`, or `xcodebuild -list`                    | `settings.gradle.kts` `include(...)`, `app/build.gradle.kts`                 |
+| Dependencies     | `Package.swift`, `Package.resolved`, `project.yml` `packages`                   | `gradle/libs.versions.toml`, `dependencies {}` blocks                        |
+| UI               | SwiftUI (`import SwiftUI`), UIKit, AppKit                                       | Jetpack Compose (`androidx.compose`), XML views                              |
+| Analytics        | PostHog, Firebase Analytics, TelemetryDeck, or none                             | Same SDKs on Android, or none                                                |
+| Crash reporting  | Sentry, Firebase Crashlytics, or none (MetricKit and App Store Connect reports) | Sentry, Firebase Crashlytics, or none (Play Console Android vitals)          |
+| Subscriptions    | StoreKit 2 (`import StoreKit`), RevenueCat `purchases-ios`, or none             | Google Play Billing (`billing-ktx`), RevenueCat `purchases-android`, or none |
+| Localization     | `*.xcstrings` String Catalogs, `Localizable.strings`                            | `res/values-*/strings.xml`                                                   |
+| Test runner      | Swift Testing (`import Testing`), XCTest                                        | JUnit 4 or 5, Compose UI tests, Espresso                                     |
+
+Zero third-party dependencies is a valid result.
+Record it in the profile and skip the checks that need an SDK.
+
 ### 1b. `CLAUDE.md`
 
 If a `CLAUDE.md` exists at the project root (or any parent), extract:
@@ -71,7 +105,7 @@ If a `CLAUDE.md` exists at the project root (or any parent), extract:
 Resolve overlay using this priority:
 
 1. `--overlay <name>` flag (explicit)
-2. `name` field from `pubspec.yaml` (e.g., `name: my_app` matches `overlays/my_app.md`)
+2. `name` field from `pubspec.yaml` (e.g., `name: my_app` matches `overlays/my_app.md`), or for native projects the top-level `name:` in `project.yml` or `rootProject.name` in `settings.gradle.kts`
 3. Git repository root directory name
 4. No overlay (generic checks only)
 
@@ -92,6 +126,8 @@ Stack Profile:
 - di: {detected DI}
 - l10n: {detected localization}
 - test_runner: {detected test runner}
+- project_type: {flutter | apple-native | android-native, one entry per detected project}
+- commands: {resolved build, test, lint and archive commands per project, see references/native-projects.md}
 - rules: [extracted from CLAUDE.md]
 - overlay: {matched overlay name or "none"}
 ```
@@ -100,7 +136,7 @@ Stack Profile:
 
 Determine which files to check:
 
-- **Full codebase** (default, or `--changed` not specified): All `.dart` files under `lib/`
+- **Full codebase** (default, or `--changed` not specified): Flutter: all `.dart` files under `lib/`. Native Apple: all `.swift` files outside `build/`, `.build/` and `DerivedData`. Native Android: all `.kt` files under `src/main` and `src/test`, plus `AndroidManifest.xml` and Gradle files
 - **Changed files** (`--changed` or auto-hook mode): `git diff --name-only $(git merge-base HEAD <target-branch>)..HEAD`
 - **Target branch detection**: From PR target (`gh pr view`), from branch naming (feature branches target the integration branch, hotfix branches target the production branch), or default to the integration branch.
   Branch roles are integration, release candidate, and production (for example `develop`, `release`, `main`).
@@ -264,6 +300,9 @@ See `hooks/pre-push.md` for configuration instructions.
 
 ## Sources
 
+- <https://developer.apple.com/documentation/metrickit>
+- <https://developer.apple.com/documentation/storekit/in-app-purchase>
+- <https://developer.android.com/build/building-cmdline>
 - <https://api.flutter.dev/flutter/widgets/MediaQuery/textScalerOf.html>
 - <https://docs.flutter.dev/ui/accessibility/accessibility-testing>
 - <https://riverpod.dev/docs/whats_new>

@@ -54,6 +54,17 @@ Run the project's test suite:
 - Execute each additional check listed there
 - Severity: as specified in overlay, default to High
 
+## Native Swift and Kotlin projects
+
+For native Apple and Android projects the Flutter methods above map as follows.
+Full detail is in [native-projects.md](../references/native-projects.md).
+
+Run `xcodegen generate` when `project.yml` exists, then `xcodebuild test -project <P>.xcodeproj -scheme <TestScheme> -destination '<destination>'` for each test scheme, `swift test` in each Swift package, and `./gradlew :app:testDebugUnitTest` for Android.
+Swift Testing and XCTest results both count.
+Skips need a reason (`.disabled("reason")`, `XCTSkip`, `@Ignore`).
+Coverage uses `-enableCodeCoverage YES` and `xccov` on Apple.
+No coverage tool on Android is a Medium finding, not a reason to add a dependency.
+
 ## Severity Rules Summary
 
 | Check                      | Critical | High | Medium | Low |

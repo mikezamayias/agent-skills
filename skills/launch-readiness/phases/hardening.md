@@ -65,6 +65,16 @@ T2 — Quality Gate
 - Execute each additional check
 - Severity: as specified in overlay
 
+## Native Swift and Kotlin projects
+
+For native Apple and Android projects the Flutter methods above map as follows.
+Full detail is in [native-projects.md](../references/native-projects.md).
+
+Check SwiftUI and Compose screens for loading, empty and error states.
+After an `await` in a Swift view model check `Task.isCancelled` and use `@MainActor`.
+In Kotlin collect flows with `collectAsStateWithLifecycle()` and launch in `viewModelScope`.
+Check `lineLimit` and `minimumScaleFactor` in SwiftUI and `maxLines` with ellipsis in Compose.
+
 ## Severity Rules Summary
 
 | Check                                | Critical | High | Medium | Low |

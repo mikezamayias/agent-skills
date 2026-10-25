@@ -93,3 +93,9 @@ Whether the fields predict anything is not shown.
 - App: promoted or not, slide number, how it is shown (none, a feature, the store page), how it is pitched.
 - Ending and caption: CTA type, caption words, hashtag count, question in the caption, sound, weekday.
 - Result: views divided by the account's usual views.
+
+Two rules from an X article on AI UGC (2026-10-23, single report, no results shown) are hypotheses to test and not findings.
+When you remix a reference video, keep its hook type, beat order, pacing and length, and change every word, the story, the setting and the person.
+Put the product in one beat and write no claim, discount code or "link in bio".
+In a weekly review, rank posts by watch-through and saves instead of views, flag an account after three flat weeks in a row so you rethink the persona or format, and diagnose a flop by testing one change at a time, not five.
+The article also plans at least 15 of each account's 20 topics as unrelated to the product, with 5 product beats.

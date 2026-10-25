@@ -22,6 +22,10 @@ The lasting artifact is a worst-case fixture and a widget test in the repository
 In scope: overflow, truncation, empty and plural states, number and date formatting, fallbacks for missing data and images, text scale, RTL, dark theme, long-list behaviour.
 Out of scope: redesign, visual taste, motion, and a full accessibility audit.
 
+- Run this skill before a polish or finishing pass, not after.
+  A polish pass tuned on happy-path demo data leaves loading, empty, error and long-content states unfinished.
+  Capture those four states at phone width for one real flow first, then polish what the worst case exposed.
+  This ordering is one reply's opinion (single report, no measurement).
 - `vgv-accessibility` owns Flutter semantics, contrast and touch targets.
   This skill checks only that layouts survive large text scale.
 - `vgv-testing` owns Flutter test structure and naming.

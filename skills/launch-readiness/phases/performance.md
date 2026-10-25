@@ -63,6 +63,16 @@ T3 — Polish & Verify
 - Read the matched overlay's Performance section
 - Execute each additional check (e.g., specific animation curve restrictions)
 
+## Native Swift and Kotlin projects
+
+For native Apple and Android projects the Flutter methods above map as follows.
+Full detail is in [native-projects.md](../references/native-projects.md).
+
+Flag sorting, filtering, formatting or I/O inside SwiftUI `body` and Compose function bodies without `remember`.
+Flag views that read a whole `@Observable` model for one property, and `LazyColumn` items without `key`.
+`const` checks are Flutter only.
+Measure on release builds with Instruments (`xcrun xctrace`) or Android profiling.
+
 ## Severity Rules Summary
 
 | Check                        | Critical | High | Medium | Low |

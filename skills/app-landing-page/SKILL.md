@@ -27,7 +27,7 @@ The human says something like "make a landing page for this app", "I need 5 land
 
 ## Activation rules
 
-1. The working directory must be a project root with a `pubspec.yaml`, `package.json`, or `README.md`.
+1. The working directory must be a project root with a `pubspec.yaml`, `project.yml`, `*.xcodeproj`, `Package.swift`, `settings.gradle.kts`, `package.json`, or `README.md`.
 2. No specific model or tool is required.
    The current agent can write all 5 versions itself.
 3. If the human asks for several models, or the environment offers other models or agents, such as subagents, another agent CLI, or a model API, you may hand some versions to them for more variety.
@@ -59,7 +59,10 @@ Record which model or tool produced each version in `INDEX.md`.
 
 Build the brief from these files only:
 
-- `pubspec.yaml` → `name`, `description`
+- `pubspec.yaml` → `name`, `description` (Flutter)
+- `project.yml` → `name`, bundle ID prefix, deployment targets, `Info.plist` display name (native Apple)
+- `app/build.gradle.kts` → `applicationId`, `minSdk`, and `res/values/strings.xml` `app_name` (native Android)
+- A distribution file such as a Homebrew cask or release script → direct download URL and Mac requirements
 - `README.md` → first heading + first paragraph
 - `store_assets/BRAND_PROFILE.md` (if `app-graphics` ran already) → colors, voice
 - `store_assets/graphics/app_icon/app_store_1024x1024.png` (if exists) → reference for visual style
@@ -73,6 +76,9 @@ Write `landing-pages/LANDING_BRIEF.md`:
 - Name: …
 - One-liner: …
 - Target audience: …
+- Top three objections that keep a visitor from converting: …
+- Traffic source: <store listing, ads, search, social, email, direct>
+- Conversion event: <what counts, for example App Store tap, TestFlight join, email signup>
 - Primary CTA: <e.g. "Join the TestFlight", "Download on the App Store", "Get on GitHub">
 - Anchor colors: …
 - Voice: …
@@ -80,8 +86,25 @@ Write `landing-pages/LANDING_BRIEF.md`:
 - Available screenshots: <relative paths or "none">
 ```
 
+## Multi-platform native apps
+
+Flutter apps usually have one CTA pair.
+A native project can ship several products from one repository, such as an iPhone app with a Watch app and widgets, a Mac app outside the App Store and an Android app.
+When the brief finds more than one, add these lines to it:
+
+- Platforms and download path for each: App Store, Google Play, TestFlight, or a direct Mac download (notarized, with a Homebrew cask command such as `brew install --cask <name>`).
+- Which platform the primary CTA serves.
+  Detect the visitor's platform with `navigator.userAgent` or CSS-free link logic, show that platform's button first, and keep the others visible as secondary links.
+  The page must still work when detection fails.
+- Mac requirements (minimum macOS, Apple silicon or Intel), shown near the Mac download button.
+- Screenshots per platform from `app-screenshots`, with the Watch and Mac shots labelled by device.
+  Do not show an iPhone frame around Android screens or the reverse.
+- `SoftwareApplication` JSON-LD per platform with its own `operatingSystem` and real URL.
+  See `references/seo-and-ai-answers.md`.
+
 **Stop and ask the human** if you cannot confidently fill these fields.
 Do not invent them.
+Ask for every missing field in one batch, not one question at a time.
 
 ## Output structure
 

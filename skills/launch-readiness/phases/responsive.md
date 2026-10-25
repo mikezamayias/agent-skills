@@ -80,6 +80,15 @@ T2 — Quality Gate
 - Read the matched overlay's Responsive section
 - Execute each additional check
 
+## Native Swift and Kotlin projects
+
+For native Apple and Android projects the Flutter methods above map as follows.
+Full detail is in [native-projects.md](../references/native-projects.md).
+
+SwiftUI: `ViewThatFits`, size classes, Dynamic Type sizes, and the smallest and largest watch case sizes.
+Compose: `WindowSizeClass`, `BoxWithConstraints` and `fontScale` 2.0.
+Mac: minimum window size and full screen.
+
 ## Severity Rules Summary
 
 | Check                        | Critical | High | Medium | Low |

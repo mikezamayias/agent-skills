@@ -1,7 +1,7 @@
 ---
 name: launch-watch
 description: >-
-  Proves that launch telemetry arrives, then watches analytics, crashes, email and feedback for the first three weeks. Use days before an app launch or right after go-live to set up daily triage and a weekly evidence-backed fix list. Also use when activation drops, crashes spike or feedback piles up during a launch window.
+  Proves that launch telemetry arrives, then watches analytics, crashes, email and feedback for the first three weeks. Use before or after a Flutter, Swift or Kotlin app launch to set up daily triage and a weekly fix list. Also use when activation drops, crashes spike or feedback piles up during a launch window.
 metadata:
   provenance: local
 ---
@@ -19,14 +19,15 @@ Adapted from a Chris Raroque short (credit in the notes).
 
 ## Scope and handoffs
 
-| Need                                                                   | Owner                                         |
-| ---------------------------------------------------------------------- | --------------------------------------------- |
-| Store, privacy, legal and asset preflight before submission            | `launch-readiness`, `store-launch-mastermind` |
-| Adding or fixing Flutter analytics, tracing and Sentry instrumentation | `flutter-observability-instrumentation`       |
-| Turning a Sentry issue into a tested fix PR                            | `proactive-crash-repair-loop`                 |
-| TestFlight beta feedback and crashes                                   | `testflight-feedback`, `asc-crash-triage`     |
-| Paywall and subscription funnel changes                                | `paywall-conversion-flow`                     |
-| What to build, stop or scale once the window closes                    | `ship-first-dollar-app`                       |
+| Need                                                                          | Owner                                                                                         |
+| ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Store, privacy, legal and asset preflight before submission                   | `launch-readiness`, `store-launch-mastermind`                                                 |
+| Adding or fixing Flutter analytics, tracing and Sentry instrumentation        | `flutter-observability-instrumentation`                                                       |
+| Adding or fixing analytics or crash reporting in a native Swift or Kotlin app | The project's own conventions, or `swift-concurrency` and `swiftui-pro` for Swift code review |
+| Turning a Sentry issue into a tested fix PR                                   | `proactive-crash-repair-loop`                                                                 |
+| TestFlight beta feedback and crashes                                          | `testflight-feedback`, `asc-crash-triage`                                                     |
+| Paywall and subscription funnel changes                                       | `paywall-conversion-flow`                                                                     |
+| What to build, stop or scale once the window closes                           | `ship-first-dollar-app`                                                                       |
 
 This skill owns the signal proof, the watch schedule, the triage rules and the reports.
 
@@ -41,15 +42,29 @@ This skill owns the signal proof, the watch schedule, the triage rules and the r
 2. Map the activation funnel.
    Name every event from install or signup to the activation event, then the return events (day 1 and day 7).
    Confirm each event exists in code and in the analytics project.
-   A missing event goes to `flutter-observability-instrumentation` before launch, not after.
+   A missing event goes to `flutter-observability-instrumentation` (Flutter) or the project's own analytics layer (native) before launch, not after.
+   A native app with no analytics SDK has no events to prove.
+   Record the activation signal as the store and billing numbers instead (App Store Connect Analytics, Play Console statistics) and say so in the brief.
 3. Prove each channel with a round trip and record the evidence in the brief.
    - Analytics: trigger the funnel on a release-like build and see each event, with its properties, in PostHog or the project's tool.
-   - Crashes: send a test error from a release-mode build and confirm the report arrives symbolicated, which proves dSYM and Dart obfuscation-map upload.
+   - Crashes: send a test error from a release-mode build and confirm the report arrives symbolicated.
+     Flutter: this proves dSYM and Dart obfuscation-map upload.
+     Native iOS with a crash SDK (Sentry, Crashlytics): the dSYMs from the archive must be uploaded, and the test crash must show source lines.
+     Native iOS with no SDK: crashes come from TestFlight and App Store Connect crash reports (`asc-crash-triage`, `testflight-feedback`) and MetricKit payloads.
+     Confirm the archive keeps its dSYMs, because Xcode Organizer and local symbolication need them.
+     Check Watch app and widget crashes separately, because they are separate processes with their own crash logs.
+     Native Android with a crash SDK: upload the R8 `mapping.txt` from `./gradlew :app:bundleRelease`.
+     Native Android with no SDK: Android vitals in Play Console, which deobfuscates from the mapping file in the uploaded AAB.
+     Store-provided crash reports lag by hours to a day, so a round trip may need a second visit before the first daily run.
+     A Mac app distributed outside the App Store has no store report.
+     Its crash sources are the SDK, user-sent reports and `~/Library/Logs/DiagnosticReports`, so name which one the watch reads.
    - Email: if the app sends lifecycle email, trigger the welcome sequence with a test address and check the trigger, delay, links, sender domain and unsubscribe link.
      Mark the channel N/A when the app has no accounts or email.
    - Feedback: confirm users can reach a feedback channel from inside the app in two taps or fewer, and that a test submission lands where the watch can read it.
      Add App Store and Google Play reviews as a second feedback source.
    - Revenue, when the app sells anything: confirm a sandbox purchase appears in RevenueCat or the store dashboard.
+     Without RevenueCat, use a StoreKit sandbox or TestFlight purchase on iOS and a license-tester purchase on a Play test track, and read them in App Store Connect or Play Console.
+     A Mac app sold outside the store reads its payment provider instead.
    - Server, when the app has a backend: confirm the watch can read error logs for the launch environment.
      A channel without a recorded round trip is not ready, whatever the dashboard shows.
 4. Record the baseline.
@@ -64,6 +79,7 @@ This skill owns the signal proof, the watch schedule, the triage rules and the r
    Put the window end date in the brief and disable the schedule when it passes.
 2. Give the scheduled run the daily prompt from [references/watch-prompts.md](references/watch-prompts.md), pointing at the brief.
    Grant read-only access only: Sentry, PostHog, RevenueCat and `asc` read tokens, store reviews, and server logs.
+   For a native app with no third-party SDK the sources are `asc` (reviews, crash and feedback reports, sales and analytics) and Play Console reports.
    Never hand the scheduled run credentials that can send email, reply to users, change pricing or deploy.
 
 ### Phase C: daily triage and weekly summary (the window)

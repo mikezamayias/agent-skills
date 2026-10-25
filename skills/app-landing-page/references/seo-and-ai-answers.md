@@ -22,6 +22,7 @@ The AI answer counting rules are ours, adapted from the `ai-visibility-audit` sk
   Put the query and the differentiator in the first words, then check the rendered result at 375px wide and on desktop.
 - Google may rewrite a title from the `<h1>`, `og:title` or anchor text, so keep those consistent with `<title>`.
 - Unique meta description, canonical, sitemap entry, OG tags and `SoftwareApplication` JSON-LD with the real store URL and price.
+  For a native app on several platforms, give each platform its own `operatingSystem` value (for example `iOS`, `watchOS`, `macOS`, `Android`) and its own download URL, such as the App Store, Play, or the Mac direct download.
 - The main content is in the server HTML, not injected by JavaScript.
 - The production page carries no `noindex`, in a robots meta tag or an `X-Robots-Tag` response header, and `robots.txt` does not disallow it.
   Google drops a page with `noindex` from Search results entirely once it recrawls the page, and a recrawl can take months.
@@ -37,6 +38,17 @@ The AI answer counting rules are ours, adapted from the `ai-visibility-audit` sk
   `ClaudeBot` collects content that may be used for training, and blocking it signals that future content should be excluded from training datasets.
   `Claude-SearchBot` indexes pages for Claude search and `Claude-User` fetches a page when a person asks Claude.
   Anthropic says blocking either of those two may reduce the site's visibility, so allow them.
+- The CDN line earlier in this list names four other agents, so check the CDN or bot-protection setting for `ClaudeBot`, `Claude-SearchBot` and `Claude-User` too.
+  A site can allow them in `robots.txt` and still block them at the network edge (advice from a vendor study, not tested here).
+- Do not submit a site to Brave Search as a way to appear in Claude.
+  An X post (2026-10-24) says a site needs to be indexed in Brave for Claude and gives no source.
+  Anthropic's web search tool page and Help Center page name no search provider (read 2026-10-25).
+  One vendor study (Writesonic, 2026-10-20, one account) reports that Claude's default search mode shares 13.3% of cited domains with Brave's API and 38.4% in its extended mode, and dates a change to 2026-10-05 (single report, not reproduced, not confirmed by Anthropic).
+  Treat the source behind Claude search as unknown and unstable.
+- Brave Search has its own index and a crawler that sends no distinct user agent, so `robots.txt` cannot target it.
+  Brave says its crawler does not crawl a page that Googlebot cannot crawl.
+  Its form at `search.brave.com/submit-url` is described in Brave's help as a way to have a URL re-fetched, to apply a `noindex` or to delist a page that no longer exists.
+  Use it for that and do not count on it to add a new page.
 - `Applebot-Extended` does not crawl and only decides how content crawled by `Applebot` may be used.
   Disallowing it opts the site out of training Apple's foundation models, and the pages can still appear in Apple search results.
   If `robots.txt` names `Googlebot` but not `Applebot`, `Applebot` follows the `Googlebot` rules.

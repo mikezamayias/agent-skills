@@ -6,7 +6,7 @@ Project-specific check additions for the launch-readiness skill.
 
 1. Create a file named `{project-name}.md` in this directory
 2. The name must match one of:
-   - The `name` field in `pubspec.yaml`
+   - The `name` field in `pubspec.yaml`, the top-level `name:` in `project.yml`, or `rootProject.name` in `settings.gradle.kts`
    - The git repository root directory name
    - Or be specified explicitly via `--overlay {name}`
 
@@ -18,7 +18,7 @@ Project-specific check additions for the launch-readiness skill.
 ## Project Info
 
 - name: {project name}
-- type: {Flutter mobile/web/desktop}
+- type: {Flutter mobile/web/desktop, native Apple, native Android}
 - monetization: {model or "none"}
 
 ## Phase Additions

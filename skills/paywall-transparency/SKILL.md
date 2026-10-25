@@ -52,12 +52,28 @@ who trust you convert at much higher rates.
   Apple Developer Program License Agreement (ADPLA) Section 3.2 bans "bait-and-switch pricing", and the Developer Code of Conduct in Guideline 5.6 bans tricking users into unwanted purchases or raising prices "in a tricky manner".
   Neither text names paywalls, so applying them here is a reading of the rules.
   Guideline 5.6 says the developer account will be terminated for conduct that breaks the Code.
-- A low introductory price shown much smaller on screen than the renewal price, on a plan that renews weekly.
+- A crossed-out reference price or a "SAVE x%" badge whose comparison the screen does not state.
+  Apple's subscriptions page says a savings figure compared with weekly or monthly plans should be "displayed in a subordinate position and size" to the billed amount, and Guideline 2.3.1(a) lists "promoting a false price" as grounds for removal (Apple pages, read 2026-10-25).
+  Example from one X thread (single report): "SAVE 88%" on a $39.99 yearly plan beside a $6.99 weekly plan.
+  The weekly price over 52 weeks is $363.48 and the true saving is 89.0%, while 88% matches a 48-week year, so the badge uses an unstated period (arithmetic).
+  A reply shows a lifetime plan at $39.99 with a struck-through $363.48, which is 52 weeks of the weekly plan, a price no plan on that screen charges as a single amount.
+  State the comparison in words next to the figure, and compute it from the real billing period.
+- A low introductory price shown much larger on screen than the renewal price, on a plan that renews weekly.
   Apple's Guideline 5.6.4 names "excessive refund requests" among the signs of poor quality and says poor quality "may be a factor" in judging conduct under the Developer Code of Conduct, with no threshold (Apple guidelines, read 2026-10-24).
   It does not name intro offers, so reading it as a rule against this pattern is an inference.
   One reply in an X thread (single report) says Apple counts refund spikes against an account, which is stronger than the text.
-  Guidelines 3.1.2, 5.6 and 5.6.4 set no rule on how prominent an intro price may be against the renewal price, so this is a transparency judgment (other Apple pages not checked).
+  Guidelines 3.1.2, 5.6 and 5.6.4 set no size rule for an intro price against the renewal price.
+  Apple's Auto-renewable Subscriptions page does require the "Full renewal price, shown clearly and prominently" on the sign-up screen.
+  It also says "the amount that will be billed must be the most prominent pricing element in the layout" and that a breakdown price or a savings figure should be "displayed in a subordinate position and size" to the annual price (Apple page, read 2026-10-25).
+  For a pay as you go intro offer the amount billed at purchase is the intro price, so the page does not settle the relative size of the two numbers (inference).
+  A layout that makes the intro price the largest number and the renewal price small and grey rests only on the "Full renewal price, shown clearly and prominently" requirement, and a reviewer can read it either way (inference).
+  One reply in an X thread (single report, 2026-10-24) predicts a flag for this exact layout, and another reports rejections "for way less" (single report).
   Keep the renewal price as legible as the introductory price and track refund rate per plan.
+
+Do not treat another developer's "it passed review" as proof that a paywall is allowed.
+One reply describes reviewers as inconsistent (X reply, 2026-10-24, single report), and a thread of 12 replies showed no Apple message or screenshot approving the layout in question.
+Apple's Guideline 5.6 says "repeated manipulative or misleading behavior" will lead to removal from the Apple Developer Program, so a passed review does not clear the layout (Apple guidelines, read 2026-10-25).
+Judge a paywall against the Apple text in this file, and record the review outcome as one datapoint.
 
 ## Sources
 

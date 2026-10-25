@@ -73,6 +73,15 @@ For each detected action, verify a tracking event exists:
 - Read the matched overlay's Analytics section
 - Execute required funnel verification and naming rules
 
+## Native Swift and Kotlin projects
+
+For native Apple and Android projects the Flutter methods above map as follows.
+Full detail is in [native-projects.md](../references/native-projects.md).
+
+Screens are `NavigationStack` destinations, sheets and tabs in SwiftUI, and `composable("route")` entries in Compose.
+A project with no analytics SDK is N/A, and its privacy label must then be true.
+Without a crash SDK use MetricKit and App Store Connect crash reports on Apple, and Android vitals in Play Console.
+
 ## Severity Rules Summary
 
 | Check                              | Critical | High | Medium | Low |

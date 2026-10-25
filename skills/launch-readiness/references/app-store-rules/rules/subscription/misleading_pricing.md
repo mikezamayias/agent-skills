@@ -19,6 +19,8 @@ The subscription purchase flow must display the **actual billed amount** as the 
 - Using a bright accent color for the calculated monthly price but muted text for the real billed amount
 - Placing the per-month breakdown above or more prominently than the actual charge
 - Free trial text overshadowing the post-trial billed price
+- Showing a paid introductory price ("$0.99 first week") in the largest type while the renewal price ("then $6.99 / week") is small or grey, with a call to action that names only the introductory price.
+  This is a risk, not a confirmed rejection: the billed amount at purchase is the intro price, and Apple's subscriptions page does not settle this layout (inference, see `paywall-transparency`).
 
 ## How to Detect
 
@@ -48,6 +50,7 @@ grep -rn "perMonth\|per_month\|monthly.*price\|price.*month\|calculated\|divided
 - [ ] Billed amount is positioned prominently (not buried below other pricing)
 - [ ] Calculated/broken-down pricing uses smaller, lighter text
 - [ ] Free trial terms do not overshadow the post-trial price
+- [ ] The renewal price of an introductory offer is shown clearly and prominently next to the intro price, and the button text or the line under it states when the renewal charge starts
 
 ## Resolution
 

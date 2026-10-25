@@ -177,6 +177,9 @@ Before an agent runs without a human watching, record:
 - An append-only action log that someone reviews on a schedule.
 - An approval gate for anything sent in a person's name, including negotiation emails.
 - A kill switch.
+- A loop exit that does not depend on the loop's own score.
+  A loop told to run until a judge gives at least a set grade needs a maximum iteration count, because the judge may never reach the grade (inference).
+  The judge must be able to read the artifact type, because a text-only judge cannot grade a screenshot or a build.
 
 The list is standard least-privilege practice.
 Only the two mechanism notes above come from Anthropic's CLI reference and sub-agents pages, read 2026-10-23.
@@ -302,6 +305,10 @@ Authority still needed:
 - A resumed helper first checks what already exists, so it does not duplicate frames, files, or rows.
 - Expect helpers to die from usage limits or stall watchdogs.
   Keep each brief small enough to resume, resume through the platform's message mechanism with the original context, and re-verify the state it left.
+- Give each dispatch an attempt id and require the helper's completion report to carry the task id and the attempt id.
+  A report from an earlier attempt then cannot close the current one.
+  Require the report exactly once, including on failure, with an explicit succeeded or failed outcome.
+  The pattern follows the orchestration docs of Orca, a third-party desktop app (experimental feature, read 2026-10-25), and its fit for our helpers is an inference.
 - A systematic defect needs a sweep of every instance.
   When one helper finds a pattern, such as an off-centre component, a wrong token, or a stale string, launch a sweep rather than fixing the samples.
   Check that the sweep only touched what it should.
@@ -401,6 +408,7 @@ Neither README says the default is no network, so test the "no external network"
 - Cleanup deletes the proof artifacts along with the scratch state.
 - A verification recipe is handed over without being executed once end to end.
 - A verification map is edited to match a regression, which hides a product bug as documentation drift.
+- Review layers fix single elements, such as pixel alignment, while the overall layout of a screen stays wrong, and only a person looking at the screen notices (single report).
 
 ## Output Contract
 

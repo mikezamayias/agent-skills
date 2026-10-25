@@ -1,7 +1,7 @@
 ---
 name: paywall-conversion-flow
 description: >-
-  Designs value-first onboarding and paywalls that convert in freemium iOS or Flutter apps. Use when adding or auditing IAP, RevenueCat paywalls, free trial flows or onboarding screens.
+  Designs value-first onboarding and paywalls that convert in freemium Flutter, native Swift or native Kotlin apps. Use when adding or auditing IAP, StoreKit, Play Billing, RevenueCat paywalls, free trial flows or onboarding screens.
 metadata:
   docs-verified: "2026-09-28"
 ---
@@ -66,6 +66,9 @@ Most indies lose conversion by following the wrong order.
    One indie fasting app shows a single discounted yearly plan with a close button, a 5 minute timer and the real billed price, and its author reported that the exit paywall produced 23% of its results over two weeks (author's figure, unit not stated, not verified).
    A second founder adds the offer in a follow-up release, after the base paywall is live.
    Ship it in a reviewed update, describe it in Notes for Review, and measure it on its own line so the base paywall rate stays clean.
+   One indie article (2026-08-09, single source, unverified) gives the reason: reviewers judge a transaction abandon offer subjectively, and a first submission with a contested feature may go to a slower review track.
+   Apple publishes no review tiers (Apple App Review page, read 2026-10-25), so treat the tier claim as a guess.
+   The part that matches Apple's text is to describe the offer in the notes, because Guideline 2.3.1(a) requires new features to be described with specificity.
    Tag its events with a `placement` property, see [Flutter observability instrumentation](../flutter-observability-instrumentation/SKILL.md).
    Never mention it in What's New, because that text is public and shows the offer to every user.
 7. **After the first purchase and after a lapse, sequence offers by user state, and test each as its own line.**
@@ -86,6 +89,36 @@ Most indies lose conversion by following the wrong order.
    - Email follow-up needs an address, so decide where it is collected, and see `launch-watch` for EU consent and an unsubscribe link before the first send.
    - Keep every offer out of What's New, see `asc-whats-new-writer`.
    - Judge each stage by incremental revenue per eligible user, refund rate and churn, not by redemptions.
+
+## Native Swift and Kotlin implementation
+
+The order, copy and tests above do not depend on Flutter.
+Only the purchase plumbing changes.
+Do not add RevenueCat to a native app that has no third-party dependencies unless the user asks, because StoreKit 2 and Play Billing cover purchase, restore and entitlement checks.
+
+| Need                      | Flutter `in_app_purchase` | Native iOS (StoreKit 2)                                                              | Native Android (Play Billing)                                                |
+| ------------------------- | ------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| Load products             | `queryProductDetails`     | `Product.products(for: ids)`                                                         | `BillingClient.queryProductDetailsAsync`                                     |
+| Buy                       | `buyNonConsumable`        | `try await product.purchase()` and handle `.success`, `.userCancelled`, `.pending`   | `launchBillingFlow` with the chosen offer token                              |
+| Live updates and renewals | `purchaseStream`          | `for await` over `Transaction.updates`, started at launch                            | `PurchasesUpdatedListener`                                                   |
+| Current entitlement       | verify and deliver        | `Transaction.currentEntitlements`, verified results only                             | `queryPurchasesAsync` at startup                                             |
+| Finish the purchase       | `completePurchase`        | `await transaction.finish()` after delivering                                        | `acknowledgePurchase` or `consumeAsync` within 3 days, or Play refunds       |
+| Restore                   | `restorePurchases()`      | `try await AppStore.sync()` behind a visible Restore button                          | `queryPurchasesAsync`, no separate store call                                |
+| Trial eligibility         | store response            | `product.subscription?.isEligibleForIntroOffer`                                      | offers returned for the user in `ProductDetails`, show only what is returned |
+| Manage or cancel          | store link                | `.manageSubscriptionsSheet(isPresented:)` or `AppStore.showManageSubscriptions(in:)` | deep link to Play subscription management                                    |
+
+- SwiftUI can use `SubscriptionStoreView` or `StoreView` for a standard paywall.
+  A custom paywall needs the price, period, trial end date and Restore control from the audit checklist.
+- Test iOS purchases with a StoreKit configuration file in the scheme (simulator and Xcode runs) and with `SKTestSession` in unit tests.
+  Sandbox and TestFlight tests need the products in App Store Connect.
+  Manage them with the `asc-*` skills.
+- Test Android purchases from a Play-installed build on an internal test track with a license tester account.
+  Billing does not work from a sideloaded debug APK.
+- A one-time unlock is a non-consumable on both stores.
+  The free-versus-paid check is an entitlement read at launch, not a stored flag.
+- Do not sell a Mac app distributed outside the App Store with StoreKit.
+  Licensing and trials for it are in `macos-direct-sales`, and the web checkout route is in `app-to-web-checkout`.
+- The paywall schedule and review prompt timing code is in [Flutter paywall and review timing](../flutter-paywall-and-review-timing/SKILL.md), which has Swift and Kotlin versions.
 
 ## Anti-patterns to remove
 
@@ -114,6 +147,8 @@ Most indies lose conversion by following the wrong order.
 - [ ] Paywall fires after a success event, not on launch.
 - [ ] Plans visible: Weekly, Yearly, Lifetime (if applicable).
 - [ ] Free trial CTA prominent; cancel path documented in-app.
+- [ ] Native iOS: `Transaction.updates` is listened to at launch and every transaction is finished after delivery.
+- [ ] Native Android: purchases are acknowledged within 3 days and `queryPurchasesAsync` runs at startup.
 - [ ] Restore Purchases link is on the paywall (App Review Guideline 3.1.1 requires a restore mechanism for restorable purchases, and the paywall placement builds trust).
 
 ## Onboarding flow reference

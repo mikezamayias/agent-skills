@@ -18,6 +18,7 @@
 - di: {detected}
 - l10n: {detected}
 - test_runner: {detected}
+- project_type: {flutter | apple-native | android-native}
 ```
 
 ## Scorecard

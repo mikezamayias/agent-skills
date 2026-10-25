@@ -62,6 +62,15 @@ Applies when no l10n system is detected.
 - Read the matched overlay's Localization section
 - May narrow scope (e.g., "presentation layer only, domain uses enums")
 
+## Native Swift and Kotlin projects
+
+For native Apple and Android projects the Flutter methods above map as follows.
+Full detail is in [native-projects.md](../references/native-projects.md).
+
+Apple: parse `*.xcstrings` for missing languages and `new` or `needs_review` states, and flag user-facing strings that bypass the catalog.
+Android: `res/values-*/strings.xml`, `MissingTranslation` and `HardcodedText` from `./gradlew :app:lintDebug`, and `stringResource` in Compose.
+Check Watch, widgets and Mac targets ship the promised languages.
+
 ## Severity Rules Summary
 
 ### Mode A (l10n configured)

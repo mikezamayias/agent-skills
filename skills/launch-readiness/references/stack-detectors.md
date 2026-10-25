@@ -1,6 +1,7 @@
 # Stack Detection Rules
 
-How to detect each concern from `pubspec.yaml` dependencies.
+How to detect each concern from `pubspec.yaml` dependencies in a Flutter project.
+For native Swift and Kotlin projects, use the manifest table in `SKILL.md` step 1a-native and [native-projects.md](native-projects.md).
 
 ## State Management
 
