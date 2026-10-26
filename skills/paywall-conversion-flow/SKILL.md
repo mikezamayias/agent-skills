@@ -69,6 +69,9 @@ Most indies lose conversion by following the wrong order.
    One indie article (2026-08-09, single source, unverified) gives the reason: reviewers judge a transaction abandon offer subjectively, and a first submission with a contested feature may go to a slower review track.
    Apple publishes no review tiers (Apple App Review page, read 2026-10-25), so treat the tier claim as a guess.
    The part that matches Apple's text is to describe the offer in the notes, because Guideline 2.3.1(a) requires new features to be described with specificity.
+   Use the same habit for any extra paywall surface, such as a second paywall after the user dismisses the first one in onboarding, or an offer when the user closes the paywall.
+   One founder calls these grey areas that depend on the reviewer, and says to name them in the review notes and get explicit approval (X article, 2026-10-25, no review outcome shown).
+   The rule behind it is Guideline 2.3.1(a), so the notes say when the surface appears, what it offers and how to reach it with a demo account.
    Tag its events with a `placement` property, see [Flutter observability instrumentation](../flutter-observability-instrumentation/SKILL.md).
    Never mention it in What's New, because that text is public and shows the offer to every user.
 7. **After the first purchase and after a lapse, sequence offers by user state, and test each as its own line.**
@@ -86,9 +89,27 @@ Most indies lose conversion by following the wrong order.
    - Downsell for a user who never subscribed: a promotional or win-back offer is not available to that user, so use a separate cheaper product or an offer code, and give it its own `placement` value.
    - Pause: Google Play lists pause as a subscriber action.
      The Apple pages read describe no pause, so do not promise one on iOS.
+   - If a tool triggers an offer from a RevenueCat webhook, choose the event on purpose.
+     RevenueCat defines `CANCELLATION` as "A subscription or non-renewing purchase was canceled or refunded" and `EXPIRATION` as "A subscription has expired", where "The associated user's access should be removed" (event types page, read 2026-10-25).
+     A discount sent seconds after `CANCELLATION`, as one founder's flow does with a 30 second wait, reaches a subscriber who still has access, and a refund of the latest period also fires `CANCELLATION`, so filter refunds out.
+     Send a win-back only after `EXPIRATION`, and send a retention offer after a cancel only if it is a promotional offer that Apple allows for that user.
+     Show the post-offer price and renewal date as for any trial, see [Paywall transparency](../paywall-transparency/SKILL.md).
    - Email follow-up needs an address, so decide where it is collected, and see `launch-watch` for EU consent and an unsubscribe link before the first send.
+   - Push follow-up to a user who did not subscribe is direct marketing.
+     Guideline 4.5.4 allows push for promotions or direct marketing only after customers have explicitly opted in "via consent language displayed in your app's UI", and you must give an in-app way to opt out (App Review Guidelines, read 2026-10-25).
+     The system permission prompt alone is not app consent language (inference), so ask for marketing consent on its own screen before sending an offer.
+     Guideline 5.1.2(i) bars requiring push notifications, location or tracking to use the app.
+     Apple sets no cap on sends per week, and "1-2 a week" in one X article (2026-10-25) is the author's guess, so set a cap and measure opt-outs.
+   - One founder suggests testing a first push 5 minutes after the app closes without a subscription, then a second 4 days later if the user still has not subscribed (X article, no result reported).
+     Treat it as a test design and read incremental revenue per eligible user, opt-out rate and OS-level notification disabling.
    - Keep every offer out of What's New, see `asc-whats-new-writer`.
    - Judge each stage by incremental revenue per eligible user, refund rate and churn, not by redemptions.
+   - Test a paywall per traffic source only after attribution works.
+     One founder routes one ad to a dark mode paywall aimed at men and another to a light mode paywall aimed at women, both at $7.99 per week, and reports no result (X article, 2026-10-25).
+     Change only the creative that matches the ad's promise (headline, image, order of benefits) and keep price, trial and disclosure the same on every variant, so the test reads copy and not price.
+     Judge each variant by paid conversion per paywall viewer on its own traffic, with the default paywall as the control.
+     Do not infer gender from ad copy, because Apple Ads age and gender targeting returns no attribution since September 2026 (see `ship-first-dollar-app/references/apple-ads.md`), so build variants on the ad's topic.
+     Tracking a user across an ad network for this needs the App Tracking Transparency prompt under Guideline 5.1.2.
 
 ## Native Swift and Kotlin implementation
 
@@ -139,6 +160,13 @@ Do not add RevenueCat to a native app that has no third-party dependencies unles
 - Fake countdowns or a price that only appears after tapping.
 - A one-time offer whose claims are not true. A countdown offer is legitimate only when the shown state persists so the offer never reappears for that user, the timer does not reset on reopen or relaunch, and claims such as "lowest price we've offered" are true for that storefront's price history.
   In the EU, Annex I point 7 of the Unfair Commercial Practices Directive (2005/29/EC) bans in all circumstances, with no harm test, falsely stating that a product will only be available for a very limited time in order to elicit an immediate decision.
+- A discount, countdown or other promotion in a Live Activity.
+  Apple's Human Interface Guidelines say "Don't use a Live Activity to display ads or promotions" (read 2026-10-25), and Guideline 4.5.3 bars using Live Activities to spam or send unsolicited messages.
+  One reply says big apps do it without consequence (single report), which shows uneven enforcement and is not permission.
+- Social proof that is not real.
+  In the US, 16 CFR 465.2 makes it an unfair or deceptive practice for a business to write, create or sell a consumer review or testimonial that materially misrepresents that the reviewer exists or used the product, and 465.4 bars compensation for reviews that express a particular sentiment (eCFR, read 2026-10-25).
+  Apple's side is in [Flutter paywall and review timing](../flutter-paywall-and-review-timing/SKILL.md).
+  Use quotes and ratings that can be shown to a regulator, and say where an invited review came from.
 
 ## Audit checklist (use before each release)
 

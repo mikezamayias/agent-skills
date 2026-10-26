@@ -45,6 +45,15 @@ Apple groups the four as Acquire, Retain and Re-acquire.
   The subscription stays active until it expires, so the server can decide eligibility and tell the app to show a promotional offer.
 - Apple retries a failed renewal for 60 days, and Billing Grace Period is a separate setting in App Store Connect.
 - The Apple pages read describe no user-facing pause for an App Store subscription.
+- Apple's Retention Messaging API changes that for the cancel screen.
+  It is a server-to-server service, and it shows the retention message you chose after the subscriber taps Cancel Subscription, on a Confirm Cancellation page where the subscriber can still cancel, keep the subscription or redeem an offer (Apple Retention Messaging API page, read 2026-10-25).
+  There are four message types: text with bullet points, text with an image, a switch-plan message with a suggested subscription, and a promotional-offer message that carries a promotional offer.
+  A message that carries an offer needs the real-time flow, where Apple calls your server when a subscriber views a subscription details page that has a Cancel button.
+  Configure a default message for every product in each locale, because the system shows no retention message for a product in a locale that has no default, and it uses the default if your real-time call fails.
+  Apple labels the API a pre-release and asks developers to express interest, so check access before planning on it.
+  Messages show only on iOS 15.1 or later, iPadOS 15.1 or later, visionOS 1 or later and macOS 14 or later.
+- One founder says the API cuts churn by 20 percent (X article, 2026-10-25, no source named, unverified).
+  Apple gives no figure, so plan on none and measure retained subscribers against a holdout.
 
 ## Google Play
 

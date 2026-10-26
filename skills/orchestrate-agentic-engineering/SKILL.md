@@ -308,6 +308,8 @@ Authority still needed:
 - Give each dispatch an attempt id and require the helper's completion report to carry the task id and the attempt id.
   A report from an earlier attempt then cannot close the current one.
   Require the report exactly once, including on failure, with an explicit succeeded or failed outcome.
+  Put this in every brief: the final line of the report is literally `OUTCOME: succeeded` or `OUTCOME: failed`.
+  The orchestrator then checks the outcome by text, and a clean turn end without that line counts as failed.
   The pattern follows the orchestration docs of Orca, a third-party desktop app (experimental feature, read 2026-10-25), and its fit for our helpers is an inference.
 - A systematic defect needs a sweep of every instance.
   When one helper finds a pattern, such as an off-centre component, a wrong token, or a stale string, launch a sweep rather than fixing the samples.
@@ -321,6 +323,9 @@ Authority still needed:
   Long helper runs are where hangs and dropped connections happen, and a short brief is cheap to rerun.
 - Launch every helper with a hard wall-clock limit, and check for file activity once a run passes about 30 minutes.
   A process that is alive at 0% CPU with no file changes has stalled, and waiting for its exit notice can waste hours.
+- For a T3 Code child thread, poll its `updatedAt` and `itemCount` from `t3_thread_list`, and treat 20 minutes with no change in either as stalled.
+  This is one cheap call, so it runs more often than the 30 minute file-activity check, which stays as is.
+  T3 Code has no heartbeat field, so this is a parent habit and not a platform signal.
 - Give every fact in a brief its provenance: the file and line, the command output, or the design node.
   For a design measurement, name the node, say whether it is the placed instance or the component, and read overrides such as stroke, radius, and clipping from the design tool's object model, not from generated code.
 - Attach the project's pre-report checklist to every implementation brief, so the helper checks the recurring slips before it reports.
