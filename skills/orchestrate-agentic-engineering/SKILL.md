@@ -184,8 +184,12 @@ Before an agent runs without a human watching, record:
 - A loop exit that does not depend on the loop's own score.
   A loop told to run until a judge gives at least a set grade needs a maximum iteration count, because the judge may never reach the grade (inference).
   The judge must be able to read the artifact type, because a text-only judge cannot grade a screenshot or a build.
+- A trust gate before scale.
+  Do not raise the number of parallel agents or remove the human review until a single agent's output has passed an executable check you trust, such as a verification skill that drives the real app.
+  One engineer describes the order as verification first, then local runs you can watch, then cloud runs from bug reports, then auto-merge with review after landing, and warns that jumping to many agents wastes tokens (single report, a 2026-10 talk).
+  They work at an AI lab with unlimited tokens, so their volume figures (about 1,000 PRs a month) do not transfer to a paid plan.
 
-The list is standard least-privilege practice.
+The list is standard least-privilege practice, except the trust gate, which is a single report.
 Only the two mechanism notes above come from Anthropic's CLI reference and sub-agents pages, read 2026-10-23.
 
 ## Gates
@@ -420,6 +424,9 @@ Neither README says the default is no network, so test the "no external network"
 - A verification recipe is handed over without being executed once end to end.
 - A verification map is edited to match a regression, which hides a product bug as documentation drift.
 - Review layers fix single elements, such as pixel alignment, while the overall layout of a screen stays wrong, and only a person looking at the screen notices (single report).
+- An invariant lives only in a prompt, a skill or a reviewer's habit, so an agent forgets it and each miss is caught by a person or not at all.
+  Encode it twice, as a guide that gives the reason and as a check the agent cannot bypass, and when a failure repeats, change the guide, test, tool or permission and not only the current output.
+  The "guide plus mechanical check" pattern and a failure-class to fix table come from an unmeasured essay (inference), and a 2026-10 talk makes the same point (single report).
 
 ## Output Contract
 

@@ -35,47 +35,48 @@ This is a structured index of every guideline section, organized for quick looku
 
 ## Section 2: Performance
 
-| Guideline | Title                  | Summary                                                                          |
-| --------- | ---------------------- | -------------------------------------------------------------------------------- |
-| 2.1       | App Completeness       | App must be final, functional, no placeholder content, demo accounts required    |
-| 2.2       | Beta Testing           | No demos/betas on App Store — use TestFlight                                     |
-| 2.3       | Accurate Metadata      | All metadata must accurately reflect the app                                     |
-| 2.3.1     | Hidden Features        | No undocumented features; all changes in review notes                            |
-| 2.3.2     | IAP Disclosure         | Description/screenshots must indicate IAP requirements                           |
-| 2.3.3     | Screenshots            | Must show app in use, not just splash/login screens                              |
-| 2.3.4     | Previews               | Video previews: screen captures only, no device frames                           |
-| 2.3.5     | Category               | Select the most appropriate category                                             |
-| 2.3.6     | Age Rating             | Honest age rating answers                                                        |
-| 2.3.7     | App Name/Keywords      | Max 30 chars; no trademark stuffing, no pricing in metadata                      |
-| 2.3.8     | Metadata Audience      | Metadata must be 4+ appropriate; "For Kids" reserved for Kids Category           |
-| 2.3.9     | Rights                 | Secure rights for all icon/screenshot materials                                  |
-| 2.3.10    | Platform Focus         | No other platform names/icons in metadata (no Android, Google Play)              |
-| 2.3.11    | Pre-Orders             | Must be complete and match advertised features                                   |
-| 2.3.12    | What's New             | Significant changes must be listed; generic OK for bug fixes                     |
-| 2.3.13    | In-App Events          | Event metadata must be accurate and timely                                       |
-| 2.4       | Hardware Compatibility | —                                                                                |
-| 2.4.1     | iPad Support           | iPhone apps should run on iPad when possible                                     |
-| 2.4.2     | Power Efficiency       | No battery drain, heat, crypto mining                                            |
-| 2.4.3     | Apple TV               | Must work with Siri remote; explain if game controller needed                    |
-| 2.4.4     | System Settings        | No requiring device restart or disabling security features                       |
-| 2.4.5     | Mac App Store          | Must be sandboxed; no auto-launch; no third-party installers; no license screens |
-| 2.5       | Software Requirements  | —                                                                                |
-| 2.5.1     | Public APIs            | Only public APIs; current OS; frameworks for intended purposes                   |
-| 2.5.2     | Self-Contained         | No reading/writing outside container; no downloading executable code             |
-| 2.5.3     | Malware                | No viruses or harmful code                                                       |
-| 2.5.4     | Background Services    | Only for intended purposes (VoIP, audio, location, etc.)                         |
-| 2.5.5     | IPv6                   | Must be fully functional on IPv6-only networks                                   |
-| 2.5.6     | WebKit                 | Web browsing must use WebKit                                                     |
-| 2.5.8     | Home Screen            | No alternate desktop/home screen environments                                    |
-| 2.5.9     | System Controls        | No altering standard switches or native UI elements                              |
-| 2.5.11    | SiriKit/Shortcuts      | Only register for relevant intents; no generic aliases                           |
-| 2.5.12    | CallKit/SMS            | Only block confirmed spam; explain blocking criteria                             |
-| 2.5.13    | Face Recognition       | Must use LocalAuthentication; alternate auth for under-13                        |
-| 2.5.14    | Recording Consent      | Explicit consent required for recording user activity                            |
-| 2.5.15    | File Access            | Must include Files app and iCloud documents                                      |
-| 2.5.16    | Extensions             | Widgets/extensions must relate to app functionality                              |
-| 2.5.17    | Matter                 | Must use Apple's Matter support framework                                        |
-| 2.5.18    | Advertising            | Ads only in main binary; no ads in extensions/widgets/keyboards                  |
+| Guideline | Title                                     | Summary                                                                                                                                                                                                                                         |
+| --------- | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2.1       | App Completeness                          | App must be final, functional, no placeholder content, demo accounts required                                                                                                                                                                   |
+| 2.2       | Beta Testing                              | No demos/betas on App Store — use TestFlight                                                                                                                                                                                                    |
+| 2.3       | Accurate Metadata                         | All metadata must accurately reflect the app                                                                                                                                                                                                    |
+| 2.3.1     | Notes for Review and Misleading Marketing | New features and product changes described with specificity in Notes for Review; no misleading marketing or false price                                                                                                                         |
+| 2.3.2     | IAP Disclosure                            | Description/screenshots must indicate IAP requirements                                                                                                                                                                                          |
+| 2.3.3     | Screenshots                               | Must show app in use, not just splash/login screens                                                                                                                                                                                             |
+| 2.3.4     | Previews                                  | Video previews: screen captures only, no device frames                                                                                                                                                                                          |
+| 2.3.5     | Category                                  | Select the most appropriate category                                                                                                                                                                                                            |
+| 2.3.6     | Age Rating                                | Honest age rating answers                                                                                                                                                                                                                       |
+| 2.3.7     | App Name/Keywords                         | Max 30 chars; no trademark stuffing, no pricing in metadata                                                                                                                                                                                     |
+| 2.3.8     | Metadata Audience                         | Metadata must be 4+ appropriate; "For Kids" reserved for Kids Category                                                                                                                                                                          |
+| 2.3.9     | Rights                                    | Secure rights for all icon/screenshot materials                                                                                                                                                                                                 |
+| 2.3.10    | Platform Focus                            | No other platform names/icons in metadata (no Android, Google Play)                                                                                                                                                                             |
+| 2.3.11    | Pre-Orders                                | Must be complete and match advertised features                                                                                                                                                                                                  |
+| 2.3.12    | What's New                                | Significant changes must be listed; generic OK for bug fixes                                                                                                                                                                                    |
+| 2.3.13    | In-App Events                             | Event metadata must be accurate and timely                                                                                                                                                                                                      |
+| 2.4       | Hardware Compatibility                    | —                                                                                                                                                                                                                                               |
+| 2.4.1     | iPad Support                              | iPhone apps should run on iPad when possible                                                                                                                                                                                                    |
+| 2.4.2     | Power Efficiency                          | No battery drain, heat, crypto mining                                                                                                                                                                                                           |
+| 2.4.3     | Apple TV                                  | Must work with Siri remote; explain if game controller needed                                                                                                                                                                                   |
+| 2.4.4     | System Settings                           | No requiring device restart or disabling security features                                                                                                                                                                                      |
+| 2.4.5     | Mac App Store                             | Must be sandboxed; no auto-launch; no third-party installers; no license screens                                                                                                                                                                |
+| 2.5       | Software Requirements                     | —                                                                                                                                                                                                                                               |
+| 2.5.1     | Public APIs                               | Only public APIs; current OS; frameworks for intended purposes                                                                                                                                                                                  |
+| 2.5.2     | Self-Contained                            | No reading/writing outside container; no downloading executable code                                                                                                                                                                            |
+| 2.5.3     | Malware                                   | No viruses or harmful code                                                                                                                                                                                                                      |
+| 2.5.4     | Background Services                       | Only for intended purposes (VoIP, audio, location, etc.)                                                                                                                                                                                        |
+| 2.5.5     | IPv6                                      | Must be fully functional on IPv6-only networks                                                                                                                                                                                                  |
+| 2.5.6     | WebKit                                    | Web browsing must use WebKit                                                                                                                                                                                                                    |
+| 2.5.8     | Home Screen                               | No alternate desktop/home screen environments                                                                                                                                                                                                   |
+| 2.5.9     | System Controls                           | No altering standard switches or native UI elements                                                                                                                                                                                             |
+| 2.5.11    | SiriKit/Shortcuts                         | Only register for relevant intents; no generic aliases                                                                                                                                                                                          |
+| 2.5.12    | CallKit/SMS                               | Only block confirmed spam; explain blocking criteria                                                                                                                                                                                            |
+| 2.5.13    | Face Recognition                          | Must use LocalAuthentication; alternate auth for under-13                                                                                                                                                                                       |
+| 2.5.14    | Recording Consent                         | Explicit consent required for recording user activity                                                                                                                                                                                           |
+| 2.5.15    | File Access                               | Must include Files app and iCloud documents                                                                                                                                                                                                     |
+| 2.5.16    | Extensions                                | Widgets/extensions must relate to app functionality                                                                                                                                                                                             |
+| 2.5.17    | Matter                                    | Must use Apple's Matter support framework                                                                                                                                                                                                       |
+| 2.5.18    | Advertising                               | Ads only in main binary; no ads in extensions/widgets/keyboards                                                                                                                                                                                 |
+| 2.5.19    | Hidden Features                           | No hidden, dormant or undocumented features; hiding them in the binary (such as by code obfuscation) is grounds for removal of the app and termination of the developer account (new in the October 16, 2026 update, formerly covered in 2.3.1) |
 
 ---
 

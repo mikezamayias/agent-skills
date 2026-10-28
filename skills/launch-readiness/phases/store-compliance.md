@@ -142,6 +142,17 @@ It scans for SDK signatures and rejects on mismatches with declared metadata, ev
 - Create and test the demo account on the day of submission, and confirm the backend and feature flags it needs are live.
 - **Method**: Cross-reference stack profile SDKs against age-rating intent and grep repo metadata for review notes / demo account entries
 
+#### 7a-2. Hidden, dormant or undocumented features (Guideline 2.5.19)
+
+- Guideline 2.5.19, new in the October 2026 update, bars "hidden, dormant, or undocumented features" and says hiding them in the binary, such as through code obfuscation, is grounds for removal of the app and termination of the developer account.
+  Apple's news says the target is an app that shows one thing in review and changes after approval.
+- Every feature, paywall variant or flagged path that the shipped binary can reach must be visible to a reviewer or described in Notes for Review.
+  A flag that is off and documented is not what the rule describes, so the check is to find paths that review cannot reach or that Notes do not describe, and not to delete every flag.
+  One course author advises deleting all feature flags, debug menus and dormant paywalls, which goes further than Apple's text (inference, not an Apple rule).
+- **High if**: A debug menu, hidden gesture, remote switch or server-enabled screen can reach functionality that no Notes for Review text describes
+- **Method**: Grep for debug menus, hidden gestures, remote config reads, `#if DEBUG` code that survives into Release, and obfuscation settings, then compare against the review notes
+- Also grep user-facing strings and URLs for "Coming soon", "TODO", "Lorem ipsum" and `example.com`, because Guideline 2.1(a) says placeholder text, empty websites and temporary content should be scrubbed before submission.
+
 #### 7b. Account Deletion (Section 5.1.1(v))
 
 - If the app supports account creation, it must offer account deletion within the app.

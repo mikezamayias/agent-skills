@@ -75,6 +75,11 @@ Keep the width only there so CI and editors agree.
 
 - When the same review comment appears twice on agent-written code, turn it into a lint rule instead of a line in `AGENTS.md`.
   A rule fails the agent's own check run, and a prose rule only asks (a recommendation inferred from the T3 Code and qmd rule sets, untested here).
+- One engineer who ships about 1,000 agent PRs a month ranks enforcement from strongest to weakest as codebase conventions, then static checks that fail CI (lint, compiler, import-boundary checks), then rules, a review bot and skills, which agents "can still forget" (single report, a 2026-10 talk).
+  They call a human enforcing an invariant in PR review a code smell, and ask whether the check can be a lint rule, a CI failure or a design that removes the problem.
+  Their concrete examples are an import check that fails when one layer's directory imports another's and a ban on code comments, because agents write comments about past instructions.
+  This skill does not adopt the comment ban, because every suppression here needs a reason comment.
+  For a layered Flutter app, a CI check that fails on a forbidden package import is the same idea, and `ffca-audit` owns the layer rules (inference, not checked against that skill's text).
 - Dart supports project rules through analyzer plugins since Dart 3.10, with the `analysis_server_plugin` package.
   A plugin registers its rules in `lib/main.dart`, and a lint rule a plugin defines stays off until `analysis_options.yaml` lists it under `plugins: <name>: diagnostics:`.
   The page does not cover the older `custom_lint` package, so check which one a repo already uses before adding the other.
