@@ -93,6 +93,9 @@ The AI answer counting rules are ours, adapted from the `ai-visibility-audit` sk
   One developer who runs per-app SEO sites reports that they started with a separate domain per app, moved to subdomains because separate domains were getting expensive, and saw "no difference whatsoever" (single report on X, October 2026, no data).
   Choose by maintenance and cost and measure each site in Search Console.
   Not buying a domain per app follows from that report and from Google's neutrality (inference), and is not a Google rule.
+- Before launch, make sure a click on each store button is recorded as an event or goal, and that the report can tell the stores apart, by event name or by link URL.
+  Without it the page can report visits but not the click rate to the App Store or Google Play, which is the number the page exists to move.
+  Test it once from a real browser and confirm the event appears in the analytics tool before you read any rate.
 
 ## Translated pages
 
@@ -165,6 +168,15 @@ Each run:
    The report launched on 2026-06-03 and Google says it reached all websites worldwide by 2026-08-31.
    Impressions are the only metric it defines, so it has no clicks, position or query data.
    A missing report can mean too few AI impressions or a site excluded from Search generative AI features.
+   Also record the share of visitors that click a store link, split by source, because sessions alone do not show whether a source sends people who go on to the store.
+   In Plausible, the Channels list on <https://plausible.io/docs/top-referrers> defines AI Assistants as a source that is "a known AI assistant tool such as ChatGPT, Claude, Perplexity, Gemini, Copilot and others".
+   The same page says visits with no referrer show as "Direct / None", so the AI Assistants figure is a floor and not a total.
+   For the click, Plausible's outbound link click tracking page calls Outbound links "an optional enhanced measurement" that is "enabled when adding a new site" by default and toggled in the site's General settings.
+   The page does not say whether sites created earlier have it on, so check the setting before relying on it.
+   Plausible's goal conversions page says a goal can be clicked to filter the dashboard and shows the referrer sources driving its conversions.
+   Filter by the Outbound Link: Click goal and read its sources, and do not assume a ready-made channel breakdown (verified on plausible.io/docs, read 2026-10-28).
+   One indie app founder showed a Plausible report for one week with no date range, where 448 visitors came from ChatGPT, 52% of them clicked through to a store, and 26% did so across the whole site.
+   These figures are that founder's own unverified week, so treat them as a signal to keep measuring and not as a rate to plan on.
    Before crediting installs or revenue to AI answers, separate first-time visitors from returning or branded ones, because an assistant can route an existing customer back to the site.
    Never credit revenue from a post-purchase survey alone.
    This attribution rule is ours.

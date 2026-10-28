@@ -290,6 +290,10 @@ Treat it as a hypothesis.
   The example is 8,000 followers with several 500,000-view videos over 300,000 followers with low engagement.
   Hand them proven hooks, competitor examples and screen recordings instead of asking them to invent a strategy.
   This is the opinion of one promotional article (2026-10-19), unverified.
+- Write one brief per winning angle before paying a creator.
+  A LinkedIn lead-magnet post (October 2026) lists these parts for such a brief: the app's value proposition, the audience, the use cases, a ranked list of content angles, opening hooks, a demo script, a story script, objection handling, a shot list, script variations and a production plan.
+  This rests only on the contents page of a gated PDF that was not read, it has no performance data, and it is an inference from section titles.
+  Take only the parts your logged posts back up, such as the winning hook and the objection that comments raised, and drop the rest.
 - One founder's creator training note (a whiteboard photo in an X article, October 2026, single report, no results) asks creators to send the first post for review, keep a consistent style, show the app in 5 to 10 seconds, avoid making the whole post about the app, and film using the app on a second device instead of a screen recording.
   This conflicts with handing creators screen recordings above, so test both on a few posts and compare installs per post.
 - Move to a call as soon as a creator replies, because rates and objections are easier to settle live.
