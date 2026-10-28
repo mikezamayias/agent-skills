@@ -257,6 +257,9 @@ Specs come from Apple's "Creative assets specifications" page:
 - A header test says nothing about app preview videos.
   A lift figure for preview videos, such as "up to 30%" in one X post, is no evidence for a header video, and Apple's own Simply Piano story shows a preview-video treatment losing to the original.
 - PPO is not available for custom product pages, so test headers on the default page only.
+- Apple describes treatments as shown to a percentage of randomly selected people on the App Store, and its pages do not say whether visits that arrive from outside the App Store, such as ads or web links, are included.
+  One reply on X says a header test matters less when installs mostly come from external traffic (single report).
+  Check the traffic mix in App Analytics before expecting a measurable lift.
 
 ## Related skills
 

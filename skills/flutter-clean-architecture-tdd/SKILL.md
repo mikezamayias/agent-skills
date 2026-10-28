@@ -29,7 +29,11 @@ Do not silently pick a default for greenfield work.
 1. Read the workspace root `pubspec.yaml`, the feature's packages, their tests, and the app's router and dependency wiring.
 2. Name the feature's user-visible behavior and the packages it needs.
 3. Write failing tests in the domain package first, then data, then presentation, then the app wiring.
+   Run each new test before writing its code and confirm it fails for the reason the behavior is missing.
+   A test that fails for a typo or a missing fixture has not shown anything.
 4. Write the least code that makes each test pass.
+   Do not edit a test's assertion to make it pass.
+   Change an assertion only when the intended behavior changed, and say so in the report.
 5. Refactor only while the tests are green.
 6. Run format, code generation, analysis and every package's tests before calling the work done.
 
@@ -41,6 +45,8 @@ Do not silently pick a default for greenfield work.
 - Keep fixtures in the `test/fixtures/` folder of the package that reads them.
 - Map infrastructure errors to domain failures in the data package, so no exception crosses a package boundary.
 - Keep cubits to orchestration and state transitions, with no serialization, caching or network code.
+- For a bug fix, write the failing test at the layer where the bug appears, with the report's inputs as literal values, and see it fail for the reported reason before changing code.
+  Keep that test.
 
 ## Hive projects
 

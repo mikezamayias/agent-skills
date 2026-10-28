@@ -48,14 +48,25 @@ For each option, fetch the live page and quote the clause or number with its URL
 - Limits: rate limits, quotas, and features only in paid tiers.
   Also check whether a free tier ends at an eligibility threshold, and how long the migration window is after it ends.
   Example: Apple's Private Cloud Compute has no cloud API cost for developers in the App Store Small Business Program who hold the PCC entitlement and stay below 2 million first-time downloads, has daily usage limits, and gives developers 6 months to migrate after losing eligibility (developer.apple.com/private-cloud-compute/, read 2026-10-22).
+- Vendor benchmark footnotes: read the chart's footnote before the headline.
+  Check the number of tasks and tries, who ran it, what the cost counts (model tokens only, or also build and hosting), whether the tested system used pre-built artifacts, and whether every comparator reports every metric.
+  Example: Pomerado's launch chart (30 tasks, one try each, vendor-run) compares "Codex calling Pomerado's pre-minted tools", counts only model tokens at list price, and shows no cost for two named comparators, so "10-1000x cheaper" rests on one baseline, $13.63 per task, and one task is 3.3 accuracy points.
+  Quote only the ratio the printed figures support, such as 8.4x for $13.63 against $1.62.
 - Runtime limits: deploy or bundle size, memory, CPU time, and request duration, from the provider's main limits page and its changelog.
   Size these against the planned growth, not today's code, because a limit hit later splits the system along the limit instead of along the design.
 - Data: the region where data is stored and processed, retention (the minimum and whether it can be shortened), whether a data processing agreement (DPA, the GDPR contract with a processor) exists, whether data is used for training, and sub-processors.
 - Self-hosted "free" claims: list each feature with the paid plan or third-party key it needs, and whether the platform wants a payment method on file even on its free tier.
   Record whether the software sends telemetry by default and how to turn it off.
+  Compare the claimed setup time with the README.
+  Example: a tweet said Minilytics deploys "in 2 minutes", its README says "about 10 minutes", needs a Cloudflare account and Node, covers about 10k pageviews per day on the free plan, and updates by `git pull` and redeploy (read 2026-10-26).
+  Also check how old the repository is and who commits to it, because a days-old repo with one contributor account has no update track record (inference).
 - "Open source" claims: read the LICENSE file itself, because the repository badge can be NOASSERTION or a standard name with added terms.
   Record any clause that limits hosting, resale or commercial use.
   Example: `superdesigndev/treg` (read 2026-10-23) is Apache-2.0 plus a ban on offering it as a hosted service to third parties, so it is source-available, not open source.
+  Also list what the open source repository does not contain.
+  Example: Pomerado (read 2026-10-26) is MIT with a LICENSE file, but its README says hosting, saved logins, the managed browser fleet for bot protection and automatic repair of broken integrations are in the paid Pomerado Cloud, and building an integration needs an OpenAI API key.
+  The launch thread's "self-healing" and stealth claims therefore describe the hosted product and not the repo.
+  Versions 0.1.2 and earlier were AGPL-3.0-only, so check which version a claim was made about.
 - Inputs and outputs: what the API accepts, such as text only or images, and in what formats.
 
 When a source cannot be found, say "unverified" and name what would verify it.

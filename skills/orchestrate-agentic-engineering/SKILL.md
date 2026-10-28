@@ -45,6 +45,10 @@ Terms used in this repository's agent notes:
 
 Delegate only when host supports subagents and work can run independently. Otherwise execute same work graph sequentially.
 
+Split work across agents by context and not by problem type.
+Give each subagent a piece of work that needs little from the rest of the system and returns a compact result, such as an independent research path or a black-box check.
+Splitting by problem type makes each handoff lose detail (Anthropic's "telephone game", article read 2026-10-26).
+
 ## Workflow
 
 ### 1. Capture intent
@@ -239,6 +243,8 @@ Only the two mechanism notes above come from Anthropic's CLI reference and sub-a
   It rules a finding true only with a file and line for the source, the sink and the absence of a mitigation it read.
   Count votes in code, not in prose, and let a vote lower a severity but never raise it.
   Count a self-judged change as verified only after an independent check such as a held-out task, a human review or a test the agent did not write.
+  Prefer a check the agent can run itself and get feedback from at once, such as a test, a benchmark or a reproduction, over asking a model whether the result is good.
+  Anthropic's Felix Rieseberg says in October 2026 not to ask the model to judge itself and to insist on outside validation (article read 2026-10-26, opinion).
   Evidence: the verifier rules are restated from Claude Security's plugin files (commit e68e375) and Cloudflare's security-audit skill README (MIT).
   The self-judged rule is inference from the Harness2 design (Google, Apache-2.0, commit 1cfe254) and reply-level opinion, not a statement in that repository.
 - Evidence survives cleanup and every later run, and is checked at its named location after teardown.

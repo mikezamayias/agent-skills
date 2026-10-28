@@ -25,6 +25,9 @@ State missing evidence. Do not invent conversion, retention, pricing, or market 
 ### 1. Prove paid pain
 
 - Treat existing paid competitors as demand evidence, not automatic disqualification.
+- Before charging a developer audience, search GitHub for an open source clone of the product and read its README setup time and update path.
+  A clone that deploys on a free tier and is built with an AI coding agent can undercut a paid tool within a day, so write down what you sell that the clone does not, such as hosting, updates, support or a non-technical buyer.
+  This is a screening step based on one case (inference), not a result.
 - Identify buyer, painful moment, current spend or costly workaround, and narrow differentiation.
 - Distinguish personal enthusiasm from willingness-to-pay evidence.
 - Produce a build, research, or reject decision.

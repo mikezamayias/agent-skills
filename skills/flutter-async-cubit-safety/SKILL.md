@@ -91,6 +91,19 @@ Future<void> refresh() async {
 }
 ```
 
+### Debounced or overlapping searches
+
+`isClosed` stops an emit after the cubit is disposed.
+It does not stop an older call from overwriting a newer one, because both calls run while the cubit is open.
+
+- If two methods can start the same search, they share one `Timer? _debounce` field, and every method that searches immediately calls `_debounce?.cancel()` first.
+- Give each awaited search a sequence number (`final id = ++_seq;`), and after the await return when `id != _seq`, so only the latest search emits.
+- Override `close()` to cancel the timer, then call `super.close()`.
+  This stops a debounce that has not fired.
+  A search already awaiting still needs the `isClosed` guard after its await (inference from the `bloc` source, where `emit` throws after close).
+- Emit the loading state when the search starts, not when the input changes, because the debounce window is waiting and nothing is loading yet.
+  This rule rests on one author's report of a flicker, so treat it as a default for debounced search only.
+
 ## Checklist
 
 When writing or reviewing async cubit methods:

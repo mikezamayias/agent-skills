@@ -75,6 +75,11 @@ Prices and policies change, so re-check the linked page before relying on one.
   One founder calls them "insanely cheap" with low converting views, and a reply reports decent views with almost no installs.
   Another uses them for organic and international reach and says offshore slideshow creators delivered bot views and the wrong countries, so check each creator's audience country and view quality before paying.
   For how to write a slideshow, see [tiktok-slideshow-format.md](tiktok-slideshow-format.md).
+- One X growth account (2026-10-25, consulting seller, no result shown) advises 3 to 5 "clippers" posting 3 to 5 times a day as the fastest route to $1,000 or more a week.
+  The author defines clippers as people who post content on their own accounts promoting your app.
+  The same word also means people who cut podcasts into short clips, so search for the first meaning with "paid posters" or "slideshow creators".
+  The post names no pay, no count of posts per clipper, no app, no installs and no revenue, so it is an unsourced income claim and not a result (single report).
+  Run any version of it as a test with a fixed budget, track installs and revenue per clipper account, and apply the disclosure and spam rules in this file.
 - Posting your own AI or cartoon slides through a scheduler tool is a separate cost from paying creators, and the tools sell themselves with account-level view claims.
   One scheduler's page quotes "2.2M views from 90 posts in 60 days" from a single user, with no install data (vendor claim, unverified, vendor page read 2026-10-23).
   Its pitch of hundreds of automated slideshows runs into the spam rule on the next line, so read that rule before scheduling volume.

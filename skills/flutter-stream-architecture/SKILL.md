@@ -24,9 +24,13 @@ In Bloc/Cubit, two flags matter:
 - `buildWhen` on `BlocBuilder` — only rebuild when the relevant slice changes. Stops 10x redundant rebuilds during typing/scrolling.
 - `listenWhen` on `BlocListener` — only fire side effects on transitions, not every state change.
 
-Pair with the `restartable()` event transformer from `bloc_concurrency` for search/typing flows so the in-flight request is cancelled when a new event arrives.
+Pair with the `restartable()` event transformer from `bloc_concurrency` for search/typing flows so a new event abandons the running handler and its later `emit` calls are dropped.
+`restartable()` is `switchMap` from `stream_transform`, and it does not abort the repository request itself (inference from the source), so only the newest result reaches the state.
+`bloc_concurrency` has no debounce transformer, so add one from `stream_transform` (`debounce`) in the event transformer for typing events.
 `droppable()` does the opposite: it ignores new events while one is processing.
 Event transformers apply to `Bloc` only, so use a `Bloc` rather than a `Cubit` for these flows.
+If a flow stays a `Cubit`, give the method that owns the debounce `Timer` one shared timer field, cancel it on every immediate path and in `close()`, and add a sequence number so only the latest awaited search emits (see `flutter-async-cubit-safety`).
+Say in the code that this is the price of keeping a Cubit.
 
 ## Strategy pattern over conditionals
 
