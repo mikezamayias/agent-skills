@@ -41,6 +41,11 @@ Fix these inside the single package, one at a time, with the tests green after e
 | Navigation by string path inside a feature                       | Give the screen module a callback, and let the app navigate with typed routes (see `ffca-routing`).                                                                                   |
 | A file in `lib/core/` used by one feature                        | Move it into that feature.                                                                                                                                                            |
 
+While the app is still one package, keep each fixed finding fixed with a CI script that fails on the forbidden import, because no package boundary exists yet to reject it.
+Add one grep rule per row you fixed, for example presentation importing data, or domain importing Flutter.
+Delete the script when step 4 turns the layers into packages, because pubspec dependencies then enforce the same rules.
+This is an inference from step 1 and from one developer's post, not a tested procedure.
+
 ## 3. Create the workspace
 
 1. Move the app into `apps/<name>_app/` with `git mv`, so history follows the files.
