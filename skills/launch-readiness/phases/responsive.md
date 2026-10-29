@@ -53,6 +53,14 @@ T2 — Quality Gate
   Flutter `LayoutBuilder` and `MediaQuery.sizeOf` apply.
   Folding changes the available size without relaunching the app.
   This line is inference.
+- For Expo apps, audit each screen for the side rail inset.
+  Expo's SDK 58 post (October 23, 2026) says the rail "needs either an 84pt left or right inset" (<https://expo.dev/blog/supporting-iphone-duo>, read 2026-10-29).
+  The same post says "The work that remains is auditing your screens and applying additional safe areas, and making decisions for your app's internal layout."
+  It names `Stack` and `NativeTabs` as handled and says `contentInsetAdjustmentBehavior="automatic"` "will handle this alone in a future React Native patch".
+  Custom JavaScript headers and tab bars get only "minimal compat behaviour for custom JS `<Stack>` header and `<TabList>` components", which Expo says render "not following any iPhone Duo conventions", so audit those screens too.
+  Read the inset from the safe-area API and never hardcode 84.
+  One creator's guide says Expo already adapts and the fold needs no detection.
+  That holds for navigation and the fold, and the guide is incomplete for safe areas.
 - Check the Duo store steps when the product page promises Duo support.
   Apple lists three separate actions: build with the iOS 27.1 SDK, submit iPhone Duo screenshots (they trigger the product page badge), and submit a featuring nomination in App Store Connect, where "In the Helpful Details section, you can specify that your app is optimized for iPhone Duo, including support for all device poses" (Apple's exact words, confirmed in `prep.html` on 2026-10-23).
   Apple's October 22, 2026 newsroom post says editorial collections for iPhone Duo apps and games go live on October 23 and does not say how apps are chosen or whether the badge changes search rank.
