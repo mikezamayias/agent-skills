@@ -41,6 +41,8 @@ who trust you convert at much higher rates.
 - [ ] If the user picks the reminder lead time, ask on a screen before the paywall, and the paywall timeline shows the chosen day.
       Seen in one gym app recording (X post, 2026-10-23), with no notification prompt shown and no effect on conversion or cancellations reported.
 - [ ] Settings → "Manage subscription" deep-link is one tap.
+- [ ] The account or settings page states the current plan, when it ends, whether it renews and who bills it.
+      One planner (walked on a device, 2026-10-30) shows the trial's end date followed by "then renews", and "Your trial is billed through Apple. Manage or cancel it in Apple Subscriptions." with a one-tap button, and during free days granted outside the store it says "There's nothing to pay, and nothing can charge you at the end."
 - [ ] Localized prices per storefront.
 
 ## Anti-patterns

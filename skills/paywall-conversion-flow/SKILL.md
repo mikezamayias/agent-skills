@@ -228,6 +228,18 @@ One planner walked end to end on a device (Ellie 4.2.0, iOS, Greek storefront, 2
   The app has no free plan, so every path ends in a plan or view-only.
 - The walk used an Apple ID that had already taken the app's store trial, so the paywall showed no trial line, and the close offer may be shown only to users who cannot get the store trial.
 
+After the plan decision, the same walk showed:
+
+- Starting the free days opens one screen that gives their exact end, date and time ("They end Monday, 2 Nov at 23:12.").
+- The notification request comes next, after value and after the plan decision, never before the paywall.
+  It is primed with a preview notification built from the user's own task ("Time for "Finish the Q4 plan"") and "Ellie can remind you when a task starts.", with "Turn on notifications" and "Not now".
+- An optional calendar step follows (Apple, Google, Outlook, "You can do this later too", "Skip for now").
+- The app opens on the user's own day with the onboarding task already in place, and each screen shows one coach mark on its first visit, closed with "Got it".
+- During the free days, Settings shows a "3-Day Trial" badge and an upgrade row, and the account page repeats the end date, the no-charge sentence and "See plans".
+- Log out and Delete account sit under the plans on the paywall itself.
+- Signing in to an existing account dropped the tasks typed during onboarding, while a new account kept them.
+  If your onboarding builds something before the account step, decide on purpose what happens to it when the user signs in to an older account.
+
 To check a reference flow rather than its screenshots, walk it on a device and record per screen the exact copy, which answer reappears later, where the account and the paywall sit, which plan is preselected, what the trial line says, and what every exit does, including the close button and the links under the plans.
 A gallery shows screens, not what closing the paywall does.
 Use a fresh account, because signing in to one that already pays or has a trial skips the paywall, and say when the device's store account cannot get the trial.
