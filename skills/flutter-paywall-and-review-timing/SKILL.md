@@ -150,6 +150,9 @@ Copy: trial attached to annual; Day 0 / Day 5 / Day 7 timeline; free-vs-premium 
 
 An exit offer after a cancelled purchase sheet is covered in [Paywall conversion flow](../paywall-conversion-flow/SKILL.md), item 6 of "The Order That Works".
 
+A screenshot gallery shows a paywall but not what its close button does, what follows a declined offer, or whether the trial line depends on eligibility.
+Before copying one, walk the app on a device with a fresh account, as in the Onboarding flow reference of [Paywall conversion flow](../paywall-conversion-flow/SKILL.md).
+
 Introductory offers cannot be edited and each storefront allows one current and one future offer per product.
 See Step D of `asc-revenuecat-catalog-sync` for the limits.
 Overlapping introductory offers overwrite the earlier one: Apple says "the latest action overwrites existing introductory offers" when new offers have overlapping dates.

@@ -25,6 +25,7 @@ Most indies lose conversion by following the wrong order.
    In First Page Sage's SaaS benchmark (86 companies, 2022-2025), card-required trials converted 48.8% to paid vs 18.2% for cardless, but visitor-to-trial fell from 8.5% to 2.5%, so judge the whole funnel, not trial-to-paid alone.
    Make the cancel path easy to keep ratings intact.
    Google Play already verifies a valid payment method before a store free trial starts, so a cardless trial only exists outside store billing.
+   One planner does exactly that: closing its paywall offers 3 free days granted by its own server, with no payment details (walked 2026-10-30, see the Onboarding flow reference below).
    Judge a trial by paid conversion, not trial-start rate.
    RevenueCat's State of Subscription Apps 2026 (metrics for 2025, read 2026-10-24) reports median trial-to-paid conversion of 25.5% for trials of 4 days or less, 37.4% for 5 to 9 days and 42.5% for 17 to 32 days.
    It also reports that 55% of 3-day trial cancellations happen on Day 0, and that 84% of 3-day and 64% of 7-day trial cancellations happen by Day 1.
@@ -212,6 +213,24 @@ The 2025 and 2026 screenshots also show an add-widget step after the notificatio
 Duolingo's own blog says only that it tested a widget promotion after learners finished a lesson.
 A reply on the post reports a 3-step full-screen paywall with a close button after the outcome-promise step, which is not in the screenshots and is unverified.
 None of this is published test data, and the flow may differ by cohort and date.
+
+One planner walked end to end on a device (Ellie 4.2.0, iOS, Greek storefront, 2026-10-30, first-hand, one walk, no conversion data):
+
+- Four questions come first: the user's role, what is going on for them, where they heard of the app, and, in the evening, whether to plan today or tomorrow.
+  Each answer shows up on the next screen: the role picks the example tasks, and the hour picks the day.
+- The user then types the one task for tomorrow and a few put-off ones, and sees their own day built from them before any request.
+- Account creation follows with no skip, framed as keeping that work ("Save your day"), and the paywall comes after it.
+- The paywall shows two plans, yearly preselected with "2 months free" and its monthly equivalent, one Subscribe button, and a line under it that restates the charge for the selected plan.
+  The store's lifetime plan is not on it.
+  Price objections are answered below the plans: a student discount and a short letter from the developer on why it costs what it does.
+- A close button is there from the start.
+  Closing offers 3 free days with nothing to pay and no payment details, after which the app turns view-only and keeps the user's tasks.
+  The app has no free plan, so every path ends in a plan or view-only.
+- The walk used an Apple ID that had already taken the app's store trial, so the paywall showed no trial line, and the close offer may be shown only to users who cannot get the store trial.
+
+To check a reference flow rather than its screenshots, walk it on a device and record per screen the exact copy, which answer reappears later, where the account and the paywall sit, which plan is preselected, what the trial line says, and what every exit does, including the close button and the links under the plans.
+A gallery shows screens, not what closing the paywall does.
+Use a fresh account, because signing in to one that already pays or has a trial skips the paywall, and say when the device's store account cannot get the trial.
 
 Execution details that matter: always a visible Skip or back, pre-select popular options to cut decision fatigue, show real social-proof numbers, keep the whole flow under 30-45 seconds. Track onboarding completion rate, time to first meaningful action, day-1 retention, and first-session conversion.
 

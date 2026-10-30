@@ -65,6 +65,10 @@ Its skills install command and any MCP connection are remote code and go through
 
 **No Mobbin:** screenshot 3–5 apps on a device. Save under `design-refs/<feature>/`. Paywalls: <https://toomanypaywalls.com> for **pattern labels**, not chrome.
 
+For an onboarding or paywall job, also walk at least one reference end to end on a device, because a gallery shows screens and not what each answer or exit does.
+Record per screen the exact copy, where an earlier answer reappears, where the account and the paywall sit, and what closing the paywall does.
+[Paywall conversion flow](../paywall-conversion-flow/SKILL.md) lists what one such walk found and the checklist for it.
+
 ### 1b. Concept, then three directions
 
 References show structure. They do not give the app a face.
