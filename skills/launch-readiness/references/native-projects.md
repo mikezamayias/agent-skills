@@ -114,6 +114,13 @@ Apple targets that ship through the App Store:
   Replace the pubspec checks with `Package.resolved`, `project.yml` `packages` and `import` statements.
 - Privacy manifest: look for `PrivacyInfo.xcprivacy` in each app and extension target, and check required-reason API use such as `UserDefaults`, file timestamps and disk space.
   See `app-store-rules/rules/privacy/privacy_manifest.md`.
+- Third-party packages: for each package that sends data to a server, compare the data types in the package's own `PrivacyInfo.xcprivacy`, the vendor's App Privacy answer guide and the privacy report Xcode produces for the archive.
+  The App Store Connect answers must cover the union of the three and the app's own collection.
+  Treat a vendor's "not linked" answer as the vendor's claim.
+  Apple says data is linked when it is connected to the user's identity "via their account, device, or other details" (App Privacy Details, <https://developer.apple.com/app-store/app-privacy-details/>, read 2026-11-01).
+  A persistent device-level id that the vendor's server stores beside user content therefore needs the app owner's own decision, recorded in the privacy notes.
+  ReleaseKit, an in-app changelog service, is an example of a vendor whose guide tells host apps to answer "not linked" for its installation id.
+  It is named only as an example and is not a recommendation to install it.
 - ATT: check `NSUserTrackingUsageDescription` in `Info.plist` or `project.yml` `info.properties`, and `import AppTrackingTransparency`.
   An app with no ad or attribution SDK and no ATT import does not track.
 - Purchases: StoreKit 2 needs `Transaction.updates` listened to at launch, `Transaction.currentEntitlements` for the unlocked state and a visible restore control that calls `AppStore.sync()`.

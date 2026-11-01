@@ -30,3 +30,8 @@ Guidelines specifically applying to social networking, messaging, community, and
 - [ ] NSFW content from web services: hidden by default, opt-in via website only
 - [ ] No Chatroulette-style random chat, anonymous bullying, or "hot-or-not" voting
 - [ ] No apps primarily used for pornographic content
+- [ ] A third-party SDK that lets users type text that other users see, such as comments under a release or a review, makes the host app subject to Guideline 1.2 for that feature.
+      Applying 1.2 to an SDK feature is an inference from the guideline text, not an Apple statement about SDKs.
+      Check that the app itself offers a way to filter objectionable text, a report control, a block control and published contact information.
+      Say which of them the SDK provides and which the app still has to add.
+      Vendor documentation is not Apple's decision, so treat what the vendor provides as claimed until a build was reviewed or tested.
