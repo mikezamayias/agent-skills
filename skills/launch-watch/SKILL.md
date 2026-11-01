@@ -55,6 +55,10 @@ This skill owns the signal proof, the watch schedule, the triage rules and the r
      Check Watch app and widget crashes separately, because they are separate processes with their own crash logs.
      Native Android with a crash SDK: upload the R8 `mapping.txt` from `./gradlew :app:bundleRelease`.
      Native Android with no SDK: Android vitals in Play Console, which deobfuscates from the mapping file in the uploaded AAB.
+     Native Android with Crashlytics: `android signals crashes list`, `facets`, `describe` and `samples` read crash, ANR and non-fatal issues from the terminal after `android auth login`, and `android signals heaps` downloads OOM heap dumps (Android CLI 1.1 release notes, read 2026-10-30, not run).
+     The sign-in is the user's, so the agent never runs `android auth login` and never holds the credential.
+     The release notes do not say whether the sign-in is read-only.
+     Installing Android CLI is remote code, so it goes through the code-gate rule first.
      Store-provided crash reports lag by hours to a day, so a round trip may need a second visit before the first daily run.
      A Mac app distributed outside the App Store has no store report.
      Its crash sources are the SDK, user-sent reports and `~/Library/Logs/DiagnosticReports`, so name which one the watch reads.

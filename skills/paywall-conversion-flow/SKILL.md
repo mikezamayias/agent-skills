@@ -33,6 +33,15 @@ Most indies lose conversion by following the wrong order.
    Change the trial length alone and write the date in the test notes, because a longer trial delays the first conversions by the length difference (inference), which makes the next days look slow.
    One indie fasting app in October 2026 reported a 20% trial-start week with zero trials converting, while its no-trial weeks reached 12-19% paid, on samples in the tens.
    The founder's own explanation, which they did not test, is that paid ads optimized on trial starts find users who start trials and never pay.
+   A second example runs the other way and shows the same trap (one indie app, X posts of 2026-09-26 and 2026-10-29, the author's own tables, unverified).
+   After a freemium app moved to a hard paywall with a 2 week trial, the headline table showed onboarding to trial start rising from 7.4% to 19.6% to 24.6%, with no price or revenue.
+   A second table, which only came on request, showed trial to paid at 44% and 41% for the first two cohorts and 24% of finished trials for the third (8 paid, 26 cancelled, 9 still in trial), with the last two cohorts marked too early.
+   Read a trial change in four columns per weekly cohort: trials, paid, cancelled and still in trial.
+   For a cohort with trials still open, report paid over all trials as the floor and paid plus still in trial over all trials as the ceiling, so 8 over 43 is 19% and 17 over 43 is 40% (arithmetic).
+   Do not read a cohort as final before the trial length has passed, and for a 2 week trial that is about two weeks after the cohort week ends (inference, not documented by Apple).
+   Keep one change per test window, because the same app was also running a higher price test for about two weeks and the author's later rows cannot separate the two.
+   Ask for price and revenue per onboarding as well, because trial start rate and paid rate can move in different directions.
+   Do not quote the example as a benchmark.
    Apple allows one introductory offer per person per subscription group.
    When a ladder mixes a free trial, a paid introductory offer and a no-trial plan, record which products share a group.
    Check eligibility before showing the offer (StoreKit 2 `isEligibleForIntroOffer`) and show no trial CTA to an ineligible user, since that repeats a misleading claim under Guideline 3.1.2.

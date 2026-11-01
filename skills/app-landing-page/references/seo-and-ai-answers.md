@@ -197,6 +197,9 @@ Each run:
    Google's spam policies, read 2026-10-21, define link spam as "creating links to or from a site primarily for the purpose of manipulating search rankings".
    They list "Buying or selling links for ranking purposes" and "Using automated programs or services to create links to your site".
    They allow paid links only when qualified with `rel="nofollow"` or `rel="sponsored"`.
+   Google's spam policies (read 2026-10-31, updated 2026-08-28) also list "Excessive link exchanges ("Link to me and I'll link to you") or partner pages exclusively for the sake of cross-linking" as link spam.
+   They give no number for "excessive", so a reciprocal swap arranged by a tool or a network for ranking is the risky case, and one link between two sites that have a real reason to cite each other is not what the line describes (the last clause is our reading).
+   A source that ranks "exchange relevant editorial links" first and sells an exchange network, as one 2026-10-30 list did, is advertising its product category, so do not rank tactics by that source's order.
 
 Seed plan for a new app site, from a video by Dan Kulkov endorsed by pfernan95dev (2026-10-19, narration only, no results shown, the "working for a month" claim is self-reported and unverified):
 choose 10 to 20 keywords, record a volume figure and its source for each in `seo/keyword-map.csv`, and publish them in a bounded batch over about two weeks.
@@ -230,6 +233,10 @@ Rank evidence rules, ours, adapted from OpenSEO's public skills (MIT per its REA
   Search Console's congratulation email does not show which site earned the clicks.
   Clicks to an app site are not installs, so size a plan on the click-to-store-tap rate and the store conversion of the same app, not on clicks alone.
   The example behind this rule is one author's screenshot (450 clicks, Sep 30, 2026) with the property hidden, so the figure is unverified.
+- Treat an "N AI mentions" figure as unproven until it names the metric.
+  One backlink-vendor post showed 133K for a property over 3 months, and the screenshot was the Search Console "Generative AI features" Performance report, whose only metric is impressions, so the figure counts times a result was shown and not times a brand was named or a link was followed (2026-10-30 screenshot, the author's word "mentions" is not in the report).
+  A daily line that rises for three months does not show which work caused it, so ask for the dates each link or page went live drawn on the same chart, and for impressions before the work began.
+  Asked "Curious how you attributed AI mentions to these backlinks", the author answered "because its the only effort i do", which is not attribution.
 - Treat a vendor's citation study as marketing until it names who sells what, the sample size, the question set, whether answers came from an API or the consumer app, who classified each source and whether the run was single.
   The example is Outrank's benchmark (2026-10-20): 48 questions, one same-day run, a Claude model as the classifier, and a vendor that sells blog content at $99 a month.
 - DR (Domain Rating) is an Ahrefs metric that shows the relative strength of a website's backlink profile.

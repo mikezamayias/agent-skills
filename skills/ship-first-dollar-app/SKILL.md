@@ -162,6 +162,8 @@ Track only metrics that change decisions:
 - Trial/checkout → paid.
 - Paid retention, cancellations, refunds, and churn.
 - Outreach volume, reply rate, and reply → placement rate.
+- Messages sent and founder hours per paying user, and how many of the first 100 users pay.
+  A reply points out that the first 100 users can show demand without showing a repeatable channel, so the hours per paying user shows which steps need tooling (single report).
 - Spend, CAC, revenue, ROAS, and payback by channel.
 - Bugs and repeated requests by frequency and revenue impact.
 - Product time versus distribution time.
@@ -197,6 +199,8 @@ Make assumptions, missing evidence, owner, deadline, budget cap, and success thr
 - Do not scale from one anecdote or one creative.
 - Do not restart creative ideation from zero; reuse measured learning.
 - Do not copy case-study benchmarks as universal targets.
+- Revenue bands from a store-intelligence screenshot are estimates for one month, not MRR, so convert nothing from them into a target.
+  A post that rounds bands into a single range, such as "$100K-$700K MRR" over a photo whose bands read $50K-$100K to $500K-$1M, has changed the data (LinkedIn post, 2026-10-29, read 2026-10-30).
 
 ## Apple account risk
 

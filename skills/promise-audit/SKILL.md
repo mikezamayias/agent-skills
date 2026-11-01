@@ -41,6 +41,10 @@ Typical gaps:
 - vendor retention longer than the policy says, for example an analytics plan that keeps events for years
 - "we never share X" while an integration sends X
 - metadata the policy says is stripped but a code path keeps
+- a store privacy label that disagrees with the policy and the marketing line in either direction
+  Example: a journaling app's listing says "Every word stays on your phone" and its policy says no typed text leaves the device, while its App Store label lists User Content under both "Data Used to Track You" and "Data Linked to You" (listing read 2026-10-30, network traffic not tested, so which side is wrong is unknown).
+  The label is the developer's own answer and Apple does not verify it, so a mistaken label is a promise of its own.
+  Test: list each label category, find the SDK or request that produces it, and cut the category or fix the sentence.
 - a disconnect or revoke that stops new access but leaves data already pulled from the integration stored and still used
   Test: disconnect the integration in a test account, ask the product for something only that data could answer, and check the store for the copied rows.
 

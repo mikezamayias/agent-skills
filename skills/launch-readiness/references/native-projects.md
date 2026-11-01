@@ -154,6 +154,11 @@ Android:
   Apply the current Play minimum from the Store Compliance phase.
 - 16 KB page size: a pure Kotlin and Compose app with no NDK code and no native libraries has nothing to align.
   Confirm with `unzip -l app/build/outputs/bundle/release/app-release.aab | grep '\.so'`.
+- Release shrinking: when Android CLI 1.1 or later is installed, `android analyze <release .apk or .aab>` reports DEX size, whether R8 ran, R8 full mode, and keep-rule and low-optimization warnings, and takes `--format=json` for machine-readable output (Android developer release notes, read 2026-10-30, command not run).
+  Treat `R8 Enabled=false` or a keep-rule warning as a Medium finding for a release build.
+  Installing Android CLI is remote code, so it goes through the code-gate rule first.
+- Compose screens without a device: `android preview list <target>` lists `@Preview` functions and `android preview render --fqn <name> --output <dir>` writes PNG and component tree JSON files, with no device and no Android Studio (same release notes, not run).
+  Use the PNGs as screenshot evidence for the layout and text checks above, and check them against a real device for anything that depends on system insets or fonts (inference).
 - Billing: Google Play Billing is `com.android.billingclient:billing-ktx`.
   Check `queryPurchasesAsync` at startup, acknowledgement within 3 days, and a restore path.
   An app with no digital goods has nothing to check.

@@ -209,6 +209,8 @@ Render the built screens on the simulator at device resolution, then run a separ
 - Emoji standing in for illustration or icons
 - Repeated identical cards with uniform padding
 - Demo numbers that repeat across rows or do not add up to the stated total
+- A verdict word or praise label on a metric that the number does not support ("Excellent!" on a 64% recovery score, "Healthy heart!" on any heart rate), or a verdict with no stated threshold
+- A change figure that the same screen's history contradicts (an up 10% chip next to a week row that falls from 68 to 64)
 - Plain avatar circle and a generic title such as "My Savings Goals"
 - Gradients with no job
 - Body-text sentences where a concrete number or object would do ("€49 to go", "€49 is three takeaways")
@@ -225,6 +227,11 @@ Replace them with the fact the line is about, or delete them.
 Name the user's object, not the category.
 One demo rewrote "My Savings Goals" to "Saving for", "Add Money" to "Put in", "+€1.85 saved!" to "+€1.85 to the bike" and "Target date: Oct 26" to "yours by 26 Oct", and set section titles in sentence case ("Next closest").
 Read every string that holds a number at 0, 1 and many, and check the verb and noun agree with what is counted ("61% of your limits are in use", "1 thing to do", "3 steps to take").
+Show where a graded number comes from: the baseline, the window and the sync time ("TODAY · 14D AVG 71", "SYNCED 07:12" in one health-app demo, video frames read 2026-10-30).
+Use a verdict word only when the app has a stated threshold for it, and otherwise show the number and its baseline and let the person judge.
+That threshold rule is an inference from two replies and the demo author's own answer, not a documented standard.
+For a health or fitness metric, check App Review guideline 1.4.1 before shipping any word that reads as a diagnosis or a medical claim.
+Whether 1.4.1 applies to a fitness recovery score is not established, so this is a check and not a finding.
 
 Paste the spec + 2–3 reference links **before** asking a model to write widgets.
 

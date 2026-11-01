@@ -210,6 +210,12 @@ Specs come from Apple's "Creative assets specifications" page:
   People can unmute them on the product page but not in search results.
   Apple says the creative "must work silently first".
 - If an app has no search result creative asset, the App Store shows its in-app events, app previews, and screenshots in search results.
+- In-App Event media is separate from the header and search assets (Apple's In-App Event media and audio specifications, <https://developer.apple.com/help/app-store-connect/reference/in-app-events/in-app-event-media-and-audio-specifications>, read 2026-10-30).
+  The event card takes landscape 16:9 media from 1920x1080 to 3840x2160 and the event details page takes portrait 9:16 media from 1080x1920 to 2160x3840.
+  Images are jpg, jpeg or png, and videos are mov, m4v or mp4 at 30 or 60 fps.
+  The maximum file size is 500MB for each item.
+  Event video audio is stereo AAC at 256 kbps (the details page also accepts PCM), at 44.1 or 48 kHz, and tracks without audio are supported.
+  Apple gives no length limit for event video on that page, and says the video autoplays and repeats, so make the first and last frame match.
 - A universal creative asset can serve both placements.
   Otherwise select a dedicated asset for each.
 - Design with a safe area in mind and keep the focal point in the center of the composition, so different devices and orientations do not clip it.

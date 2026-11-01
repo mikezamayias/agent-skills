@@ -53,6 +53,18 @@ T2 — Quality Gate
   Flutter `LayoutBuilder` and `MediaQuery.sizeOf` apply.
   Folding changes the available size without relaunching the app.
   This line is inference.
+- For a Flutter app, check the build and the fold handling before the layout.
+  Xcode 27 builds must adopt the UIScene lifecycle or the app fails to launch (Flutter documentation, read 2026-10-30).
+  Flutter 3.41 and later migrates an unmodified `AppDelegate` on `flutter run` or `flutter build ios`.
+  A custom `AppDelegate` needs `FlutterImplicitEngineDelegate` and plugin registration moved to `didInitializeImplicitFlutterEngine`.
+  Check the `UIApplicationSceneManifest` in `Info.plist` and check that no plugin relies on app delegate lifecycle callbacks (one vendor reports they stop firing, unverified).
+- Flutter does not report the fold on iOS yet.
+  `MediaQuery.displayFeatures` is empty on iPhone Duo, and issue `flutter/flutter#192515` and pull request `#193025` were open on 2026-10-30.
+  A fold-aware layout needs a bridge such as the `foldable` package, and LeanCode's `duo_kit` 0.1 (Apache-2.0) builds on it.
+  Both are single-vendor and simulator-tested, so treat them as candidates and never as a requirement.
+  Anything that installs them goes through the code-gate remote-code rule.
+- Keep each pane in a `GlobalKey` when a layout switches between one pane and two, because rebuilding the tree drops scroll position and typed text (LeanCode article, single report).
+  Do not lock orientation in `Info.plist` or in `SystemChrome.setPreferredOrientations`, because the inner display ignores declared orientations (same article, single report).
 - For Expo apps, audit each screen for the side rail inset.
   Expo's SDK 58 post (October 23, 2026) says the rail "needs either an 84pt left or right inset" (<https://expo.dev/blog/supporting-iphone-duo>, read 2026-10-29).
   The same post says "The work that remains is auditing your screens and applying additional safe areas, and making decisions for your app's internal layout."

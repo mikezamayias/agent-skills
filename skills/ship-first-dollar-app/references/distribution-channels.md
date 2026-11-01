@@ -110,6 +110,12 @@ Prices and policies change, so re-check the linked page before relying on one.
   A popular open-source phone farm drives real iPhones through WebDriverAgent to schedule TikTok sessions and posts, and its README gives no warning about TikTok's rules.
   Two users in its thread report fresh accounts warmed for days that stayed at zero views (single reports, no method), and no source shows a positive result.
 - The same founder creates one TikTok account per app before the store approves the app, so format testing starts before launch (author reply, one account).
+- Organic videos that say "search the app name" give store downloads that no tool ties to a video (inference).
+  Compare weekly first-time downloads before and after each post, so a view count is never read as installs.
+  Apple gives each custom product page its own URL, and App Analytics shows product page impressions, downloads, redownloads and conversion rates for each custom product page (<https://developer.apple.com/app-store/custom-product-pages/>, read 2026-11-01).
+  So one custom product page per video or creator, linked where the platform allows a link, gives downloads per page.
+  That Apple page describes no breakdown by source for one page's URL, so one shared page URL does not separate the places it was posted.
+  Whether a given platform allows the link was not checked, and no promo code route was checked.
 - YouTube announced on 2026-10-01 that Shorts recommendations will give less reach to channels that mainly re-upload other creators' clips without significant changes.
   No effective date was given.
   Clips stay eligible when the uploader adds original commentary, unique edits or storytelling.
@@ -210,6 +216,19 @@ Source: Apple's In-App Events page, developer.apple.com/app-store/in-app-events/
   Events can be submitted for review without a new app version.
 - App Analytics in App Store Connect shows downloads per event and acquisition sources.
   Log event name, dates, source and installs for each event, so the channel is judged on results.
+- Apple says good events are challenges, competitions and special content launches (Apple's In-App Events page, read 2026-10-30).
+  It says repetitive activities such as daily tasks or rewards, price promotions that add nothing new, and general awareness promotions are not good candidates.
+  So a plain "now on iPhone Duo" layout fix may not suit an event, and the "Major Update" badge is for significant new features, content or experiences and not for UI adjustments or bug fixes.
+- Limits: name up to 30 characters in title case, short description up to 50 and long description up to 120, both in sentence case.
+  The name must be the event's actual name and not a call to action.
+  No specific prices, no unverifiable claims such as "the best" or "#1", and no all capitals or repeated punctuation.
+  Apple says to avoid text and logos in the media and not to add borders or gradients, because Apple applies crops and gradients.
+- Apple says event videos autoplay and repeat, so build a seamless loop.
+- David Barnard, a RevenueCat advocate, reports building a "Major Update" event for iPhone Duo support in about 10 minutes with an AI agent and a mockup tool, partly to improve the app's chances of being featured (single report, 2026-10-29).
+  Barnard says the agent's copy was poor and needed rewriting, so a person writes the event text.
+  Barnard also says Apple could reject something other apps got approved, which is why other apps' events are not a rule.
+- Judge the effort by search presence and featuring odds.
+  The same person says an app with no search presence that will never be featured may find it a waste (single report).
 
 ## AI assistant directories (ChatGPT plugins)
 
@@ -237,6 +256,31 @@ Revenue and uplift claims are unverified.
 - A plugin must not exist primarily as an advertising vehicle and trial or demo plugins are not accepted, so a lead-gen shell is a rejection risk.
 - Commerce inside a plugin is limited to physical goods, with no subscriptions, plans or direct checkout links, though signing in to an existing paid account is allowed.
 
+## AI assistant directories (Google Connected Apps)
+
+Evidence is Google's blog post of 2026-10-28 and the Connected Apps Platform developer pages, read 2026-11-01.
+Claims about reach and revenue in X posts are unverified.
+
+- Google launched a preview of the Connected Apps Platform for the Gemini app and Search.
+  Developers register a cloud-hosted MCP (Model Context Protocol) server, or an Android app through the Jetpack AppFunctions SDK, in the Google Connected Console and submit it for review.
+  Access is by interest form and opens in phases, so a client cannot count on a listing date.
+- Treat a listing as availability and not distribution, as with ChatGPT plugins.
+  Google's pages state no user count and no ranking rule.
+  One post's "4.3 billion users" has no Google source, and the blog says Search surfacing starts "in the coming weeks" after the Gemini launch, which contradicts the same post's "Gemini will be live imminently".
+  An app can be called by name or with an @ mention and then stays in context for the session.
+  How an app is chosen without a mention is not documented, so do not promise organic discovery.
+- A mobile app does not get listed by being a mobile app (inference).
+  The default path for iOS, Web and cross-platform (so also Flutter) is a public HTTPS MCP server backed by an API the developer owns.
+  AppFunctions is Android only, runs on the device, and needs a native Jetpack integration.
+- Requirements read on the developer pages: OAuth 2.1 with PKCE, authorization server metadata at a `.well-known` URL, dynamic client registration or a manual client id and secret, Google's redirect URLs allowlisted, server instructions that describe the domain, `readOnlyHint` and `destructiveHint` tool annotations, typed schemas, a privacy policy and help pages that explain data deletion.
+- Policy bars that matter for a client: no third-party advertising or promotion in tool output, no wrapping or repackaging third-party APIs the developer does not own, no similar duplicate apps, no data sale, no tool descriptions that steer the model to pick the app over another, no tool that references other tools, and no app that consistently errors, times out or fails authentication.
+  So a lead-gen shell, an ad vehicle or a thin wrapper around someone else's API is a rejection and suspension risk.
+- Review is the schedule risk and Google gives no review time.
+  Plan for a deployed, monitored server (Google shows traffic, latency and error rates in the console), because failing calls are a policy violation and not only a quality issue.
+- A tool that changes state needs the confirmation flag in the console and a `destructiveHint`.
+  One operator (single report) keeps sending an email as a separate permission that stays with the human.
+- Do not run `npx @modelcontextprotocol/inspector` (the guide's validation step) outside the code-gate remote-code rule.
+
 ## Channel choice by time horizon and business type
 
 One operator's opinion with no data (Chris Raroque, video 2026-10-21).
@@ -262,6 +306,7 @@ Read it as a list to test, never as a ranking.
   They ban unsolicited bulk messages and multiple unsolicited messages to other users, so repeated cold DMs are restricted.
   Each server sets its own promotion rules, so read them first.
   One founder reports low conversion but rare bans, and a reply says it suits tight-knit niches.
+- LinkedIn's User Agreement bans using "bots or other unauthorized automated methods to access the Services, add or download contacts, send or redirect messages", so send first-contact messages by hand and not through a script or an automation tool (<https://www.linkedin.com/legal/user-agreement>, read 2026-11-01).
 
 ## Influencer deals
 
@@ -360,3 +405,9 @@ Treat it as a hypothesis.
 - <https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255>
 - <https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers>
 - <https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking>
+- <https://www.linkedin.com/legal/user-agreement>
+- <https://blog.google/innovation-and-ai/technology/developers-tools/connected-apps-one-place/>
+- <https://developers.google.com/connected-apps>
+- <https://developers.google.com/connected-apps/mcp>
+- <https://developers.google.com/connected-apps/mcp/oauth>
+- <https://developers.google.com/connected-apps/connected-apps-policy>

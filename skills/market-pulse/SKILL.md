@@ -137,6 +137,10 @@ Include a **Conversion Strategy** section in every report evaluating how the app
 - Always benchmark against BOTH direct competitors and adjacent apps
 - If no public data exists, estimate from App Store review counts (reviews ≈ 0.5-1% of downloads)
 - Use conservative estimates — better to exceed projections than miss them
+- A third-party revenue estimate is a model output and not a store figure, so quote the vendor and the date and never present it as a niche average.
+  One vendor's terms disclaim that its data is "complete, accurate, or up-to-date" (appkittie terms, appkittie.com/terms, read 2026-10-30).
+- A range such as "$40K to $11M" across six apps is a spread, and its top end belongs to one app.
+  Plan on the low or middle of the range, and check the claim against the infographic's footer before repeating a headline figure.
 - **Currency conversion ≠ price localization.** Auto-converted prices often miss psychological thresholds and local purchasing power. Always recommend custom price tiers for top 5-10 markets. A $4.99/mo sub auto-converts to ~₺179.99 in Turkey, but ₺149.99 may convert 2-3x better.
 - Use Apple's App Store pricing reference tables and Google's sub-country pricing to identify optimal tiers
 - Niche signals, as unsourced heuristics from MobAI's niche skill: top results averaging under 3.5 stars, fewer than 5 apps targeting a keyword, high ratings with few reviews, stale update dates, and generic apps winning a specific search

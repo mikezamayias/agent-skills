@@ -10,6 +10,18 @@ metadata:
 
 CanvasKit is ~1.5MB. A blank `body` while `main.dart.js` downloads is a bug.
 
+## When Flutter web is the wrong tool
+
+Flutter's web FAQ says Flutter is not suitable for static websites with text-rich, flow-based content such as blog articles, and that its web output "doesn't align with what search engines need to properly index" (<https://docs.flutter.dev/platform-integration/web/faq>, read 2026-11-01).
+The FAQ gives the reason as Flutter web prioritizing performance, fidelity and consistency for app-centric experiences.
+It does not say that drawing to a canvas is the cause, so do not give that as the reason.
+For static or document-like web content, the FAQ recommends either Jaspr, a community Dart package that builds a DOM-based site where SEO works as on a traditional website, or plain HTML for the landing, marketing and help pages next to a Flutter app.
+It says the Dart, Flutter documentation and Flutter marketing sites were migrated to Jaspr.
+Jaspr is MIT-licensed and supports server-side rendering and static generation (docs.jaspr.site, read 2026-10-30).
+The author of the Made in Dart site reports moving to Jaspr for server-rendered, indexable pages (single report, no benchmark).
+Decide this before tuning first paint for a public content or marketing site that must be indexed.
+Jaspr is third-party code, so any use, including `dart pub add jaspr` or `dart pub global activate jaspr_cli`, goes through the code-gate remote-code rule.
+
 ## Splash
 
 Put a real splash in `web/index.html` with HTML/CSS (Flutter Gallery pattern).

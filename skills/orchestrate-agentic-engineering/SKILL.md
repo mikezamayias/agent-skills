@@ -268,6 +268,11 @@ Keep orchestrator context limited to:
 
 Close completed specialist sessions. After compaction or handoff, reload repository artifacts before acting. Prefer reviewable artifacts over long report walls.
 
+When a worker session is replaced because its context is full, give the successor the predecessor's transcript path as well as the brief, and tell it to search that file for exact lines instead of trusting a paraphrase.
+Mainplane's harness does this with one fixed message, "You are continuing session X. Retrieve key context from it as you go.", and a per-session log file searched with `rg` (source read 2026-10-30, <https://github.com/mainplane-ai/mainplane>, `pkg/connector/tui/commands.go` and `pkg/harness/tools.go`).
+Reports from repliers say a summary drops rejected approaches and dead ends, and that retrieval only works if the agent knows to look, so keep decisions and rejected approaches in a repository artifact and list them in the brief (single reports, no eval).
+Treat retrieval against summary as an open question for each model and task, as one practitioner put it: "best discovered with evals".
+
 Bound code search output, because raw search hits are a large share of an agent's input tokens.
 List matching files first (`grep -l` or `rg -l`), cap matches per file (`-m`), keep context to a few lines, and narrow by path or type before reading whole files.
 The flags above (`rg -l`, `-m`) were not tested by the benchmark below, which tested ranked top-20 output after `-C 3` context, so treat them as untested.
