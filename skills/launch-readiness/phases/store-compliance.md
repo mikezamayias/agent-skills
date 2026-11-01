@@ -171,6 +171,10 @@ It scans for SDK signatures and rejects on mismatches with declared metadata, ev
 
 - Since April 28, 2026, uploads must be built with Xcode 26 or later using the iOS 26 SDK.
 - Since September 9, 2026, iOS and iPadOS uploads must target iOS 13 or later.
+- Starting April 2027, Apple's Submitting page says iOS and iPadOS uploads must be built with the iOS and iPadOS 27 SDK or later and target iOS 15 or later, and tvOS, visionOS and watchOS uploads need their 27 SDK (<https://developer.apple.com/app-store/submitting/>, read 2026-11-01).
+  Apple's Upcoming requirements page did not list this on the same day, and the Submitting page gives only a month, so treat the day as unknown and check both pages before final judgment.
+- A Flutter app sets the iOS target in `ios/Podfile` (`platform :ios`) and in `IPHONEOS_DEPLOYMENT_TARGET`, so raise both to 15.0 before April 2027 (inference, not measured on a Flutter project).
+- `asc validate --app APP_ID --version-id VERSION_ID --ipa ./App.ipa` reports the minimum OS as Info until 2027-04-01 and then as a Warning, and reads the SDK from the IPA, because the App Store Connect API does not expose the SDK version (`asc` 6.3.0 pull request text, read 2026-11-01, not run against an app).
 - Fetch the current requirement before final judgment.
 - **Critical if**: CI or local build uses an older Xcode, or `IPHONEOS_DEPLOYMENT_TARGET` is below the minimum
 - **Method**: Read CI workflow Xcode version and `ios/Podfile` / `project.pbxproj` deployment target
