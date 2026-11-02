@@ -156,6 +156,8 @@ Do not add RevenueCat to a native app that has no third-party dependencies unles
 - Paywall on cold launch.
 - "Subscribe to continue" gate before any value is delivered.
 - Tutorial screens explaining features (vs showing outcomes).
+  This applies before the paywall.
+  Whether a guided tour for someone who has already paid helps is a separate question, and this file holds no test result for it.
 - Yearly-only pricing with no escape hatch for low-trust buyers.
 - A weekly plan whose annualized price is above about 10 times the yearly price as the headline plan (my heuristic, not from Apple or any source). If you test it, show the weekly price, the billing period and the trial end date, and describe what the user gets for the price, as Guideline 3.1.2(c) requires.
   The $6.99 weekly and $39.99 yearly pair on one founder's X paywall is 9.1 times, so a 10 times line would not flag it (arithmetic).
@@ -297,6 +299,10 @@ These are unverified secondhand figures, which the article itself marks "reporte
   Source: one founder's X post and two agreeing replies (October 2026, no data), so this is a cheap check and not a finding.
 - Change trial length, the trial reminder and the paywall timeline in different releases too.
   One build-in-public founder shipped all three in one release, and a reply pointed out they could not tell which one reduced cancellations (single reply, no data).
+- For a retention test, define "cancel" before the test starts.
+  Use `CANCELLATION` with `cancel_reason` `UNSUBSCRIBE` ("fires when a user unsubscribes, not when the subscription expires") for a user who turned auto-renew off, and exclude `CUSTOMER_SUPPORT` and `BILLING_ERROR`, since refunds can fire `CANCELLATION` while auto-renew is still on (RevenueCat event types page, read 2026-11-02).
+  Compare the same weekly cohorts with and without the change, and read the paid-renewal rate at the first renewal, because a yearly plan shows its first real cancel decision a year later.
+  A retention claim without a cohort, a plan length and a cancel definition is not a result.
 
 ## When in doubt
 

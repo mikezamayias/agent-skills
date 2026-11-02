@@ -99,3 +99,11 @@ When you remix a reference video, keep its hook type, beat order, pacing and len
 Put the product in one beat and write no claim, discount code or "link in bio".
 In a weekly review, rank posts by watch-through and saves instead of views, flag an account after three flat weeks in a row so you rethink the persona or format, and diagnose a flop by testing one change at a time, not five.
 The article also plans at least 15 of each account's 20 topics as unrelated to the product, with 5 product beats.
+
+### Reading a result
+
+- One founder (November 2026, one account set, no chart shown) says about 70% of a post's views arrive on day 1 and about 90% by day 3, so wait 3 days before scoring a post (the curve is unsourced, the wait is a reasonable rule).
+- Divide by the same account's median views in the same month, because one account's hot streak can swamp a format effect (the founder's tool text, not run).
+- To tell a 2x difference between two values of one variable, expect to need about 47 posts per value, assuming the spread of log views is about 1.2 (recomputed from a two-sample test at 80% power and 5% error, and the spread is the founder's unsupported figure).
+  A 1.3x difference needs about 330 posts per value, about 7 times as many.
+  Three posts prove nothing.

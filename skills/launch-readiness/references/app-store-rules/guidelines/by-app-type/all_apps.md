@@ -19,6 +19,7 @@ Guidelines that apply to **every** app regardless of category. Check these befor
 - [ ] **2.3.3** — Screenshots show app in use (not just title art, login, or splash)
 - [ ] **2.3.4** — App preview videos: screen captures only (no device frames)
 - [ ] **2.3.8** — Metadata adheres to 4+ age rating (icons, screenshots, previews)
+- [ ] **2.3.8** - App name and icons (small, large, Apple Watch, alternate) are similar across all metadata, to avoid confusion
 - [ ] **2.3.9** — Rights secured for all materials; fictional account data in screenshots
 - [ ] **2.3.12** — What's New text describes significant changes
 - [ ] **5.2.5** — No Apple product images in app icon; no confusing Apple trademarks

@@ -109,6 +109,10 @@ Prices and policies change, so re-check the linked page before relying on one.
 - Running the automation on real phones does not change the spam rule above.
   A popular open-source phone farm drives real iPhones through WebDriverAgent to schedule TikTok sessions and posts, and its README gives no warning about TikTok's rules.
   Two users in its thread report fresh accounts warmed for days that stayed at zero views (single reports, no method), and no source shows a positive result.
+- Posting through a scheduler API has its own limit that TikTok publishes.
+  An API client that TikTok has not audited can only post as private (`SELF_ONLY`), for at most 5 users in a 24 hour window, and TikTok lists "a utility tool to help upload contents to the account(s) you or your team manages" as not acceptable for an audit (TikTok content sharing guidelines, <https://developers.tiktok.com/doc/content-sharing-guidelines>, read 2026-11-02, verified).
+  A client can leave at most 5 pending shares per user per 24 hours, and a photo post takes up to 35 photos (TikTok photo post reference, <https://developers.tiktok.com/doc/content-posting-api-reference-photo-post>, read 2026-11-02, verified).
+  So a self-built poster cannot publish publicly, and a scheduler that does is posting through its own audited app (inference).
 - The same founder creates one TikTok account per app before the store approves the app, so format testing starts before launch (author reply, one account).
 - Organic videos that say "search the app name" give store downloads that no tool ties to a video (inference).
   Compare weekly first-time downloads before and after each post, so a view count is never read as installs.

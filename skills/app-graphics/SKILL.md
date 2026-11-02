@@ -135,6 +135,8 @@ Required checks:
 - A creative asset video shows 3840x1646 (header), 30 or 60 fps, and a duration from 5 to 30 s in `ffprobe -v error -show_entries stream=codec_type,width,height,r_frame_rate:format=duration`.
 - The first and last frame of a creative asset video match, so the loop has no visible jump.
 - No text appears where the prompt said "no text".
+- No device mockup is drawn above 1:1 of its source bitmap, and no device edge shows soft text, a jagged band or a light fringe in a 300 percent crop against its final background.
+  The method and the reasons are in "Device frames in compositions" in `app-screenshots`.
 - The palette is coherent across the set, by visual comparison.
 
 Write `store_assets/GRAPHICS_INDEX.md` listing what shipped and what was skipped.
@@ -209,6 +211,9 @@ Specs come from Apple's "Creative assets specifications" page:
 - Videos are muted by default in both placements and loop continuously.
   People can unmute them on the product page but not in search results.
   Apple says the creative "must work silently first".
+- Apple's page gives no audio format for the header, and the only guide is the mute note, so a header audio track is optional and its format is not specified (read 2026-11-02).
+  Design the video so it explains itself with no sound, because it starts muted.
+  Test any audio track with the unmute control on a device before submitting, since the only evidence of one working is a developer's recording (single report).
 - If an app has no search result creative asset, the App Store shows its in-app events, app previews, and screenshots in search results.
 - In-App Event media is separate from the header and search assets (Apple's In-App Event media and audio specifications, <https://developer.apple.com/help/app-store-connect/reference/in-app-events/in-app-event-media-and-audio-specifications>, read 2026-10-30).
   The event card takes landscape 16:9 media from 1920x1080 to 3840x2160 and the event details page takes portrait 9:16 media from 1080x1920 to 2160x3840.
@@ -246,6 +251,9 @@ Specs come from Apple's "Creative assets specifications" page:
 - Upload and submit with the `asc asset-library` commands in `asc-cli-usage`, then check each device and orientation in App Store Connect's preview before submitting.
 - One developer reports the App Store Connect preview did not match the live crop and needed three attempts, and that the header is much more cropped on iPhone than the 21:9 source (single report).
   After approval, confirm the result on a device running iOS 27 or later.
+- When you study a competitor's or a founder's example header, open the live page on an iOS 27 device with the asset visible above the app icon and the back, mute and share controls over it.
+  One replier says many examples shared on X were the older feature header and not the iOS 27 creative asset (single report, term not defined), and two of the three developers' recordings in that thread were TestFlight builds, not live store pages.
+  Count only a live store page as proof of a shipped header.
 
 ### Test a header asset
 
