@@ -121,7 +121,7 @@ TEMPLATE = """<!doctype html><html lang="en"><head><meta charset="utf-8">
 <style>
 :root{{--bg:#f6f6f4;--card:#fff;--fg:#1b1b1b;--mut:#5d5d5d;--line:#dcdcd8;--acc:#1f6f5c;--sel:#e7f3ef}}
 @media (prefers-color-scheme:dark){{:root{{--bg:#131416;--card:#1c1d20;--fg:#ececec;--mut:#a3a3a3;--line:#33353a;--acc:#5cc3a6;--sel:#1d2d29}}}}
-*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,system-ui,sans-serif}}
+*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 \"Comic Sans MS\",Verdana,sans-serif;letter-spacing:.02em;word-spacing:.08em}}
 main{{max-width:780px;margin:0 auto;padding:28px 18px 120px}}h1{{font-size:26px;margin:0 0 6px}}
 .intro{{color:var(--mut)}}.q{{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:18px 0}}
 .q.done{{border-color:var(--acc)}}h2{{font-size:19px;margin:0 0 10px;display:flex;gap:10px;align-items:baseline}}

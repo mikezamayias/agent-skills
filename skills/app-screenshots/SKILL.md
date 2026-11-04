@@ -204,6 +204,21 @@ Make two cuts from one recording.
 - Reference other skills by name rather than inlining their work.
 - If a locale cannot be captured or framed correctly, log it as `Stuck` in `store_assets/SCREENSHOTS_LOG.md` and ask the human.
 
+## Device frames in compositions
+
+Learned on 2026-11-02, where an Apple Watch on a deck slide looked soft, with a lumpy band edge and a light ring, twice in a row.
+
+- Never draw a framed device bigger than its source bitmap.
+  Koubou frames a Watch at the screenshot's own size (416×496 for Series 11), so a slide that trims it and scales it to 560 px upscales it about 1.9 times, which softens the text and turns the band's alpha edge jagged.
+- Compute the scale of every device placement as placed width over source width, and fail the render when it is above 1.
+  Put the check in the layout helper itself, for example a function that throws when `scale > 1`, so a later layout change cannot bring the upscale back.
+- When a composition needs a bigger device, render the raw screenshot at a higher scale and frame that, instead of upscaling a framed bitmap.
+- For a Watch, and for any device shown large on a coloured or dark backdrop, place the raw shot 1:1 inside Apple's own product bezel from Apple Design Resources instead of the Koubou frame.
+  Koubou pads its frames with white and blends the outermost pixel of the case and band with that white, which shows as a light fringe on dark backgrounds.
+- If a Koubou frame has to stay, erode its alpha by 1 px and composite it onto the final background colour, never onto white first.
+- Verify every device placement by cropping it at native size and at 300 to 400 percent against its final background, and look for soft text, a jagged band edge and a light ring.
+  A downscaled contact sheet hides all three, so never judge device edges from one.
+
 ## Done state
 
 - `store_assets/screenshots/{raw,framed}/<locale>/` populated for every required locale
