@@ -64,11 +64,16 @@ A problem reported in many languages is usually not a translation problem:
 - the same markup or placeholder showing literally means a format the platform does not process in that position
 
 Fix those once, at the root, and only then hand the rest out per language.
+When you drop findings that a root fix already covers, select them by their problem statement, never by text that appears in a key: one key can name several strings, and a filter on key text silently drops unrelated findings.
+Count what each filter dropped and read the list.
 
 ## Step 6: Verify before fixing
 
 Treat every finding as a claim.
 For blocker and major findings that change meaning, have a second, independent agent on the same language judge the finding without seeing the first agent's reasoning, and keep it only if both agree.
+Ask that agent for exact edits, not prose: the target file kind, the exact key and plural case, a text to find inside the current translation and its replacement.
+Apply them with a script that refuses an edit whose text is not found exactly once or that changes the placeholders, and that escapes text for the target format.
+Then run the plain checks again, and update the glossary where a verified edit changed a glossary term on every platform.
 Check screen findings against the screenshot yourself.
 Fix mechanical findings (punctuation, digits, a dropped word, an inconsistent term with an agreed glossary entry) directly.
 Put meaning and register changes to a human native speaker or the decision-maker, never silently.
