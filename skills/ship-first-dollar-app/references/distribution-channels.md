@@ -21,6 +21,12 @@ Prices and policies change, so re-check the linked page before relying on one.
 - SKAN results reach Meta at least 24 hours late, are dated by when Meta receives them, and are aggregated at campaign level.
   Ad set and ad results may be statistically modeled.
   Short test windows and per-creative reads on iOS are therefore unreliable, so judge a creative test on a longer window or on your own purchase data.
+- A message test can instead send the ad to the app's own web page, not to the store, and read the result in the page's analytics, which has no SKAN delay or modeling.
+  Give each ad variant its own `utm_campaign` or `utm_content`, and set `utm_medium` to a paid value such as `paid_social`, because Plausible counts a visit as Paid Social only when the medium matches a paid pattern (Plausible docs, "Top referrers", read 2026-11-03).
+  Read the store-click rate per variant (see `app-landing-page`), and treat it as interest, since it does not measure installs or purchases (inference).
+  That Meta accepts an external URL with UTM parameters on an app promotion ad was not read on Meta's pages, so confirm it in Meta's help first.
+  One founder plans such a test, a few message angles on a first Meta ad, and reports no result yet (LinkedIn, 2026-11-03).
+  The post does not say whether the ad goes to a page or to the store, so this route is a suggestion and not what that founder does.
 - The Meta pages above partly date from 2021 to 2023, and Apple is moving from SKAdNetwork to AdAttributionKit, so re-check the setup steps.
 - TikTok's own guidance is to add 3-5 new creatives about every 7 days or when fatigue appears, and to run 5-7 varied creatives with weekly refreshes.
   Its fatigue signals are click-through rate falling while frequency rises, impressions falling, and cost per acquisition rising or return on ad spend falling.
@@ -50,6 +56,11 @@ Prices and policies change, so re-check the linked page before relying on one.
   Copy the structure and angle, such as the hook order and the proof shown, and re-shoot with your own words, footage and claims.
   That legal point is an inference and was not checked against a source.
   A library read is a sample, so write unknown for any library you did not check.
+- Treat an ad test as a message test first.
+  Write down the angles before spending, such as an arithmetic hook, a proof of the app UI or a pain statement, and the one metric that decides, for example store-click rate or cost per install.
+  A winner then goes to the store page by a screenshot caption, the first screenshot or a custom product page that the ad links to (`apple-ads.md` step 8 has the Apple Ads form).
+  A product page optimization test cannot run on a custom product page (Apple, via `asc-aso-audit`), so test a message on the default page only after the ad has chosen it.
+  One founder (LinkedIn, 2026-11-03, a plan with no result) wants to test a few angles on a first Meta ad and reuse a winner on the App Store page, the website and a second app.
 
 ## Founder-on-camera and creator video
 
@@ -65,6 +76,9 @@ Prices and policies change, so re-check the linked page before relying on one.
   Check an old post's installs one to two weeks after posting before you retire its angle, and log installs by post date so a late spike can be traced.
 - Instagram's published ranking explainer (2023-05-31, read 2026-10-24) lists reshare, watch to the end, like and audio page visits as Reels signals, and says muted or majority-text Reels are shown less.
   It does not list replays, so check that a Reel is not mostly text and has audio, and treat a claim that rewatches push a video as unverified.
+  The same page also lists reels that have already been posted on Instagram and reels with borders among those it makes less visible, so a re-post of an unchanged video may be shown less (read 2026-11-05, inference).
+  One founder (November 2026, one Instagram account, no numbers shown) says re-posting their best video with a new first line gave it 10x the views and calls it their favourite trick.
+  That claim is unverified and the page's wording is three years old, so test it once: re-post one winner with a different first line, delete or archive nothing, and compare views and installs by post date before repeating it.
 - A different founder claims 1.5 million downloads in about three days for under $5,000 (October 2026).
   The claim is unverified, with no store data, spend breakdown or cost per install shown, and it comes from a video that promotes the founder's own paid creator-research tool.
   The account that amplified it also sells a research tool, so read it as one founder's account and never as a benchmark.
@@ -311,6 +325,39 @@ Read it as a list to test, never as a ranking.
   Each server sets its own promotion rules, so read them first.
   One founder reports low conversion but rare bans, and a reply says it suits tight-knit niches.
 - LinkedIn's User Agreement bans using "bots or other unauthorized automated methods to access the Services, add or download contacts, send or redirect messages", so send first-contact messages by hand and not through a script or an automation tool (<https://www.linkedin.com/legal/user-agreement>, read 2026-11-01).
+
+## X posts
+
+### X link posts
+
+One founder reports that a five-word X post with a bare link and no media reached 1.36 million views, 5,184 likes and 18,218 bookmarks (1.3 percent of views), from an account of about 3,500 followers (X post, 2026-11-01, counts read 2026-11-03).
+Their analytics panel for the next 28 hours shows 113,452 visitors and 263,460 page views, 91 percent of visitors on the home page, 2.9 percent on the installation page, 5.6 percent on the components page and a 68 percent bounce rate.
+The panel shows no referrer breakdown, so the 105,000 link clicks they claim and the share from X are not visible, and they withheld revenue.
+It is one self-reported success, so do not read it as a conversion rate or as proof that X beats other channels (single report, survivorship, the author sells the product).
+What carries over is the measurement plan, so before a link post goes out, set up page analytics with a referrer split and track one deeper step (an install, a signup or a purchase page) next to visits.
+A spike gives most visitors only a home page view, so decide beforehand what the home page asks them to do.
+
+### X launch posts
+
+Evidence is X's open-source ranking repository (<https://github.com/xai-org/x-algorithm>, Apache-2.0, `README.md` and `home-mixer/params/param.rs` read 2026-11-03).
+The repository is X's own publication and the code changes often, so recheck a number before relying on it.
+
+- The For You feed takes candidates from followed accounts (Thunder), from an interest match on the viewer's history (Phoenix retrieval) and from accounts whose followers engage alike (SimClusters).
+  It adds a shared list of popular recent posts, then ranks everything with one model.
+- The score is the sum of a weight times the predicted chance that this viewer takes each action.
+  The code lists reply 5, quote 5, share by DM 5, follow the author 4, share by copying the link 20, repost 1, like 0.66, not interested -52.3, mute -58.8, report -234 and profile click 0, and a mutual follow adds a reply boost of 15.
+  X's own comment says these are multiples of predicted probability and not of raw counts, so one report does not cancel a fixed number of likes.
+- Each post after an author's first is multiplied by a decaying factor, down to a floor, so posting five launch posts in a row lowers the later ones.
+  Posts from accounts the viewer does not follow are multiplied by a factor below 1, and so are replies and reposts from followed accounts.
+- A feed keeps the best-scoring post of one conversation, which means replies and branches of one thread, so a thread competes with itself.
+  One agency article claims five separate posts lose four of them to this rule, but separate posts are separate conversations, so the cause is the author-diversity decay (inference from the filter code).
+- Treat weights as a reason to design for the actions that carry weight, such as a post worth sending to a friend by DM or by copying the link, and not as a formula that counts likes.
+- One agency article advises asking connections with an audience (investors, advisors, customers, beta testers, portfolio founders) to quote the launch before it goes out, ranked by reach into your customer and tiered so that the top 25 get a personal message with an example quote (single report, one agency, October 2026).
+  A quote is a new post by another account, and the ranking code gives a quote weight 5, so it can reach that person's followers (weight verified, reach is inference).
+  The article's "600 demos" and "1000x leverage" figures for one founder's launch have no evidence behind them.
+- Do not coordinate engagement outside the feed.
+  X's own code comment says actions on a post that the viewer was not served in the Home timeline, such as through a group chat, have no ranking impact (`home-mixer/params/param.rs` comment, read 2026-11-03).
+  That comment is about mass blocking and reporting, so its scope as a limit on coordinated engagement is my reading (inference).
 
 ## Influencer deals
 

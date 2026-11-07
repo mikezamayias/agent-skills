@@ -73,6 +73,11 @@ Export an archive for upload with `xcodebuild -exportArchive` or the `asc-xcode-
 - Run every test scheme and every Swift package test target the project has, plus the Android unit tests.
   A failure in any of them is Critical.
 - Swift Testing and XCTest run through the same `xcodebuild test` and `swift test` commands.
+- A test scheme that drives real Siri, such as a `SiriEvaluations` scheme, needs a physical device on iOS 27.3 or later with Apple Intelligence and cannot run in the Simulator.
+  Record it as a manual gate with the device, not as a passing check, and never count it as run when the report says it only compiled.
+- Siri AI is a Developer Preview and Apple says the preview "isn't available to external testers in TestFlight or to versions of your app that you publish on the App Store".
+  App Store submission opens in the spring after Apple's Nov 3, 2026 post, and terms are not published yet, so do not list Siri AI behaviour as shippable in a release report before then.
+- Siri AI is unavailable in the EU on iOS and iPadOS, so a developer located in the EU may be unable to run these checks on an iPhone (inference from Apple's pages, with MacRumors as the only direct report).
 - Coverage on Apple: add `-enableCodeCoverage YES -resultBundlePath build/tests.xcresult`, then `xcrun xccov view --report build/tests.xcresult`.
 - Coverage on Android: only when the project already configures JaCoCo or a similar tool.
   When no coverage tool exists, record a Medium finding, skip the threshold and do not add a dependency.
@@ -170,6 +175,12 @@ Android:
   Check `queryPurchasesAsync` at startup, acknowledgement within 3 days, and a restore path.
   An app with no digital goods has nothing to check.
 - Launcher icon: `res/mipmap-anydpi-v26/ic_launcher.xml` must reference the app's own foreground, background and monochrome layers, not the Android Studio template.
+- Splash screen: the app should use `androidx.core:core-splashscreen`, a theme that inherits from `Theme.SplashScreen` with `postSplashScreenTheme` pointing at the app theme, that theme applied to the starting activity in the manifest, and `installSplashScreen()` called before `super.onCreate()` (Android Developers, "Splash screens", read 2026-11-03).
+  Treat a missing `postSplashScreenTheme` or a custom splash Activity on top of the system splash as Medium.
+- `setKeepOnScreenCondition` is meant for a small amount of local data, and Android says the condition is evaluated before each frame, so keep it fast.
+  Treat a condition that waits on the network or an artificial delay as Medium, because it holds the app on the splash (the "no artificial delays" point from a LinkedIn post, which agrees with the page).
+- The window background of the post-splash theme and the root Compose background should be the same solid color as the first screen.
+  Android's pages do not say this, so it is advice from one LinkedIn post plus an inference from Flutter's equivalent rule for its normal theme, not a documented requirement.
 - Release build: `./gradlew :app:bundleRelease` must produce a signed AAB.
   Signing config values must come from the environment or an ignored file, never from tracked source.
 - Deprecated APIs: `./gradlew :app:lintDebug` and the compiler warnings from the build replace `flutter analyze`.

@@ -54,6 +54,12 @@ On Android 12+ some manufacturers still run device-to-device transfer when `allo
 
 Or write a first-launch migration that clears stale keys.
 
+- If the app should still survive a phone change, replace the silent restore with an explicit backup and restore screen, so the user chooses what comes back.
+  Android Auto Backup keeps one backup per app user, up to 25 MB, in a private Drive folder that the user and other apps cannot read, and each new backup replaces the last (Android Developers, "Back up user data with Auto Backup", read 2026-11-04).
+  One indie habit app's announced Google Drive backup shows a different design: a visible backup list with the date, habit count and device, a "Back up now" button, an export to a file, and a restore dialog that states how many records will replace the current data (maker's promo video, not a shipped build, single report).
+- Before a restore replaces local data, save the current data first as its own restorable copy.
+  The same promo's dialog does this, and it also warns that the saved copy may need repair if it already held damaged data, so do not promise that the safety copy is restorable.
+
 ## 3. `WidgetsBindingObserver` — pause heavy work in background
 
 When the app backgrounds, timers and streams keep running. Battery drain, websocket reconnect storms, and "ghost" notifications follow. Implement the observer in your root state and pause cubits/streams on `AppLifecycleState.paused`.
@@ -62,6 +68,8 @@ When the app backgrounds, timers and streams keep running. Battery drain, websoc
 
 - Force an unhandled error in a `Future.delayed` callback → confirm Sentry receives it.
 - Install on a device with an old version that had a known bad state → confirm clean state on reinstall.
+- If the app offers its own backup and restore, test the round trip on a second device or after a reinstall: back up, wipe, restore, and compare the record counts.
+  Also restore a backup that was made from a state you know is corrupt, and confirm the app either repairs it or refuses with a clear message instead of crashing.
 - Profile battery usage with the app backgrounded for 1 hour → no spikes.
 
 ## Sources

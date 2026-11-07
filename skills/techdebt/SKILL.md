@@ -75,6 +75,9 @@ Create `tasks/techdebt.md` with:
 - Issues found: N critical, N high, N low
 ```
 
+- When several findings share one cause, group them under one proposed fix, written above the findings it solves, each finding with its `file:line`.
+- Keep this grouped list as a decision log in the report, so a long session can resume after compaction without rereading the code.
+
 ### 5. Offer to Fix
 
 After writing the report, ask:

@@ -194,6 +194,11 @@ Make progress impossible to miss.
 Show the 7-day streak, the 18% improvement, and the $143 saved.
 The user should always see that the app is working.
 
+When the user reports their own result, such as "I remembered it", a mood, or "I did it", check what an honest negative answer costs.
+If it costs a streak, a level or earned progress, expect some users to report a better result than the true one, and the app's data and its schedule will rest on those answers.
+Make the honest answer cheap, for example a missed item comes back tomorrow and nothing earned is removed, and keep at least one measure the user does not grade, such as a short quiz or an automatic signal.
+One developer reports this for a self-graded flashcard app and a commenter reports seeing it in other apps, with no data (single reports), so treat it as a design check and not as a measured effect.
+
 ## 5. Write the build spec
 
 Before the spec, fill a one-page Business Model Canvas for the chosen idea, so who pays and how is written down before any code.

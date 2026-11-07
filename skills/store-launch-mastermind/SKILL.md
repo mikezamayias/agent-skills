@@ -25,6 +25,9 @@ Ask or infer, then confirm:
 - App identifiers: bundle ID, package name, SKU, app ID, version/build/version code.
 - Monetization: free, paid, IAP, subscriptions, ads, external physical goods/services.
 - Sensitive features: kids/family, UGC, social, health, location, camera/photos, finance, government, gambling, crypto, VPN, news, AI-generated content.
+- Features that depend on Apple Intelligence or Siri AI: record the regions, languages and OS betas they need, because Siri AI is not available in the EU on iOS and iPadOS, lists six languages, and the Greek app locale is not one of them (Apple pages, Nov 3, 2026 post).
+  Whether a developer located in the EU can test it on an iPhone is a single MacRumors report and not an Apple statement.
+  Check the current Apple pages before planning a launch around them.
 - Data practices: accounts, analytics, crash reporting, tracking, third-party SDKs, data deletion, privacy policy, ToS.
 - Asset state: icons, feature graphic, screenshots, app preview/video, App Store creative assets (product page header, search results), localized listing text.
 - Deadline and risk tolerance.

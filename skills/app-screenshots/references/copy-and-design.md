@@ -177,6 +177,12 @@ Each line stays under 30 characters so it survives the thumbnail test.
 
 ## 6. Deck arc and layout rhythm
 
+- Apple says "the first one to three images will appear in search results when no app preview is available", depending on screenshot orientation (App Store product page, read 2026-11-06).
+  Write slides 1 to 3 so they work as one set in the search result row, with the hero and the outcome in slide 1.
+  When an app preview or a search result creative asset is live, those can replace the screenshots in that row, so check the row on a device before judging slide order.
+- One indie author's rule of thumb is "value in position one" and a story across the first three (X article, 2026-04-18, no conversion data).
+  Treat it as a default to test with Product Page Optimization, not a measured rule.
+
 ### Narrative arc
 
 Every slide serves one deck-level outcome, answered first: what is the user hoping to achieve with this app?

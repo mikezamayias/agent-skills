@@ -62,6 +62,10 @@ This skill owns the signal proof, the watch schedule, the triage rules and the r
      Store-provided crash reports lag by hours to a day, so a round trip may need a second visit before the first daily run.
      A Mac app distributed outside the App Store has no store report.
      Its crash sources are the SDK, user-sent reports and `~/Library/Logs/DiagnosticReports`, so name which one the watch reads.
+     A crash tool that records sessions or screenshots (Measure, for example, per its docs) also needs the masking check on the first release-mode crash.
+     Open the replay or screenshot of the test crash and confirm that password, email, balance and other personal fields are hidden.
+     Per Measure's docs, masking is on device and automatic for Android views and UIKit, the whole SwiftUI hosting view is masked unless a view is unmasked, and Flutter custom-drawn content needs the tool's mask wrapper.
+     The docs also say crash screenshots are not supported on iOS and ANR screenshots do not exist on Android 11 and later, so an empty screenshot there is expected (vendor docs, read 2026-11-05, not tested).
    - Email: if the app sends lifecycle email, trigger the welcome sequence with a test address and check the trigger, delay, links, sender domain and unsubscribe link.
      Mark the channel N/A when the app has no accounts or email.
    - Feedback: confirm users can reach a feedback channel from inside the app in two taps or fewer, and that a test submission lands where the watch can read it.

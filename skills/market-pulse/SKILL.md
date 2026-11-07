@@ -4,7 +4,7 @@ description: >-
   Runs a market analysis for an app or product: competitor audit, market sizing, pricing benchmarks and MAU forecasts. Also produces revenue projections, ROI estimates and go-to-market recommendations. Use for market research, competitive or landscape analysis, revenue projections or app launch strategy.
 ---
 
-# Market Pulse — App Market Analysis
+# Market Pulse - App Market Analysis
 
 Run a structured, parallelized market analysis that produces actionable intelligence.
 
@@ -12,16 +12,16 @@ Run a structured, parallelized market analysis that produces actionable intellig
 
 A single markdown report per app at the user-specified path (default: `market-pulse/{app-name}.md`) containing:
 
-1. **Executive Summary** — One-paragraph verdict
-2. **Market Sizing** — TAM, SAM, SOM with sources and methodology
-3. **Competitor Landscape** — Top 10 competitors with feature matrix
-4. **Pricing Benchmark** — Category pricing norms, recommended strategy
-5. **Projected Metrics** — MAU, DAU, retention, revenue (Month 1/3/6/12)
-6. **ROI Analysis** — Dev cost estimate vs projected revenue, break-even timeline
-7. **Channel Strategy** — Launch channels ranked by expected ROI
-8. **Price Localization Strategy** — Top 10 markets, PPP-adjusted pricing, psychological thresholds, recommended custom price tiers per storefront
-9. **Risk Matrix** — Top 5 risks with mitigation strategies
-10. **Recommendations** — Prioritized next steps
+1. **Executive Summary** - One-paragraph verdict
+2. **Market Sizing** - TAM, SAM, SOM with sources and methodology
+3. **Competitor Landscape** - Top 10 competitors with feature matrix
+4. **Pricing Benchmark** - Category pricing norms, recommended strategy
+5. **Projected Metrics** - MAU, DAU, retention, revenue (Month 1/3/6/12)
+6. **ROI Analysis** - Dev cost estimate vs projected revenue, break-even timeline
+7. **Channel Strategy** - Launch channels ranked by expected ROI
+8. **Price Localization Strategy** - Top 10 markets, PPP-adjusted pricing, psychological thresholds, recommended custom price tiers per storefront
+9. **Risk Matrix** - Top 5 risks with mitigation strategies
+10. **Recommendations** - Prioritized next steps
 
 ## Workflow
 
@@ -29,14 +29,14 @@ A single markdown report per app at the user-specified path (default: `market-pu
 
 Spawn 4 research agents simultaneously:
 
-**Agent 1 — App Store Intelligence:**
+**Agent 1 - App Store Intelligence:**
 
 - Search App Store/Play Store for top 20 apps in the category
 - For each: name, rating, review count, price, IAP model, last updated, estimated downloads
 - Use `web_fetch` on App Store search URLs and competitor pages
 - Check sites: sensortower.com/blog, appfigures.com/resources, data.ai for public reports
 
-**Agent 2 — Competitor Deep Dive:**
+**Agent 2 - Competitor Deep Dive:**
 
 - For top 10 competitors: feature list, pricing tiers, review sentiment, App Store description
 - Check Product Hunt launches, TechCrunch/press coverage
@@ -46,14 +46,14 @@ Spawn 4 research agents simultaneously:
   - New ads suggest new angles, killed ads suggest losers, and a drop in launch rate may mean harvest mode
   - Harvest mode is an inference from one example in a third-party repo created about 2026-10-18, so label it "Likely" and not as a finding
 
-**Agent 3 — Market Sizing & Trends:**
+**Agent 3 - Market Sizing & Trends:**
 
-- Research category market size (reports from Statista, Grand View Research, IBISWorld — use public summaries)
+- Research category market size (reports from Statista, Grand View Research, IBISWorld - use public summaries)
 - Search for "[category] app market size 2025 2026"
 - Check Google Trends for category keywords
 - Identify growth rate and trajectory
 
-**Agent 4 — Monetization & Pricing Research:**
+**Agent 4 - Monetization & Pricing Research:**
 
 - Research category pricing norms (% free, freemium, paid, subscription)
 - Average subscription price in category
@@ -122,23 +122,26 @@ Write the report, present key findings to user. Include:
 
 Apply these proven conversion tactics when making recommendations:
 
-1. **Rating before paywall** — Prompt for App Store rating BEFORE showing the paywall. Users 1-star when they hit a paywall cold. Get the 5-star review first, then show pricing.
-2. **Killer onboarding** — Show value in under 30 seconds. Don't explain features, show outcomes. Make them feel success before asking for anything.
-3. **Free trial with card required** — Removes freeloaders, pre-qualifies serious users. Increases conversion ~3x vs no-card trials.
-4. **Weekly pricing tier** — Monthly and yearly isn't enough. Weekly lowers commitment fear and converts users who want to "test" before going long-term. Always recommend a weekly option alongside monthly/yearly.
+1. **Rating timing** - Ask for the rating after a win in the main app, never during onboarding and not on the way to the paywall.
+   The rule, Apple's caps and the rejection risk are in [Paywall conversion flow](../paywall-conversion-flow/SKILL.md), order step 2.
+2. **Killer onboarding** - Show value in under 30 seconds. Don't explain features, show outcomes. Make them feel success before asking for anything.
+3. **Free trial with card required** - Removes freeloaders, pre-qualifies serious users. Increases conversion ~3x vs no-card trials.
+4. **Weekly pricing tier** - Monthly and yearly isn't enough. Weekly lowers commitment fear and converts users who want to "test" before going long-term. Always recommend a weekly option alongside monthly/yearly.
 
 Include a **Conversion Strategy** section in every report evaluating how the app can apply each of these, with specific UX recommendations.
 
 ## Tips
 
-- For niche apps, the TAM is small — adjust SOM expectations
+- For niche apps, the TAM is small - adjust SOM expectations
 - Health/fitness apps have high competition but also high willingness-to-pay
 - Finance apps have highest ARPU but strictest regulation
 - Always benchmark against BOTH direct competitors and adjacent apps
 - If no public data exists, estimate from App Store review counts (reviews ≈ 0.5-1% of downloads)
-- Use conservative estimates — better to exceed projections than miss them
+- Use conservative estimates - better to exceed projections than miss them
 - A third-party revenue estimate is a model output and not a store figure, so quote the vendor and the date and never present it as a niche average.
   One vendor's terms disclaim that its data is "complete, accurate, or up-to-date" (appkittie terms, appkittie.com/terms, read 2026-10-30).
+- A second vendor says the same in its README: revenue and download figures are estimates, "useful for orders of magnitude and for comparing apps against each other", and "not accounting", and "< $5k" means below 5,000 a month and not zero (Peekly README, read 2026-11-04).
+  Its paywall search filters by that estimate (`min_revenue`), so a "$100K MRR" selection in an agent prompt means "estimated above 100,000" and the post that used it showed no result.
 - A range such as "$40K to $11M" across six apps is a spread, and its top end belongs to one app.
   Plan on the low or middle of the range, and check the claim against the infographic's footer before repeating a headline figure.
 - **Currency conversion ≠ price localization.** Auto-converted prices often miss psychological thresholds and local purchasing power. Always recommend custom price tiers for top 5-10 markets. A $4.99/mo sub auto-converts to ~₺179.99 in Turkey, but ₺149.99 may convert 2-3x better.

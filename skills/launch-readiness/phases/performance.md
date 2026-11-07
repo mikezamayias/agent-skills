@@ -72,6 +72,10 @@ Flag sorting, filtering, formatting or I/O inside SwiftUI `body` and Compose fun
 Flag views that read a whole `@Observable` model for one property, and `LazyColumn` items without `key`.
 `const` checks are Flutter only.
 Measure on release builds with Instruments (`xcrun xctrace`) or Android profiling.
+For a hitch in scrolling, swiping or an animation on iOS, record the `Animation Hitches` template, for example `xcrun xctrace record --template 'Animation Hitches' --device <name or UDID> --attach <app name> --time-limit 30s --output <file>.trace`, while doing the slow gesture by hand.
+Apple rates a hitch rate at or below 10 ms/s as good, at or below 25 ms/s as a warning, at or below 50 ms/s as critical and above 50 ms/s as needing immediate attention (Apple "Understanding hitches in your app", read 2026-11-03, the figures are for the Xcode Organizer Hitches metric).
+For a hang, record with the Hangs and Time Profiler instruments and run `xcrun xctrace triage <file>.trace --style hangs`, which lists each hang with what the main thread was doing (Xcode 27.2 tool help, read 2026-11-03, not run on a trace, older Xcode not checked).
+Apple says fixing the hangs in an area is likely to remove many of its hitches, so triage hangs first.
 
 ## Severity Rules Summary
 

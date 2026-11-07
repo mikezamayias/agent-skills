@@ -52,6 +52,8 @@ Future<void> loadData() async {
 2. **Guard immediately after the await** - before any other logic
 3. **Use `return`, not `throw`** - silently bail out, the cubit is already disposed
 4. **Also guard `refresh()` methods** - they typically call the load method internally
+5. **The widget that awaits a cubit method needs its own guard.**
+   After `await cubit.save()`, check `context.mounted` before `Navigator.pop(context)` or a SnackBar, because `isClosed` protects the cubit and not the `BuildContext`.
 
 ## Common Patterns
 

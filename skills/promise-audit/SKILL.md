@@ -53,6 +53,9 @@ Typical gaps:
 Walk the spec for anything that touches personal data or acts on a person, and check the texts cover it:
 
 - every processor (vendor) and the country its data sits in
+  A crash or session-replay SDK is a processor that receives screens, taps, network calls and device data, so list it with the replay window and the masking level.
+  If the tool offers an AI agent, ask which model provider receives the telemetry, because a vendor's policy may not name it.
+  A keyword search of Measure's cloud policy found no model provider named, and its self-hosting guide routes the agent through OpenRouter with the operator's own key (read 2026-11-05, the policy only partly read).
 - every data category, including derived data such as scores, flags, and inferences
 - every automated decision that acts on someone before a human reviews it, for example account suspension, content filtering, or automated holds
   The GDPR requires these to be disclosed, with a way to ask for a human review.
@@ -60,6 +63,11 @@ Walk the spec for anything that touches personal data or acts on a person, and c
 - every retention period and every place data is copied to, including backups
 - special-category data, such as health or biometric data, and the consent that covers each use of it
   A new use of it is a new purpose, so it needs new consent text.
+- every entity property an app exposes to a system assistant, Spotlight or Shortcuts
+  With App Intents, a property is readable by Siri unless it declares `visibility: .internal`, and a property is read aloud without an unlock unless it declares an `authenticationPolicy`.
+  Apple's default is that entities "don't require authentication before Shortcuts or Siri present entity information", and a property-level policy "only applies to responses Siri provides", so a tool's return value needs its own policy.
+  Check what a `Transferable` export puts in the text that Siri hands to another app.
+  Test: read each entity's properties in the source and list which ones a passerby could hear from a locked phone (Apple App Intents pages, read 2026-11-07, not tested on a device).
 
 Anything missing is a `gap` in the other direction.
 

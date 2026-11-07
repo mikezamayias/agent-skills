@@ -15,7 +15,7 @@ metadata:
 ## Principle
 
 Founders fear that reminding users about charge dates causes cancellations.
-Opposite is true — users who want to cancel will cancel regardless. Users
+Opposite is true - users who want to cancel will cancel regardless. Users
 who trust you convert at much higher rates.
 
 ## When to invoke
@@ -26,9 +26,9 @@ who trust you convert at much higher rates.
 
 ## The 2 screens
 
-1. **"Here's exactly what you get"** — concrete feature list with checkmarks,
+1. **"Here's exactly what you get"** - concrete feature list with checkmarks,
    ≤7 items, plain language.
-2. **"Here's exactly when you'll be charged"** — trial timeline: today free
+2. **"Here's exactly when you'll be charged"** - trial timeline: today free
    → reminder 2 days before charge → charge with localized price.
 
 ## Implementation checklist
@@ -59,7 +59,17 @@ who trust you convert at much higher rates.
   Example from one X thread (single report): "SAVE 88%" on a $39.99 yearly plan beside a $6.99 weekly plan.
   The weekly price over 52 weeks is $363.48 and the true saving is 89.0%, while 88% matches a 48-week year, so the badge uses an unstated period (arithmetic).
   A reply shows a lifetime plan at $39.99 with a struck-through $363.48, which is 52 weeks of the weekly plan, a price no plan on that screen charges as a single amount.
+  Two paywalls from one author (X article, 2026-04-18, screens read) compute the struck-through yearly price as the weekly price times 365 divided by 7, which is 52.14 weeks.
+  $5.99 gives $312.34 with "SAVE 90%" (true saving 90.4%) and $6.99 gives $364.48 with "SAVE 89%" (true saving 89.0%).
+  The badge is then honest for a 365 day year, but no plan charges the struck price and the screen does not say what it compares with.
+  Use 365/7 and not 52 weeks when you check such a badge, because 52 weeks gives $311.48 and $363.48 and a 1 dollar mismatch (arithmetic).
   State the comparison in words next to the figure, and compute it from the real billing period.
+- A free trial switch on the paywall that changes which plan is selected.
+  Superwall's post of 2026-06-03 says Apple does not allow "free trial toggles on paywalls" because a switch can silently swap the selected product (secondary source, which says it is not an official guideline and cites no Apple text).
+  The App Review Guidelines text read on 2026-11-06 does not contain the word "toggle", but the last part of the page, which includes 5.6, was not read, so the absence is not proven.
+  One reply on an X thread reports a paywall with a "Free trial enabled" switch being rejected (single report).
+  Attach the trial to a plan card and name the price that follows it on the card and under the button, and do not add a switch.
+  If the switch stays, describe the pair in the review notes and compare the rejection risk with the test value (inference).
 - A low introductory price shown much larger on screen than the renewal price, on a plan that renews weekly.
   Apple's Guideline 5.6.4 names "excessive refund requests" among the signs of poor quality and says poor quality "may be a factor" in judging conduct under the Developer Code of Conduct, with no threshold (Apple guidelines, read 2026-10-24).
   It does not name intro offers, so reading it as a rule against this pattern is an inference.
@@ -71,6 +81,10 @@ who trust you convert at much higher rates.
   A layout that makes the intro price the largest number and the renewal price small and grey rests only on the "Full renewal price, shown clearly and prominently" requirement, and a reviewer can read it either way (inference).
   One reply in an X thread (single report, 2026-10-24) predicts a flag for this exact layout, and another reports rejections "for way less" (single report).
   Keep the renewal price as legible as the introductory price and track refund rate per plan.
+- A vendor's list of 101 paywall tests (Helium, X article, 2026-08-17) advises showing the yearly plan as a monthly price while writing the full annual price "the same size or larger", and keeping the price "one of the smallest components" on the page (items 60 and 64, unsourced).
+  Apple's Auto-renewable Subscriptions page says the billed amount must be the most prominent pricing element and a breakdown price should be subordinate in position and size (read 2026-11-03), so "the same size" and "one of the smallest components" do not follow Apple's text.
+  The article's own screenshot of a large "$9.58 / month" above a small "$114.99 per year, billed annually" shows the layout Apple's text discourages, and no outcome is shown for it.
+  Show the per-month figure smaller than the billed annual price, and do not copy a competitor's paywall layout as proof that it passes review.
 
 Do not treat another developer's "it passed review" as proof that a paywall is allowed.
 One reply describes reviewers as inconsistent (X reply, 2026-10-24, single report), and a thread of 12 replies showed no Apple message or screenshot approving the layout in question.

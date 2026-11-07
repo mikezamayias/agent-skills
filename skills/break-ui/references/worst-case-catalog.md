@@ -96,15 +96,16 @@ These strings have no spaces, so text layout has nowhere to wrap them.
 
 ## Time
 
-| Value                                                  | What it tends to break                                                  |
-| ------------------------------------------------------ | ----------------------------------------------------------------------- |
-| Now                                                    | "0 seconds ago" instead of "just now"                                   |
-| 12 days, 11 months, 3 years ago                        | Relative-time thresholds, switch to an absolute date after about a week |
-| A future date                                          | "-3 days ago"                                                           |
-| `1970-01-01`                                           | A zero timestamp shown as a real date                                   |
-| `2026-10-25T03:30:00+03:00` (Europe/Athens DST change) | Off-by-one-day and duplicated or missing hours                          |
-| A Greek date in a sentence                             | Month genitive (`3 Μαρτίου`), hand-built strings get it wrong           |
-| A duration of 1,284 hours                              | Never rolls up to days                                                  |
+| Value                                                                               | What it tends to break                                                                                            |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Now                                                                                 | "0 seconds ago" instead of "just now"                                                                             |
+| 12 days, 11 months, 3 years ago                                                     | Relative-time thresholds, switch to an absolute date after about a week                                           |
+| A future date                                                                       | "-3 days ago"                                                                                                     |
+| Paging a calendar or timeline fast, five years past today, with hundreds of entries | Per-page work that starts again on every page change, totals recomputed during the swipe, overlapping transitions |
+| `1970-01-01`                                                                        | A zero timestamp shown as a real date                                                                             |
+| `2026-10-25T03:30:00+03:00` (Europe/Athens DST change)                              | Off-by-one-day and duplicated or missing hours                                                                    |
+| A Greek date in a sentence                                                          | Month genitive (`3 Μαρτίου`), hand-built strings get it wrong                                                     |
+| A duration of 1,284 hours                                                           | Never rolls up to days                                                                                            |
 
 ## Media
 

@@ -142,6 +142,15 @@ Each run:
    The Google pages read do not say whether a service-account email can be added as a property user, so confirm that in Search Console before relying on it.
    The API returns only finalized data when `dataState` is omitted, and `dataState` "all" returns fresh data that can still change, so compare complete days only.
    Give any status flag a minimum click count, and add a "flat for N weeks" status, because a percentage rule flags a site with 4 clicks as rising and a week-over-week rule misses a site that went to zero long ago (inference).
+   3d. A second query source: Bing Webmaster Tools.
+   Bing's Search Performance, Page details view lists the keywords a page got impressions for, with impressions, clicks, CTR and average position, and a "Download all" link (X post screenshot, 2026-11-06).
+   Google omits anonymized queries, which are those issued by no more than a few dozen users over two to three months, from the Search Console tables while keeping them in the chart totals, and caps the interface export at 1,000 rows (Google Search Central blog, read 2026-11-07).
+   So a long tail page can show more rows in Bing than in Search Console, which is why one founder says some pages have data only in Bing (their claim, with no Search Console screenshot beside it).
+   Keep the two sources in separate columns and never add their impressions, because the engines count differently and have different audiences (inference).
+   Match the date range of both exports before comparing them.
+   For several pages, `GetPageQueryStats(siteUrl, page)` in the Bing Webmaster API returns query, impressions, clicks and average positions per page and needs an API key made in Bing Webmaster Tools.
+   Microsoft's page says its data "will be updated every week", and the pages read give no rate limit, so check the response for throttling before scheduling a daily call (Microsoft Learn, read 2026-11-07, not run).
+   Bing's report range is 24 months in several guides and 6 months on Microsoft's older help page, so read the range selector in the property before assuming a trend line.
 4. AI answers: ask each assistant every question in `ai-prompts.md` at least 3 times, because answers vary run to run.
    The repeat count is our sampling rule, not vendor guidance.
    Count a source or a mention only when it recurs, and report the mention rate, not one answer.
@@ -199,6 +208,9 @@ Each run:
    They allow paid links only when qualified with `rel="nofollow"` or `rel="sponsored"`.
    Google's spam policies (read 2026-10-31, updated 2026-08-28) also list "Excessive link exchanges ("Link to me and I'll link to you") or partner pages exclusively for the sake of cross-linking" as link spam.
    They give no number for "excessive", so a reciprocal swap arranged by a tool or a network for ranking is the risky case, and one link between two sites that have a real reason to cite each other is not what the line describes (the last clause is our reading).
+   Google's spam policies (read 2026-11-03) also list "Low-quality directory or bookmark site links" and "Widely distributed links in the footers or templates of various sites" as link spam.
+   Google gives no number and no list of acceptable directories, so a bulk submission to dozens of directories for ranking is the risky case, and a listing a real audience uses (a launch site, a comparison site, a community) is chosen for its readers.
+   A directory that makes you place its badge on your site for a free link is a reciprocal link, and the "Excessive link exchanges" line applies to it if the purpose is ranking (inference).
    A source that ranks "exchange relevant editorial links" first and sells an exchange network, as one 2026-10-30 list did, is advertising its product category, so do not rank tactics by that source's order.
 
 Seed plan for a new app site, from a video by Dan Kulkov endorsed by pfernan95dev (2026-10-19, narration only, no results shown, the "working for a month" claim is self-reported and unverified):
@@ -259,6 +271,10 @@ Comparison pages ("X alternatives", "app vs X") must say where the competitor is
 - Publish pages per fan-out query variant mainly to manipulate rankings or AI responses.
   Google's scaled content abuse policy covers many pages made mainly to manipulate rankings, whatever the production method.
   Applying it to fan-out pages is our inference, because the spam policy page does not use the term.
+- Ask a model to merge the headings of the top three results into one "improved outline" and write the article from it.
+  That output is the union of what already ranks and adds nothing the gap rule in step 3 asks for.
+  An X post (2026-10-31) presents this as step three of a recipe to get recommended in ChatGPT and shows no page that was recommended, so the outcome is unsupported.
+  Google's generative AI page says many pages made this way without added value may violate its scaled content abuse policy (read 2026-11-02).
 - Re-request indexing for the same URL every day.
   Google says repeated requests do not crawl it faster, and the tool has a quota.
 - Use the Google Indexing API, or tools built on it, for app or marketing pages.

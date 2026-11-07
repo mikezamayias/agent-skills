@@ -31,6 +31,9 @@ steps:
   - run: dart run tool/shard_tests.dart --index ${{ matrix.shard }} --total 3
 ```
 
+Where a Flutter package already runs `very_good test` and is on Dart 3.13 or later with very_good_cli 1.6.0 or later, use its `--shard-index` (1-based) and `--total-shards` flags in the matrix before writing a script.
+Keep a custom `tool/shard_tests.dart` only for the cases the flags refuse, which are `--no-optimization`, `--platform`, `--update-goldens`, named test files and `--min-coverage`.
+
 A 10-line bash pipe is still fine. This skill starts when the script has branches.
 
 ## Sources

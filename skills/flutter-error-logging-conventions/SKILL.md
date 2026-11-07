@@ -135,6 +135,20 @@ Future<void> _initSettings() async {
 }
 ```
 
+### After any await in a widget
+
+- Check `mounted` before `setState` after every await, not only in `initState` paths.
+- Use `context.mounted` before `Navigator`, `ScaffoldMessenger`, `showDialog` or any other use of a `BuildContext` after an await.
+  Inside a `State`, the `use_build_context_synchronously` lint accepts the State's `mounted` for the State's own `context`.
+  For a `BuildContext` passed in or held in a local variable, it requires that context's own `mounted` (dart.dev lint page, read 2026-11-03).
+- Do not wrap `setState` in a try/catch to silence "setState() called after dispose()".
+  The framework throws that error inside an `assert`, so it appears only in debug and profile builds.
+  A release build skips it and fails later on `_element!.markNeedsBuild()`, so a catch hides a real failure (inference from reading `framework.dart` on master, read 2026-11-03).
+- Prefer cancelling the timer, animation listener or stream subscription in `dispose()`, which the framework's own error text calls "the preferred solution".
+  `mounted` is the fallback for a one-shot Future that cannot be cancelled.
+- The `mounted` check stops UI work and does not cancel the request or its side effects, so do not rely on it for a payment or verification call that must finish.
+  One reply on the source post reports a crash in a payment flow when the user left the screen mid verification call (single reply report).
+
 ## Sources
 
 - <https://dart.dev/effective-dart/usage#error-handling>

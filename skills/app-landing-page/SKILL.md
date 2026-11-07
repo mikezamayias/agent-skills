@@ -144,6 +144,9 @@ Constraints:
 - Mobile-first responsive (works at 375×667).
 - One primary CTA on the page; secondary CTAs allowed but visually subordinate.
 - If the page receives TikTok or Instagram bio traffic, the primary CTA must still work inside their in-app browser. Add a full-screen overlay with an arrow to the ••• menu and "Tap ••• → Open in browser", and keep a visible Download button. One founder's claim (2026-10-20), untested, see the link-in-bio notes in `ship-first-dollar-app` references/distribution-channels.md.
+- A page that gets social link traffic can be mostly phone.
+  One developer-tool founder reports 82 percent mobile, 17 percent desktop and 1 percent tablet visitors after an X link post, and attributes a rise in bounce rate to it (single report, the attribution is theirs and untested).
+  Check the primary CTA and the first screen at phone width, and read the mobile share for each traffic source in the analytics after launch.
 - Real copy only. No "Lorem ipsum", no placeholders.
 - No marketing puffery: no "transformative", "revolutionary", "the best", "simplify your life", "unlock the power of". Write headlines in plain, specific language.
 - No AI-copy tells: no "where X meets Y", no "not just X but Y", no "scroll to explore", and no "hover" in copy a touch visitor reads.

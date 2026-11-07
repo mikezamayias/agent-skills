@@ -20,7 +20,7 @@ Most indies lose conversion by following the wrong order.
    A first-hand reply reports that App Review rejected a similar screen.
    He says none of the 5 one-star raters he tracked subscribed, but Apple never reveals who rated, so any claim about raters needs another method.
    Judge the placement by paid conversion, not by rating count.
-3. **Hard paywall AFTER a success event** — never on launch, never on tab switch. Wait for: streak day 3, first export, first AI generation, first item saved.
+3. **Hard paywall AFTER a success event** - never on launch, never on tab switch. Wait for: streak day 3, first export, first AI generation, first item saved.
 4. **Free trial requires card on file.** It removes freeloaders and raises trial-to-paid conversion.
    In First Page Sage's SaaS benchmark (86 companies, 2022-2025), card-required trials converted 48.8% to paid vs 18.2% for cardless, but visitor-to-trial fell from 8.5% to 2.5%, so judge the whole funnel, not trial-to-paid alone.
    Make the cancel path easy to keep ratings intact.
@@ -161,12 +161,31 @@ Do not add RevenueCat to a native app that has no third-party dependencies unles
 - Yearly-only pricing with no escape hatch for low-trust buyers.
 - A weekly plan whose annualized price is above about 10 times the yearly price as the headline plan (my heuristic, not from Apple or any source). If you test it, show the weekly price, the billing period and the trial end date, and describe what the user gets for the price, as Guideline 3.1.2(c) requires.
   The $6.99 weekly and $39.99 yearly pair on one founder's X paywall is 9.1 times, so a 10 times line would not flag it (arithmetic).
+  The $5.99 weekly and $29.99 yearly pair on one indie's paywall is 10.4 times (312.34/29.99, arithmetic), so a 10 times line flags it, while a $6.99 and $39.99 pair is 9.1 times and does not.
+  That author reports weekly $5.99 to $7.99 and yearly $29.99 to $59.99 with no conversion figure (X article, 2026-04-18, single report).
   Read the heuristic as a floor for suspicion, not a pass.
 - Replacing the concrete feature list with an outcome headline as the default.
   Keep the list, as in [Paywall transparency](../paywall-transparency/SKILL.md), and treat an outcome headline as an A/B test idea with no data behind it.
   One founder (X post, October 2026) says selling the result instead of listing features raised conversion "immediately", with no figure or sample size.
   A reply gives one example, "on-device AI reads your receipt" becoming "you're in the shop, do you still have milk?", also with no data.
   Test the headline with the feature list kept below it, and judge it on paid conversion per paywall viewer.
+  A second founder (X post, 2026-11-06) says a paywall headline built from the goal the user tapped in onboarding doubled conversion from 5% to 10%, for example "Start losing weight today" after the goal "lose weight".
+  In a reply, the founder says it ran for some weeks over more than 1,000 customers or views and that the goal line was the only change, and gives no arm sizes, no metric definition and no retention figure (single report, unverified).
+  A reply asks whether buyers on the new headline stayed as long, and no answer was captured.
+  If you test it, keep the generic headline as the control, keep price, trial and plan lines the same in both arms, and read paid conversion per paywall viewer, then refund rate and first renewal rate by arm.
+- A goal-driven headline needs three decisions before it ships.
+  Write one phrase per goal option that reads well in the template, because the option label alone may not.
+  Decide what shows when the user skipped the step, picked several goals or picked "other", and use the generic headline for all three.
+  Do not state a health or weight result as a promise, because Guideline 1.4.1 reviews medical apps that could give inaccurate information with greater scrutiny, and a call to start ("Start ... today") is safer than a result (inference).
+- A goal the user tapped in your own onboarding may drive your own paywall copy, but data from HealthKit or another health source may not be used for marketing under Guideline 5.1.3(i), and Guideline 5.1.2(ii) says data collected for one purpose "may not be repurposed without further consent".
+  Say in the privacy policy that onboarding answers personalise the app, and check the wording with `promise-audit` (the guideline text does not settle whether this counts as repurposing, so this is a precaution).
+- RevenueCat Paywalls can fill the line at runtime.
+  Create a custom variable such as `goal_phrase` with a default of the generic headline, write `{{ custom.goal_phrase }}` in the headline text, and pass the value when the paywall is shown.
+  In Flutter that is `customVariables: {'goal_phrase': CustomVariableValue.string(phrase)}` on `RevenueCatUI.presentPaywall(...)` or `PaywallView(...)`, which needs `purchases_ui_flutter` 9.12.0 or later.
+  In SwiftUI it is `.customPaywallVariables(["goal_phrase": .string(phrase)])`.
+  When no value is passed, the editor default is shown, so a skipped goal falls back to the generic headline by itself (RevenueCat docs, read 2026-11-07).
+  The pages read give no minimum SDK version for iOS, so check the changelog before relying on it.
+  RevenueCat Experiments can test paywall copy and is limited to Pro and Enterprise plans, and the pages read do not say how to split by a runtime variable, so the simplest control is two offerings, one with the variable and one without (inference, not tested).
 - Paragraphs on the paywall. Keep each plan to a price, a period and one concrete line.
 - Abstract value claims. Anchor the price to something real instead ("€49 is three takeaways").
 - Fake countdowns or a price that only appears after tapping.
@@ -179,6 +198,11 @@ Do not add RevenueCat to a native app that has no third-party dependencies unles
   In the US, 16 CFR 465.2 makes it an unfair or deceptive practice for a business to write, create or sell a consumer review or testimonial that materially misrepresents that the reviewer exists or used the product, and 465.4 bars compensation for reviews that express a particular sentiment (eCFR, read 2026-10-25).
   Apple's side is in [Flutter paywall and review timing](../flutter-paywall-and-review-timing/SKILL.md).
   Use quotes and ratings that can be shown to a regulator, and say where an invited review came from.
+- Check a rating badge on the paywall against the live store rating before release.
+  The iTunes Search API returns it, for example <https://itunes.apple.com/lookup?id=APP_ID&country=us>, in `averageUserRating` and `userRatingCount` (public JSON, a read-only request).
+  One indie's paywall shows "4.7 App Store" while the US listing returned 4.41 from 17 ratings on 2026-11-06, and a second shows "4.9" against 4.69 from 202 ratings (the badges are from April 2026 screenshots, so the difference is a caveat and not proof).
+  I found no Apple rule on rating badges, so reading a higher badge as misleading is an inference.
+  Show the number from the store's data or write the date and storefront next to a fixed number.
 
 ## Audit checklist (use before each release)
 
@@ -190,6 +214,9 @@ Do not add RevenueCat to a native app that has no third-party dependencies unles
 - [ ] Native iOS: `Transaction.updates` is listened to at launch and every transaction is finished after delivery.
 - [ ] Native Android: purchases are acknowledged within 3 days and `queryPurchasesAsync` runs at startup.
 - [ ] Restore Purchases link is on the paywall (App Review Guideline 3.1.1 requires a restore mechanism for restorable purchases, and the paywall placement builds trust).
+- [ ] The paywall fits the smallest and the largest phone you support and an iPad, and a long paywall keeps its main button visible while scrolling (a vendor list of 101 paywall tests, Helium X article of 2026-08-17, items 7, 24 and 25, unsourced advice with no measured effect, but each is a layout failure you can see on a device).
+- [ ] While the purchase call is awaiting the store, the screen shows progress and the close control is disabled, and both return on any result, including `.pending` (Ask to Buy or a payment that needs approval), because a pending purchase can stay unresolved for days and completes later through `Transaction.updates` or `PurchasesUpdatedListener`.
+      The disabled close applies only to the window between the tap and the call returning (my reading of item 6 in the same list, an inference), because disabling close until a pending purchase resolves would lock the user out.
 
 ## Onboarding flow reference
 
@@ -197,6 +224,8 @@ A high-performing onboarding structure to pair with the order above:
 
 1. Value screens or an instant first win, with progress indicators and Skip.
 2. Goal and motivation questions ("why are you here?", multi-select chips) so the experience feels tailored early.
+   Store each answer so a later screen can use it.
+   The paywall headline is one use (see the goal-driven headline test in the anti-patterns above), and the stored answer must tolerate multi-select and a skipped step.
 3. Personalized result, recommendations or community previews based on the answers.
 4. Optional account creation, one-tap social or pre-filled, with a visible Skip.
 5. Soft premium upgrade with clear benefits and trial (this is the "after value" slot from the order above).
@@ -303,6 +332,15 @@ These are unverified secondhand figures, which the article itself marks "reporte
   Use `CANCELLATION` with `cancel_reason` `UNSUBSCRIBE` ("fires when a user unsubscribes, not when the subscription expires") for a user who turned auto-renew off, and exclude `CUSTOMER_SUPPORT` and `BILLING_ERROR`, since refunds can fire `CANCELLATION` while auto-renew is still on (RevenueCat event types page, read 2026-11-02).
   Compare the same weekly cohorts with and without the change, and read the paid-renewal rate at the first renewal, because a yearly plan shows its first real cancel decision a year later.
   A retention claim without a cohort, a plan length and a cancel definition is not a result.
+- Treat a vendor's test list as a backlog and not as evidence.
+  One 101-item list (Helium, X article, 2026-08-17) gives no sample, period or revenue figure for any item, and its customer quotes are anonymous.
+  Its numbers that you could be tempted to plan on are unsourced: "70-80%" of conversions through onboarding, "10-20%" from centering a paywall on a feature, and a customer test that "made more than 15-times Helium's costs".
+  The only sourced onboarding timing figure in this file is RevenueCat's 50.6% of download-to-paid conversions on Day 0, and it measures something different.
+- Price tests are the item that list stresses most.
+  Test the price and the annual discount rate separately from the plan layout, and test the main storefronts, because the list says Apple's default regional prices leave value on the table (unsourced).
+  Per-territory prices are set with `asc-ppp-pricing`.
+  Show a trial only to a user who is eligible, since Apple limits each person to one introductory offer per subscription group and `isEligibleForIntroOffer` already returns that, so "remove the trial for existing users" is partly enforced by the store (the list's "existing users" is ambiguous).
+- Vary the CTA text and the testimonials by language and region (an unsourced idea from the same list), and have `translation-audit` check each language so a test copy is not a machine translation drift.
 
 ## When in doubt
 

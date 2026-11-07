@@ -27,6 +27,10 @@ Before creating files, identify:
 
 Domain tests import no Flutter, database, network or generated DTO code.
 
+A domain rule that depends on the current time takes `now` as an argument, or an injected clock, and never calls `DateTime.now()` inside the rule.
+Then its test passes a fixed `DateTime` and needs no fake timers.
+Example: a scheduling rule `ReviewState grade(ReviewState s, bool remembered, DateTime now)` returns a new state and reads nothing else.
+
 ## Phase 2: Data package
 
 1. Add fixtures under `<feature>_data/test/fixtures/`.

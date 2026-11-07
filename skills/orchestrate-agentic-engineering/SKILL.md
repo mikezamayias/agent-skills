@@ -103,6 +103,8 @@ For each work item record:
 
 - Outcome and owner.
 - Inputs and dependencies.
+  For each dependency, mark it hard (the item cannot start or be judged without it) or soft (the item is better with it but can start without it), and give a one-line reason.
+  A dependency with no reason is a guess, so write the reason or drop the edge.
 - Allowed files or system boundary.
 - Acceptance checks.
 - Branch/worktree or execution context.
@@ -112,6 +114,10 @@ For each work item record:
 - Timeout for the handoff, and whether repeating it is safe.
 
 Parallelize only independent nodes. Define integration owner where contracts meet.
+
+- A soft dependency does not block dispatch, so a soft-blocked item can start in parallel and be reconciled at the integration owner.
+  Check the graph has no cycle before dispatch.
+  Two alternative routes to the same input are not expressible as hard edges, so write them as one node with an "either of these" input and not as two hard edges (this OR rule is our own suggestion and is not in the source).
 
 ### 6. Dispatch bounded implementation
 
@@ -349,6 +355,11 @@ Authority still needed:
 - Route the review to a reviewer that did not write the change, with the raw diff and the task contract.
   Put every finding through a fix round with its own review.
   The orchestrator does not wave findings through.
+- Ask the reviewer to state, for each passing check, what it proved and what it did not prove, whether a test repeats the same mistake as the code, and what would have to be true for the change to be wrong.
+  End the review with "did we miss anything?", because a frontier model often returns more items on that second ask (one Claude Code team member's report, Addy Osmani, read 2026-11-05, unmeasured).
+- Ask the implementer to list the decisions and assumptions it made, namely the defaults it picked, what it left out and which requirement it reinterpreted when two clashed, and read that list before the summary.
+- Read the command and its output before the agent's summary.
+  A green check proves one property, so ask what it checked.
 - When a helper restarts after a crash or a limit, tell it to inspect the working tree first and continue from it.
 - When the same slip returns in round after round, fix its source (a pinned tool, a check that fails) instead of adding another manual step to every brief.
 - A dead-code sweep must check the data a removed path wrote, not only its callers.
@@ -369,6 +380,9 @@ Authority still needed:
   Save finished work before a retry, record the exact error, and continue any work that does not depend on the failed step.
   Where a script or tool runs the retries, set the limit there as well, because an instruction alone does not stop a loop.
   A retry of an action that creates something first checks whether the first attempt already succeeded.
+- Do not treat a clean exit or an HTTP 200 as proof a helper's model call worked.
+  One vendor reports that a transient API error can arrive as plain text inside a successful response stream, so a run is logged as finished with no work done (Cloudflare blog, single vendor report on its own harness, read 2026-11-04, not reproduced here).
+  Where a script drives helpers, classify the response text for known error strings as well as the exception type, and treat a helper that finished far faster than its peers with an empty result as failed until proven otherwise (the speed rule is an inference).
 
 ### Process hygiene for agent shells
 

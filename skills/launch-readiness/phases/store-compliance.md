@@ -113,6 +113,11 @@ The live guidelines fetched above win when the two disagree.
 - App must not crash on launch
 - **Critical if**: `flutter test` or build fails (covered by Testing phase, but cross-reference)
 - Note: This is a runtime check — the skill can verify the app builds, but launch testing requires device/simulator
+- Apple's Guideline 2.4.1 says iPhone apps should run on iPad whenever possible and to test for crashes and bugs (read 2026-11-05).
+  If the app is not iPhone-only by design, run the launch and the sign-in, purchase and account deletion paths once on an iPad simulator, because one developer reports review also opens apps on an iPad (single reply report, not confirmed by Apple).
+- **Medium if**: The project targets iPad and no iPad run is recorded in the verification notes
+  Targeting iPad means `TARGETED_DEVICE_FAMILY` includes `2` in `ios/Runner.xcodeproj/project.pbxproj` (Xcode's "Targeted Device Families" build setting, where 1 is iPhone and 2 is iPad, read in Xcode's own build setting description 2026-11-07), or, for an Expo app, `ios.supportsTablet` set to `true` (default `false`, Expo app config reference, read 2026-11-07).
+  For a Flutter project, read the Xcode setting, because a Flutter-specific tablet setting was not verified.
 
 #### 6. App Icons and Launch Screen
 
@@ -120,6 +125,10 @@ The live guidelines fetched above win when the two disagree.
 - Must have launch screen (not default Flutter splash)
 - **High if**: Default Flutter icon detected (`ic_launcher.png` is the Flutter template icon)
 - **High if**: Default Flutter launch screen (`launch_background.xml` is unmodified)
+- On Android 12 and later the system draws the splash, so check `android/app/src/main/res/values-v31/styles.xml` (or `values/styles.xml`) for `android:windowSplashScreenBackground` and `android:windowSplashScreenAnimatedIcon`, and treat a missing one as a Medium finding, because the system default is the launcher icon on a single-color window background (Android Developers, "Splash screens" and "Migrate your existing splash screen implementation to Android 12", read 2026-11-03).
+- **Medium if**: the `NormalTheme` (`io.flutter.embedding.android.NormalTheme` in `AndroidManifest.xml`) has no solid background color close to the first Flutter screen, because Flutter says that background shows briefly after the launch screen, on orientation change and on Activity restoration (docs.flutter.dev Android splash screen page, read 2026-11-03).
+- **Medium if**: the starting Android activity shows its own splash Activity on top of the system splash, because Android 12 and later then shows two splashes.
+- Cold start from a release build on an Android 12 or later device, watched at first frame, is the only way to confirm there is no flash (the skill cannot run this, so list it as manual).
 - **Method**: Check `ios/Runner/Assets.xcassets/AppIcon.appiconset/` and `android/app/src/main/res/`
 
 #### 7. Metadata Completeness
@@ -156,8 +165,16 @@ It scans for SDK signatures and rejects on mismatches with declared metadata, ev
 #### 7b. Account Deletion (Section 5.1.1(v))
 
 - If the app supports account creation, it must offer account deletion within the app.
+- Apple's page "Offering account deletion in your app" (read 2026-11-05) adds that deletion must remove the entire account record with its personal data, and that offering only temporary deactivation is insufficient.
+- It applies to guest accounts created automatically and to apps whose account creation happens on the web.
+- A link out to a website is allowed only if it goes straight to the page where deletion is completed.
+  Apps outside highly regulated industries should not require a phone call, email or chat to delete.
+- Apps that support Sign in with Apple should revoke the user's tokens with the Sign in with Apple REST API on deletion, so a server-side delete function must call it.
+- For an auto-renewable subscriber, the flow should say that billing continues through Apple and point to `showManageSubscriptions` or <https://apps.apple.com/account/subscriptions/>.
+  Deletion may be scheduled for the subscription's expiry only if an immediate delete option also exists.
 - **Critical if**: Account creation exists without an in-app deletion path
 - **Method**: Grep auth and settings code for sign-up and account deletion flows
+- **High if**: The deletion path only deactivates, needs email or chat support, or a Sign in with Apple app has no token revocation call in its delete code
 
 #### 7c. Privacy Manifest and Required Reason APIs
 

@@ -192,9 +192,25 @@ Make two cuts from one recording.
 - Apple's app previews page says "Don't include specific prices, as pricing and currencies vary across regions."
   It also says that if you display features only available through in-app purchase, or your app uses a subscription model or requires login, "you must disclose this", in the footage or the end frame.
   Previews play muted by default, so carry the meaning in on-screen text.
+- Put the hook in the first seconds, because the preview autoplays muted when the product page opens.
+  Apple's product page guidance says "make sure the first few seconds of your video are visually compelling" (read 2026-11-03).
+  Apple's app previews page says previews autoplay on the product page and within search results.
+  App Store Connect help says previews always appear before screenshots, and a preview whose aspect ratio differs from the screenshots appears in the "A Closer Look" section instead, so match the screenshot aspect ratio when the preview should lead the page.
+  "The first 5 seconds" in one X post is the author's figure and not Apple's.
+  The only 5-second value on Apple's pages is the default poster frame time.
+- Choose the poster frame before the first review.
+  Apple says it shows when someone has turned off video autoplay in their App Store settings and during app install, and App Store Connect defaults it to the frame at 5 seconds.
+  Apple's app previews page says changing the poster frame of an already approved preview needs a new submission of that preview.
+  One reply on X suggests making the first frame look like a screenshot of the app, so the video is not read as a video until it moves (single report, untested).
 - Record with `xcrun simctl io booted recordVideo --codec=h264` (Android: `adb shell screenrecord`), because `recordVideo` defaults to HEVC and accepts `--codec=h264`.
   Then scale the file to the accepted resolution at 30 fps or less.
+  Apple's specification table lists audio as stereo, 256 kbps AAC at 44.1 or 48 kHz for H.264 files, and PCM or 256 kbps AAC for ProRes, with all tracks enabled (read 2026-11-03).
   Neither Apple page says whether a preview with no audio track uploads, so test the upload.
+  One reply on X says stripping the audio from an iMovie export took a specific procedure (single report, no detail given).
+- Do not quote an install lift for app previews.
+  One author posted "up to 25% (depending on the niche)" on 2026-05-30 and "up to 30%" on 2026-10-19, both without a source.
+  Apple's Product Page Optimization page lists app previews as testable, with up to three treatments, so test the preview against the screenshots-only page in App Store Connect and read the confidence figure.
+  Apple's own Simply Piano story may show a preview treatment losing to the original page, though the direction of the result is ambiguous in the story (read 2026-10-22), so a preview is a hypothesis and not a guaranteed lift.
 - Google Play: one YouTube video, ads disabled, no maximum length, and only the first 30 seconds autoplay.
   The video must be public or unlisted, embeddable and not age-restricted.
 

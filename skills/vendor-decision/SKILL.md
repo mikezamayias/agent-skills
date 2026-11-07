@@ -41,10 +41,17 @@ For each option, fetch the live page and quote the clause or number with its URL
 - Terms: what the data may be used for, whether it may be shown to other users, storage limits, AI use, attribution, and termination.
 - Price: the listed price, what triggers usage charges, the free tier, the renewal price, the minimum commitment, any minimum prepaid top-up, and whether prepaid or included credit expires, resets each cycle or can be refunded.
   For a hosted wrapper over another API, find its markup over the underlying price, and check the README and the founder's posts when the pricing page omits it.
+- Percentage fees with a free band: find out whether the percentage applies to all of the metered amount once the free limit is crossed or only to the part above it, and what the meter counts (gross revenue before store commission, or only revenue a product helped generate).
+  Example: Qonversion's pricing page says that past $7,000 a month it charges 0.8% of tracked revenue "not just the amount above $7K", and Superwall's blog says "Once you cross $10K MAR, we take a 1% fee on total MAR" (both read 2026-11-05).
+  RevenueCat's pricing page says "Then pay 1% of what you track" and "once you hit $2,500 in MTR" without saying which, and its FAQ answer was not readable, so treat the cliff as unverified until the answer is read.
+  Compute the fee at the revenue just below and just above the limit before comparing providers.
 - Vendor benchmarks: convert each percentage back to a count before comparing.
   A lead of one or two items on a sample of 30 is a tie.
   Record who ran it, the sample size, whether the inputs are public, and whether the cost figure is per valid result or per call.
   Example: treg's recruiter page (read 2026-10-23) reports 80% against 77% for the best single vendor on 30 candidates, which is 24 against 23 and was run by the vendor itself.
+- Third-party comparison calculators and "X vs Y" pages: read the footer for who built it and what that person sells, open the inline cost function or the stated formula, and list every input the tool leaves out.
+  Example: the calculator at `sic.pricepush.app` (read 2026-11-05) says it is "Built by the founder of PricePush, and it promotes his products", ranks four vendors by their published prices, leaves Purchasely out because it publishes none, shows "Native DIY" as the author's own hosting estimate of $15 to $120 a month, and excludes migration cost although its author's post says migration "sometimes" costs more than years of fees.
+  Use such a tool to find the pricing pages to read and never as the price evidence itself.
 - Limits: rate limits, quotas, and features only in paid tiers.
   Also check whether a free tier ends at an eligibility threshold, and how long the migration window is after it ends.
   Example: Apple's Private Cloud Compute has no cloud API cost for developers in the App Store Small Business Program who hold the PCC entitlement and stay below 2 million first-time downloads, has daily usage limits, and gives developers 6 months to migrate after losing eligibility (developer.apple.com/private-cloud-compute/, read 2026-10-22).
@@ -60,6 +67,10 @@ For each option, fetch the live page and quote the clause or number with its URL
   Compare the claimed setup time with the README.
   Example: a tweet said Minilytics deploys "in 2 minutes", its README says "about 10 minutes", needs a Cloudflare account and Node, covers about 10k pageviews per day on the free plan, and updates by `git pull` and redeploy (read 2026-10-26).
   Also check how old the repository is and who commits to it, because a days-old repo with one contributor account has no update track record (inference).
+  Also list what the operator runs and owns: the database and its version, the update path, any default login, backups, and who gets the data if the server dies.
+  Price the hosted tier of the same product as the alternative, so the decision compares a VPS you maintain with a plan you pay for.
+  Example: Umami is MIT, needs PostgreSQL 12.14 or newer, updates by pulling the Docker image and recreating it, and creates an `admin` login with password `umami` on first setup.
+  Its cloud pricing page lists Hobby at $0 (100K events a month, 1 website, 6 months retention) and Pro at $20 a month (1 million events, up to 20 websites, 2 years), while self-hosted data is kept until you delete it (umami.is pages and README, read 2026-11-04).
 - "Open source" claims: read the LICENSE file itself, because the repository badge can be NOASSERTION or a standard name with added terms.
   Record any clause that limits hosting, resale or commercial use.
   Example: `superdesigndev/treg` (read 2026-10-23) is Apache-2.0 plus a ban on offering it as a hosted service to third parties, so it is source-available, not open source.
