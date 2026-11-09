@@ -190,12 +190,17 @@ Before an agent runs without a human watching, record:
 - A loop exit that does not depend on the loop's own score.
   A loop told to run until a judge gives at least a set grade needs a maximum iteration count, because the judge may never reach the grade (inference).
   The judge must be able to read the artifact type, because a text-only judge cannot grade a screenshot or a build.
+  A loop that scores a result against a target can also stop on stall and not only on a count.
+  One published skill (dream-loop, `references/pro-mode/workflow.md`, read 2026-11-09, workflow text read and not run) gives a judge a rubric of composition 0 to 3, lighting 0 to 3, materials 0 to 3 and details 0 to 1, scores out of 10, and exits at 8 or more.
+  It declares a stall when the best score has not risen by a full point in 2 rounds or the judge names the same gap twice in a row, then makes one large rethink of the approach, and when that also fails it stops and asks the user.
+  Use a fresh judge context each round and give it the previous verdict, so scores stay consistent, and let the score fall when the result regressed.
+  The thresholds are one author's choice, tested only with one model in one tool, so treat 8 of 10, 2 rounds and 1 point as starting values (single report).
 - A trust gate before scale.
   Do not raise the number of parallel agents or remove the human review until a single agent's output has passed an executable check you trust, such as a verification skill that drives the real app.
   One engineer describes the order as verification first, then local runs you can watch, then cloud runs from bug reports, then auto-merge with review after landing, and warns that jumping to many agents wastes tokens (single report, a 2026-10 talk).
   They work at an AI lab with unlimited tokens, so their volume figures (about 1,000 PRs a month) do not transfer to a paid plan.
 
-The list is standard least-privilege practice, except the trust gate, which is a single report.
+The list is standard least-privilege practice, except the trust gate and the dream-loop stall thresholds in the loop-exit item, which are single reports.
 Only the two mechanism notes above come from Anthropic's CLI reference and sub-agents pages, read 2026-10-23.
 
 ## Gates
