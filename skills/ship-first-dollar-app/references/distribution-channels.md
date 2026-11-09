@@ -299,6 +299,56 @@ Claims about reach and revenue in X posts are unverified.
   One operator (single report) keeps sending an email as a separate permission that stays with the human.
 - Do not run `npx @modelcontextprotocol/inspector` (the guide's validation step) outside the code-gate remote-code rule.
 
+## AI assistant directories (Claude Connectors directory)
+
+Evidence is Anthropic's Claude documentation pages and Software Directory Policy, read 2026-11-08.
+Revenue and customer claims in X posts are unverified.
+
+- Anthropic's directory lists plugins and MCP (Model Context Protocol) connectors for claude.ai, Claude Desktop, mobile, Claude Code and Cowork.
+  Anyone on a paid Claude plan (Pro, Max, Ultra, Team or Enterprise) can submit at the developer portal, there is no partner program, and a free account cannot.
+- A connector is a remote MCP server reachable over HTTPS.
+  A local server cannot be listed on its own, and a skill is not a submission type, so put skills in a plugin bundle from a public GitHub repository.
+  For your own product Anthropic advises two submissions, the server as a connector and a plugin bundle whose skills teach Claude to use it.
+- By default a connector is scanned automatically and listed as Community, which Anthropic describes as screened and not reviewed in depth.
+  Anthropic may escalate one to Verified review, where a reviewer tests each tool, and there is no application for the Verified label or for placement.
+- Review time is not fixed.
+  One founder reports approval in half an hour and says the queue is now longer (single report, X, 2026-11-07), so never promise a client a date.
+- Only a directory listing makes a connector discoverable inside Claude, and every listing is eligible for in-chat Suggested Connectors, where Claude can recommend it when relevant.
+  Anthropic does not say how often or on what ranking.
+  Listing in the open MCP Registry does not surface a server in Claude.
+- Review rejects a single tool that takes both safe and unsafe HTTP methods, a tool without a `title` and a `readOnlyHint` or `destructiveHint`, and tool descriptions that promote products and services or tell Claude how to behave.
+  A listing is therefore not a place for sales copy in tool text, and the same lead-gen shell warning as for ChatGPT plugins and Google apps applies.
+- A published connector's dashboard shows health and usage by tool, measured only on traffic from Claude surfaces, computed daily with up to 24 hours of lag.
+  Rows with fewer than 5 calls are omitted.
+  Use it to see whether Claude calls the server, and use the product's own signup data to see whether that turns into customers.
+- One founder who runs three listed connectors reports "multiple customers a day" from Claude (X post, 2026-11-07).
+  The evidence is three $19 trial-start alerts in one day with a free-text "heard about us" answer of "Claude", and two of the three show "Direct" as the traffic source.
+  The founder's portal shows 297 accounts used one connector in 30 days, 15 another and 0 the third.
+  Read it as one self-reported day with trials and not paid conversions, from a seller of the products shown (single report, survivorship).
+  Do not use it as a rate, and do not treat a listing as distribution (inference from the policy pages above).
+
+### Siri AI watch item
+
+Evidence is Apple's news post of 2026-11-03 (<https://developer.apple.com/news/?id=gdk2umrf>) and the Siri AI Developer Preview page (<https://developer.apple.com/documentation/appintents/siri-ai-developer-preview>), read 2026-11-08.
+Claims about reach and a new channel in LinkedIn and X posts are unverified.
+
+- Apple opened a Siri AI Developer Preview in the iOS, iPadOS, macOS and visionOS 27.3 betas.
+  An app takes part by exposing App Intents as tools, optionally with app skills that guide Siri through several actions, and by showing results as its own card snippet.
+  There is no directory, listing or review for this yet, so treat it as engineering work and not as a listing to apply for.
+- It cannot reach customers yet.
+  Apple says the preview is not available to external TestFlight testers or to versions published on the App Store, that App Store submission opens in the spring, and that terms and usage policies will follow.
+  So do not put Siri AI in a launch plan or a client forecast, and log it as a watch item.
+- Do not promise organic discovery.
+  A request made while the app is in the background must name the app, and the app can be left out of the request only in the foreground, while a Live Activity is active, or in a Siri conversation that already names it.
+  A LinkedIn post that shows "order me a pad thai" with no app name leaves this out, and its own diagram names the app.
+  How Siri chooses among several apps that can fulfil the same request is not documented on the pages read (a commenter asked and nobody answered).
+- Availability is narrow.
+  Siri AI needs an Apple Intelligence device, lists English, French, Japanese, Korean, Portuguese and Spanish, is unavailable in the EU on iOS and iPadOS, and Apple says some server-model features will carry daily limits and later a fee.
+- Brand and measurement are open questions and not findings.
+  Apple's card snippet carries the app's own branding, but the claim that it is the only brand surface is the post author's inference.
+  One commenter says the app loses its usage signal when Siri runs the action, and Apple's pages read do not say what analytics an app gets from a Siri-run action (inference), so check this before counting Siri as a channel.
+- Pair this with the ChatGPT, Google and Claude sections as one decision: expose a small, well-described set of actions once, and compare the channels by approval time, attributed sign-ups and revenue per sign-up as the other channels are.
+
 ## Channel choice by time horizon and business type
 
 One operator's opinion with no data (Chris Raroque, video 2026-10-21).
@@ -462,3 +512,10 @@ Treat it as a hypothesis.
 - <https://developers.google.com/connected-apps/mcp>
 - <https://developers.google.com/connected-apps/mcp/oauth>
 - <https://developers.google.com/connected-apps/connected-apps-policy>
+- <https://claude.com/docs/directory/publish.md>
+- <https://claude.com/docs/connectors/building/submission.md>
+- <https://claude.com/docs/connectors/building/review-criteria.md>
+- <https://claude.com/docs/connectors/building/directory-vs-custom.md>
+- <https://claude.com/docs/connectors/building/managing-your-listing.md>
+- <https://claude.com/docs/connectors/verification.md>
+- <https://support.claude.com/en/articles/13145358-anthropic-software-directory-policy>

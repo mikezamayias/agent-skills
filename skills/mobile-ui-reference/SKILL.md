@@ -120,6 +120,10 @@ Fail-closed iPhone-first checks:
 - Timed motion (not a spring): under 300 ms with an ease-out curve, never `Curves.easeIn` on an entrance.
   `Curves.easeOut` is the CSS `ease-out` (Cubic 0, 0, 0.58, 1) and `Curves.easeOutQuint` is Cubic(0.23, 1, 0.32, 1), the stronger curve the web guidance uses.
   Fail: `Curves.easeIn` or `Curves.linear` on a menu, sheet or toast, and any hand-typed `Cubic` that differs from the app's motion tokens.
+- Drag: while the finger is down, set the position straight from the pan delta with no animation, stop any running animation in `onPanDown`, and on `onPanEnd` start a spring with the release velocity (`AnimationController.animateWith` and a `SpringSimulation`).
+  Convert `details.velocity.pixelsPerSecond` to the controller's unit range by dividing by the widget size.
+  Dismiss on distance or on velocity, and give the sheet no bounce when a button closed it.
+  Fail: a fixed-duration `AnimatedContainer` or a `Curves` tween on release, which makes every fling land the same way.
 
 Paywall/onboarding: warm ask after a **win**. Soft = visible skip. Hard = after commitment. **No close button is a dark pattern.** Trial: timeline before price. Permissions after value. Duolingo's 19–38 quiz screens are a habit game, not a utility template.
 

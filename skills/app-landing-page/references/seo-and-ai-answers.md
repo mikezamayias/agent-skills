@@ -189,6 +189,11 @@ Each run:
    Before crediting installs or revenue to AI answers, separate first-time visitors from returning or branded ones, because an assistant can route an existing customer back to the site.
    Never credit revenue from a post-purchase survey alone.
    This attribution rule is ours.
+   A "heard about us" answer such as "Claude recommended you" does not say which Claude path sent the person.
+   It can be an in-chat connector suggestion, a web search citation or a plain mention of the name, and a recommendation with no link shows up as Direct traffic.
+   One founder showed three such answers on one day, with two of the three rows marked Direct (single report, X, 2026-11-07, self-reported, trials and not paid).
+   Record the free-text answer next to the traffic source and the first landing page, add one follow-up question ("which Claude app or page showed you our name"), and count the answers as a signal to sample, not as a rate.
+   The follow-up question is our own suggestion (inference).
 5. Competitors: diff each competitor's sitemap against the last snapshot and add a backlog item only where the app can make a better page.
 6. Links: keep `seo/links.csv` with site, type (directory, founder story, article platform, launch site), URL, status (candidate, drafted, submitted by human, live), live URL and date.
    Each run, add at most 5 candidates and draft the submission text in `seo/outreach/`.

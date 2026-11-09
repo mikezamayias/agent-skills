@@ -8,7 +8,7 @@ metadata:
 
 # Flutter Runtime Safety
 
-Three invisible bugs sink most production Flutter apps. Each takes 10 minutes to fix and prevents days of forensic debugging.
+Four invisible bugs sink most production Flutter apps. Each takes 10 minutes to fix and prevents days of forensic debugging.
 
 ## 1. `FlutterError.onError` + `PlatformDispatcher.onError` - error boundary for the whole app
 
@@ -64,6 +64,17 @@ Or write a first-launch migration that clears stale keys.
 
 When the app backgrounds, timers and streams keep running. Battery drain, websocket reconnect storms, and "ghost" notifications follow. Implement the observer in your root state and pause cubits/streams on `AppLifecycleState.paused`.
 
+## 4. Platform channel handlers: reply once, keep slow native calls off the main thread
+
+- Every branch of a Kotlin or Swift `MethodChannel` handler ends in exactly one of `success`, `error` or `notImplemented` (`FlutterMethodNotImplemented` on iOS), as Flutter's platform channel docs show.
+  One tutorial reports that a branch with no reply leaves the Dart `await` pending forever (single report, not in Flutter's docs).
+- Use the same channel name on both sides, prefixed with a domain you own, and do not reuse a name inside one app.
+- Android runs a channel handler on the platform main thread unless the channel is created with a task queue (`binaryMessenger.makeBackgroundTaskQueue()`).
+  `NetworkStatsManager.querySummaryForDevice` and its sibling query methods "may take several seconds to complete, so it should only be called from a worker thread" (Android Developers, read 2026-11-08), so give such a handler a task queue and do not run the query in the default callback.
+- On the Dart side catch `PlatformException` and `MissingPluginException` around `invokeMethod`.
+  `MissingPluginException` completes the future when no platform plugin handles the method, which includes a platform that never registered the handler (api.flutter.dev, read 2026-11-08).
+- For a new bridge, Flutter's docs recommend Pigeon, FFIgen and JNIgen over a raw `MethodChannel`, which "is not type safe" (Flutter docs, "Writing custom platform-specific code", read 2026-11-08).
+
 ## Verification
 
 - Force an unhandled error in a `Future.delayed` callback → confirm Sentry receives it.
@@ -71,6 +82,7 @@ When the app backgrounds, timers and streams keep running. Battery drain, websoc
 - If the app offers its own backup and restore, test the round trip on a second device or after a reinstall: back up, wipe, restore, and compare the record counts.
   Also restore a backup that was made from a state you know is corrupt, and confirm the app either repairs it or refuses with a clear message instead of crashing.
 - Profile battery usage with the app backgrounded for 1 hour → no spikes.
+- For each native channel handler, list its branches and confirm each one replies once, then call each method on a platform with no handler and confirm the app handles `MissingPluginException`.
 
 ## Sources
 

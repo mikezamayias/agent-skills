@@ -191,6 +191,11 @@ It scans for SDK signatures and rejects on mismatches with declared metadata, ev
 - Starting April 2027, Apple's Submitting page says iOS and iPadOS uploads must be built with the iOS and iPadOS 27 SDK or later and target iOS 15 or later, and tvOS, visionOS and watchOS uploads need their 27 SDK (<https://developer.apple.com/app-store/submitting/>, read 2026-11-01).
   Apple's Upcoming requirements page did not list this on the same day, and the Submitting page gives only a month, so treat the day as unknown and check both pages before final judgment.
 - A Flutter app sets the iOS target in `ios/Podfile` (`platform :ios`) and in `IPHONEOS_DEPLOYMENT_TARGET`, so raise both to 15.0 before April 2027 (inference, not measured on a Flutter project).
+  A plugin can require a higher target than 15.0.
+  In one author's CocoaPods build `google_mlkit_commons` needed 15.5 and `pod install` stopped with "requires a higher minimum iOS deployment version than your application is targeting" (single report).
+  A later pull request on that plugin relaxed its Swift package manifests to iOS 15 (`flutter-ml/google_ml_kit_flutter` pull request 913, read 2026-11-08), so recheck the figure per plugin version.
+  Under Swift Package Manager Xcode reports a "Target Integrity" error that names the package and its required platform version, and the fix is to raise Minimum Deployments in Xcode and run `flutter build ios --config-only` (Flutter docs, "Swift Package Manager for app developers", read 2026-11-08).
+  Raise `platform :ios` and the Xcode target to the highest value any plugin requires, and record that value as the app's real minimum.
 - `asc validate --app APP_ID --version-id VERSION_ID --ipa ./App.ipa` reports the minimum OS as Info until 2027-04-01 and then as a Warning, and reads the SDK from the IPA, because the App Store Connect API does not expose the SDK version (`asc` 6.3.0 pull request text, read 2026-11-01, not run against an app).
 - Fetch the current requirement before final judgment.
 - **Critical if**: CI or local build uses an older Xcode, or `IPHONEOS_DEPLOYMENT_TARGET` is below the minimum

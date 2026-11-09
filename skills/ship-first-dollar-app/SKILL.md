@@ -25,6 +25,10 @@ State missing evidence. Do not invent conversion, retention, pricing, or market 
 ### 1. Prove paid pain
 
 - Treat existing paid competitors as demand evidence, not automatic disqualification.
+- Read the 1 to 3 star reviews of a paid competitor and list what people say they hate or miss, in their words, before choosing the wedge.
+  A studio owner recommends this as their first step (X article, 2026-10-21) and reports no result for it, so treat it as a screening method and not as a proven one.
+  Apple's public customer reviews feed returned reviews for one live app on 2026-11-08, and the tool-free route is the reviews tab on the App Store page.
+  Count each complaint by how many reviewers repeat it, and build only what at least several of them ask for.
 - Before charging a developer audience, search GitHub for an open source clone of the product and read its README setup time and update path.
   A clone that deploys on a free tier and is built with an AI coding agent can undercut a paid tool within a day, so write down what you sell that the clone does not, such as hosting, updates, support or a non-technical buyer.
   This is a screening step based on one case (inference), not a result.
@@ -173,6 +177,10 @@ Track only metrics that change decisions:
   A second founder says to put acquisition ahead of funnel and paywall work until about 300 downloads a day, unless something is obviously broken, and says "that isn't a magic testing threshold" (October 2026, X article, no data).
   The same founder earlier said to leave pricing alone until 500 downloads a day.
   Treat 100, 300 and 500 as three unsourced guesses, and size the real threshold from the sample sizes in `paywall-conversion-flow`.
+- Convert a monthly revenue target to subscriber counts before turning it into a daily target.
+  One article says $10K a month is about $334 a day and about 11 new annual subscriptions a day at $29.99, which counts new annual billings as if each were monthly revenue and ignores Apple's commission (arithmetic checked 2026-11-08).
+  MRR from an annual plan is price divided by 12, which is $2.50 per active subscriber at $29.99, so $10K MRR needs about 4,000 active annual subscribers.
+  Apple's commission is 15% for a developer under 1 million USD in annual proceeds, and above that 30% in a subscriber's first year and 15% after one year of paid service (Small Business Program page, read 2026-11-08), so plan on net proceeds, as the CPA rule above already does.
 
 Do not mistake revenue, downloads, replies, or impressions for profitability.
 

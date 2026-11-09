@@ -69,6 +69,10 @@ For each option, fetch the live page and quote the clause or number with its URL
   Also check how old the repository is and who commits to it, because a days-old repo with one contributor account has no update track record (inference).
   Also list what the operator runs and owns: the database and its version, the update path, any default login, backups, and who gets the data if the server dies.
   Price the hosted tier of the same product as the alternative, so the decision compares a VPS you maintain with a plan you pay for.
+  Also size the server at the data or traffic scale the claim names, not at the quick-start size.
+  Read the vendor's own memory, disk and preparation-time figures for that scale, note the date of the figures and whether they cover the setup you would run, and say what a configuration change costs, such as a full re-import.
+  Example: GraphHopper's README starts from a city extract, and its deploy page (read 2026-11-08) says a planet import needs about 60 GB RAM and about 3 hours, the fast-mode preparation of the car profile about 120 GB RAM and about 25 hours, and that adding or changing profiles needs a new import.
+  Those figures carry an "As of May 2022" note on the graph size, so treat them as an upper-bound order of magnitude and not as a measurement.
   Example: Umami is MIT, needs PostgreSQL 12.14 or newer, updates by pulling the Docker image and recreating it, and creates an `admin` login with password `umami` on first setup.
   Its cloud pricing page lists Hobby at $0 (100K events a month, 1 website, 6 months retention) and Pro at $20 a month (1 million events, up to 20 websites, 2 years), while self-hosted data is kept until you delete it (umami.is pages and README, read 2026-11-04).
 - "Open source" claims: read the LICENSE file itself, because the repository badge can be NOASSERTION or a standard name with added terms.
@@ -78,6 +82,10 @@ For each option, fetch the live page and quote the clause or number with its URL
   Example: Pomerado (read 2026-10-26) is MIT with a LICENSE file, but its README says hosting, saved logins, the managed browser fleet for bot protection and automatic repair of broken integrations are in the paid Pomerado Cloud, and building an integration needs an OpenAI API key.
   The launch thread's "self-healing" and stealth claims therefore describe the hosted product and not the repo.
   Versions 0.1.2 and earlier were AGPL-3.0-only, so check which version a claim was made about.
+  Example: GraphHopper (read 2026-11-08) is Apache-2.0, and its server code has route, isochrone, map-matching and nearest-point resources but no matrix or route-optimisation resource, which the README lists under its commercial Directions API.
+  Its docs say a per-request custom cost model needs the flexible or hybrid mode (`ch.disable=true`) and a POST request, and its pricing page says the Free plan "is for non-commercial use only" and "cannot use the flexible mode".
+  A post that says an agent "sends a JSON cost model per request" therefore describes a self-hosted server or a paid plan, and not the free hosted tier.
+  When a claim names one feature, find the mode, tier and request type that feature needs, and check that the option you would actually use has them.
 - Inputs and outputs: what the API accepts, such as text only or images, and in what formats.
 
 When a source cannot be found, say "unverified" and name what would verify it.

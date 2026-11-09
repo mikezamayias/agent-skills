@@ -9,7 +9,7 @@ metadata:
 # Flutter App Size Audit
 
 Many app size problems come from build defaults you never questioned, not from your assets.
-Check all five layers and measure each change with `--analyze-size`.
+Check all six layers and measure each change with `--analyze-size`.
 
 ## Why iOS download size matters
 
@@ -29,7 +29,7 @@ Check all five layers and measure each change with `--analyze-size`.
 Evidence: Apple pages read 2026-10-23, the Apple size guide through its page JSON.
 The 200 MB default is unconfirmed on current iOS.
 
-## The 5-step cut
+## The 6-step cut
 
 1. **Split per ABI.** `flutter build apk --split-per-abi` (or use App Bundle for Play). Stops shipping arm64 + armv7 + x86_64 to every device.
    Play already delivers one ABI per device from an App Bundle, so this mainly shrinks APKs distributed outside Play.
@@ -62,6 +62,11 @@ The 200 MB default is unconfirmed on current iOS.
 4. **Tree-shake icons.** `--tree-shake-icons` is on by default in release builds — verify it's not disabled. Custom icon fonts should be subsetted.
 5. **Audit fonts and Lottie.** A single unused static weight costs roughly 150KB (Poppins Bold) to 630KB (Noto Sans Bold).
    Lottie JSONs often carry unused layers, embedded images, and more frames than needed, so re-export at 30fps with simplified paths and compare file sizes.
+6. **Move large optional content out of the build.**
+   For an iOS app on iOS 26 or later, Apple-hosted asset packs deliver content separately from the app build, and Apple hosts it within 200 packs and 200 GB per app record (Apple developer pages, read 2026-11-08).
+   Candidates are large models, media and level data that the first launch does not need.
+   Apple's pages describe the Swift and Xcode packaging path and do not mention Flutter, so a Flutter app needs native code for the download and the claim that it works with a given plugin is unverified (inference).
+   Measure the thinned download size before and after, because the packs are separate downloads and do not reduce what the user ultimately fetches.
 
 ## Verification
 

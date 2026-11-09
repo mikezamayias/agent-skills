@@ -60,8 +60,20 @@ T1 — Ship Blocker
 ### 7. Dependency Vulnerabilities
 
 - Run `dart pub outdated` to check for outdated packages
+- On a Flutter iOS app, also check which dependency manager each plugin builds through.
+  CocoaPods stops accepting new pods and new versions of existing pods on 2 December 2026, existing builds keep working, and a pod-only dependency stops receiving updates, security fixes included (CocoaPods blog, "CocoaPods Trunk Read-Only Plan", read 2026-11-08).
+- Firebase Apple SDK 13 and later is not published to CocoaPods, so a Flutter app that still builds Firebase through CocoaPods stays on Firebase 12 (Firebase iOS release notes, 13.0.0 and 12.19.0, read 2026-11-08).
+  Confirm that `Podfile.lock` or `Package.resolved` holds a Firebase release that contains the latest Firestore security fix, which is 12.19.3 on Firebase 12 and 13.1.1 on Firebase 13 (release notes, read 2026-11-08).
+- A `$FirebaseSDKVersion = '12.19.0'` line at the top of `ios/Podfile` is a workaround one author used for a failed `pod install`.
+  `firebase_core.podspec` passes the value as an exact dependency, so the override probably holds Firestore at 12.19.0 and drops the 12.19.3 fix (inference from the podspec, resolution not run).
+  Read `Podfile.lock` after adding it and treat a Firestore version below 12.19.3 as a finding.
+- To list the plugins that still need CocoaPods, run `flutter build ios` once and read the "do not support Swift Package Manager" warning, which is Flutter's own list.
+  The `is:swiftpm-plugin` tag in a package's pub.dev API score tags is a quick hint, and a missing tag means check, not fail (the tag was absent for `path_provider_foundation` on 2026-11-08 while one author's build listed only two other plugins).
+  On a native Swift app read `Package.resolved` and treat a `Podfile` as a migration finding, and on Android there is no equivalent check.
+- A plugin that moves to Swift Package Manager through a community repackaging of a vendor binary, such as the ML Kit plugins through `d-date/google-mlkit-swiftpm`, is remote code and goes through the code-gate remote-code rule before the app adopts it.
 - Cross-reference with known CVE databases if available
 - **Medium if**: Outdated dependencies with known CVEs
+- **Medium if**: a plugin on the Swift Package Manager warning list has no maintained replacement and the date is before 2 December 2026 (inference, our severity, not a cited standard)
 - **Low if**: Outdated dependencies without known CVEs
 - **Method**: Run dart pub outdated, parse output
 
