@@ -115,6 +115,9 @@ For each work item record:
 
 Parallelize only independent nodes. Define integration owner where contracts meet.
 
+- Add a dependency between two steps only when the later step reads the earlier step's output, because a step that does not read it can run at once with the other (the article's "and then is not an edge" rule, single report, inference).
+  When each item goes through several stages, prefer a per-item pipeline over a stage-wide barrier, and use a barrier only when a stage needs every earlier result, for example a cross-set dedupe or an early exit on the total.
+  In Claude Code workflow scripts `pipeline()` runs one agent per item and `parallel()` waits for all of a set (docs), and the claim that pipeline items stream past each other without waiting for the slowest is the article's reading and is not stated in the docs (inference, untested).
 - A soft dependency does not block dispatch, so a soft-blocked item can start in parallel and be reconciled at the integration owner.
   Check the graph has no cycle before dispatch.
   Two alternative routes to the same input are not expressible as hard edges, so write them as one node with an "either of these" input and not as two hard edges (this OR rule is our own suggestion and is not in the source).
@@ -195,12 +198,15 @@ Before an agent runs without a human watching, record:
   It declares a stall when the best score has not risen by a full point in 2 rounds or the judge names the same gap twice in a row, then makes one large rethink of the approach, and when that also fails it stops and asks the user.
   Use a fresh judge context each round and give it the previous verdict, so scores stay consistent, and let the score fall when the result regressed.
   The thresholds are one author's choice, tested only with one model in one tool, so treat 8 of 10, 2 rounds and 1 point as starting values (single report).
+  Keep every round's output, because scores do not rise in a straight line and the best result may be a middle round.
+  In Anthropic's design loop the author regularly preferred a middle iteration to the last, complexity grew each round, and scores plateaued with headroom left (single vendor report, 5 to 15 rounds).
+  Word the criteria with care, because a phrase such as "the best designs are museum quality" pulled outputs toward one look.
 - A trust gate before scale.
   Do not raise the number of parallel agents or remove the human review until a single agent's output has passed an executable check you trust, such as a verification skill that drives the real app.
   One engineer describes the order as verification first, then local runs you can watch, then cloud runs from bug reports, then auto-merge with review after landing, and warns that jumping to many agents wastes tokens (single report, a 2026-10 talk).
   They work at an AI lab with unlimited tokens, so their volume figures (about 1,000 PRs a month) do not transfer to a paid plan.
 
-The list is standard least-privilege practice, except the trust gate and the dream-loop stall thresholds in the loop-exit item, which are single reports.
+The list is standard least-privilege practice, except the trust gate, the dream-loop stall thresholds and the keep-every-round and criteria-wording notes in the loop-exit item, which are single reports.
 Only the two mechanism notes above come from Anthropic's CLI reference and sub-agents pages, read 2026-10-23.
 
 ## Gates
@@ -223,6 +229,9 @@ Only the two mechanism notes above come from Anthropic's CLI reference and sub-a
 ### Implementation Gate
 
 - Each specialist has bounded outcome and contract.
+- Before a build step starts, have the builder propose what it will build and how success will be checked, and have the reviewer approve or revise that proposal until both agree on what done means.
+  Exchange the proposal through a file.
+  Anthropic used this when the spec was high level, with up to 27 testable criteria for one chunk of work (single vendor report).
 - Record an autonomy level for each step: propose only (a human approves every edit), edit inside a named scope (a human approves merges), or run end to end only where tests fully cover the step.
   Raise a step's level only after repeated passing runs, and record how many.
   The source card uses three passing runs in a row, which is its own design choice with no evidence behind the number.
@@ -262,6 +271,11 @@ Only the two mechanism notes above come from Anthropic's CLI reference and sub-a
   Anthropic's Felix Rieseberg says in October 2026 not to ask the model to judge itself and to insist on outside validation (article read 2026-10-26, opinion).
   Evidence: the verifier rules are restated from Claude Security's plugin files (commit e68e375) and Cloudflare's security-audit skill README (MIT).
   The self-judged rule is inference from the Harness2 design (Google, Apache-2.0, commit 1cfe254) and reply-level opinion, not a statement in that repository.
+- An independent evaluator costs time and money, so use it only for work the current model cannot do reliably alone.
+  Anthropic measured a game maker built solo at 20 minutes and $9 against a full planner, builder and evaluator harness at 6 hours and $200, with the harness output working and the solo output broken (Opus 4.5, one run each, vendor report).
+  On a later model the same team dropped the per-sprint structure, moved the evaluator to one pass at the end, and reported a run of about 3 hours 50 minutes and $124.70, of which the three QA rounds were about $10.
+  When a new model arrives, re-test each harness component by removing one at a time and reading the result, because each component encodes an assumption about what the model cannot do, and the assumption can go stale.
+  Treat the figures as examples and not as expected costs (single runs, one vendor).
 - Evidence survives cleanup and every later run, and is checked at its named location after teardown.
   Local rule: a harness that reuses one results directory overwrites the proof on the next run, so name a per-proof output directory or copy the artifacts out first.
 - When an agent run is scored against a public benchmark, rubric or test, block the answer hosts at network level for the executor and record the restriction with the result.
@@ -473,5 +487,7 @@ Search output numbers: <https://github.com/context-dot-dev/sgrep> (7452784, `ben
 The benchmark files were unchanged at commit dec6122 (2026-10-15).
 
 Verification and stop rules: Harness2 <https://github.com/google-research/harness2> (commit 1cfe254), Anthropic's "Prompting Claude Opus 5.5" guide, and the security tools named in the bug bash section.
+
+Evaluator and loop rules: Anthropic Labs, "Harness design for long-running application development", Mar 24, 2026, <https://www.anthropic.com/engineering/harness-design-long-running-apps> (read 2026-11-10, vendor report).
 
 Read [references/video-notes.md](references/video-notes.md) when provenance, observed examples, or tool-agnostic adaptation choices matter. Keep normal execution on this file's workflow.

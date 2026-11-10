@@ -17,6 +17,12 @@ Prices and policies change, so re-check the linked page before relying on one.
   Pick by goal and test the event choice against installs on a small budget.
 - On iOS 14.5+, Meta app promotion campaigns run only in Advantage+ setup, with one ad set per campaign.
   Each campaign picks one attribution method, either Aggregated Event Measurement (AEM, Meta's own attribution) or SKAdNetwork (SKAN, Apple's privacy-preserving install attribution).
+- Meta's help treats iOS 14 or later and iOS 13.7 or earlier as two separate audiences for app promotion, and the iOS 14+ campaign is an option chosen at setup (Meta Business Help Center, read 2026-11-09).
+  The Marketing API shows the same split, because ad sets that use SKAdNetwork or AEM take only `iOS_ver_14.0_and_above` and ad sets that use neither take only ranges up to `iOS_ver_14.4` (Meta advanced targeting reference, read through a summary on 2026-11-09).
+  An ad set that serves only the older audience reaches people who cannot install an app whose minimum OS is 15 or later.
+  Before publishing, read the app's `minimumOsVersion` from <https://itunes.apple.com/lookup?id=APP_ID&country=us> and confirm that the campaign's OS and device filters include at least that version, then open the ad set preview or the audience size and check that it is not a legacy audience.
+  One founder (LinkedIn, 2026-11-09, a single report, no screenshot) says they spent €150 on ads that showed only to iOS versions below 14, to devices that could not download their app, because of a targeting setting they did not name.
+  Which Ads Manager control was the cause is an inference, and the report does not show Ads Manager.
 - AEM needs an eligibility check per app event in Events Manager (Datasets, Settings, Setup tasks for iOS app events, Check app events eligibility), so the app must already send events to Meta through its SDK or the Conversions API.
 - SKAN results reach Meta at least 24 hours late, are dated by when Meta receives them, and are aggregated at campaign level.
   Ad set and ad results may be statistically modeled.
@@ -61,6 +67,9 @@ Prices and policies change, so re-check the linked page before relying on one.
   A winner then goes to the store page by a screenshot caption, the first screenshot or a custom product page that the ad links to (`apple-ads.md` step 8 has the Apple Ads form).
   A product page optimization test cannot run on a custom product page (Apple, via `asc-aso-audit`), so test a message on the default page only after the ad has chosen it.
   One founder (LinkedIn, 2026-11-03, a plan with no result) wants to test a few angles on a first Meta ad and reuse a winner on the App Store page, the website and a second app.
+  Add one pre-publish step before the first euro: read every audience filter, especially OS version, device and placement, against the app's real minimum OS and supported devices, and see the iOS 14 split on Meta in the Paid social bullets above.
+  A wrong default can spend the whole test budget on people who cannot install, which leaves no message result to read.
+  The same founder (LinkedIn, 2026-11-09) reports that their first run spent €150 on such an audience and produced no message result, so the angle test above has not yet run.
 
 ## Founder-on-camera and creator video
 

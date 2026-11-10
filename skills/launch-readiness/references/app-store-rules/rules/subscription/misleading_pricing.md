@@ -51,6 +51,7 @@ grep -rn "perMonth\|per_month\|monthly.*price\|price.*month\|calculated\|divided
 - [ ] Calculated/broken-down pricing uses smaller, lighter text
 - [ ] Free trial terms do not overshadow the post-trial price
 - [ ] The renewal price of an introductory offer is shown clearly and prominently next to the intro price, and the button text or the line under it states when the renewal charge starts
+- [ ] Every per-week or per-month breakdown, SAVE badge and saving figure is computed from the billed amount and the real billing period, and none is derived from a struck-through reference price
 
 ## Resolution
 

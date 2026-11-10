@@ -113,6 +113,7 @@ Fail-closed iPhone-first checks:
 - Press: opacity, no Material ink. Fail: splash/ripple
 - Color: one seed → shade ramp. Fail: unrelated accent per screen
 - Touch: 44pt min, 8pt+ gap
+- Spacing: every padding, gap and `SizedBox` comes from the app's spacing scale (see the `vgv-ui-package` skill), no literal number in `EdgeInsets`, `SizedBox`, `Gap` or `Padding`. Fail: a one-off value such as 13 or 22 that is not a step of the scale.
 - Safe area: home indicator, notch, keyboard
 - Compact chrome: concentric inner shapes; no empty "forehead"
 - A11y: 4.5:1 light **and** dark, label not icon-only, Reduce Motion via `MediaQuery.disableAnimationsOf(context)`

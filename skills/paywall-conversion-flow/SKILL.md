@@ -336,6 +336,13 @@ These are unverified secondhand figures, which the article itself marks "reporte
   One 101-item list (Helium, X article, 2026-08-17) gives no sample, period or revenue figure for any item, and its customer quotes are anonymous.
   Its numbers that you could be tempted to plan on are unsourced: "70-80%" of conversions through onboarding, "10-20%" from centering a paywall on a feature, and a customer test that "made more than 15-times Helium's costs".
   The only sourced onboarding timing figure in this file is RevenueCat's 50.6% of download-to-paid conversions on Day 0, and it measures something different.
+- RevenueCat's Experiments docs (read 2026-11-10) add these mechanics for a price test.
+  An experiment can have up to 4 variants, and the docs' own example tests $7.99, $9.99 and $12.99 per month and a 7 day trial at $9.99.
+  Their hypothesis template targets "Realized LTV per customer", and the results page says fewer conversions "may produce more Realized LTV per paying customer", so read that figure and the share of customers who saw a paywall, not conversion alone.
+  Results keep updating for 400 days after you stop, so a yearly plan's first renewals can still arrive after the test ends.
+  The results page reports a Chance to Win and credible intervals per variant, so do not stop on a lead without reading them (the docs do not give a minimum sample).
+  New products for a variant can be added later without a new app version, and the App Store shows up to 10 sold in-app purchases on the product page, so customers may see another variant's price there (the docs say there is no way to avoid this).
+  One X article (2026-07-14) says raising the weekly price "often" increases yearly conversions through the anchor effect and gives no data, so test it as a hypothesis, one price change per variant.
 - Price tests are the item that list stresses most.
   Test the price and the annual discount rate separately from the plan layout, and test the main storefronts, because the list says Apple's default regional prices leave value on the table (unsourced).
   Per-territory prices are set with `asc-ppp-pricing`.

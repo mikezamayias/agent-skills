@@ -77,6 +77,12 @@ The AI answer counting rules are ours, adapted from the `ai-visibility-audit` sk
   Google does not guarantee indexing or serving.
 - Answer the page's question in the first two sentences, then give detail.
   This is a writing rule for both readers and quoting engines, not a documented ranking factor.
+- One academic study gives evidence for what to add to existing pages, though only for its own test setup.
+  The paper "GEO: Generative Engine Optimization" (Aggarwal et al., KDD 2024, arXiv 2311.09735 v3, read 2026-11-10) rewrote source pages with different methods and measured how visible they were in a generative engine's answer.
+  Adding statistics, adding quotations from credible sources and citing sources raised visibility by a relative 30 to 40% on its Position-Adjusted Word Count metric and 15 to 30% on its subjective score, and keyword stuffing gave little to no improvement.
+  The setup was a benchmark of 10K queries, GPT-3.5-turbo as the generator with the top 5 Google results as sources, five seeds, plus a separate test on Perplexity.ai with up to 37% gains, and the authors say the methods may need to adapt as engines evolve.
+  It does not measure Google AI Overviews, Claude or ChatGPT search, so treat it as a reason to add a sourced figure, a quote or a citation to a page that already answers a real question, and not as a ranking factor (inference).
+  See the Google rule at the top of this section for what Google says about AI features.
 - Keep each answer section short enough to stand alone under its heading.
   Some retrieval pipelines split pages into chunks, and Google's Vertex AI Search sets a configurable `chunkSize` that defaults to 500 tokens, with supported values of 100-500, and an `includeAncestorHeadings` option that defaults to false.
   Google does not say Search or AI Overviews use that setting.

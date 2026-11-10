@@ -64,6 +64,11 @@ who trust you convert at much higher rates.
   The badge is then honest for a 365 day year, but no plan charges the struck price and the screen does not say what it compares with.
   Use 365/7 and not 52 weeks when you check such a badge, because 52 weeks gives $311.48 and $363.48 and a 1 dollar mismatch (arithmetic).
   State the comparison in words next to the figure, and compute it from the real billing period.
+  One X article's mock paywall (2026-07-14, a made-up app) shows a yearly plan as a struck "$69.99", then "$34.99 per year", with "$1.35 /week" in the large figure.
+  The billed $34.99 over 52 weeks is $0.67, and $1.35 is the struck $69.99 over 52 weeks (arithmetic from the image).
+  The mock divides by 52, while the 365/7 rule above gives $1.34 and $0.67, so try both periods when you trace a breakdown back to its source.
+  So the weekly figure describes a price that no plan on the screen charges, and it is twice the real weekly cost of the plan.
+  Recompute every per-week or per-month breakdown from the billed amount and the real billing period, and check that no breakdown, badge or saving figure was derived from a struck-through price.
 - A free trial switch on the paywall that changes which plan is selected.
   Superwall's post of 2026-06-03 says Apple does not allow "free trial toggles on paywalls" because a switch can silently swap the selected product (secondary source, which says it is not an official guideline and cites no Apple text).
   The App Review Guidelines text read on 2026-11-06 does not contain the word "toggle", but the last part of the page, which includes 5.6, was not read, so the absence is not proven.
@@ -88,6 +93,10 @@ who trust you convert at much higher rates.
 
 Do not treat another developer's "it passed review" as proof that a paywall is allowed.
 One reply describes reviewers as inconsistent (X reply, 2026-10-24, single report), and a thread of 12 replies showed no Apple message or screenshot approving the layout in question.
+One author's X article (2026-07-14, never edited) teaches a layout with a large per-week figure for the yearly plan beside a smaller billed yearly amount.
+In that article's replies (2026-08-27 and 2026-09-04) the author says it "used to be accepted" and is "not approved any more", and five other developers report rejections or warnings for the same layout (single reports, no Apple message shown).
+The author re-shared the article on 2026-11-09 with no correction.
+A tutorial that shows a layout passing review is dated by the day it passed, so check the date of the approval and read Apple's text above, and do not take a still-circulating article as a current approval.
 Apple's Guideline 5.6 says "repeated manipulative or misleading behavior" will lead to removal from the Apple Developer Program, so a passed review does not clear the layout (Apple guidelines, read 2026-10-25).
 Judge a paywall against the Apple text in this file, and record the review outcome as one datapoint.
 
