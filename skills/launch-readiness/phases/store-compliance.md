@@ -287,8 +287,14 @@ Store screenshots must exist in the project repo. Expected location: `store_asse
 - Guideline 2.3.3: App Review takes the set of screenshots for each supported device into account and approves only submissions where more than half of the screenshots show the app in use.
 - Apple's example: with 3 screenshots per device, 2 must show the app in use on that device, and with 4 screenshots, 3 must.
 - Screenshots should show the app in use, and not merely the title art, a login page, or a splash screen.
-- **High if**: Half or fewer of the screenshots for any device show the app in use
-- **Method**: Read the screenshot plan or captions in `store_assets/` and view the images if possible
+- App Review also assesses each localization separately, so a set in a non-English locale with more promo slides can fail when the English set passes (inference from Apple's FAQ, which states the per-localization assessment and not this case).
+- Overlays and text are allowed if the primary app functionality is not obscured and the overlays do not crowd out the app.
+- Apple recommends refreshing screenshots with each version and showing other configurations such as Dark Mode.
+- An image of the app can span several screenshots (Apple's FAQ), and Apple does not say how each slice counts.
+- Source: <https://developer.apple.com/help/app-review/guideline-reference/2-3-3-screenshots>, read 2026-11-12.
+- **High if**: Half or fewer of the screenshots for any device and locale combination show the app in use
+- **Medium if**: A slide counted as in use has its capture mostly covered by a badge, headline or device-less artwork (inference from Apple's wording on obscuring)
+- **Method**: Read the screenshot plan or captions in `store_assets/` for every locale folder, view the images if possible, and tally in-use slides against the total per device size and locale
 
 #### 14. Privacy Policy & Terms of Service
 

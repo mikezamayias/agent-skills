@@ -120,11 +120,20 @@ Apple/Google reject screenshots that show debug overlays or staging data. Verify
 - [ ] Status bar locked to a clean state via `xcrun simctl status_bar booted override --time "9:41" --batteryLevel 100 --cellularBars 4 --wifiBars 3 --cellularMode active --dataNetwork wifi`
 - [ ] Test account looks realistic (no "test test test", no `lorem ipsum`)
 - [ ] No PII (real names, real emails, real bank balances)
-- [ ] Light mode by default; add a dark mode pass when the listing calls for it
+- [ ] Light mode by default.
+      Apple's 2.3.3 page lists screenshots of the app in different configurations, such as Dark Mode, as a recommended practice, so add a dark mode pass when the listing calls for it.
+      Apple also says to update screenshots with each new version so they match the current interface, so recapture after any visible UI change (Apple's Do list, read 2026-11-12).
 - [ ] More than half of the screenshots for each supported device show the app in use (Guideline 2.3.3). With 3 screenshots per device, 2 must show the app in use on that device, and with 4, 3 must. Title art, a login page, and a splash screen do not count.
+      Apple assesses the set for each supported device and, separately, for each localization, so run the count once per device size and once per locale.
+      Apple's FAQ says each localization's screenshots are assessed on whether the majority show the app in use, so a localized set with more promo slides than the English set can fail when the English set passes (inference from the FAQ, Apple gives no such case).
+      The number of screenshots can differ by device, and one screenshot for a device is enough if it shows the app in use.
       Count a slide as showing the app in use only if it contains a real or realistic screen of the running app.
       A mascot, photo, orbiting-avatar graphic, floating money chips, a lone notification or a placeholder grey-row mock does not count.
       Apple's 2.3.3 text as fetched allows overlays and text, so the test is the presence of a real screen and not the absence of decoration.
+      Apple's 2.3.3 page (read 2026-11-12) limits overlays: the primary app functionality in the screenshot must not be obscured, overlays and marketing visuals must not crowd out the app, and a slide of only hardware or an overlay with no app interface behind it is not to be shown.
+      So a slide whose capture is small and partly covered by a badge or by large headline text is at risk.
+      The preview picture on Apple's 2.3.3 page shows such a slide, but that the picture comes from Apple and that it fails for this reason are both inference, because the picture has no caption.
+      Apple does not say that such a slide is not counted, so treating a covered or tiny capture as not in use is also inference.
       Before `asc screenshots upload`, write a slide-by-slide table (slide, headline, real screen yes or no), and do the same for decks designed by a third party.
       Example from one agency-deck post (October 2026, image reading, inference, no review outcome known): of four agency decks of six slides, one had no real screen by that reading and the others had 4 or 5.
 

@@ -283,6 +283,10 @@ Derived from decks such as Superlist, Headspace, CRED, Arc Search, Linktree, and
    For personal categories such as health, learning, audio, and family, try a person, a face, a hand holding the object, or a real-life situation for the hero or the first break.
    It is a default to A/B test and not a proven rule.
    A slide without a capture still counts against the Guideline 2.3.3 majority above.
+   Panorama note: Apple's 2.3.3 FAQ says an image of an app in use can be displayed across multiple screenshots (read 2026-11-12).
+   Apple does not say how each slice is counted, so the advice here is inference.
+   Count a slice as in use only if it shows a readable part of a real screen, and do not count a slice that is only background or a device edge.
+   Rule 7 treats a cropped slide as untested and not counted, so a set whose majority depends on panorama slices is at risk.
    Break the parade on at most every second slide so that more than half show a real screen.
 9. **End with a feature wall or a device mosaic.** A feature wall is a vertical list of one-word features set as big type. A mosaic is a grid of bezelless mini-screenshots. Pick one. Do not end on another single-feature hero.
 10. **Run the thumbnail test before export.** See the checklist below.
@@ -319,7 +323,7 @@ Shrink each slide to about 160px wide (App Store search-result size) and squint 
 - [ ] The hero slide communicates the main benefit within one second.
 - [ ] Every headline is readable at 160px wide, with strong contrast against the background.
 - [ ] Every headline and emphasis word measures at least 4.5:1 against its background.
-- [ ] More than half of the slides show the app in use (Guideline 2.3.3), counted with the slide-by-slide table in `SKILL.md`.
+- [ ] More than half of the slides show the app in use for every device size and every locale (Guideline 2.3.3), counted with the slide-by-slide table in `SKILL.md`, one table per locale.
 - [ ] You can tell what the app does from the thumbnail alone.
 - [ ] Headlines are 3-5 words per line, with intentional line breaks and no red-flag words.
 - [ ] No two adjacent slides share the same layout.
