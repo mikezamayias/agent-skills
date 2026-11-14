@@ -326,6 +326,12 @@ These are unverified secondhand figures, which the article itself marks "reporte
   If one source converts far better than another at the same price, price is not the first suspect.
   Change price and traffic source in different weeks, because changing both at once hides which one moved the number.
   Source: one founder's X post and two agreeing replies (October 2026, no data), so this is a cheap check and not a finding.
+- Before setting a price, build a competitor price table from public sources and record the date and storefront.
+  For each competitor, read the "In-App Purchases" list on its App Store page, which lists product names and prices, and divide each annual price by 12 to compare per month.
+  The list shows no period, trial or offer, and the page shows at most 10 sold in-app purchases (see the RevenueCat note below), so an app with more products may not list its current plan.
+  Confirm the current paywall price by opening the app's paywall (App Store product pages read 2026-11-14 on five language and fitness apps, which expose names and prices).
+  A teardown video (X post, 2026-11-13) shows such a ladder with per-month bars for four apps, and two of its prices matched the live US pages when checked on 2026-11-14.
+  The ladder shows where you sit and not what converts, so test a price on your own traffic before moving it (see the price tests below).
 - Change trial length, the trial reminder and the paywall timeline in different releases too.
   One build-in-public founder shipped all three in one release, and a reply pointed out they could not tell which one reduced cancellations (single reply, no data).
 - For a retention test, define "cancel" before the test starts.

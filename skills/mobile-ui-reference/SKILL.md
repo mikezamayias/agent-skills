@@ -82,6 +82,12 @@ Let that concept set type, palette, illustration style and motion.
 Sketch the main screen three ways from the concept, pick one with the human, then build every other screen from the chosen one.
 The method is Tobia Donadon's free "How to Stop Making your Apps Look Like AI Slop" article (October 2026). His paid skill, App Designer Pro, packages it.
 
+A Live Activity or widget is a small surface where one design choice (what is shown first) changes everything, so do the same three-ways pass before native code.
+One builder reports prompting a model for three variations of an island, each in the compact, minimal and expanded sizes, on a phone mock-up in a local browser page with buttons for each state (started, done, skipped, reset).
+They then picked one and built the Lock Screen and a home screen widget from it, so all three feel like one product (single report, X article, 2026-11-11, mock-ups only).
+The three variations differed in what leads (the timer, a reward ring, a streak), so use that axis and not three colour schemes (inference from the three mock-ups).
+A browser mock-up cannot show reduced-luminance Always-On, the two second animation cap or system layout, so check the chosen design on a device.
+
 ### 1c. Duo concept pass
 
 Use this when the app will ship to iPhone Duo.
@@ -131,6 +137,17 @@ Paywall/onboarding: warm ask after a **win**. Soft = visible skip. Hard = after 
 IAP wiring belongs in [Flutter paywall and review timing](../flutter-paywall-and-review-timing/SKILL.md).
 
 Live Activity / Dynamic Island (only if the feature is compact chrome): concentric margins, compact snug to the sensor, expanded hugs the sensor, minimal still shows data. Flutter cannot host the island.
+
+- Design every Live Activity presentation, not only the island.
+  Apple's Human Interface Guidelines list compact (one element each side of the camera cutout, used when one activity is running), minimal (up to three activities share the island, one attached and others detached), expanded (shown on touch and hold) and the Lock Screen banner.
+  They say to give the Lock Screen a layout similar to the expanded one (read <https://developer.apple.com/design/human-interface-guidelines/live-activities> on 2026-11-14).
+- Apple's rules that change a design: the island background is black and opaque and only the Lock Screen presentation takes a custom background colour.
+  Animations last at most two seconds and do not run on a reduced-luminance Always-On display.
+  Text should be medium weight or heavier, compact and minimal views must fit a 28 pt circle in landscape, and interactivity should be limited to one essential control.
+- Apple's ActivityKit page says a Live Activity is active for up to eight hours and stays on the Lock Screen up to four more, so a maximum of 12 hours.
+  It also says static and dynamic data together cannot exceed 4 KB (read <https://developer.apple.com/documentation/activitykit/displaying-live-data-with-live-activities> on 2026-11-14).
+  Use it for a task with a start and an end, and not for something open all day.
+- Offer a switch in the app that turns the Live Activity off, because Apple says people turn all Live Activities off in Settings when an app does not let them control them.
 
 ## 3. Apply in Flutter first
 
@@ -264,3 +281,6 @@ Paste the spec + 2–3 reference links **before** asking a model to write widget
 - <https://x.com/tobiadonadon_/status/2112305196001018212> (Tobia Donadon, Duo Designer skill demo and "Get Your App Ready for the iPhone Duo", October 2026, no public code, unverified)
 - <https://x.com/rbayuokt/status/2112217296500654256> (rbayuokt, adaptive status bar spec, October 2026, README and npm read, benchmark self-reported)
 - <https://x.com/breejeanadkat/status/2111411956599149046> (stack named first, brief inputs, human-designed Figma key screens, practitioner thread, unverified)
+- <https://developer.apple.com/design/human-interface-guidelines/live-activities>
+- <https://developer.apple.com/documentation/activitykit/displaying-live-data-with-live-activities>
+- <https://x.com/PrajwalTomar_/status/2121323984981737964> (Prajwal Tomar, three prompts for an island, a Lock Screen activity and a widget, November 2026, mock-ups only, Swift claim not supported by the article)

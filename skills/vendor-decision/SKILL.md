@@ -59,6 +59,15 @@ For each option, fetch the live page and quote the clause or number with its URL
   Check the number of tasks and tries, who ran it, what the cost counts (model tokens only, or also build and hosting), whether the tested system used pre-built artifacts, and whether every comparator reports every metric.
   Example: Pomerado's launch chart (30 tasks, one try each, vendor-run) compares "Codex calling Pomerado's pre-minted tools", counts only model tokens at list price, and shows no cost for two named comparators, so "10-1000x cheaper" rests on one baseline, $13.63 per task, and one task is 3.3 accuracy points.
   Quote only the ratio the printed figures support, such as 8.4x for $13.63 against $1.62.
+- Agent product claims such as "98% of tasks finished, 0 unsafe actions": find the methods page and record five things before using the number.
+  The model and the date it was measured with, because a result for one model says little about another.
+  Whether the world was simulated or real accounts.
+  Whether the headline is task completion or a stricter pass where every required check must pass, since they are different numbers.
+  How many cases were used while building the product, because a case used to fix a failure is no longer a fair test.
+  The count behind any safety figure, since "0 of 13 attack scenarios" shows what was tried and not resistance to attacks in general.
+  Example: n8n's Nod methods page (read 2026-11-14) reports 98% completion on 226 errands, three runs each, with one named model in simulated accounts.
+  It states that the 98% "does not mean that 98% of attempts passed every product requirement" and that a small set of attacks cannot establish resistance to all attack methods.
+  A post that repeats the headline can drop the model name and the attack count, so read the methods page and not the post.
 - Runtime limits: deploy or bundle size, memory, CPU time, and request duration, from the provider's main limits page and its changelog.
   Size these against the planned growth, not today's code, because a limit hit later splits the system along the limit instead of along the design.
 - Data: the region where data is stored and processed, retention (the minimum and whether it can be shortened), whether a data processing agreement (DPA, the GDPR contract with a processor) exists, whether data is used for training, and sub-processors.

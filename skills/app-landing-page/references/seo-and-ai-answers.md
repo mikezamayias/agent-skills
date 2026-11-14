@@ -137,9 +137,17 @@ Each run:
    If a page and the product disagree, the product is right.
 3. Page 2 to page 1: for queries at positions 8-20 with real impressions, read the top 3 results, add what they have and the page lacks, and link to the page from strong related pages.
    Good position with a low click rate means rewrite the title and description instead.
+   A query that already has a page can also show many impressions and no clicks far below position 20, which needs a different fix from the two above.
+   There the page has no authority for the query yet, so link to it from strong related pages and wait, and rewrite it only if it misses the intent (inference).
+   One founder's example is a keyword with about 16,000 impressions at around position 50 (Starter Story episode transcript read 2026-11-14, a single report with no data shown), and one reply makes the same split at rank 40 and rank 3.
+   The position cut-offs are ours and not Google's, so check them against the page's own Search Console rows.
    3b. New pages from impressions: for a query with impressions in Search Console and no page that targets it, add it to `seo/keyword-map.csv` with status `planned`.
    Write a page only when it can answer the query with something the top 3 results and the app's own listing do not already give.
    Cap new pages at a few per run, and review each as if it were hand-written.
+   When a new page goes live, link to it from existing pages that already get traffic and place its call to action where readers usually stop scrolling, then judge it only after a window set in advance.
+   One founder's report is that Google picked up a new guide in 3 to 4 days when existing pages linked to it, and that publishing one guide a day suited the site (single report in a Starter Story episode read 2026-11-14, no data shown, not documented by Google).
+   Treat 3 to 4 days as a first check of indexing and not as a ranking result, and read rankings after the engines have crawled it.
+   Log each new page, its internal links and its first impressions date in `seo/log.md` so the later read compares like with like (inference).
    Skip a query when a page already covers its intent, and merge instead of publishing two pages for one query.
    The idea comes from the minosdevs post (2026-10-19, a method with no result figure) and the guardrails are ours, from the rules in this file.
    3c. Several app sites: read every property at once instead of opening each one.
@@ -200,6 +208,13 @@ Each run:
    One founder showed three such answers on one day, with two of the three rows marked Direct (single report, X, 2026-11-07, self-reported, trials and not paid).
    Record the free-text answer next to the traffic source and the first landing page, add one follow-up question ("which Claude app or page showed you our name"), and count the answers as a signal to sample, not as a rate.
    The follow-up question is our own suggestion (inference).
+   To tie an App Store download to a page, put a campaign link on that page's store button.
+   Apple's Campaign links help page (read 2026-11-14) says Analytics in App Store Connect generates a link whose campaign token is the name you type (up to 30 characters), and that the same provider token stays the same across all campaigns.
+   Analytics counts a first-time download within 24 hours of using the link, gives credit to the most recent link when a user clicked several, and shows a campaign's metric only after at least 5 users in the date range.
+   The Campaigns add button appears only after the app has analytics data, and a campaign appears after at least 24 hours, so set the links up after the first downloads and not before launch.
+   One link per guide gives a count per guide only where each guide has enough downloads to pass the threshold of 5, so group guides by topic first (inference).
+   A Smart App Banner on the site takes the same two tokens, and the page says to generate a campaign link first to get the provider token.
+   Apple's page says Analytics ties sales and subscriptions to the campaign token too, so compare a campaign's sales with the app's own purchase data before trusting either (not tested).
 5. Competitors: diff each competitor's sitemap against the last snapshot and add a backlog item only where the app can make a better page.
 6. Links: keep `seo/links.csv` with site, type (directory, founder story, article platform, launch site), URL, status (candidate, drafted, submitted by human, live), live URL and date.
    Each run, add at most 5 candidates and draft the submission text in `seo/outreach/`.

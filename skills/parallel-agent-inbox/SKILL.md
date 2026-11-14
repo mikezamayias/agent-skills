@@ -53,7 +53,27 @@ Pack the first prompt so the next time you open the thread you can decide, not d
 - Open or update the PR.
 - Attach preview/env access when needed.
 - Babysit CI/review comments until green or clearly blocked.
+  Wait with one watcher per pull request and never a hand-written sleep loop.
+  Every watcher on one GitHub account draws on the same rate limit.
+  The thread that owns the pull request is the only one that watches it, and a delegated reviewer never does.
+  A wake-up is news and not a merge decision, so check the merge conditions yourself each time.
+  Stop watching before you hand off or ask a question, so the thread does not keep showing as busy.
+  If GraphQL is used up, GitHub says the REST API has a separate primary limit (GitHub docs read 2026-11-14), so read the pull request and its check runs through REST instead.
+  One open-source skill pack reports that the `gh pr` commands use GraphQL (repo text, not run).
+  The rest of this bullet follows one repository's practice (single report from one author's skill pack, not measured).
+  Act only on checks and comments that are newer than the latest push.
+  Check each bot finding against the source before changing code, fix the real ones and answer the rest with a written reason.
+  Tell a repository failure from an infrastructure failure before you rerun or change anything, and name which one it was in the report.
+  Write down the signal you used, such as the same test failing on the base branch or a runner error before any test ran, because that skill gives no method for the split.
+  Keep the pull request at the size of the goal.
+  Decline unneeded tests, guards for rare cases and small speed costs with a written reason, list them as follow-ups, and prefer the fix that deletes or narrows code.
 - State merge conditions if the host may merge without you.
+
+When the owner wants a decision and not a finished merge, one repository's practice (single report from one author's skill pack) is a stop-at-ready mode.
+Under a stated grant to push, the agent may commit, push and rebase its own branch with a lease-protected force push, but never merges, enables auto-merge or enters a merge queue.
+It turns off any auto-merge that already exists before it starts, checks again before each push, and reports one of three states: ready to merge, waiting only on a required human approval, or blocked with what it tried.
+A question for the owner goes through the harness question tool, because a plain message leaves the thread looking finished.
+If no question tool exists, leave the pull request open and unmerged and start the final message with the question.
 
 Add only the tools and repo context required for that outcome.
 
@@ -96,6 +116,11 @@ Keep signing secrets on the CI runner, never in a cloud agent sandbox.
 
 - Do not stack or share accounts to evade provider terms, and do not turn coding subs into a public API.
 - Do not auto-merge or auto-deploy without stated checks and human policy for production.
+  When the owner does grant a merge, write the conditions that "State merge conditions if the host may merge without you." in "3. Make the next visit merge-ready" asks for into the task.
+  One repository's merge gate, a single report from one author's skill pack, uses these: proof that covers every change in the diff, required checks green on the latest commit, review bots finished with each finding fixed or declined in writing, no human review asking for changes, and a branch that is up to date and mergeable.
+  Never use an admin override or another bypass of branch protection to meet them.
+  Run `git fetch` and re-read the pull request right before the merge.
+  If proof is not possible, stop and ask, because the missing proof is the answer.
 - Do not babysit a healthy working thread.
 - Do not start aggressive parallel shipping if revert is slow or CI is untrusted.
 - Do not prescribe a single vendor's UI; require inbox semantics, isolation, and remote runners as capabilities.

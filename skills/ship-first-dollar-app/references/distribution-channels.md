@@ -132,17 +132,25 @@ Prices and policies change, so re-check the linked page before relying on one.
 - Running the automation on real phones does not change the spam rule above.
   A popular open-source phone farm drives real iPhones through WebDriverAgent to schedule TikTok sessions and posts, and its README gives no warning about TikTok's rules.
   Two users in its thread report fresh accounts warmed for days that stayed at zero views (single reports, no method), and no source shows a positive result.
+- One X founder with a competing app (2026-11-14, single report, no result shown) advises bought accounts posting from a masked region.
+  TikTok's page "Deceptive Behaviors and Fake Engagement" (<https://www.tiktok.com/community-guidelines/en/integrity-authenticity>, read 2026-11-14) lets you have multiple accounts but "not to deceive others or break the rules", says it may ban "additional or new accounts you create", and "strictly" prohibits "tricks designed to bypass our systems".
+  The page does not name purchased accounts, proxies or region settings, so whether this method breaks a rule depends on intent (inference), and it has no tested upside.
+  Do not use it.
+  Post in each target country through a creator who lives there, and check each creator's audience country as the earlier slideshow note says.
 - Posting through a scheduler API has its own limit that TikTok publishes.
   An API client that TikTok has not audited can only post as private (`SELF_ONLY`), for at most 5 users in a 24 hour window, and TikTok lists "a utility tool to help upload contents to the account(s) you or your team manages" as not acceptable for an audit (TikTok content sharing guidelines, <https://developers.tiktok.com/doc/content-sharing-guidelines>, read 2026-11-02, verified).
   A client can leave at most 5 pending shares per user per 24 hours, and a photo post takes up to 35 photos (TikTok photo post reference, <https://developers.tiktok.com/doc/content-posting-api-reference-photo-post>, read 2026-11-02, verified).
   So a self-built poster cannot publish publicly, and a scheduler that does is posting through its own audited app (inference).
-- The same founder creates one TikTok account per app before the store approves the app, so format testing starts before launch (author reply, one account).
+- The founder of the seven-day warm-up above creates one TikTok account per app before the store approves the app, so format testing starts before launch (author reply, one account).
 - Organic videos that say "search the app name" give store downloads that no tool ties to a video (inference).
   Compare weekly first-time downloads before and after each post, so a view count is never read as installs.
   Apple gives each custom product page its own URL, and App Analytics shows product page impressions, downloads, redownloads and conversion rates for each custom product page (<https://developer.apple.com/app-store/custom-product-pages/>, read 2026-11-01).
   So one custom product page per video or creator, linked where the platform allows a link, gives downloads per page.
   That Apple page describes no breakdown by source for one page's URL, so one shared page URL does not separate the places it was posted.
   Whether a given platform allows the link was not checked, and no promo code route was checked.
+  One observed case, from screenshots in an X post (2026-11-14, single report): at least five French TikTok accounts with 85 to 5,102 followers carry the same bio pattern ("the app is X in the App Store"), and several post the same "I quit my job to build my app" script in different workplaces.
+  Nothing shown says who owns the accounts, what they cost or how many installs they brought, so treat it as a pattern to study and not as evidence that the format works.
+  Before copying the bio pattern, remember that the pitch is a made-up personal story, so apply the testimonial note and the label rules in this file, and test it on one account you own.
 - YouTube announced on 2026-10-01 that Shorts recommendations will give less reach to channels that mainly re-upload other creators' clips without significant changes.
   No effective date was given.
   Clips stay eligible when the uploader adds original commentary, unique edits or storytelling.

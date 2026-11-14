@@ -35,7 +35,17 @@ who trust you convert at much higher rates.
 
 - [ ] Trial-start screen lists features in plain language.
 - [ ] Charge timeline visible BEFORE the App Store / web checkout modal.
+- [ ] The charge row of the trial timeline names the amount and the date ("$79.99 a year, on Apr 23"), and matches the trial line under the button (see the one-screen item below).
+      An annotated teardown video (X post, 2026-11-13, screens undated, single source) marks two live paywalls as failing this.
+      One timeline row says only "you'll be charged the subscription amount" with the price elsewhere on the plan card, and one trial button has no price line under it.
+      Check your own timeline with the plan card hidden, since a user may read only the timeline.
+      Apple's Auto-renewable Subscriptions page already requires the "Full renewal price, shown clearly and prominently" (see the anti-patterns below), so this is a layout check and not a new rule.
 - [ ] Reminder push/email scheduled 48h before charge.
+- [ ] If the paywall offers a "remind me before renewal" switch, its default and the notification permission state must match the promise.
+      One teardown video (X post, 2026-11-13, single source) shows a live paywall whose reminder switch is off by default, with a line saying notifications are off in Settings, and recommends it on by default.
+      A switch that is off means no reminder is scheduled, so the timeline's reminder row is then not true for most users.
+      Default it on only if you can deliver it: ask for notification permission before the paywall, and keep a reminder email as the fallback when permission is denied (inference).
+      A reminder that is a push also needs the opt-in consent language from the push rule in [Paywall conversion flow](../paywall-conversion-flow/SKILL.md) (Guideline 4.5.4, read 2026-10-25), because a renewal reminder is a service message but a promotion in the same push is not (inference, not an Apple statement).
 - [ ] A win-back or retention offer states the price after the offer ends, the billing period and the renewal date, the same as any trial.
 - [ ] On a one-screen paywall, the trial line under the plan states the length, the charge with its period and the reminder ("7 days, then €29.99 a year. We remind you 2 days before."), and the reminder is actually scheduled.
 - [ ] If the user picks the reminder lead time, ask on a screen before the paywall, and the paywall timeline shows the chosen day.

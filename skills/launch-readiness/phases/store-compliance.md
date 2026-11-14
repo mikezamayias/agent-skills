@@ -228,6 +228,29 @@ It scans for SDK signatures and rejects on mismatches with declared metadata, ev
 - **High if**: Native libraries (plugins or NDK code) are not 16 KB aligned
 - **Critical if**: `targetSdkVersion` below Play Store minimum
 - **Method**: Read `android/app/build.gradle` or `build.gradle.kts` for `targetSdk` / `targetSdkVersion`, noting Flutter's default `flutter.targetSdkVersion`
+- From April 2027, Google Play requires an app that offers sign-in, optional or mandatory, to support zero-tap restore credentials when a user moves to a new Android phone by device-to-device transfer or cloud backup (Google Play's technical quality requirements page, <https://support.google.com/googleplay/android-developer/answer/17492799>, read 2026-11-14, which gives no exact day in April).
+  The page says its requirements are not optional, and that not meeting one "can affect an app's visibility and publishing capabilities on Google Play".
+  Apps with no sign-in, and signed-out or guest users, are not affected.
+  The page says games are currently out of scope, with dedicated guidance expected in 2027.
+  It applies to mobile and tablet only, and permanently private apps and enterprise device management apps are outside its scope.
+  Apps under strict regulatory or compliance mandates that affect sign-in, such as financial services or healthcare, may request an exemption in Play Console before the enforcement date.
+  An app whose Block Store integration was in production and restoring sign-in state on or before September 30, 2026 counts as compliant, and a later Block Store integration does not.
+- The restore key is created at app startup and right after sign-in, deleted at sign-out, removed when the app is uninstalled or its data cleared, and checked by a WebAuthn relying party server (Android Developers Restore Credentials implementation page, <https://developer.android.com/identity/sign-in/restore-credentials-implementation>, read 2026-11-14).
+  It needs Android 9 or later, Google Play services 24.22 or later and `androidx.credentials` 1.5.0 or later, and the app must catch `CreateCredentialProviderConfigurationException` and `GetCredentialProviderConfigurationException` on devices without Play services.
+- **High if**: The app has sign-in and no restore credential creation or retrieval, and no Block Store integration that shipped by September 30, 2026, is found
+- **Method**: Grep for `CreateRestoreCredentialRequest`, `GetRestoreCredentialOption`, `TYPE_CLEAR_RESTORE_CREDENTIAL` and Block Store (`blockstore`, case-insensitive), or a plugin that wraps them.
+  For a Block Store match, check the release date of the first build that shipped it.
+  A bare `ClearCredentialStateRequest` is not evidence, because ordinary sign-out code uses it too.
+  A Flutter app uses a plugin or a platform channel, which this check has not tested.
+  The severity and the grep method are this skill's inference, not Google's.
+- From February 2027, Google Play evaluates two new core vitals metrics, memory usage (anonymous RSS plus swap) and bitmap memory usage, against bad behavior thresholds, using the last 28 days of data and the 90th percentile per app state (Google Play's technical quality requirements page, read 2026-11-14).
+  It applies to mobile and tablet only, and Play evaluates every app version with data, which is Android 13 and later for both metrics.
+  Thresholds depend on the Play Console category (apps or games) and the device RAM tier.
+  For an app on a device with 8 GB of physical RAM, the apps table gives 2.25 GB in the foreground and 1.5 GB for user-perceived services and for background, with no threshold for cached.
+  The 0 to 4 GB tier (up to 3200 MB total memory) and the 16 GB and above tier (above 18432 MB total memory) have no memory usage threshold in either table.
+  Bitmap memory has no foreground threshold, and the bad behavior line is above 200 MB for user-perceived services and for background, and above 400 MB for cached.
+  Read Android vitals, Memory, in Play Console before the date and compare the 90th percentile with the page's row for the common RAM tiers, because Google may change the figures.
+- **Medium if**: A heavy image or media screen has no memory measurement on a mid-range Android device
 
 #### 11. Data Safety
 
