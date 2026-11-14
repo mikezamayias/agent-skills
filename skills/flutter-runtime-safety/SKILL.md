@@ -60,9 +60,29 @@ Or write a first-launch migration that clears stale keys.
 - Before a restore replaces local data, save the current data first as its own restorable copy.
   The same promo's dialog does this, and it also warns that the saved copy may need repair if it already held damaged data, so do not promise that the safety copy is restorable.
 
-## 3. `WidgetsBindingObserver` — pause heavy work in background
+## 3. App lifecycle: pause heavy work in the background and save progress
 
-When the app backgrounds, timers and streams keep running. Battery drain, websocket reconnect storms, and "ghost" notifications follow. Implement the observer in your root state and pause cubits/streams on `AppLifecycleState.paused`.
+When the app backgrounds, timers and streams keep running.
+Battery drain, websocket reconnect storms, and "ghost" notifications follow.
+Pausing app-wide work stays at the root: implement the observer in your root state and pause cubits/streams on `AppLifecycleState.paused`.
+Saving a feature's own progress sits with that feature, as the bullets below describe.
+
+- For new code, prefer `AppLifecycleListener` (Flutter 3.13 and later) over a `WidgetsBindingObserver` mixin with a switch.
+  It has one callback per transition (`onHide`, `onResume`, `onPause`, `onExitRequested` and others), needs no mixin, and several listeners can exist at once.
+  Create it in `initState`, keep it next to the feature that owns the concern, and call `dispose()` on it in `dispose()` (Flutter API docs, read 2026-11-14).
+- Save user progress on `onHide`, not on `onPause` alone.
+  Flutter's docs say `onHide` runs on mobile usually just before another app replaces this one, on desktop when the app is minimized or hidden, and on the web when the tab is hidden.
+  `onPause` is called on mobile only and is not called on desktop or the web (Flutter API docs, read 2026-11-14).
+- On desktop, `onExitRequested` is a last chance to flush pending writes before the app quits, and answering `AppExitResponse.cancel` keeps the app open.
+  Use it only for data that is already safe to lose or replay, because Flutter's `handleRequestAppExit` docs warn against relying on that hook to save important data (see the next bullet).
+  Flutter's docs say cancelling a quit is currently only supported on macOS and Linux (`handleRequestAppExit` page, read 2026-11-14).
+  Flutter calls every registered listener and cancels the exit if any one of them answers cancel (checked on Flutter's current master, read 2026-11-14, so older releases may differ).
+  `onExitRequested` runs only when the exit is cancelable, which Flutter's docs say.
+  That it is not called on phones is inference, so do not rely on it there.
+- Do not make saving depend on any lifecycle callback.
+  Flutter's own docs say an app killed from a task manager, by a kill signal, or by power loss gets no notification, and some states can be skipped (Flutter API docs for `AppLifecycleState`, read 2026-11-14).
+  Save progress as it happens or at natural checkpoints, and treat the `onHide` save as a bonus that narrows the loss window.
+  Write pending data so that replaying it on the next launch is safe (one commenter on a Flutter lifecycle post made this point, single report, and it follows from the docs).
 
 ## 4. Platform channel handlers: reply once, keep slow native calls off the main thread
 
@@ -82,6 +102,10 @@ When the app backgrounds, timers and streams keep running. Battery drain, websoc
 - If the app offers its own backup and restore, test the round trip on a second device or after a reinstall: back up, wipe, restore, and compare the record counts.
   Also restore a backup that was made from a state you know is corrupt, and confirm the app either repairs it or refuses with a clear message instead of crashing.
 - Profile battery usage with the app backgrounded for 1 hour → no spikes.
+- For a screen that holds unsaved user progress, test two cases.
+  First, start the task, send the app to the background, swipe it away from the task switcher, relaunch, and confirm the progress is either restored or the loss is acceptable and stated.
+  Second, kill the app while it is in the foreground and check the same.
+  No callback is guaranteed to run in either case (Flutter API docs for `AppLifecycleState`, read 2026-11-14).
 - For each native channel handler, list its branches and confirm each one replies once, then call each method on a platform with no handler and confirm the app handles `MissingPluginException`.
 
 ## Sources
@@ -90,3 +114,7 @@ When the app backgrounds, timers and streams keep running. Battery drain, websoc
 - <https://docs.sentry.io/platforms/dart/guides/flutter/usage/>
 - <https://developer.android.com/identity/data/autobackup>
 - <https://api.flutter.dev/flutter/dart-ui/AppLifecycleState.html>
+- <https://api.flutter.dev/flutter/widgets/AppLifecycleListener-class.html>
+- <https://api.flutter.dev/flutter/widgets/AppLifecycleListener/onExitRequested.html>
+- <https://api.flutter.dev/flutter/widgets/AppLifecycleListener/onPause.html>
+- <https://api.flutter.dev/flutter/widgets/WidgetsBinding/handleRequestAppExit.html>

@@ -117,7 +117,9 @@ Apple/Google reject screenshots that show debug overlays or staging data. Verify
 
 - [ ] No debug banner (Flutter: `MaterialApp.debugShowCheckedModeBanner = false` or release mode forces it off. Native: no debug-only overlay, banner or `#if DEBUG` UI in the captured build)
 - [ ] No performance overlay, no debug paint, no leak tracker
-- [ ] Status bar locked to a clean state via `xcrun simctl status_bar booted override --time "9:41" --batteryLevel 100 --cellularBars 4 --wifiBars 3 --cellularMode active --dataNetwork wifi`
+- [ ] Status bar locked to a clean state via `xcrun simctl status_bar booted override --time "9:41" --batteryLevel 100 --cellularBars 4 --wifiBars 3 --cellularMode active --dataNetwork wifi`.
+      For App Store sets, also check that no status bar or overlay shows a third-party platform's name or icon, because Apple's 2.3.3 page (read 2026-11-14) says screenshots that reference third-party platforms, such as in a status bar, are assessed under App Review Guideline 2.3.10.
+      Another Apple platform is allowed when it is part of the experience.
 - [ ] Test account looks realistic (no "test test test", no `lorem ipsum`)
 - [ ] No PII (real names, real emails, real bank balances)
 - [ ] Light mode by default.
@@ -127,7 +129,9 @@ Apple/Google reject screenshots that show debug overlays or staging data. Verify
       Apple assesses the set for each supported device and, separately, for each localization, so run the count once per device size and once per locale.
       Apple's FAQ says each localization's screenshots are assessed on whether the majority show the app in use, so a localized set with more promo slides than the English set can fail when the English set passes (inference from the FAQ, Apple gives no such case).
       The number of screenshots can differ by device, and one screenshot for a device is enough if it shows the app in use.
-      Count a slide as showing the app in use only if it contains a real or realistic screen of the running app.
+      Count a slide as showing the app in use only if it contains a real screen of the running app, which may show realistic demo data.
+      Apple's 2.3.3 page (read 2026-11-14) says not to submit screenshots that misrepresent the app's actual interface or include misleading marketing or promotional materials.
+      A mock-up of a screen the app does not have does not count and can also fail on its own (inference from Apple's two lines).
       A mascot, photo, orbiting-avatar graphic, floating money chips, a lone notification or a placeholder grey-row mock does not count.
       Apple's 2.3.3 text as fetched allows overlays and text, so the test is the presence of a real screen and not the absence of decoration.
       Apple's 2.3.3 page (read 2026-11-12) limits overlays: the primary app functionality in the screenshot must not be obscured, overlays and marketing visuals must not crowd out the app, and a slide of only hardware or an overlay with no app interface behind it is not to be shown.

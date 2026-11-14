@@ -291,8 +291,11 @@ Store screenshots must exist in the project repo. Expected location: `store_asse
 - Overlays and text are allowed if the primary app functionality is not obscured and the overlays do not crowd out the app.
 - Apple recommends refreshing screenshots with each version and showing other configurations such as Dark Mode.
 - An image of the app can span several screenshots (Apple's FAQ), and Apple does not say how each slice counts.
-- Source: <https://developer.apple.com/help/app-review/guideline-reference/2-3-3-screenshots>, read 2026-11-12.
+- Apple's page also says: "Don't submit screenshots that misrepresent the app's actual interface or include misleading marketing or promotional materials."
+- Apple's page also says: "Screenshots that reference third-party platforms, such as in a status bar, are assessed under App Review Guideline 2.3.10."
+- Source: <https://developer.apple.com/help/app-review/guideline-reference/2-3-3-screenshots>, read 2026-11-12 and again 2026-11-14.
 - **High if**: Half or fewer of the screenshots for any device and locale combination show the app in use
+- **High if**: A screenshot shows an interface the app does not have, or a status bar or overlay that names a third-party platform (inference, because Apple only says such screenshots are assessed under Guideline 2.3.10)
 - **Medium if**: A slide counted as in use has its capture mostly covered by a badge, headline or device-less artwork (inference from Apple's wording on obscuring)
 - **Method**: Read the screenshot plan or captions in `store_assets/` for every locale folder, view the images if possible, and tally in-use slides against the total per device size and locale
 
