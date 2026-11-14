@@ -73,6 +73,10 @@ For each option, fetch the live page and quote the clause or number with its URL
 - Data: the region where data is stored and processed, retention (the minimum and whether it can be shortened), whether a data processing agreement (DPA, the GDPR contract with a processor) exists, whether data is used for training, and sub-processors.
 - Self-hosted "free" claims: list each feature with the paid plan or third-party key it needs, and whether the platform wants a payment method on file even on its free tier.
   Record whether the software sends telemetry by default and how to turn it off.
+  Read the opt-out in the code, not only the README, because the accepted values and variables can be narrower than the docs suggest.
+  Example: Modern Web Guidance 1.0.0 sends agent search queries, guide ids and the agent name to `play.googleapis.com` from a detached child process, and turns that off only for `DISABLE_TELEMETRY` set to `1` or `true`, ignoring `DO_NOT_TRACK` (npm tarball read, not run, 2026-11-14).
+  Its README also says the CLI is "completely private and local", which is true of the search computation and not of the queries (npm tarball read, not run, 2026-11-14).
+  Check that the opt-out variable does not collide with another tool's variable of the same name before setting it globally.
   Compare the claimed setup time with the README.
   Example: a tweet said Minilytics deploys "in 2 minutes", its README says "about 10 minutes", needs a Cloudflare account and Node, covers about 10k pageviews per day on the free plan, and updates by `git pull` and redeploy (read 2026-10-26).
   Also check how old the repository is and who commits to it, because a days-old repo with one contributor account has no update track record (inference).
