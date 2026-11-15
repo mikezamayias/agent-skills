@@ -216,6 +216,13 @@ Each run:
    A Smart App Banner on the site takes the same two tokens, and the page says to generate a campaign link first to get the provider token.
    Apple's page says Analytics ties sales and subscriptions to the campaign token too, so compare a campaign's sales with the app's own purchase data before trusting either (not tested).
 5. Competitors: diff each competitor's sitemap against the last snapshot and add a backlog item only where the app can make a better page.
+   For a one-off teardown of a competitor or a site worth studying, use a ranking dataset, because Search Console shows only the site you own.
+   Its traffic and ranking figures are estimates for one market, so record each with the tool, the market and the date, as with Ahrefs traffic in the rank evidence rules below.
+   Split brand from non-brand keywords first, group the non-brand rankings by URL section, and open the top page of the biggest sections to see whether each is written by hand or one template filled from data.
+   Group the strongest linking domains by the page type they point at, and list what will not copy: brand searches, the site's age and its links.
+   The method is adapted from `reverse-engineer-seo` in every-app/seo-party-skills (MIT, ce87df4, read 2026-11-15), a vendor skill that only runs on OpenSEO's paid data, so adapt it in text and treat any install as remote code under the code-gate rule in the global instructions.
+   One reply to OpenSEO's launch post (2026-11-11) suggests studying the weakest page already on page one for the target query instead of the leader, since that is the spot a small site can take (single report, no data).
+   Keep a teardown's moves only where the app has data or an angle the studied site lacks, under the scaled content rule in Never (inference).
 6. Links: keep `seo/links.csv` with site, type (directory, founder story, article platform, launch site), URL, status (candidate, drafted, submitted by human, live), live URL and date.
    Each run, add at most 5 candidates and draft the submission text in `seo/outreach/`.
    Pick candidates by topical fit to the app, not by DR.
@@ -258,6 +265,11 @@ Rank evidence rules, ours, adapted from OpenSEO's public skills (MIT per its REA
   One snapshot is not a baseline.
 - Search volume is not visits.
   A page that already ranks already gets part of the volume, so size a gain on the extra clicks, not on the total.
+- A keyword count is not searches or visits.
+  "One page template ranks for 151,315 searches" in one vendor launch post (OpenSEO, 2026-11-11) is the number of distinct keywords a section ranks for in the top 20, as the post's own GIF and the skill behind it show, and a section's share of those keywords is not its share of traffic.
+  Record which of the three a figure is: ranking keywords, monthly search volume, or estimated traffic (our rule).
+- DataForSEO's search volume is a 12-month average, and its estimated traffic is modelled as CTR times search volume (DataForSEO field definitions, read 2026-11-15).
+  Before quoting a keyword whose volume looks too big for the site, check its monthly figures for a one-month spike.
 - Run a keyword difficulty check before building a page.
   The video above says Google is stricter with new sites, so expect AI-assistant referrals before Google ones (source claim, no data).
   One reply to the source (@mankaff\_) says the tactic does not work in a red ocean, which is a single unverified comment.
@@ -310,6 +322,8 @@ Comparison pages ("X alternatives", "app vs X") must say where the competitor is
   A pattern an engagement post promoted (2026-10-21, income figure unverified) is one new page a night in a thin directory niche with affiliate links, run by an agent.
   Google's spam policies (read 2026-10-21) list "Using generative AI tools or other similar tools to generate many pages without adding value for users" and "Creating multiple sites with the intent of hiding the scaled nature of the content" as scaled content abuse.
   They add that not every affiliate site is thin, and that good ones add original reviews, testing and comparisons.
+- Clone a large site's data-filled template across the same query set, such as one page per currency pair, when the app has no data, tool or angle the large site lacks.
+  The scaled content line above covers this case by our inference, and one commentator argues that the large site's results rest on its brand, authority and the trust its users already have in it, which a copy does not get (X post, 2026-11-13, opinion with no data).
 - Invent a statistic, quote, review, price or benchmark.
 - Send email, submit a directory listing, create an account or post socially.
   Draft it in `seo/outreach/` and list it in the report for the human.
@@ -351,3 +365,5 @@ Comparison pages ("X alternatives", "app vs X") must say where the competitor is
 - <https://x.com/tibo_maker/status/2112481939563438091> and <https://x.com/illyism> quoted post 2112377329284730977 (listicle recipe, unverified outcome)
 - <https://x.com/DanKulkov/status/2112178737785819183> (video transcript source for the seed plan, unverified)
 - <https://x.com/minosdevs/status/2112189288314020303> (six-step loop, author sells a course, unverified)
+- <https://github.com/every-app/seo-party-skills/blob/ce87df4c8d5100625d75d871f65feb739b1f3b54/skills/reverse-engineer-seo/SKILL.md> (teardown method, MIT, vendor skill, read 2026-11-15)
+- <https://x.com/yaohongan2025/status/2121082121703858667> (commentary on copying a template, opinion)

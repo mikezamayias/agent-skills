@@ -26,6 +26,9 @@ Most indies lose conversion by following the wrong order.
    Make the cancel path easy to keep ratings intact.
    Google Play already verifies a valid payment method before a store free trial starts, so a cardless trial only exists outside store billing.
    One planner does exactly that: closing its paywall offers 3 free days granted by its own server, with no payment details (walked 2026-10-30, see the Onboarding flow reference below).
+   One indie replaced a hard paywall with a 3-day store trial by a free period without a card, called it "freemium", and reports that trials and monthly recurring revenue "dropped hard" while downloads stayed "more or less the same" (X post, 2026-11-13, single report, one unnamed app, an undated before-and-after).
+   Call such a setup a cardless trial, not freemium, because RevenueCat's freemium benchmark groups apps by how users primarily access them (inference from the report's definition).
+   To test a cardless period against a store trial, run both at the same time on split traffic and compare paid conversion per download, not trial starts.
    Judge a trial by paid conversion, not trial-start rate.
    RevenueCat's State of Subscription Apps 2026 (metrics for 2025, read 2026-10-24) reports median trial-to-paid conversion of 25.5% for trials of 4 days or less, 37.4% for 5 to 9 days and 42.5% for 17 to 32 days.
    It also reports that 55% of 3-day trial cancellations happen on Day 0, and that 84% of 3-day and 64% of 7-day trial cancellations happen by Day 1.
@@ -309,6 +312,9 @@ These are unverified secondhand figures, which the article itself marks "reporte
   One founder's Day 12 and Day 13 posts (October 2026, single report, screenshots not verified) show the lag: Day 13's whole $199.96 was four yearly trial conversions while active trials fell to 26.
 - Bucket weekly when daily paywall views are under about 20, because daily rates are noise.
 - Annotate every price, offer and onboarding change on the chart, and exclude the developer's own country or test devices.
+- Do not read the size or date of a change from a dashboard tile's sparkline.
+  RevenueCat's Overview docs describe the Active Trials, Active Subscriptions and MRR (monthly recurring revenue) cards as current figures, say nothing about the period or scale of a card's trend line, and say "For trends over time, see Charts" (read 2026-11-15).
+  A founder's screenshot of those tiles with a circled dip (X post, 2026-11-13, single report) shows a direction but no date and no size, so ask for the dated chart before using such a claim (inference).
 - Never report a partial-week point as a result.
   One indie's chart headlined a dashed, incomplete week at 22.2%.
   An earlier capture of the same chart read 14.1% for its then-partial point against 12.2% once the week completed, an inference from two captures with unconfirmed week boundaries.
@@ -360,6 +366,12 @@ These are unverified secondhand figures, which the article itself marks "reporte
 Deliver the first win fast, then show the paywall in the same session.
 RevenueCat's State of Subscription Apps 2026 (115,000+ apps) found 50.6% of download-to-paid conversions happen on Day 0 and 78-90% of trials start on Day 0, depending on category.
 The same report found hard paywalls convert 10.7% download-to-paid by Day 35 vs 2.1% for freemium, with nearly identical one-year retention.
+The same report adds three limits to that comparison (read 2026-11-15).
+For freemium apps, 23% of conversions do not occur until 6 or more weeks after download, and in week 6 the page gives 22.9% for freemium against 15.3% for hard paywall apps, so a Day 35 rate undercounts freemium more.
+Its hard paywall group appears to include apps that lead with a free trial, since it attributes a Day 4 to 7 conversion spike to 7-day trial expirations (inference, the page gives no classification rule).
+Median revenue per install at Day 14 is $2.32 for hard paywall apps against $0.27 for what that section calls "low-priced freemium" apps, and at Day 60 it is $3.09 against $0.38 for freemium.
+Revenue per install is the gap that matters most for a small app (inference), so judge both models on it.
+Read a freemium test no earlier than 6 weeks after its last cohort, a window inferred from the late-conversion share and not stated by the report.
 Moving the paywall late costs conversions, so A/B test placement instead of assuming later is better.
 
 ## Sources

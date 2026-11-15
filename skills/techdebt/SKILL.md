@@ -42,6 +42,12 @@ Use subagents to scan in parallel:
 - Inconsistent naming patterns (camelCase vs snake_case in same file)
 - Magic numbers/strings that should be constants
 
+### 2b. Vet every finding
+
+- Open each cited file and line yourself before it goes in the report, because scan agents over-report.
+- Drop or correct three kinds: behavior that is intended (a platform convention, or a tradeoff recorded in an architecture decision record (ADR), `docs/decisions/` or the project's `AGENTS.md`), a real finding with the wrong file or line, and duplicates between agents.
+- A decision record that the code no longer follows is itself a finding, because either the record or the code is wrong.
+
 ### 3. Prioritize Findings
 
 | Priority     | Criteria                                   | Action                |
@@ -73,10 +79,18 @@ Create `tasks/techdebt.md` with:
 
 - Files scanned: N
 - Issues found: N critical, N high, N low
+
+## Considered and rejected
+
+- [file:line] dropped finding: reason
 ```
 
 - When several findings share one cause, group them under one proposed fix, written above the findings it solves, each finding with its `file:line`.
 - Keep this grouped list as a decision log in the report, so a long session can resume after compaction without rereading the code.
+- End the report with "## Considered and rejected", one line per finding dropped in step 2b with its reason.
+- This step recreates the report file on every run.
+  Before overwriting `tasks/techdebt.md`, or `~/.claude/tasks/techdebt-global.md` outside a project, read its "Considered and rejected" list.
+  Carry each line forward into the new report and do not report that item again, unless the code at that location changed, in which case vet it again like a new finding.
 
 ### 5. Offer to Fix
 
