@@ -53,6 +53,7 @@ Pack the first prompt so the next time you open the thread you can decide, not d
 - Open or update the PR.
 - Attach preview/env access when needed.
 - Babysit CI/review comments until green or clearly blocked.
+  The `babysit-pr` skill holds the full procedure and its `pr-wait` script, and `full-send` and `full-stop` hold the merge gate.
   Wait with one watcher per pull request and never a hand-written sleep loop.
   Every watcher on one GitHub account draws on the same rate limit.
   The thread that owns the pull request is the only one that watches it, and a delegated reviewer never does.
