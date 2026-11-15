@@ -138,16 +138,18 @@ The last four rows come from one designer's video (Tim Gabe, 2026-10-15), a prac
 
 Not data, but checked the same way after loading the worst-case fixture.
 
-| Condition                                                                               | What it tends to break                              |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------- |
-| Narrowest width (320 logical px, pt, or CSS px)                                         | Every overflow at once                              |
-| Component reused in a narrow column, sheet or menu bar popover                          | Designs made for full width                         |
-| Widest layout (tablet, desktop, 2560 px)                                                | Line lengths too long, content stranded on one side |
-| Text scale 2.0 on Android, about 3.1 at the largest iOS accessibility size, 200% on web | Fixed heights clip growing text                     |
-| Landscape phone with the keyboard open                                                  | Bottom overflow, hidden submit button               |
-| Dark mode                                                                               | Hard-coded colours, invisible borders and logos     |
-| RTL                                                                                     | Icons, chevrons, padding and trailing action order  |
-| Touch only                                                                              | Hover-only actions unreachable                      |
+| Condition                                                                                                               | What it tends to break                                                         |
+| ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Narrowest width (320 logical px, pt, or CSS px)                                                                         | Every overflow at once                                                         |
+| Component reused in a narrow column, sheet or menu bar popover                                                          | Designs made for full width                                                    |
+| Widest layout (tablet, desktop, 2560 px)                                                                                | Line lengths too long, content stranded on one side                            |
+| Text scale 2.0 on Android, about 3.1 at the largest iOS accessibility size, 200% on web                                 | Fixed heights clip growing text                                                |
+| Landscape phone with the keyboard open                                                                                  | Bottom overflow, hidden submit button                                          |
+| Keyboard opened and closed several times over long or reflow-heavy content (terminal, chat transcript, code, long form) | Text reflowing between frames, blank frames, scroll reset to the top           |
+| App sent to the background while scrolled up in a long view, then brought back                                          | Scroll position lost, view jumps to the bottom or the top (one reply's report) |
+| Dark mode                                                                                                               | Hard-coded colours, invisible borders and logos                                |
+| RTL                                                                                                                     | Icons, chevrons, padding and trailing action order                             |
+| Touch only                                                                                                              | Hover-only actions unreachable                                                 |
 
 ## Grapheme handling
 
